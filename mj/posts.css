@@ -1,1 +1,473 @@
-test
+/* =========================================================
+   POSTS MJ
+   ========================================================= */
+
+mj-post,
+mj-post * {
+  box-sizing: border-box;
+  text-transform: none !important;
+}
+
+mj-post {
+  --mj-background: #212121;
+  --mj-background-deep: #191919;
+  --mj-background-soft: #1d1d1d;
+  --mj-border: #2e2e2e;
+  --mj-border-soft: #2a2a2a;
+  --mj-text: #dad5cc;
+  --mj-text-soft: #a8a098;
+  --mj-muted: #696868;
+  --mj-gold: #6a4e28;
+  --mj-gold-text: #8a7050;
+
+  --mj-eddy: #5a8aaa;
+  --mj-june: #9a6a5a;
+
+  --mj-valentina: #e8507a;
+  --mj-kowalski: #3a8080;
+  --mj-inspector: #5d73e9;
+  --mj-colleague: #714e4e;
+
+  display: block;
+  width: 580px;
+  max-width: 100%;
+  margin: 0 auto;
+  overflow: hidden;
+  color: var(--mj-text-soft);
+  background: var(--mj-background);
+  border: 1px solid var(--mj-border);
+  font-family: system-ui, -apple-system, BlinkMacSystemFont, "Segoe UI", sans-serif;
+  font-size: 13px;
+  line-height: 1.8;
+  overflow-wrap: anywhere;
+}
+
+/* En-tête ------------------------------------------------- */
+
+mj-header,
+mj-title,
+mj-subtitle {
+  display: block;
+}
+
+mj-header {
+  position: relative;
+  padding: 30px 28px 24px;
+  text-align: center;
+  background:
+    linear-gradient(to bottom, transparent, rgba(106, 78, 40, 0.06)),
+    var(--mj-background-deep);
+  border-bottom: 1px solid var(--mj-border-soft);
+}
+
+mj-header::after {
+  content: "";
+  position: absolute;
+  right: 38%;
+  bottom: -1px;
+  left: 38%;
+  height: 2px;
+  background: var(--mj-gold);
+}
+
+mj-title {
+  color: #e0d8cc;
+  font-size: 17px;
+  font-weight: 500;
+  letter-spacing: 0.5px;
+}
+
+mj-subtitle {
+  margin-top: 8px;
+  color: #59524b;
+  font-size: 10px;
+  letter-spacing: 1.5px;
+}
+
+/* Introduction commune ----------------------------------- */
+
+mj-intro,
+mj-location {
+  display: block;
+}
+
+mj-intro {
+  position: relative;
+  padding: 20px 28px 20px 34px;
+  color: var(--mj-text);
+  text-align: justify;
+}
+
+mj-intro::before {
+  content: "";
+  position: absolute;
+  top: 23px;
+  bottom: 23px;
+  left: 22px;
+  width: 2px;
+  border-radius: 10px;
+  background: var(--mj-gold);
+  opacity: 0.78;
+}
+
+mj-location {
+  margin-bottom: 14px;
+  color: var(--mj-gold-text);
+  font-size: 9px;
+  letter-spacing: 2.2px;
+  text-transform: uppercase !important;
+}
+
+mj-time {
+  display: inline-block;
+  margin-right: 8px;
+  color: var(--mj-gold-text);
+  font-size: 9px;
+  letter-spacing: 1.2px;
+}
+
+/* Parties adressées aux joueurs -------------------------- */
+
+mj-player,
+mj-name {
+  display: block;
+}
+
+mj-player {
+  --mj-player: var(--mj-gold);
+
+  padding: 20px 28px;
+  color: var(--mj-text);
+  text-align: justify;
+  border-top: 1px solid var(--mj-border-soft);
+  border-left: 2px solid var(--mj-player);
+  background: linear-gradient(
+    to right,
+    color-mix(in srgb, var(--mj-player) 8%, transparent),
+    transparent 58%
+  );
+}
+
+mj-player.eddy,
+mj-choice.eddy {
+  --mj-player: var(--mj-eddy);
+}
+
+mj-player.june,
+mj-choice.june {
+  --mj-player: var(--mj-june);
+}
+
+mj-name {
+  margin-bottom: 13px;
+  color: var(--mj-player);
+  font-size: 9px;
+  font-weight: 600;
+  letter-spacing: 2.4px;
+  text-transform: uppercase !important;
+}
+
+/* Résultats de dés : utilisables partout dans le texte ---- */
+
+@keyframes mj-die-glow {
+  0%,
+  100% {
+    box-shadow: 0 0 3px currentColor;
+    opacity: 0.72;
+  }
+
+  50% {
+    box-shadow: 0 0 8px currentColor, 0 0 14px currentColor;
+    opacity: 1;
+  }
+}
+
+mj-die {
+  display: inline-flex;
+  align-items: center;
+  gap: 6px;
+  margin: 0 3px;
+  padding: 3px 10px 3px 7px;
+  vertical-align: middle;
+  border: 1px solid var(--mj-border);
+  border-radius: 20px;
+  font-size: 10px;
+  line-height: 1.4;
+  letter-spacing: 0.3px;
+  white-space: nowrap;
+}
+
+mj-die::before {
+  content: "";
+  width: 5px;
+  height: 5px;
+  flex: 0 0 5px;
+  border-radius: 50%;
+  background: currentColor;
+  animation: mj-die-glow 2s ease-in-out infinite;
+}
+
+mj-die.success {
+  color: #70b880;
+  background: rgba(60, 140, 80, 0.12);
+  border-color: rgba(60, 140, 80, 0.25);
+}
+
+mj-die.failure,
+mj-die.crit {
+  color: #c87070;
+  background: rgba(160, 60, 60, 0.12);
+  border-color: rgba(160, 60, 60, 0.25);
+}
+
+mj-die.middle {
+  color: #c8a050;
+  background: rgba(180, 130, 30, 0.12);
+  border-color: rgba(180, 130, 30, 0.25);
+}
+
+mj-die.info {
+  color: #6090c8;
+  background: rgba(60, 110, 180, 0.12);
+  border-color: rgba(60, 110, 180, 0.25);
+}
+
+/* Possibilités et indications ---------------------------- */
+
+mj-choices,
+mj-choices-title,
+mj-choice,
+mj-choice-text,
+mj-action {
+  display: block;
+}
+
+mj-choices {
+  padding: 20px 28px;
+  border-top: 1px solid var(--mj-border-soft);
+}
+
+mj-choices-title {
+  position: relative;
+  margin-bottom: 14px;
+  padding-left: 27px;
+  color: #dfd4bf;
+  font-size: 9px;
+  font-weight: 500;
+  letter-spacing: 2px;
+  text-transform: uppercase !important;
+}
+
+mj-choices-title::before {
+  content: "";
+  position: absolute;
+  top: 50%;
+  left: 0;
+  width: 18px;
+  height: 2px;
+  background: var(--mj-gold);
+  transform: translateY(-50%);
+}
+
+mj-choice {
+  --mj-player: var(--mj-gold);
+
+  display: flex;
+  align-items: flex-start;
+  gap: 12px;
+  margin-top: 8px;
+  padding: 12px 14px;
+  color: #a7a7a7;
+  background: var(--mj-background-deep);
+  border: 1px solid var(--mj-border-soft);
+  border-radius: 8px;
+}
+
+mj-tag {
+  display: inline-block;
+  flex-shrink: 0;
+  margin-top: 2px;
+  padding: 3px 8px;
+  color: var(--mj-player);
+  background: color-mix(in srgb, var(--mj-player) 9%, var(--mj-background-deep));
+  border: 1px solid color-mix(in srgb, var(--mj-player) 24%, var(--mj-border));
+  border-radius: 4px;
+  font-size: 8px;
+  letter-spacing: 1.4px;
+  line-height: 1.5;
+  text-transform: uppercase !important;
+  white-space: nowrap;
+}
+
+mj-choice-text {
+  flex: 1;
+  min-width: 0;
+  font-size: 12px;
+  line-height: 1.65;
+}
+
+mj-action {
+  width: fit-content;
+  max-width: 100%;
+  margin-top: 10px;
+  padding: 4px 10px;
+  color: var(--mj-gold-text);
+  background: rgba(106, 78, 40, 0.1);
+  border: 1px solid var(--mj-gold);
+  border-radius: 20px;
+  font-size: 10px;
+  line-height: 1.6;
+  letter-spacing: 0.4px;
+}
+
+/* Aparté facultatif de la narratrice --------------------- */
+
+mj-whisper,
+mj-whisper-label {
+  display: block;
+}
+
+mj-whisper {
+  margin: 8px 28px 20px;
+  padding: 13px 16px;
+  color: #786b59;
+  text-align: center;
+  font-size: 12px;
+  font-style: italic;
+  line-height: 1.65;
+  background: linear-gradient(
+    to right,
+    transparent,
+    rgba(106, 78, 40, 0.08),
+    transparent
+  );
+  border-top: 1px solid rgba(106, 78, 40, 0.58);
+  border-bottom: 1px solid rgba(106, 78, 40, 0.58);
+}
+
+mj-whisper-label {
+  margin-bottom: 6px;
+  color: var(--mj-gold-text);
+  font-size: 9px;
+  font-style: normal;
+  font-weight: 500;
+  letter-spacing: 2px;
+  text-transform: uppercase !important;
+}
+
+/* Notifications facultatives ---------------------------- */
+
+mj-notification,
+mj-notification-title,
+mj-notification-text {
+  display: block;
+}
+
+mj-notification {
+  margin: 7px 0;
+  padding: 8px 10px;
+  background: var(--mj-background-soft);
+  border-left: 3px solid #444;
+  border-radius: 6px;
+  text-align: left;
+}
+
+mj-notification-title {
+  color: #d7d7d7;
+  font-size: 11px;
+  font-weight: 600;
+}
+
+mj-notification-text {
+  color: #989898;
+  font-size: 12px;
+  line-height: 1.55;
+}
+
+/* Dialogues des PNJ -------------------------------------- */
+
+mj-post val {
+  color: var(--mj-valentina);
+}
+
+mj-post kow {
+  color: var(--mj-kowalski);
+}
+
+mj-post insp {
+  color: var(--mj-inspector);
+}
+
+mj-post colle {
+  color: var(--mj-colleague);
+}
+
+/* Pied HRP fixe ------------------------------------------ */
+
+mj-hrp,
+mj-hrp-title {
+  display: block;
+}
+
+mj-hrp {
+  padding: 16px 28px;
+  color: var(--mj-muted);
+  background: var(--mj-background-deep);
+  border-top: 1px solid rgba(106, 78, 40, 0.48);
+  font-size: 11px;
+  line-height: 1.8;
+}
+
+mj-hrp-title {
+  margin-bottom: 9px;
+  color: #9b9b9b;
+  font-size: 9px;
+  font-weight: 500;
+  letter-spacing: 2.5px;
+  text-transform: uppercase !important;
+}
+
+mj-hrp b {
+  color: #81776d;
+  font-weight: 500;
+}
+
+/* Adaptation aux posts étroits --------------------------- */
+
+@media (max-width: 620px) {
+  mj-post {
+    width: 100%;
+  }
+
+  mj-header {
+    padding: 25px 20px 21px;
+  }
+
+  mj-intro,
+  mj-player,
+  mj-choices,
+  mj-hrp {
+    padding-right: 20px;
+    padding-left: 20px;
+  }
+
+  mj-intro::before {
+    display: none;
+  }
+
+  mj-choice {
+    flex-direction: column;
+    gap: 8px;
+  }
+
+  mj-whisper {
+    margin-right: 20px;
+    margin-left: 20px;
+  }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  mj-die::before {
+    animation: none;
+  }
+}
