@@ -411,7 +411,7 @@
 .mj-hrp {
   padding: 16px 26px 18px;
   color: var(--mj-muted);
-  background: var(--mj-deep);
+  background: #0e0e0e;
   border-top: 1px solid rgba(106, 78, 40, 0.48);
   font-size: 11px;
   line-height: 1.8;
