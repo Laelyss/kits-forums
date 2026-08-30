@@ -7,7 +7,7 @@ wyraj,
 .wyraj {
   --wyraj-dark: #13090b;
   --wyraj-green: #536447;
-  --wyraj-red: #4b1424:
+  --wyraj-red: #4b1424;
   --wyraj-lightred: #6f3e3e;
   --wyraj-charcoal: #29282a;
 
@@ -18,7 +18,6 @@ wyraj,
   --accent4: var(--wyraj-dark) !important;
   --accent5: var(--wyraj-charcoal) !important;
 }
-
 
 /* ==================================================
    ÉLÉMENTS DE LA FICHE
