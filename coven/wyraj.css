@@ -1,11 +1,10 @@
 /* ==================================================
    WYRAJ — PALETTE RITUEL SOMBRE
-65536f
 ================================================== */
 
 wyraj,
 .wyraj {
-  --wyraj-rust: #632228;   
+  --wyraj-rust: #632228;
   --wyraj-red: #2d1119;
   --wyraj-lightred: #715454;
   --wyraj-charcoal: #29282a;
@@ -13,11 +12,16 @@ wyraj,
   --accent0: rgb(18, 16, 20) !important;
   --accent1: var(--wyraj-red) !important;
   --accent2: var(--wyraj-lightred) !important;
-  --accent3: var(--wyraj-rust) !important;  
+  --accent3: var(--wyraj-rust) !important;
   --accent4: currentColor !important;
   --accent5: var(--wyraj-charcoal) !important;
 
+  /* HAUTEURS FACILES À MODIFIER */
+  --wyraj-scroll-height: 520px;
+  --wyraj-pres-height: 520px;
 }
+
+
 /* ==================================================
    ÉLÉMENTS DE LA FICHE
 ================================================== */
@@ -54,4 +58,101 @@ wyraj hr3,
 .wyraj hr3 {
   color: var(--accent4) !important;
   border-color: var(--accent4) !important;
+}
+
+
+/* ==================================================
+   SECTION AVEC SCROLL
+================================================== */
+
+fiche.wyraj section.wyraj-scroll {
+  max-height: var(--wyraj-scroll-height);
+
+  overflow-y: auto;
+  overflow-x: hidden;
+
+  padding-right: 10px;
+
+  scrollbar-width: thin;
+  scrollbar-color:
+    rgba(120, 120, 120, .35)
+    transparent;
+}
+
+fiche.wyraj section.wyraj-scroll::-webkit-scrollbar {
+  width: 4px;
+}
+
+fiche.wyraj section.wyraj-scroll::-webkit-scrollbar-track {
+  background: transparent;
+}
+
+fiche.wyraj section.wyraj-scroll::-webkit-scrollbar-thumb {
+  background: rgba(120, 120, 120, .35);
+  border-radius: 10px;
+}
+
+
+/* ==================================================
+   PETITE TABULATION
+================================================== */
+
+fiche.wyraj wy-tab {
+  display: inline-block;
+  width: 1.4em;
+}
+
+
+/* ==================================================
+   PRES_ID + IMAGE LATÉRALE
+================================================== */
+
+fiche.wyraj .wyraj-pres-row {
+  display: flex;
+  gap: .5em;
+
+  height: var(--wyraj-pres-height);
+
+  align-items: stretch;
+}
+
+
+/* SECTION TEXTE */
+
+fiche.wyraj .wyraj-pres-row > section {
+  flex: 1;
+
+  min-width: 0;
+  min-height: 0;
+
+  height: 100%;
+
+  display: flex;
+  flex-direction: column;
+
+  overflow: hidden;
+}
+
+
+/* LE TITRE GARDE SA HAUTEUR NORMALE */
+
+fiche.wyraj .wyraj-pres-row > section > t1 {
+  flex: 0 0 auto;
+}
+
+
+/* PRES_ID PREND L'ESPACE RESTANT */
+
+fiche.wyraj .wyraj-pres-row > section > .pres_id {
+  flex: 1 1 auto;
+
+  min-height: 0;
+
+  height: auto !important;
+  max-height: none !important;
+
+  overflow-y: auto;
+  overflow-x: hidden;
+
+  padding-right: 8px;
 }
