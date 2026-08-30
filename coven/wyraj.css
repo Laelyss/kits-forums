@@ -1,0 +1,58 @@
+/* ==================================================
+   WYRAJ — PALETTE RITUEL SOMBRE
+================================================== */
+
+wyraj,
+.wyraj {
+  --wyraj-red: #7b3942;
+  --wyraj-green: #536447;
+  --wyraj-violet: #65536f;
+  --wyraj-ivory: #aaa18d;
+  --wyraj-charcoal: #29282a;
+
+  --accent0: rgba(41, 40, 42, .72) !important;
+  --accent1: var(--wyraj-violet) !important;
+  --accent2: var(--wyraj-ivory) !important;
+  --accent3: var(--wyraj-green) !important;
+  --accent4: var(--wyraj-red) !important;
+  --accent5: var(--wyraj-charcoal) !important;
+}
+
+
+/* ==================================================
+   ÉLÉMENTS DE LA FICHE
+================================================== */
+
+wyraj m1,
+.wyraj m1 {
+  color: var(--accent3) !important;
+}
+
+wyraj m2,
+.wyraj m2 {
+  color: var(--accent2) !important;
+}
+
+wyraj t1,
+wyraj tbox,
+.wyraj t1,
+.wyraj tbox {
+  color: var(--accent1) !important;
+}
+
+wyraj u3,
+wyraj u4,
+.wyraj u3,
+.wyraj u4 {
+  text-shadow: var(--text-shadow);
+}
+
+wyraj hr1,
+wyraj hr2,
+wyraj hr3,
+.wyraj hr1,
+.wyraj hr2,
+.wyraj hr3 {
+  color: var(--accent4) !important;
+  border-color: var(--accent4) !important;
+}
