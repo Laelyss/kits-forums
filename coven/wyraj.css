@@ -1,20 +1,21 @@
 /* ==================================================
    WYRAJ — PALETTE RITUEL SOMBRE
+65536f
 ================================================== */
 
 wyraj,
 .wyraj {
-  --wyraj-red: #7b3942;
+  --wyraj-dark: #13090b;
   --wyraj-green: #536447;
-  --wyraj-violet: #65536f;
-  --wyraj-ivory: #aaa18d;
+  --wyraj-red: #4b1424:
+  --wyraj-lightred: #6f3e3e;
   --wyraj-charcoal: #29282a;
 
   --accent0: rgba(41, 40, 42, .72) !important;
-  --accent1: var(--wyraj-violet) !important;
-  --accent2: var(--wyraj-ivory) !important;
+  --accent1: var(--wyraj-red) !important;
+  --accent2: var(--wyraj-lightred) !important;
   --accent3: var(--wyraj-green) !important;
-  --accent4: var(--wyraj-red) !important;
+  --accent4: var(--wyraj-dark) !important;
   --accent5: var(--wyraj-charcoal) !important;
 }
 
