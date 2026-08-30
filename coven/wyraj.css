@@ -5,20 +5,19 @@
 
 wyraj,
 .wyraj {
-  --wyraj-dark: #13090b;
-  --wyraj-green: #536447;
-  --wyraj-red: #4b1424;
-  --wyraj-lightred: #6f3e3e;
+  --wyraj-rust: #632228;   
+  --wyraj-red: #2d1119;
+  --wyraj-lightred: #715454;
   --wyraj-charcoal: #29282a;
 
-  --accent0: rgba(41, 40, 42, .72) !important;
+  --accent0: rgb(18, 16, 20) !important;
   --accent1: var(--wyraj-red) !important;
   --accent2: var(--wyraj-lightred) !important;
-  --accent3: var(--wyraj-green) !important;
-  --accent4: var(--wyraj-dark) !important;
+  --accent3: var(--wyraj-rust) !important;  
+  --accent4: currentColor !important;
   --accent5: var(--wyraj-charcoal) !important;
-}
 
+}
 /* ==================================================
    ÉLÉMENTS DE LA FICHE
 ================================================== */
