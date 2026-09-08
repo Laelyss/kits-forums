@@ -1,5 +1,5 @@
 /* ==================================================
-   WYRAJ — PALETTE RITUEL SOMBRE
+   WYRAJ — PALETTE
 ================================================== */
 
 wyraj,
@@ -97,16 +97,23 @@ fiche.wyraj section.wyraj-scroll::-webkit-scrollbar-thumb {
    HISTOIRE
 ================================================== */
 
-/*
-   Le titre reste celui du forum.
-   On ne change ni son apparence, ni son fonctionnement.
+fiche.wyraj section.wyraj-story {
+  --wy-story-media-width: 105px;
+  --wy-story-gap: 12px;
+}
 
-   On lui réserve seulement l'espace de l'image à gauche.
-*/
+
+/* TITRE DU FORUM */
 
 fiche.wyraj section.wyraj-story > t1 {
-  width: calc(100% - 115px);
-  margin-left: 115px;
+  width: calc(
+    100% - var(--wy-story-media-width) - var(--wy-story-gap)
+  );
+
+  margin-left: calc(
+    var(--wy-story-media-width) + var(--wy-story-gap)
+  );
+
   box-sizing: border-box;
 }
 
@@ -116,10 +123,10 @@ fiche.wyraj section.wyraj-story > t1 {
 fiche.wyraj section.wyraj-story > wy-story {
   display: flex;
   align-items: flex-start;
-  gap: 10px;
+
+  gap: var(--wy-story-gap);
 
   width: 100%;
-
   box-sizing: border-box;
 }
 
@@ -134,25 +141,13 @@ fiche.wyraj section.wyraj-story wy-story-media {
 
   display: block;
 
-  flex: 0 0 105px;
+  flex: 0 0 var(--wy-story-media-width);
 
-  /*
-     Le t1 du forum fait 35px de haut
-     avec 8px de marge inférieure.
-
-     On remonte donc simplement l'image
-     de ces 43px pour l'aligner au titre.
-  */
   margin-top: -43px;
 
-  /*
-     Le bandeau suit la hauteur visible
-     de la section, PAS celle du texte entier.
-  */
   height: calc(var(--wyraj-scroll-height) - 20px);
 
   box-sizing: border-box;
-
   overflow: hidden;
 
   border: 1px solid rgba(103, 53, 60, .55);
@@ -161,14 +156,6 @@ fiche.wyraj section.wyraj-story wy-story-media {
   background: #111;
 }
 
-
-/*
-   VRAIE IMAGE :
-   aucune déformation possible.
-
-   Elle conserve son ratio et est seulement
-   recadrée lorsque nécessaire.
-*/
 
 fiche.wyraj section.wyraj-story wy-story-media img {
   display: block;
@@ -184,7 +171,7 @@ fiche.wyraj section.wyraj-story wy-story-media img {
 
 
 /* ==================================================
-   COLONNE TEXTE HISTOIRE
+   COLONNE TEXTE
 ================================================== */
 
 fiche.wyraj section.wyraj-story wy-story-main {
@@ -197,14 +184,6 @@ fiche.wyraj section.wyraj-story wy-story-main {
 
   box-sizing: border-box;
 }
-
-
-/*
-   Le <qt> reste 100 % celui du forum.
-   Aucune règle ici ne modifie sa taille,
-   son fond, sa typo ou son effet.
-*/
-
 
 /* TEXTE */
 
@@ -221,18 +200,6 @@ fiche.wyraj section.wyraj-story wy-story-text {
 
   overflow-wrap: break-word;
 }
-
-
-/* Passage narratif volontairement centré */
-
-fiche.wyraj section.wyraj-story wy-story-text center {
-  display: block;
-
-  margin: 28px 8px;
-
-  text-align: center;
-}
-
 
 /* ==================================================
    PETITE TABULATION
@@ -304,11 +271,6 @@ fiche.wyraj .wyraj-pres-row > section > .pres_id {
 ================================================== */
 
 @media (max-width: 520px) {
-
-  /*
-     Sur petit écran, on ne garde pas
-     la colonne verticale.
-  */
 
   fiche.wyraj section.wyraj-story > t1 {
     width: 100%;
