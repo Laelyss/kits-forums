@@ -88,40 +88,33 @@ fiche.wyraj prohod-text::after {
    IMAGE À DROITE
    ========================= */
 
-fiche.wyraj prohod-text.right {
+fiche.wyraj prohod-text.prohod-right {
   padding: 34px 122px 34px 32px;
 }
 
-fiche.wyraj prohod-text.right::before {
+fiche.wyraj prohod-text.prohod-right::before {
   left: auto;
   right: 12px;
 }
 
-fiche.wyraj prohod-text.right::after {
+fiche.wyraj prohod-text.prohod-right::after {
   left: auto;
   right: 106px;
 }
 
-
-/* =========================
-   MOBILE
-   ========================= */
-
 @media (max-width: 520px) {
 
   fiche.wyraj prohod-text,
-  fiche.wyraj prohod-text.right {
+  fiche.wyraj prohod-text.prohod-right {
     width: 100%;
     min-width: 0;
     max-width: 100%;
-
     padding: 120px 22px 26px;
-
     font-size: 13px;
   }
 
   fiche.wyraj prohod-text::before,
-  fiche.wyraj prohod-text.right::before {
+  fiche.wyraj prohod-text.prohod-right::before {
     top: 12px;
     left: 12px;
     right: 12px;
@@ -137,7 +130,7 @@ fiche.wyraj prohod-text.right::after {
   }
 
   fiche.wyraj prohod-text::after,
-  fiche.wyraj prohod-text.right::after {
+  fiche.wyraj prohod-text.prohod-right::after {
     display: none;
   }
 }
