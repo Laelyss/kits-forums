@@ -10,26 +10,19 @@ fiche.wyraj prohod-right {
   --prohod-line: #763f46;
   --prohod-text: #bcb7b7;
 
-  position: relative;
-  display: block;
-
-  width: 100%;
-  min-width: 0;
-  max-width: 100%;
-
-  margin: 20px 0;
-  box-sizing: border-box;
-
-  background: var(--prohod-bg);
-  border: 1px solid var(--prohod-border);
-  border-radius: 5px;
-
-  color: var(--prohod-text);
-  font-family: Arial, Helvetica, sans-serif;
-  font-size: 14px;
-  line-height: 1.65;
-
-  overflow: hidden;
+    position: relative;
+    display: block;
+    width: 100%;
+    min-width: 0;
+    max-width: 100%;
+    box-sizing: border-box;
+    background: var(--prohod-bg);
+    border: 1px solid var(--prohod-border);
+    border-radius: 5px;
+    font-family: Arial, Helvetica, sans-serif;
+    font-size: 14px;
+    line-height: 1.65;
+    overflow: hidden;
 }
 
 
@@ -42,9 +35,8 @@ fiche.wyraj prohod-body {
 
   /*
      HAUTEUR DU TEXTE AVANT SCROLL
-     Modifier uniquement cette valeur si besoin
   */
-  max-height: 352px;
+  max-height: 500px;
 
   padding-right: 10px;
   box-sizing: border-box;
