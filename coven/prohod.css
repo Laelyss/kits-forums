@@ -1,5 +1,5 @@
 /* ==================================================
-   PROHOD — BASE
+   PROHOD
    ================================================== */
 
 fiche.wyraj prohod-left,
@@ -16,6 +16,9 @@ fiche.wyraj prohod-right {
   width: 100%;
   min-width: 0;
   max-width: 100%;
+
+  /* hauteur maximale du cadre */
+  max-height: 420px;
 
   margin: 20px 0;
   box-sizing: border-box;
@@ -34,18 +37,21 @@ fiche.wyraj prohod-right {
 
 
 /* ==================================================
-   TEXTE — SEULE PARTIE QUI SCROLLE
+   TEXTE
    ================================================== */
 
 fiche.wyraj prohod-body {
   display: block;
 
+  /* 420px - les 68px de padding du cadre */
   max-height: 352px;
+
+  box-sizing: border-box;
+
   overflow-x: hidden;
   overflow-y: auto;
 
   padding-right: 10px;
-  box-sizing: border-box;
 
   text-align: justify;
   white-space: pre-line;
@@ -97,10 +103,9 @@ fiche.wyraj prohod-left::before {
 
   border-left: 1px solid var(--prohod-line);
   border-right: 1px solid var(--prohod-line);
+
+  opacity: .82;
 }
-
-
-/* LIGNE GAUCHE */
 
 fiche.wyraj prohod-left::after {
   content: "";
@@ -143,10 +148,9 @@ fiche.wyraj prohod-right::before {
 
   border-left: 1px solid var(--prohod-line);
   border-right: 1px solid var(--prohod-line);
+
+  opacity: .82;
 }
-
-
-/* LIGNE DROITE */
 
 fiche.wyraj prohod-right::after {
   content: "";
@@ -170,7 +174,6 @@ fiche.wyraj prohod-right::after {
   fiche.wyraj prohod-left,
   fiche.wyraj prohod-right {
     padding: 120px 22px 26px;
-    font-size: 13px;
   }
 
   fiche.wyraj prohod-left::before,
@@ -195,6 +198,6 @@ fiche.wyraj prohod-right::after {
   }
 
   fiche.wyraj prohod-body {
-    max-height: 320px;
+    max-height: 274px;
   }
 }
