@@ -1,4 +1,8 @@
-prohod-text {
+/* ==================================================
+   PROHOD
+   ================================================== */
+
+fiche.wyraj prohod-text {
   --prohod-img: none;
   --prohod-bg: #111111;
   --prohod-border: #403638;
@@ -8,10 +12,16 @@ prohod-text {
 
   position: relative;
   display: block;
-  width: 620px;
+
+  /* IMPORTANT :
+     le bloc dépend uniquement de la largeur de son parent */
+  width: 100%;
+  min-width: 0;
   max-width: 100%;
-  margin: 20px auto;
+
+  margin: 20px 0;
   padding: 34px 32px 34px 122px;
+
   box-sizing: border-box;
 
   background: var(--prohod-bg);
@@ -22,21 +32,25 @@ prohod-text {
   font-family: Arial, Helvetica, sans-serif;
   font-size: 14px;
   line-height: 1.65;
+
   text-align: justify;
   white-space: pre-line;
 
   overflow: hidden;
+  overflow-wrap: break-word;
 }
 
 
 /* IMAGE LATÉRALE */
 
-prohod-text::before {
+fiche.wyraj prohod-text::before {
   content: "";
   position: absolute;
+
   top: 12px;
   bottom: 12px;
   left: 12px;
+
   width: 82px;
 
   background:
@@ -56,60 +70,58 @@ prohod-text::before {
 
 /* LIGNE DE SÉPARATION */
 
-prohod-text::after {
+fiche.wyraj prohod-text::after {
   content: "";
   position: absolute;
+
   top: 22px;
   bottom: 22px;
   left: 106px;
+
   width: 1px;
 
   background: var(--prohod-line);
 }
 
 
-/* VARIANTE : IMAGE À DROITE */
+/* =========================
+   IMAGE À DROITE
+   ========================= */
 
-prohod-text.right {
+fiche.wyraj prohod-text.right {
   padding: 34px 122px 34px 32px;
 }
 
-prohod-text.right::before {
+fiche.wyraj prohod-text.right::before {
   left: auto;
   right: 12px;
 }
 
-prohod-text.right::after {
+fiche.wyraj prohod-text.right::after {
   left: auto;
   right: 106px;
 }
 
 
-/* TEXTE MIS EN VALEUR */
-
-prohod-red {
-  color: var(--prohod-accent);
-}
-
-prohod-em {
-  color: #b7797d;
-  font-family: Georgia, "Times New Roman", serif;
-  font-style: italic;
-}
-
-
-/* MOBILE */
+/* =========================
+   MOBILE
+   ========================= */
 
 @media (max-width: 520px) {
 
-  prohod-text,
-  prohod-text.right {
+  fiche.wyraj prohod-text,
+  fiche.wyraj prohod-text.right {
+    width: 100%;
+    min-width: 0;
+    max-width: 100%;
+
     padding: 120px 22px 26px;
+
     font-size: 13px;
   }
 
-  prohod-text::before,
-  prohod-text.right::before {
+  fiche.wyraj prohod-text::before,
+  fiche.wyraj prohod-text.right::before {
     top: 12px;
     left: 12px;
     right: 12px;
@@ -124,8 +136,8 @@ prohod-em {
     border-bottom: 1px solid var(--prohod-line);
   }
 
-  prohod-text::after,
-  prohod-text.right::after {
+  fiche.wyraj prohod-text::after,
+  fiche.wyraj prohod-text.right::after {
     display: none;
   }
 }
