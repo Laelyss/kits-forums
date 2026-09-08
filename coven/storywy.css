@@ -1,0 +1,204 @@
+/* ==================================================
+   WYRAJ — HISTOIRE
+   ================================================== */
+
+fiche.wyraj wy-histoire {
+  --wy-hist-img: none;
+  --wy-hist-bg: #111111;
+  --wy-hist-border: #383334;
+  --wy-hist-line: #69383f;
+  --wy-hist-text: #969292;
+
+  display: flex;
+  align-items: stretch;
+  gap: 20px;
+
+  width: calc(100% - 24px);
+  margin: 16px auto 24px;
+  box-sizing: border-box;
+}
+
+
+/* ==================================================
+   BANDEAU LATÉRAL
+   ================================================== */
+
+fiche.wyraj wy-histoire-visuel {
+  position: relative;
+  display: block;
+  flex: 0 0 105px;
+
+  min-height: 360px;
+
+  border: 1px solid var(--wy-hist-border);
+  box-sizing: border-box;
+
+  background:
+    linear-gradient(
+      to bottom,
+      rgba(62, 26, 32, .18),
+      rgba(8, 8, 8, .14)
+    ),
+    var(--wy-hist-img) center / cover no-repeat;
+
+  overflow: hidden;
+}
+
+
+/* petite ligne décorative */
+
+fiche.wyraj wy-histoire-visuel::after {
+  content: "";
+  position: absolute;
+
+  top: 18px;
+  bottom: 18px;
+  right: 8px;
+
+  width: 1px;
+
+  background: var(--wy-hist-line);
+}
+
+
+/* ==================================================
+   CONTENU
+   ================================================== */
+
+fiche.wyraj wy-histoire-contenu {
+  display: block;
+  flex: 1;
+  min-width: 0;
+
+  padding: 4px 4px 10px 0;
+  box-sizing: border-box;
+
+  color: var(--wy-hist-text);
+}
+
+
+/* ==================================================
+   CITATION
+   ================================================== */
+
+fiche.wyraj wy-histoire-citation {
+  position: relative;
+  display: block;
+
+  width: 88%;
+  margin: 8px auto 30px;
+  padding: 18px 20px 18px 28px;
+
+  box-sizing: border-box;
+
+  border-left: 2px solid var(--wy-hist-line);
+  background: rgba(10, 10, 10, .22);
+
+  color: #aaa4a4;
+  font-size: 11px;
+  line-height: 1.7;
+  text-align: justify;
+  text-transform: uppercase;
+  letter-spacing: .02em;
+}
+
+
+/* grande marque de citation */
+
+fiche.wyraj wy-histoire-citation::before {
+  content: "“";
+
+  position: absolute;
+  top: -13px;
+  left: 8px;
+
+  color: rgba(105, 56, 63, .25);
+
+  font-family: Georgia, serif;
+  font-size: 58px;
+  line-height: 1;
+}
+
+
+/* ==================================================
+   TEXTE PRINCIPAL
+   ================================================== */
+
+fiche.wyraj wy-histoire-texte {
+  display: block;
+
+  font-family: Arial, Helvetica, sans-serif;
+  font-size: 14px;
+  line-height: 1.65;
+
+  text-align: justify;
+  white-space: pre-line;
+  overflow-wrap: break-word;
+}
+
+
+/* ==================================================
+   PETITE SÉPARATION
+   ================================================== */
+
+fiche.wyraj wy-histoire-sep {
+  display: block;
+
+  width: 52%;
+  height: 1px;
+
+  margin: 26px auto;
+
+  background:
+    linear-gradient(
+      to right,
+      transparent,
+      rgba(105, 56, 63, .7),
+      transparent
+    );
+}
+
+
+/* ==================================================
+   MOBILE
+   ================================================== */
+
+@media (max-width: 520px) {
+
+  fiche.wyraj wy-histoire {
+    display: block;
+    width: calc(100% - 18px);
+  }
+
+  fiche.wyraj wy-histoire-visuel {
+    width: 100%;
+    min-height: 90px;
+    height: 90px;
+
+    margin-bottom: 18px;
+
+    background-position: center 42%;
+  }
+
+  fiche.wyraj wy-histoire-visuel::after {
+    top: auto;
+    left: 14px;
+    right: 14px;
+    bottom: 7px;
+
+    width: auto;
+    height: 1px;
+  }
+
+  fiche.wyraj wy-histoire-contenu {
+    padding: 0 6px;
+  }
+
+  fiche.wyraj wy-histoire-citation {
+    width: 94%;
+  }
+
+  fiche.wyraj wy-histoire-texte {
+    font-size: 13px;
+  }
+}
