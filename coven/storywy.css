@@ -2,121 +2,95 @@
    WYRAJ — HISTOIRE
    ================================================== */
 
-fiche.wyraj wy-histoire {
-  --wy-hist-img: none;
-  --wy-hist-bg: #111111;
-  --wy-hist-border: #383334;
-  --wy-hist-line: #69383f;
-  --wy-hist-text: #969292;
+fiche.wyraj wy-story {
+  --wy-story-img: none;
+  --wy-story-line: #67353c;
+  --wy-story-text: #999393;
 
   display: flex;
   align-items: stretch;
-  gap: 20px;
+  gap: 22px;
 
-  width: calc(100% - 24px);
-  margin: 16px auto 24px;
+  width: calc(100% - 28px);
+  margin: 8px auto 26px;
+
   box-sizing: border-box;
 }
 
 
 /* ==================================================
-   BANDEAU LATÉRAL
+   BANDEAU IMAGE
    ================================================== */
 
-fiche.wyraj wy-histoire-visuel {
+fiche.wyraj wy-story-img {
   position: relative;
   display: block;
-  flex: 0 0 105px;
 
-  min-height: 360px;
+  flex: 0 0 102px;
+  align-self: stretch;
 
-  border: 1px solid var(--wy-hist-border);
-  box-sizing: border-box;
+  min-width: 0;
 
   background:
     linear-gradient(
-      to bottom,
-      rgba(62, 26, 32, .18),
-      rgba(8, 8, 8, .14)
+      rgba(45, 18, 23, .10),
+      rgba(10, 10, 10, .10)
     ),
-    var(--wy-hist-img) center / cover no-repeat;
+    var(--wy-story-img);
 
-  overflow: hidden;
+  /*
+     IMPORTANT :
+     l'image garde toujours ses proportions.
+     Elle est recadrée, jamais étirée.
+  */
+  background-size: cover;
+  background-position: center center;
+  background-repeat: no-repeat;
+
+  border-left: 1px solid rgba(103, 53, 60, .65);
+  border-right: 1px solid rgba(103, 53, 60, .65);
+
+  box-sizing: border-box;
 }
 
 
-/* petite ligne décorative */
+/* petite ligne intérieure comme sur le prototype */
 
-fiche.wyraj wy-histoire-visuel::after {
+fiche.wyraj wy-story-img::after {
   content: "";
   position: absolute;
 
-  top: 18px;
-  bottom: 18px;
-  right: 8px;
+  top: 12px;
+  bottom: 12px;
+  right: -8px;
 
   width: 1px;
 
-  background: var(--wy-hist-line);
+  background: var(--wy-story-line);
+  opacity: .55;
 }
 
 
 /* ==================================================
-   CONTENU
+   PARTIE TEXTE
    ================================================== */
 
-fiche.wyraj wy-histoire-contenu {
+fiche.wyraj wy-story-main {
   display: block;
   flex: 1;
+
   min-width: 0;
+  padding: 10px 8px 16px 0;
 
-  padding: 4px 4px 10px 0;
   box-sizing: border-box;
-
-  color: var(--wy-hist-text);
 }
 
 
-/* ==================================================
-   CITATION
-   ================================================== */
+/* citation du forum */
 
-fiche.wyraj wy-histoire-citation {
-  position: relative;
-  display: block;
-
-  width: 88%;
-  margin: 8px auto 30px;
-  padding: 18px 20px 18px 28px;
-
-  box-sizing: border-box;
-
-  border-left: 2px solid var(--wy-hist-line);
-  background: rgba(10, 10, 10, .22);
-
-  color: #aaa4a4;
-  font-size: 11px;
-  line-height: 1.7;
-  text-align: justify;
-  text-transform: uppercase;
-  letter-spacing: .02em;
-}
-
-
-/* grande marque de citation */
-
-fiche.wyraj wy-histoire-citation::before {
-  content: "“";
-
-  position: absolute;
-  top: -13px;
-  left: 8px;
-
-  color: rgba(105, 56, 63, .25);
-
-  font-family: Georgia, serif;
-  font-size: 58px;
-  line-height: 1;
+fiche.wyraj wy-story-main qt {
+  margin-top: 4px;
+  margin-bottom: 32px;
 }
 
 
@@ -124,8 +98,10 @@ fiche.wyraj wy-histoire-citation::before {
    TEXTE PRINCIPAL
    ================================================== */
 
-fiche.wyraj wy-histoire-texte {
+fiche.wyraj wy-story-text {
   display: block;
+
+  color: var(--wy-story-text);
 
   font-family: Arial, Helvetica, sans-serif;
   font-size: 14px;
@@ -137,25 +113,10 @@ fiche.wyraj wy-histoire-texte {
 }
 
 
-/* ==================================================
-   PETITE SÉPARATION
-   ================================================== */
+/* un peu plus d'air autour des passages centrés */
 
-fiche.wyraj wy-histoire-sep {
-  display: block;
-
-  width: 52%;
-  height: 1px;
-
-  margin: 26px auto;
-
-  background:
-    linear-gradient(
-      to right,
-      transparent,
-      rgba(105, 56, 63, .7),
-      transparent
-    );
+fiche.wyraj wy-story-text center {
+  margin: 28px 8px;
 }
 
 
@@ -165,40 +126,35 @@ fiche.wyraj wy-histoire-sep {
 
 @media (max-width: 520px) {
 
-  fiche.wyraj wy-histoire {
+  fiche.wyraj wy-story {
     display: block;
+
     width: calc(100% - 18px);
   }
 
-  fiche.wyraj wy-histoire-visuel {
+  fiche.wyraj wy-story-img {
     width: 100%;
-    min-height: 90px;
     height: 90px;
 
-    margin-bottom: 18px;
+    margin-bottom: 20px;
 
-    background-position: center 42%;
+    background-position: center 45%;
+
+    border-left: none;
+    border-right: none;
+    border-top: 1px solid rgba(103, 53, 60, .65);
+    border-bottom: 1px solid rgba(103, 53, 60, .65);
   }
 
-  fiche.wyraj wy-histoire-visuel::after {
-    top: auto;
-    left: 14px;
-    right: 14px;
-    bottom: 7px;
-
-    width: auto;
-    height: 1px;
+  fiche.wyraj wy-story-img::after {
+    display: none;
   }
 
-  fiche.wyraj wy-histoire-contenu {
-    padding: 0 6px;
+  fiche.wyraj wy-story-main {
+    padding: 0 8px 14px;
   }
 
-  fiche.wyraj wy-histoire-citation {
-    width: 94%;
-  }
-
-  fiche.wyraj wy-histoire-texte {
+  fiche.wyraj wy-story-text {
     font-size: 13px;
   }
 }
