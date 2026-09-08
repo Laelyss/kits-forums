@@ -13,8 +13,7 @@ fiche.wyraj prohod-text {
   position: relative;
   display: block;
 
-  /* IMPORTANT :
-     le bloc dépend uniquement de la largeur de son parent */
+  /* IMPORTANT */
   width: 100%;
   min-width: 0;
   max-width: 100%;
@@ -40,6 +39,29 @@ fiche.wyraj prohod-text {
   overflow-wrap: break-word;
 }
 
+/* SCROLL */
+
+fiche.wyraj prohod-text[data-scroll] {
+  max-height: var(--prohod-scroll-height, 420px);
+  overflow-x: hidden;
+  overflow-y: auto;
+
+  scrollbar-width: thin;
+  scrollbar-color: rgba(118, 63, 70, .65) transparent;
+}
+
+fiche.wyraj prohod-text[data-scroll]::-webkit-scrollbar {
+  width: 4px;
+}
+
+fiche.wyraj prohod-text[data-scroll]::-webkit-scrollbar-track {
+  background: transparent;
+}
+
+fiche.wyraj prohod-text[data-scroll]::-webkit-scrollbar-thumb {
+  background: rgba(118, 63, 70, .65);
+  border-radius: 10px;
+}
 
 /* IMAGE LATÉRALE */
 
