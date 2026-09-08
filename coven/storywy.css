@@ -8,11 +8,11 @@ fiche.wyraj wy-story {
   --wy-story-text: #999393;
 
   display: flex;
-  align-items: stretch;
-  gap: 22px;
+  align-items: flex-start;
+  gap: 20px;
 
-  width: calc(100% - 28px);
-  margin: 8px auto 26px;
+  width: auto;
+  margin: 8px 14px 26px;
 
   box-sizing: border-box;
 }
@@ -23,25 +23,33 @@ fiche.wyraj wy-story {
    ================================================== */
 
 fiche.wyraj wy-story-img {
-  position: relative;
+  position: sticky;
+  top: 8px;
+
   display: block;
+  flex: 0 0 105px;
 
-  flex: 0 0 102px;
-  align-self: stretch;
+  /*
+     Le bandeau occupe pratiquement toute
+     la hauteur visible de la section Histoire.
+     
+     Il ne prend PAS la hauteur du texte entier.
+  */
+  height: calc(var(--wyraj-scroll-height) - 84px);
 
-  min-width: 0;
+  box-sizing: border-box;
 
   background:
     linear-gradient(
-      rgba(45, 18, 23, .10),
+      to bottom,
+      rgba(45, 18, 23, .08),
       rgba(10, 10, 10, .10)
     ),
     var(--wy-story-img);
 
   /*
-     IMPORTANT :
-     l'image garde toujours ses proportions.
-     Elle est recadrée, jamais étirée.
+     L'image conserve ses proportions.
+     Elle est simplement recadrée dans le bandeau.
   */
   background-size: cover;
   background-position: center center;
@@ -50,11 +58,11 @@ fiche.wyraj wy-story-img {
   border-left: 1px solid rgba(103, 53, 60, .65);
   border-right: 1px solid rgba(103, 53, 60, .65);
 
-  box-sizing: border-box;
+  overflow: visible;
 }
 
 
-/* petite ligne intérieure comme sur le prototype */
+/* petite ligne à droite du bandeau */
 
 fiche.wyraj wy-story-img::after {
   content: "";
@@ -62,7 +70,7 @@ fiche.wyraj wy-story-img::after {
 
   top: 12px;
   bottom: 12px;
-  right: -8px;
+  right: -9px;
 
   width: 1px;
 
@@ -72,7 +80,7 @@ fiche.wyraj wy-story-img::after {
 
 
 /* ==================================================
-   PARTIE TEXTE
+   CONTENU
    ================================================== */
 
 fiche.wyraj wy-story-main {
@@ -80,17 +88,36 @@ fiche.wyraj wy-story-main {
   flex: 1;
 
   min-width: 0;
-  padding: 10px 8px 16px 0;
+
+  padding: 8px 6px 18px 0;
 
   box-sizing: border-box;
 }
 
 
-/* citation du forum */
+/* ==================================================
+   CITATION DU FORUM
+   ================================================== */
+
+/*
+   On conserve totalement le <qt> du forum.
+   On ne recrée pas son apparence.
+*/
+
+fiche.wyraj wy-story-main > center {
+  display: block;
+
+  margin: 12px 0 30px;
+}
 
 fiche.wyraj wy-story-main qt {
-  margin-top: 4px;
-  margin-bottom: 32px;
+  display: block;
+
+  width: 78%;
+  max-width: 340px;
+
+  margin: 0 auto;
+  box-sizing: border-box;
 }
 
 
@@ -113,10 +140,14 @@ fiche.wyraj wy-story-text {
 }
 
 
-/* un peu plus d'air autour des passages centrés */
+/* passage narratif centré */
 
 fiche.wyraj wy-story-text center {
-  margin: 28px 8px;
+  display: block;
+
+  margin: 30px 10px;
+
+  text-align: center;
 }
 
 
@@ -129,12 +160,15 @@ fiche.wyraj wy-story-text center {
   fiche.wyraj wy-story {
     display: block;
 
-    width: calc(100% - 18px);
+    margin: 8px 9px 24px;
   }
 
   fiche.wyraj wy-story-img {
+    position: relative;
+    top: auto;
+
     width: 100%;
-    height: 90px;
+    height: 92px;
 
     margin-bottom: 20px;
 
@@ -151,7 +185,11 @@ fiche.wyraj wy-story-text center {
   }
 
   fiche.wyraj wy-story-main {
-    padding: 0 8px 14px;
+    padding: 0 7px 14px;
+  }
+
+  fiche.wyraj wy-story-main qt {
+    width: 88%;
   }
 
   fiche.wyraj wy-story-text {
