@@ -63,7 +63,25 @@ prohod-text::after {
   bottom: 22px;
   left: 106px;
   width: 1px;
+
   background: var(--prohod-line);
+}
+
+
+/* VARIANTE : IMAGE À DROITE */
+
+prohod-text.right {
+  padding: 34px 122px 34px 32px;
+}
+
+prohod-text.right::before {
+  left: auto;
+  right: 12px;
+}
+
+prohod-text.right::after {
+  left: auto;
+  right: 106px;
 }
 
 
@@ -84,16 +102,19 @@ prohod-em {
 
 @media (max-width: 520px) {
 
-  prohod-text {
+  prohod-text,
+  prohod-text.right {
     padding: 120px 22px 26px;
     font-size: 13px;
   }
 
-  prohod-text::before {
+  prohod-text::before,
+  prohod-text.right::before {
     top: 12px;
     left: 12px;
     right: 12px;
     bottom: auto;
+
     width: auto;
     height: 88px;
 
@@ -103,7 +124,8 @@ prohod-em {
     border-bottom: 1px solid var(--prohod-line);
   }
 
-  prohod-text::after {
+  prohod-text::after,
+  prohod-text.right::after {
     display: none;
   }
 }
