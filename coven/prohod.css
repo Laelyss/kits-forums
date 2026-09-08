@@ -1,5 +1,5 @@
 /* ==================================================
-   PROHOD
+   PROHOD — BASE
    ================================================== */
 
 fiche.wyraj prohod-left,
@@ -17,13 +17,10 @@ fiche.wyraj prohod-right {
   min-width: 0;
   max-width: 100%;
 
-  /* HAUTEUR AVANT APPARITION DU SCROLL */
-  max-height: 520px;
-
   margin: 20px 0;
   box-sizing: border-box;
 
-  background-color: var(--prohod-bg);
+  background: var(--prohod-bg);
   border: 1px solid var(--prohod-border);
   border-radius: 5px;
 
@@ -31,15 +28,44 @@ fiche.wyraj prohod-right {
   font-family: Arial, Helvetica, sans-serif;
   font-size: 14px;
   line-height: 1.65;
-  text-align: justify;
-  white-space: pre-line;
 
+  overflow: hidden;
+}
+
+
+/* ==================================================
+   TEXTE — SEULE PARTIE QUI SCROLLE
+   ================================================== */
+
+fiche.wyraj prohod-body {
+  display: block;
+
+  max-height: 352px;
   overflow-x: hidden;
   overflow-y: auto;
+
+  padding-right: 10px;
+  box-sizing: border-box;
+
+  text-align: justify;
+  white-space: pre-line;
   overflow-wrap: break-word;
 
   scrollbar-width: thin;
   scrollbar-color: rgba(118, 63, 70, .65) transparent;
+}
+
+fiche.wyraj prohod-body::-webkit-scrollbar {
+  width: 4px;
+}
+
+fiche.wyraj prohod-body::-webkit-scrollbar-track {
+  background: transparent;
+}
+
+fiche.wyraj prohod-body::-webkit-scrollbar-thumb {
+  background: rgba(118, 63, 70, .65);
+  border-radius: 10px;
 }
 
 
@@ -49,33 +75,43 @@ fiche.wyraj prohod-right {
 
 fiche.wyraj prohod-left {
   padding: 34px 32px 34px 122px;
+}
 
-  background-image:
+fiche.wyraj prohod-left::before {
+  content: "";
+  position: absolute;
+
+  top: 12px;
+  bottom: 12px;
+  left: 12px;
+
+  width: 82px;
+
+  background:
     linear-gradient(
       to bottom,
       rgba(80, 37, 43, .18),
       rgba(10, 10, 10, .1)
     ),
-    var(--prohod-img),
-    linear-gradient(
-      var(--prohod-line),
-      var(--prohod-line)
-    );
+    var(--prohod-img) center / cover no-repeat;
 
-  background-repeat:
-    no-repeat,
-    no-repeat,
-    no-repeat;
+  border-left: 1px solid var(--prohod-line);
+  border-right: 1px solid var(--prohod-line);
+}
 
-  background-position:
-    12px 12px,
-    12px 12px,
-    106px 22px;
 
-  background-size:
-    82px calc(100% - 24px),
-    82px calc(100% - 24px),
-    1px calc(100% - 44px);
+/* LIGNE GAUCHE */
+
+fiche.wyraj prohod-left::after {
+  content: "";
+  position: absolute;
+
+  top: 22px;
+  bottom: 22px;
+  left: 106px;
+
+  width: 1px;
+  background: var(--prohod-line);
 }
 
 
@@ -85,54 +121,43 @@ fiche.wyraj prohod-left {
 
 fiche.wyraj prohod-right {
   padding: 34px 122px 34px 32px;
+}
 
-  background-image:
+fiche.wyraj prohod-right::before {
+  content: "";
+  position: absolute;
+
+  top: 12px;
+  bottom: 12px;
+  right: 12px;
+
+  width: 82px;
+
+  background:
     linear-gradient(
       to bottom,
       rgba(80, 37, 43, .18),
       rgba(10, 10, 10, .1)
     ),
-    var(--prohod-img),
-    linear-gradient(
-      var(--prohod-line),
-      var(--prohod-line)
-    );
+    var(--prohod-img) center / cover no-repeat;
 
-  background-repeat:
-    no-repeat,
-    no-repeat,
-    no-repeat;
-
-  background-position:
-    right 12px top 12px,
-    right 12px top 12px,
-    right 106px top 22px;
-
-  background-size:
-    82px calc(100% - 24px),
-    82px calc(100% - 24px),
-    1px calc(100% - 44px);
+  border-left: 1px solid var(--prohod-line);
+  border-right: 1px solid var(--prohod-line);
 }
 
 
-/* ==================================================
-   SCROLLBAR
-   ================================================== */
+/* LIGNE DROITE */
 
-fiche.wyraj prohod-left::-webkit-scrollbar,
-fiche.wyraj prohod-right::-webkit-scrollbar {
-  width: 4px;
-}
+fiche.wyraj prohod-right::after {
+  content: "";
+  position: absolute;
 
-fiche.wyraj prohod-left::-webkit-scrollbar-track,
-fiche.wyraj prohod-right::-webkit-scrollbar-track {
-  background: transparent;
-}
+  top: 22px;
+  bottom: 22px;
+  right: 106px;
 
-fiche.wyraj prohod-left::-webkit-scrollbar-thumb,
-fiche.wyraj prohod-right::-webkit-scrollbar-thumb {
-  background: rgba(118, 63, 70, .65);
-  border-radius: 10px;
+  width: 1px;
+  background: var(--prohod-line);
 }
 
 
@@ -146,13 +171,30 @@ fiche.wyraj prohod-right::-webkit-scrollbar-thumb {
   fiche.wyraj prohod-right {
     padding: 120px 22px 26px;
     font-size: 13px;
+  }
 
-    background-position:
-      center top 12px,
-      center top 12px;
+  fiche.wyraj prohod-left::before,
+  fiche.wyraj prohod-right::before {
+    top: 12px;
+    left: 12px;
+    right: 12px;
+    bottom: auto;
 
-    background-size:
-      calc(100% - 24px) 88px,
-      calc(100% - 24px) 88px;
+    width: auto;
+    height: 88px;
+
+    border-left: none;
+    border-right: none;
+    border-top: 1px solid var(--prohod-line);
+    border-bottom: 1px solid var(--prohod-line);
+  }
+
+  fiche.wyraj prohod-left::after,
+  fiche.wyraj prohod-right::after {
+    display: none;
+  }
+
+  fiche.wyraj prohod-body {
+    max-height: 320px;
   }
 }
