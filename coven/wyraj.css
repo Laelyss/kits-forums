@@ -258,6 +258,60 @@ fiche.wyraj .wyraj-pres-row > section > .pres_id {
   padding-right: 8px;
 }
 
+/* ==================================================
+   CITATION WYRAJ
+================================================== */
+
+fiche.wyraj wy-quote {
+  position: relative;
+  display: block;
+
+  width: 68%;
+  margin: 22px auto 34px;
+  padding: 8px 0 8px 28px;
+
+  box-sizing: border-box;
+
+  color: #9b9696;
+
+  font-size: 11px;
+  line-height: 1.7;
+  letter-spacing: .02em;
+
+  text-align: justify;
+}
+
+
+/* GUILLEMET DISCRET */
+
+fiche.wyraj wy-quote::before {
+  content: "“";
+
+  position: absolute;
+  top: -8px;
+  left: 0;
+
+  color: rgba(99, 34, 40, .22);
+
+  font-family: Georgia, serif;
+  font-size: 56px;
+  line-height: 1;
+}
+
+
+/* SIGNATURE */
+
+fiche.wyraj wy-source {
+  display: block;
+
+  margin-top: 5px;
+
+  color: #777272;
+
+  font-size: 10px;
+  font-style: normal;
+  text-align: left;
+}
 
 /* ==================================================
    MOBILE
