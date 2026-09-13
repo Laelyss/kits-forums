@@ -263,24 +263,15 @@ fiche.wyraj .wyraj-pres-row > section > .pres_id {
 ================================================== */
 
 fiche.wyraj wy-quote {
-  position: relative;
-  display: block;
-
-  width: 68%;
-  margin: 22px auto 34px;
-  padding: 8px 0 8px 28px;
-
-  box-sizing: border-box;
-
-  color: #9b9696;
-
-  font-size: 11px;
-  line-height: 1.7;
-  letter-spacing: .02em;
-
-  text-align: justify;
+    position: relative;
+    display: block;
+    width: 80%;
+    padding: 8px 0 8px 14px;
+    font-size: 10px;
+    line-height: 1.7;
+    text-align: justify;
+    text-transform: uppercase;
 }
-
 
 /* GUILLEMET DISCRET */
 
