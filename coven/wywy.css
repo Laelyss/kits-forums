@@ -1,14 +1,15 @@
 /* ==================================================
-   WYRAJ — FEUILLE UNIQUE
-   Tableau de chasse exclu de cette feuille.
+   WYRAJ — intérieur des sections
+   Chrome Nyxeia (fiche, header, t1) intact.
+   --accent : ne pas modifier.
 ================================================== */
 
+wyraj,
 .wyraj {
   --wyraj-rust: #632228;
   --wyraj-red: #2d1119;
   --wyraj-lightred: #715454;
   --wyraj-charcoal: #29282a;
-  --wyraj-line: rgba(113, 84, 84, .45);
 
   --accent0: rgb(18, 16, 20) !important;
   --accent1: var(--wyraj-red) !important;
@@ -18,146 +19,121 @@
   --accent5: var(--wyraj-charcoal) !important;
 
   --wyraj-scroll-height: 520px;
-  --wyraj-pres-height: 520px;
+  --wy-media-width: 105px;
+  --wy-ink: #c9c2c4;
+  --wy-mute: #9a9396;
+  --wy-dim: #6e686b;
+  --wy-line: #3a3336;
+  --wy-cream: #d4cdcf;
+  --wy-rose: #aa737b;
 }
 
-fiche.wyraj m1 {
-  color: var(--accent3) !important;
-}
 
-fiche.wyraj m2 {
-  color: var(--accent2) !important;
-}
+/* ---------- Tags Nyxeia : couleurs coven, pas t1 ---------- */
 
-fiche.wyraj t1,
-fiche.wyraj tbox {
-  color: var(--accent1) !important;
-}
+fiche.wyraj m1 { color: var(--accent3) !important; }
+fiche.wyraj m2 { color: var(--accent2) !important; }
 
 fiche.wyraj u3,
-fiche.wyraj u4 {
-  text-shadow: var(--text-shadow);
+fiche.wyraj u4 { text-shadow: var(--text-shadow); }
+
+fiche.wyraj [hidden] { display: none !important; }
+
+fiche.wyraj input[type="radio"] {
+  position: absolute !important;
+  opacity: 0 !important;
+  pointer-events: none !important;
+  width: 0 !important;
+  height: 0 !important;
+  margin: 0 !important;
 }
 
-fiche.wyraj hr1,
-fiche.wyraj hr2,
-fiche.wyraj hr3 {
-  color: var(--accent4) !important;
-  border-color: var(--accent4) !important;
+fiche.wyraj section.wyraj-story,
+fiche.wyraj section.wyraj-chrono,
+fiche.wyraj section.wyraj-information,
+fiche.wyraj section.wyraj-organisation,
+fiche.wyraj section.wyraj-prohod {
+  text-align: left;
 }
 
-fiche.wyraj wy-story,
-fiche.wyraj wy-story-media,
-fiche.wyraj wy-story-main,
-fiche.wyraj wy-story-intro,
-fiche.wyraj wy-story-text,
-fiche.wyraj wy-quote,
-fiche.wyraj wy-source,
-fiche.wyraj wy-warning,
-fiche.wyraj wy-info,
-fiche.wyraj wy-info-facts,
-fiche.wyraj wy-info-fact,
-fiche.wyraj wy-info-row,
-fiche.wyraj wy-info-title,
-fiche.wyraj wy-label,
-fiche.wyraj wy-copy,
-fiche.wyraj wy-relations,
-fiche.wyraj wy-rel-tabs,
-fiche.wyraj wy-rel-panels,
-fiche.wyraj wy-relation,
-fiche.wyraj wy-rel-name,
-fiche.wyraj wy-rel-copy,
-fiche.wyraj wy-org,
-fiche.wyraj wy-org-intro,
-fiche.wyraj wy-org-tabs,
-fiche.wyraj wy-org-panels,
-fiche.wyraj wy-org-panel,
-fiche.wyraj wy-kicker,
-fiche.wyraj wy-heading,
-fiche.wyraj wy-lead,
-fiche.wyraj wy-kolo,
-fiche.wyraj wy-voice-tabs,
-fiche.wyraj wy-voice-panels,
-fiche.wyraj wy-voice,
-fiche.wyraj wy-season,
-fiche.wyraj wy-voice-name,
-fiche.wyraj wy-list,
-fiche.wyraj wy-entry,
-fiche.wyraj wy-entry-name,
-fiche.wyraj wy-prohod,
-fiche.wyraj prohod-body,
-fiche.wyraj prohod-media,
-fiche.wyraj prohod-oath,
-fiche.wyraj prohod-oath-line,
-fiche.wyraj prohod-polish,
-fiche.wyraj prohod-translation {
+fiche.wyraj label.wv-main-tab,
+fiche.wyraj label.wv-voice-tab {
+  border: 0;
+  background: transparent;
+  font-family: inherit;
+  cursor: pointer;
   box-sizing: border-box;
-}
-
-/* Forumactif peut injecter des <br> entre deux balises de mise en page.
-   On neutralise uniquement ceux qui deviendraient des cellules parasites. */
-fiche.wyraj wy-story > br,
-fiche.wyraj wy-story-main > br,
-fiche.wyraj wy-info > br,
-fiche.wyraj wy-info-facts > br,
-fiche.wyraj wy-info-row > br,
-fiche.wyraj wy-relations > br,
-fiche.wyraj wy-rel-tabs > br,
-fiche.wyraj wy-rel-panels > br,
-fiche.wyraj wy-relation > br,
-fiche.wyraj wy-org > br,
-fiche.wyraj wy-org-tabs > br,
-fiche.wyraj wy-org-panels > br,
-fiche.wyraj wy-org-panel > br,
-fiche.wyraj wy-kolo > br,
-fiche.wyraj wy-voice-tabs > br,
-fiche.wyraj wy-voice-panels > br,
-fiche.wyraj wy-list > br,
-fiche.wyraj wy-entry > br,
-fiche.wyraj prohod-body > br,
-fiche.wyraj prohod-oath > br {
-  display: none;
+  display: inline-block;
 }
 
 
-/* ==================================================
-   SCROLLBARS
-================================================== */
+/* ---------- Scrollbars ---------- */
 
-fiche.wyraj section.wyraj-scroll,
-fiche.wyraj .pres_id,
-fiche.wyraj prohod-body {
+fiche.wyraj section.wyraj-story,
+fiche.wyraj section.wyraj-chrono,
+fiche.wyraj .wy-col,
+fiche.wyraj .wy-tl,
+fiche.wyraj .prohod-copy {
   scrollbar-width: thin;
   scrollbar-color: rgba(120, 120, 120, .35) transparent;
 }
 
-fiche.wyraj section.wyraj-scroll::-webkit-scrollbar,
-fiche.wyraj .pres_id::-webkit-scrollbar,
-fiche.wyraj prohod-body::-webkit-scrollbar {
+fiche.wyraj section.wyraj-story::-webkit-scrollbar,
+fiche.wyraj section.wyraj-chrono::-webkit-scrollbar,
+fiche.wyraj .wy-col::-webkit-scrollbar,
+fiche.wyraj .wy-tl::-webkit-scrollbar,
+fiche.wyraj .prohod-copy::-webkit-scrollbar {
   width: 4px;
 }
 
-fiche.wyraj section.wyraj-scroll::-webkit-scrollbar-track,
-fiche.wyraj .pres_id::-webkit-scrollbar-track,
-fiche.wyraj prohod-body::-webkit-scrollbar-track {
-  background: transparent;
-}
-
-fiche.wyraj section.wyraj-scroll::-webkit-scrollbar-thumb,
-fiche.wyraj .pres_id::-webkit-scrollbar-thumb,
-fiche.wyraj prohod-body::-webkit-scrollbar-thumb {
+fiche.wyraj section.wyraj-story::-webkit-scrollbar-thumb,
+fiche.wyraj section.wyraj-chrono::-webkit-scrollbar-thumb,
+fiche.wyraj .wy-col::-webkit-scrollbar-thumb,
+fiche.wyraj .wy-tl::-webkit-scrollbar-thumb,
+fiche.wyraj .prohod-copy::-webkit-scrollbar-thumb {
   background: rgba(120, 120, 120, .35);
   border-radius: 10px;
 }
 
 
 /* ==================================================
-   HISTOIRE — PISTE B VALIDÉE
+   BANDEAU IMAGE
+   object-fit: cover → l'image n'est jamais déformée.
+   Elle prend la hauteur de la section, y compris le t1.
+================================================== */
+
+fiche.wyraj .wy-media {
+  position: sticky;
+  top: 0;
+  display: block;
+  flex: 0 0 var(--wy-media-width);
+  flex-shrink: 0;
+  width: var(--wy-media-width);
+  height: var(--wyraj-scroll-height);
+  margin-top: -43px;
+  overflow: hidden;
+  box-sizing: border-box;
+  border: 1px solid rgba(103, 53, 60, .55);
+  border-right-color: rgba(113, 84, 84, .75);
+  background: #111;
+}
+
+fiche.wyraj .wy-media img {
+  display: block;
+  width: 100% !important;
+  height: 100% !important;
+  max-width: none !important;
+  object-fit: cover !important;
+  object-position: center center;
+  opacity: .88;
+}
+
+
+/* ==================================================
+   HISTOIRE — image à gauche, collée au t1
 ================================================== */
 
 fiche.wyraj section.wyraj-story {
-  --wy-story-media-width: 105px;
-  --wy-story-gap: 12px;
   max-height: var(--wyraj-scroll-height);
   overflow-x: hidden;
   overflow-y: auto;
@@ -167,444 +143,386 @@ fiche.wyraj section.wyraj-story {
 fiche.wyraj section.wyraj-story > t1 {
   position: relative;
   margin-left: 122px !important;
+  width: calc(100% - 122px);
 }
 
-fiche.wyraj section.wyraj-story > wy-story {
+fiche.wyraj .wy-story {
   display: flex;
   align-items: flex-start;
-  gap: var(--wy-story-gap);
+  gap: 12px;
   width: 100%;
+  box-sizing: border-box;
 }
 
-fiche.wyraj section.wyraj-story wy-story-media {
-  position: sticky;
-  top: 0;
-  display: block;
-  flex: 0 0 var(--wy-story-media-width);
-  height: calc(var(--wyraj-scroll-height) - 20px);
-  margin-top: -43px;
-  overflow: hidden;
-  border: 1px solid rgba(103, 53, 60, .55);
-  border-right-color: rgba(113, 84, 84, .75);
-  background: #111;
-}
-
-fiche.wyraj section.wyraj-story wy-story-media img {
-  display: block;
-  width: 100%;
-  height: 100%;
-  object-fit: cover;
-  object-position: center;
-  opacity: .88;
-}
-
-fiche.wyraj section.wyraj-story wy-story-main {
-  display: block;
+fiche.wyraj .wy-col {
   flex: 1;
   min-width: 0;
   padding: 8px 14px 24px 8px;
+  box-sizing: border-box;
 }
 
-fiche.wyraj section.wyraj-story wy-story-intro {
-  display: block;
-  margin: 4px 0 30px;
-  text-align: center;
-}
-
-fiche.wyraj section.wyraj-story wy-story-intro > img {
-  display: block;
-  width: 175px;
-  height: auto;
-  margin: 12px auto 0;
-}
-
-fiche.wyraj section.wyraj-story wy-story-text {
-  display: block;
-  min-width: 0;
-  font-size: 14px;
-  line-height: 1.65;
-  text-align: justify;
-  white-space: pre-line;
-  overflow-wrap: break-word;
-}
-
-fiche.wyraj section.wyraj-story wy-story-text center {
-  display: block;
-  margin: 30px 10px;
-  text-align: center;
-}
-
-fiche.wyraj wy-quote {
+fiche.wyraj .wy-quote {
   position: relative;
   display: block;
-  width: 84%;
-  margin: 0 auto;
+  width: 80%;
+  margin: 8px 0 26px;
   padding: 8px 0 8px 14px;
+  color: var(--wy-mute);
   font-size: 10px;
+  letter-spacing: .04em;
   line-height: 1.7;
   text-align: justify;
   text-transform: uppercase;
 }
 
-fiche.wyraj wy-quote::before {
+fiche.wyraj .wy-quote::before {
   content: "“";
   position: absolute;
   top: -8px;
   left: 0;
   color: rgba(99, 34, 40, .22);
-  font-family: Georgia, serif;
+  font-family: Georgia, "Times New Roman", serif;
   font-size: 56px;
   line-height: 1;
 }
 
-fiche.wyraj wy-source {
+fiche.wyraj .wy-source {
   display: block;
   margin-top: 5px;
   color: #777272;
   font-size: 10px;
-  font-style: normal;
-  text-align: left;
+  letter-spacing: .08em;
+  text-transform: none;
 }
 
-fiche.wyraj wy-tab {
-  display: inline-block;
-  width: 1.4em;
+fiche.wyraj .wy-story-text p {
+  margin: 0 0 14px;
+  color: var(--wy-ink);
+  font-size: 14px;
+  line-height: 1.65;
+  text-align: justify;
 }
 
-fiche.wyraj wy-warning {
-  display: block;
-  margin-top: 5px;
-  text-align: center;
+fiche.wyraj .wy-drop::first-letter {
+  float: left;
+  padding-right: .08em;
+  color: #ddd6d8;
+  font-size: 2.55em;
+  font-weight: 500;
+  line-height: .85;
+}
+
+fiche.wyraj .wy-aside {
+  margin: 2px 0 22px !important;
+  color: var(--wy-dim);
+  font-size: 13px !important;
+  text-align: right !important;
+}
+
+fiche.wyraj .wy-center {
+  margin: 22px 10px !important;
+  text-align: center !important;
 }
 
 
 /* ==================================================
-   CHRONOLOGIE — VERSION VALIDÉE
+   CHRONOLOGIE — même bandeau, à droite
 ================================================== */
 
-fiche.wyraj .wyraj-pres-row {
-  display: flex;
-  align-items: stretch;
-  gap: .5em;
-  height: var(--wyraj-pres-height);
-}
-
-fiche.wyraj .wyraj-pres-row > section {
-  display: flex;
-  flex: 1;
-  flex-direction: column;
-  min-width: 0;
-  min-height: 0;
-  height: 100%;
-  overflow: hidden;
-}
-
-fiche.wyraj .wyraj-pres-row > section > t1 {
-  flex: 0 0 auto;
-}
-
-fiche.wyraj .wyraj-pres-row > section > .pres_id {
-  flex: 1 1 auto;
-  min-height: 0;
-  height: auto !important;
-  max-height: none !important;
+fiche.wyraj section.wyraj-chrono {
+  max-height: var(--wyraj-scroll-height);
   overflow-x: hidden;
   overflow-y: auto;
-  padding-right: 8px;
+  padding-right: 10px;
 }
 
-fiche.wyraj .wyraj-pres-row .chrono {
-  margin: 0 20px;
+fiche.wyraj section.wyraj-chrono > t1 {
+  position: relative;
+  margin-right: 122px !important;
+  width: calc(100% - 122px);
 }
 
-fiche.wyraj .wyraj-pres-row .chrono desc {
-  width: 280px;
+fiche.wyraj .wy-chrono {
+  display: flex;
+  align-items: flex-start;
+  gap: 12px;
+  width: 100%;
+  box-sizing: border-box;
+}
+
+fiche.wyraj .wy-tl {
+  flex: 1;
+  min-width: 0;
+  padding: 8px 8px 20px 6px;
+}
+
+fiche.wyraj .wy-tl-item {
+  position: relative;
+  padding: 0 0 26px 22px;
+  border-left: 1px solid rgba(99, 34, 40, .42);
+}
+
+fiche.wyraj .wy-tl-item:last-child {
+  border-left-color: transparent;
+  padding-bottom: 4px;
+}
+
+fiche.wyraj .wy-tl-mark {
+  position: absolute;
+  top: 5px;
+  left: -5px;
+  width: 9px;
+  height: 9px;
+  border: 1px solid var(--wy-rose);
+  background: #191919;
+  transform: rotate(45deg);
+}
+
+fiche.wyraj .wy-tl-head {
+  margin-bottom: 6px;
+  color: var(--wy-rose);
+  font-size: 12px;
+  font-weight: 600;
+  letter-spacing: .08em;
+  line-height: 1.3;
+  text-transform: uppercase;
+}
+
+fiche.wyraj .wy-tl-item p {
+  margin: 0;
+  color: var(--wy-ink);
+  font-size: 13.5px;
+  line-height: 1.55;
 }
 
 
 /* ==================================================
-   INFORMATIONS — PROTOTYPE VALIDÉ
+   INFORMATIONS — démarre sur Type de coven
 ================================================== */
 
-fiche.wyraj section.wyraj-information > wy-info {
-  display: block;
-  padding: 2px 28px 0;
+fiche.wyraj .wy-info {
+  padding: 14px 18px 8px;
 }
 
-fiche.wyraj section.wyraj-information wy-copy {
-  display: block;
-  margin: 0;
-  font-size: 12.5px;
-  line-height: 1.68;
-}
-
-fiche.wyraj section.wyraj-information wy-label {
-  display: block;
-  color: var(--accent3);
-  font-size: 9px;
-  font-weight: 500;
-  letter-spacing: .14em;
-  line-height: 1.35;
-  text-transform: uppercase;
-}
-
-fiche.wyraj section.wyraj-information wy-info-facts {
+fiche.wyraj .wy-info-grid {
   display: grid;
-  grid-template-columns: repeat(2, minmax(0, 1fr));
-  column-gap: 34px;
+  grid-template-columns: 1fr 1fr;
+  gap: 28px 40px;
+  padding: 4px 0 24px;
+  border-bottom: 1px solid var(--wy-line);
 }
 
-fiche.wyraj section.wyraj-information wy-info-fact {
-  display: block;
-  min-width: 0;
-  padding: 17px 0 18px;
-  border-bottom: 1px solid var(--wyraj-line);
+fiche.wyraj .wy-info-fact p {
+  margin: 8px 0 0;
+  color: var(--wy-ink);
+  font-size: 13.5px;
+  line-height: 1.55;
 }
 
-fiche.wyraj section.wyraj-information wy-info-fact wy-copy {
-  margin-top: 8px;
-}
-
-fiche.wyraj section.wyraj-information wy-info-row {
+fiche.wyraj .wy-info-row {
   display: grid;
-  grid-template-columns: 145px minmax(0, 1fr);
-  gap: 34px;
+  grid-template-columns: 170px minmax(0, 1fr);
+  gap: 28px;
   padding: 22px 0;
-  border-bottom: 1px solid var(--wyraj-line);
+  border-bottom: 1px solid var(--wy-line);
 }
 
-fiche.wyraj section.wyraj-information wy-info-title {
-  display: block;
+fiche.wyraj .wy-info-label {
+  color: var(--wy-cream);
   font-size: 15px;
-  line-height: 1.35;
+  font-weight: 500;
+  letter-spacing: -.01em;
+  line-height: 1.3;
 }
 
-fiche.wyraj section.wyraj-information wy-info-title wy-label {
-  margin-top: 6px;
-}
-
-fiche.wyraj section.wyraj-information wy-relations {
-  position: relative;
+fiche.wyraj .wy-info-label span {
   display: block;
-  padding-top: 29px;
-}
-
-fiche.wyraj section.wyraj-information wy-relations > input,
-fiche.wyraj section.wyraj-organisation wy-org > input,
-fiche.wyraj section.wyraj-organisation wy-org-panel > input {
-  position: absolute;
-  width: 1px;
-  height: 1px;
-  opacity: 0;
-  pointer-events: none;
-}
-
-fiche.wyraj section.wyraj-information wy-rel-tabs {
-  display: flex;
-  flex-wrap: wrap;
-  gap: 23px;
-  border-bottom: 1px solid var(--wyraj-line);
-}
-
-fiche.wyraj section.wyraj-information wy-rel-tabs label {
-  position: relative;
-  display: block;
-  min-height: 42px;
-  border: 0;
-  padding: 0 0 13px;
-  background: transparent;
-  color: inherit;
-  cursor: pointer;
-  font-family: inherit;
+  margin-top: 5px;
+  color: var(--wy-rose);
   font-size: 10px;
   font-weight: 500;
-  letter-spacing: .13em;
-  line-height: 1.4;
+  letter-spacing: .16em;
   text-transform: uppercase;
-  opacity: .55;
 }
 
-fiche.wyraj section.wyraj-information wy-rel-tabs label::after,
-fiche.wyraj section.wyraj-organisation wy-org-tabs label::after {
-  content: "";
-  position: absolute;
-  right: 0;
-  bottom: -1px;
-  left: 0;
-  height: 2px;
-  background: var(--accent3);
-  transform: scaleX(0);
-  transform-origin: left;
+fiche.wyraj .wy-info-row p {
+  margin: 0;
+  color: var(--wy-mute);
+  font-size: 13.5px;
+  line-height: 1.65;
 }
 
-fiche.wyraj section.wyraj-information wy-rel-panels {
-  display: block;
-}
-
-fiche.wyraj section.wyraj-information wy-relation {
-  display: none;
-  grid-template-columns: 145px minmax(0, 1fr);
-  gap: 34px;
-  min-height: 255px;
-  padding: 26px 0 3px;
-}
-
-fiche.wyraj section.wyraj-information wy-rel-name {
-  display: block;
-  font-size: 22px;
-  line-height: 1.2;
-}
-
-fiche.wyraj section.wyraj-information wy-rel-name wy-label {
+fiche.wyraj .wy-rel {
+  position: relative;
   margin-top: 6px;
 }
 
-fiche.wyraj section.wyraj-information wy-rel-copy {
-  display: block;
-  min-width: 0;
+fiche.wyraj .wy-rel-panel {
+  display: none;
+  padding: 24px 0 8px;
 }
 
-fiche.wyraj section.wyraj-information wy-rel-copy wy-copy + wy-copy {
-  margin-top: 12px;
+fiche.wyraj .wy-rel-panel .wv-heading { margin-bottom: 6px; }
+
+fiche.wyraj .wy-rel-panel p {
+  max-width: 540px;
+  margin: 12px 0 0;
+  color: var(--wy-mute);
+  font-size: 13.5px;
+  line-height: 1.65;
 }
 
-fiche.wyraj section.wyraj-information #wy-rel-wallace:checked ~ wy-rel-tabs label[for="wy-rel-wallace"],
-fiche.wyraj section.wyraj-information #wy-rel-zelote:checked ~ wy-rel-tabs label[for="wy-rel-zelote"],
-fiche.wyraj section.wyraj-information #wy-rel-vampires:checked ~ wy-rel-tabs label[for="wy-rel-vampires"] {
-  opacity: 1;
-}
+fiche.wyraj .wy-rel .panel-wallace { display: block; }
+fiche.wyraj .wy-rel:has(#wy-rel-zelote:checked) .panel-wallace,
+fiche.wyraj .wy-rel:has(#wy-rel-vampires:checked) .panel-wallace { display: none; }
+fiche.wyraj .wy-rel:has(#wy-rel-zelote:checked) .panel-zelote,
+fiche.wyraj .wy-rel:has(#wy-rel-vampires:checked) .panel-vampires { display: block; }
 
-fiche.wyraj section.wyraj-information #wy-rel-wallace:checked ~ wy-rel-tabs label[for="wy-rel-wallace"]::after,
-fiche.wyraj section.wyraj-information #wy-rel-zelote:checked ~ wy-rel-tabs label[for="wy-rel-zelote"]::after,
-fiche.wyraj section.wyraj-information #wy-rel-vampires:checked ~ wy-rel-tabs label[for="wy-rel-vampires"]::after {
-  transform: scaleX(1);
+fiche.wyraj .wy-rel label[for="wy-rel-wallace"] { color: #d2cbcd; }
+fiche.wyraj .wy-rel label[for="wy-rel-wallace"]::after {
+  content: "";
+  position: absolute;
+  right: 0; bottom: -1px; left: 0;
+  height: 2px;
+  background: var(--wyraj-rust);
 }
-
-fiche.wyraj section.wyraj-information #wy-rel-wallace:checked ~ wy-rel-panels > wy-relation[data-relation="wallace"],
-fiche.wyraj section.wyraj-information #wy-rel-zelote:checked ~ wy-rel-panels > wy-relation[data-relation="zelote"],
-fiche.wyraj section.wyraj-information #wy-rel-vampires:checked ~ wy-rel-panels > wy-relation[data-relation="vampires"] {
-  display: grid;
+fiche.wyraj .wy-rel:has(#wy-rel-zelote:checked) label[for="wy-rel-wallace"],
+fiche.wyraj .wy-rel:has(#wy-rel-vampires:checked) label[for="wy-rel-wallace"] { color: #6c6669; }
+fiche.wyraj .wy-rel:has(#wy-rel-zelote:checked) label[for="wy-rel-wallace"]::after,
+fiche.wyraj .wy-rel:has(#wy-rel-vampires:checked) label[for="wy-rel-wallace"]::after { content: none; }
+fiche.wyraj .wy-rel:has(#wy-rel-zelote:checked) label[for="wy-rel-zelote"],
+fiche.wyraj .wy-rel:has(#wy-rel-vampires:checked) label[for="wy-rel-vampires"] { color: #d2cbcd; }
+fiche.wyraj .wy-rel:has(#wy-rel-zelote:checked) label[for="wy-rel-zelote"]::after,
+fiche.wyraj .wy-rel:has(#wy-rel-vampires:checked) label[for="wy-rel-vampires"]::after {
+  content: "";
+  position: absolute;
+  right: 0; bottom: -1px; left: 0;
+  height: 2px;
+  background: var(--wyraj-rust);
 }
 
 
 /* ==================================================
-   ORGANISATION — UNE VOIX À LA FOIS
+   ORGANISATION — version retenue
+   Pas de cercle WYRAJ, pas de cercle de saison.
+   Saison = nom en filigrane, partiellement visible.
+   Voix en colonne, une seule visible.
 ================================================== */
 
-fiche.wyraj section.wyraj-organisation > wy-org {
-  position: relative;
-  display: block;
-  padding: 0 18px 28px;
-}
-
-fiche.wyraj section.wyraj-organisation wy-org-intro {
-  display: block;
-  margin: 0 27px 30px;
-}
-
-fiche.wyraj section.wyraj-organisation wy-org-intro wy-copy {
-  display: block;
+fiche.wyraj .wv-org {
+  width: 100%;
   margin: 0;
+  padding: 4px 8px 18px;
+  box-sizing: border-box;
+}
+
+fiche.wyraj .wv-intro {
+  margin: 4px 18px 16px;
+}
+
+fiche.wyraj .wv-intro p {
+  margin: 0 0 12px;
+  color: #a8a2a4;
   font-size: 13px;
   line-height: 1.65;
 }
 
-fiche.wyraj section.wyraj-organisation wy-org-intro wy-copy + wy-copy {
-  margin-top: 12px;
-  opacity: .75;
-  font-size: 12px;
+fiche.wyraj .wv-intro p:last-child {
+  margin-bottom: 0;
+  color: #7f797c;
+  font-size: 12.5px;
 }
 
-fiche.wyraj section.wyraj-organisation wy-org-tabs {
+fiche.wyraj .wv-main-tabs {
   display: flex;
   gap: 34px;
-  margin: 0 27px;
-  border-bottom: 1px solid var(--wyraj-line);
+  margin: 0 18px;
+  border-bottom: 1px solid #41393d;
 }
 
-fiche.wyraj section.wyraj-organisation wy-org-tabs label {
+fiche.wyraj label.wv-main-tab {
   position: relative;
-  display: block;
-  min-height: 44px;
-  border: 0;
-  padding: 0 1px 14px;
-  background: transparent;
-  color: inherit;
-  cursor: pointer;
+  min-height: 40px;
+  padding: 0 1px 12px;
+  color: #6c6669;
   font-family: inherit;
   font-size: 11px;
   font-weight: 500;
   letter-spacing: .13em;
   text-transform: uppercase;
-  opacity: .55;
 }
 
-fiche.wyraj section.wyraj-organisation #wy-org-kolo:checked ~ wy-org-tabs label[for="wy-org-kolo"],
-fiche.wyraj section.wyraj-organisation #wy-org-membres:checked ~ wy-org-tabs label[for="wy-org-membres"],
-fiche.wyraj section.wyraj-organisation #wy-org-termes:checked ~ wy-org-tabs label[for="wy-org-termes"] {
-  opacity: 1;
-}
-
-fiche.wyraj section.wyraj-organisation #wy-org-kolo:checked ~ wy-org-tabs label[for="wy-org-kolo"]::after,
-fiche.wyraj section.wyraj-organisation #wy-org-membres:checked ~ wy-org-tabs label[for="wy-org-membres"]::after,
-fiche.wyraj section.wyraj-organisation #wy-org-termes:checked ~ wy-org-tabs label[for="wy-org-termes"]::after {
-  transform: scaleX(1);
-}
-
-fiche.wyraj section.wyraj-organisation wy-org-panels {
-  display: block;
-}
-
-fiche.wyraj section.wyraj-organisation wy-org-panel {
-  position: relative;
+fiche.wyraj .wv-main-panel {
   display: none;
-  margin: 0 27px;
-  padding-top: 30px;
+  margin: 0 18px;
+  padding-top: 20px;
 }
 
-fiche.wyraj section.wyraj-organisation #wy-org-kolo:checked ~ wy-org-panels > wy-org-panel[data-org="kolo"],
-fiche.wyraj section.wyraj-organisation #wy-org-membres:checked ~ wy-org-panels > wy-org-panel[data-org="membres"],
-fiche.wyraj section.wyraj-organisation #wy-org-termes:checked ~ wy-org-panels > wy-org-panel[data-org="termes"] {
-  display: block;
+fiche.wyraj .wv-org .panel-kolo { display: block; }
+fiche.wyraj .wv-org:has(#wy-org-membres:checked) .panel-kolo,
+fiche.wyraj .wv-org:has(#wy-org-termes:checked) .panel-kolo { display: none; }
+fiche.wyraj .wv-org:has(#wy-org-membres:checked) .panel-membres,
+fiche.wyraj .wv-org:has(#wy-org-termes:checked) .panel-termes { display: block; }
+
+fiche.wyraj .wv-org label[for="wy-org-kolo"] { color: #d2cbcd; }
+fiche.wyraj .wv-org label[for="wy-org-kolo"]::after {
+  content: "";
+  position: absolute;
+  right: 0; bottom: -1px; left: 0;
+  height: 2px;
+  background: var(--wyraj-rust);
+}
+fiche.wyraj .wv-org:has(#wy-org-membres:checked) label[for="wy-org-kolo"],
+fiche.wyraj .wv-org:has(#wy-org-termes:checked) label[for="wy-org-kolo"] { color: #6c6669; }
+fiche.wyraj .wv-org:has(#wy-org-membres:checked) label[for="wy-org-kolo"]::after,
+fiche.wyraj .wv-org:has(#wy-org-termes:checked) label[for="wy-org-kolo"]::after { content: none; }
+fiche.wyraj .wv-org:has(#wy-org-membres:checked) label[for="wy-org-membres"],
+fiche.wyraj .wv-org:has(#wy-org-termes:checked) label[for="wy-org-termes"] { color: #d2cbcd; }
+fiche.wyraj .wv-org:has(#wy-org-membres:checked) label[for="wy-org-membres"]::after,
+fiche.wyraj .wv-org:has(#wy-org-termes:checked) label[for="wy-org-termes"]::after {
+  content: "";
+  position: absolute;
+  right: 0; bottom: -1px; left: 0;
+  height: 2px;
+  background: var(--wyraj-rust);
 }
 
-fiche.wyraj section.wyraj-organisation wy-kicker {
-  display: block;
+fiche.wyraj .wv-kicker {
   margin-bottom: 7px;
-  color: var(--accent3);
+  color: var(--wy-rose);
   font-size: 10px;
   font-weight: 500;
-  letter-spacing: .17em;
+  letter-spacing: .14em;
   text-transform: uppercase;
 }
 
-fiche.wyraj section.wyraj-organisation wy-heading {
-  display: block;
-  margin-bottom: 11px;
+fiche.wyraj .wv-heading {
+  margin: 0 0 11px;
+  color: var(--wy-cream);
+  font-family: Georgia, "Palatino Linotype", Palatino, serif;
   font-size: 27px;
   font-weight: 500;
   letter-spacing: -.025em;
   line-height: 1.1;
 }
 
-fiche.wyraj section.wyraj-organisation wy-lead {
-  display: block;
+fiche.wyraj .wv-lead {
   max-width: 560px;
-  margin-bottom: 27px;
-  font-size: 13px;
+  margin: 0 0 16px;
+  color: #999395;
+  font-size: 13.5px;
   line-height: 1.65;
-  opacity: .8;
 }
 
-fiche.wyraj section.wyraj-organisation wy-kolo {
+fiche.wyraj .wv-single-stage {
   display: grid;
-  grid-template-columns: 190px minmax(0, 1fr);
+  grid-template-columns: 170px minmax(0, 1fr);
   gap: 30px;
-  min-height: 360px;
-  padding: 18px 0 8px;
+  min-height: 280px;
+  padding: 4px 0 8px;
 }
 
-fiche.wyraj section.wyraj-organisation wy-voice-tabs {
+fiche.wyraj .wv-voice-tabs {
   display: flex;
   flex-direction: column;
   align-items: flex-start;
@@ -612,215 +530,207 @@ fiche.wyraj section.wyraj-organisation wy-voice-tabs {
   padding-top: 8px;
 }
 
-fiche.wyraj section.wyraj-organisation wy-voice-tabs label {
+fiche.wyraj label.wv-voice-tab {
   position: relative;
-  display: block;
-  border: 0;
-  padding: 8px 26px 8px 0;
-  background: transparent;
-  color: inherit;
-  cursor: pointer;
-  font-family: inherit;
+  padding: 8px 24px 8px 0;
+  color: #5f5a5d;
+  font-family: Georgia, "Palatino Linotype", Palatino, serif;
   font-size: 21px;
   font-weight: 500;
   letter-spacing: -.025em;
-  opacity: .45;
 }
 
-fiche.wyraj section.wyraj-organisation wy-voice-tabs label::after {
+fiche.wyraj .wv-voices label[for="wy-voice-jarilo"] { color: #d3ccce; }
+fiche.wyraj .wv-voices label[for="wy-voice-jarilo"]::after {
   content: "";
   position: absolute;
   right: 0;
   bottom: 10px;
   width: 14px;
-  height: 1px;
-  background: var(--accent3);
-  opacity: 0;
+  height: 2px;
+  background: var(--wyraj-rust);
 }
-
-fiche.wyraj section.wyraj-organisation wy-voice-panels {
-  display: block;
-  min-width: 0;
+fiche.wyraj .wv-voices:has(#wy-voice-kupala:checked) label[for="wy-voice-jarilo"],
+fiche.wyraj .wv-voices:has(#wy-voice-mokosh:checked) label[for="wy-voice-jarilo"],
+fiche.wyraj .wv-voices:has(#wy-voice-marzanna:checked) label[for="wy-voice-jarilo"] {
+  color: #5f5a5d;
 }
-
-fiche.wyraj section.wyraj-organisation wy-voice {
-  position: relative;
-  display: none;
-  min-height: 300px;
-  padding: 38px 4px 24px;
+fiche.wyraj .wv-voices:has(#wy-voice-kupala:checked) label[for="wy-voice-jarilo"]::after,
+fiche.wyraj .wv-voices:has(#wy-voice-mokosh:checked) label[for="wy-voice-jarilo"]::after,
+fiche.wyraj .wv-voices:has(#wy-voice-marzanna:checked) label[for="wy-voice-jarilo"]::after {
+  content: none;
 }
-
-fiche.wyraj section.wyraj-organisation wy-season {
+fiche.wyraj .wv-voices:has(#wy-voice-kupala:checked) label[for="wy-voice-kupala"],
+fiche.wyraj .wv-voices:has(#wy-voice-mokosh:checked) label[for="wy-voice-mokosh"],
+fiche.wyraj .wv-voices:has(#wy-voice-marzanna:checked) label[for="wy-voice-marzanna"] {
+  color: #d3ccce;
+}
+fiche.wyraj .wv-voices:has(#wy-voice-kupala:checked) label[for="wy-voice-kupala"]::after,
+fiche.wyraj .wv-voices:has(#wy-voice-mokosh:checked) label[for="wy-voice-mokosh"]::after,
+fiche.wyraj .wv-voices:has(#wy-voice-marzanna:checked) label[for="wy-voice-marzanna"]::after {
+  content: "";
   position: absolute;
-  top: 0;
   right: 0;
-  display: block;
-  color: var(--accent3);
-  font-size: clamp(28px, 6vw, 46px);
+  bottom: 10px;
+  width: 14px;
+  height: 2px;
+  background: var(--wyraj-rust);
+}
+
+fiche.wyraj .wv-voice-panels { min-width: 0; }
+
+fiche.wyraj .wv-voice-panel {
+  display: none;
+  position: relative;
+  min-height: 280px;
+  padding: 28px 4px 24px;
+  overflow: hidden;
+}
+
+fiche.wyraj .wv-voice-panel::before,
+fiche.wyraj .wv-voice-panel::after {
+  display: none !important;
+  content: none !important;
+}
+
+fiche.wyraj .wv-voices .panel-jarilo { display: block; }
+fiche.wyraj .wv-voices:has(#wy-voice-kupala:checked) .panel-jarilo,
+fiche.wyraj .wv-voices:has(#wy-voice-mokosh:checked) .panel-jarilo,
+fiche.wyraj .wv-voices:has(#wy-voice-marzanna:checked) .panel-jarilo { display: none; }
+fiche.wyraj .wv-voices:has(#wy-voice-kupala:checked) .panel-kupala,
+fiche.wyraj .wv-voices:has(#wy-voice-mokosh:checked) .panel-mokosh,
+fiche.wyraj .wv-voices:has(#wy-voice-marzanna:checked) .panel-marzanna { display: block; }
+
+fiche.wyraj .wv-voice-season {
+  position: absolute;
+  z-index: 0;
+  top: -6px;
+  right: -28px;
+  color: rgba(170, 115, 123, .2);
+  font-family: Georgia, "Palatino Linotype", Palatino, serif;
+  font-size: clamp(52px, 9vw, 78px);
   font-weight: 500;
   letter-spacing: -.04em;
   line-height: 1;
   text-transform: uppercase;
-  opacity: .28;
+  pointer-events: none;
+  white-space: nowrap;
 }
 
-fiche.wyraj section.wyraj-organisation wy-voice-name {
+fiche.wyraj .wv-voice-name {
   position: relative;
-  display: block;
-  margin-bottom: 18px;
+  z-index: 1;
+  margin: 0 0 18px;
+  color: #e0d9db;
+  font-family: Georgia, "Palatino Linotype", Palatino, serif;
   font-size: 36px;
   font-weight: 500;
   letter-spacing: -.045em;
   line-height: 1;
 }
 
-fiche.wyraj section.wyraj-organisation wy-voice wy-copy {
+fiche.wyraj .wv-voice-panel p {
   position: relative;
-  display: block;
+  z-index: 1;
   max-width: 410px;
-  font-size: 13px;
+  margin: 0;
+  color: #a29c9e;
+  font-size: 14px;
   line-height: 1.72;
-  opacity: .8;
 }
 
-fiche.wyraj section.wyraj-organisation #wy-voice-jarilo:checked ~ wy-kolo wy-voice-tabs label[for="wy-voice-jarilo"],
-fiche.wyraj section.wyraj-organisation #wy-voice-kupala:checked ~ wy-kolo wy-voice-tabs label[for="wy-voice-kupala"],
-fiche.wyraj section.wyraj-organisation #wy-voice-mokosh:checked ~ wy-kolo wy-voice-tabs label[for="wy-voice-mokosh"],
-fiche.wyraj section.wyraj-organisation #wy-voice-marzanna:checked ~ wy-kolo wy-voice-tabs label[for="wy-voice-marzanna"] {
-  opacity: 1;
+fiche.wyraj .wv-simple-list {
+  border-top: 1px solid #373135;
 }
 
-fiche.wyraj section.wyraj-organisation #wy-voice-jarilo:checked ~ wy-kolo wy-voice-tabs label[for="wy-voice-jarilo"]::after,
-fiche.wyraj section.wyraj-organisation #wy-voice-kupala:checked ~ wy-kolo wy-voice-tabs label[for="wy-voice-kupala"]::after,
-fiche.wyraj section.wyraj-organisation #wy-voice-mokosh:checked ~ wy-kolo wy-voice-tabs label[for="wy-voice-mokosh"]::after,
-fiche.wyraj section.wyraj-organisation #wy-voice-marzanna:checked ~ wy-kolo wy-voice-tabs label[for="wy-voice-marzanna"]::after {
-  opacity: 1;
-}
-
-fiche.wyraj section.wyraj-organisation #wy-voice-jarilo:checked ~ wy-kolo wy-voice[data-voice="jarilo"],
-fiche.wyraj section.wyraj-organisation #wy-voice-kupala:checked ~ wy-kolo wy-voice[data-voice="kupala"],
-fiche.wyraj section.wyraj-organisation #wy-voice-mokosh:checked ~ wy-kolo wy-voice[data-voice="mokosh"],
-fiche.wyraj section.wyraj-organisation #wy-voice-marzanna:checked ~ wy-kolo wy-voice[data-voice="marzanna"] {
-  display: block;
-}
-
-fiche.wyraj section.wyraj-organisation wy-list {
-  display: block;
-  border-top: 1px solid var(--wyraj-line);
-}
-
-fiche.wyraj section.wyraj-organisation wy-entry {
+fiche.wyraj .wv-simple-entry {
   display: grid;
   grid-template-columns: 155px minmax(0, 1fr);
   gap: 25px;
   padding: 23px 0;
-  border-bottom: 1px solid var(--wyraj-line);
+  border-bottom: 1px solid #373135;
 }
 
-fiche.wyraj section.wyraj-organisation wy-entry-name {
-  display: block;
+fiche.wyraj .wv-simple-name {
+  color: #d1c9cc;
   font-size: 16px;
   font-weight: 500;
 }
 
-fiche.wyraj section.wyraj-organisation wy-entry wy-copy {
-  display: block;
-  font-size: 13px;
+fiche.wyraj .wv-simple-entry p {
+  margin: 0;
+  color: #9f999b;
+  font-size: 13.5px;
   line-height: 1.65;
-  opacity: .8;
 }
 
 
 /* ==================================================
-   PROHOD — RÉCIT INTÉGRÉ VALIDÉ
+   PROHOD — une image à côté du texte, remplaçable
 ================================================== */
 
-fiche.wyraj section.wyraj-prohod > wy-prohod {
-  display: block;
-  padding: 2px 28px 0;
+fiche.wyraj .wy-prohod {
+  padding: 8px 12px 16px;
 }
 
-fiche.wyraj section.wyraj-prohod prohod-body > wy-copy {
-  display: block;
-  margin: 0;
-  font-size: 12.5px;
-  line-height: 1.68;
+fiche.wyraj .prohod-stage {
+  overflow: hidden;
 }
 
-fiche.wyraj section.wyraj-prohod prohod-body {
-  display: block;
-  max-height: 560px;
-  overflow-x: hidden;
-  overflow-y: auto;
-  padding-right: 11px;
-  text-align: justify;
-}
-
-fiche.wyraj section.wyraj-prohod prohod-media {
-  position: relative;
-  display: block;
+fiche.wyraj .prohod-media {
   float: left;
   width: 165px;
   height: 360px;
-  margin: 0 28px 18px 0;
-  overflow: hidden;
-  border-left: 1px solid var(--accent2);
-  border-right: 1px solid var(--accent2);
+  margin: 4px 28px 18px 0;
+  position: relative;
+  top: auto;
+  flex: none;
 }
 
-fiche.wyraj section.wyraj-prohod prohod-media img {
+fiche.wyraj .prohod-media img {
   display: block;
-  width: 100%;
-  height: 100%;
-  object-fit: cover;
-  object-position: center;
-  opacity: .88;
+  width: 100% !important;
+  height: 100% !important;
+  max-width: none !important;
+  object-fit: cover !important;
 }
 
-fiche.wyraj section.wyraj-prohod prohod-body > wy-copy {
-  margin-bottom: 17px;
+fiche.wyraj .prohod-copy {
+  color: #bcb7b7;
+  font-size: 14px;
+  line-height: 1.65;
+  text-align: justify;
 }
 
-fiche.wyraj section.wyraj-prohod prohod-oath {
-  display: block;
+fiche.wyraj .prohod-copy p {
+  margin: 0 0 16px;
+}
+
+fiche.wyraj .prohod-oath {
   clear: both;
-  margin-top: 26px;
-  padding: 24px 0 4px;
-  border-top: 1px solid var(--wyraj-line);
+  margin: 8px 0 0;
+  padding: 22px 0 4px;
+  border-top: 1px solid #55383d;
 }
 
-fiche.wyraj section.wyraj-prohod prohod-oath-line {
-  display: block;
-  margin-bottom: 21px;
+fiche.wyraj .prohod-oath .wv-kicker {
+  margin-bottom: 18px;
 }
 
-fiche.wyraj section.wyraj-prohod prohod-polish {
-  display: block;
-  margin-bottom: 7px;
+fiche.wyraj .prohod-oath-line { margin-bottom: 18px; }
+
+fiche.wyraj .prohod-polish {
+  margin-bottom: 6px;
+  color: #d2cbcd;
   font-size: 13px;
   font-style: italic;
   line-height: 1.6;
 }
 
-fiche.wyraj section.wyraj-prohod prohod-translation {
-  display: block;
+fiche.wyraj .prohod-translation {
+  color: #8e888a;
   font-size: 11.5px;
   line-height: 1.55;
-  opacity: .75;
-}
-
-fiche.wyraj section.wyraj-prohod prohod-oath > wy-copy {
-  display: block;
-  margin: 0 0 14px;
-  font-size: 12.5px;
-  line-height: 1.68;
-}
-
-fiche.wyraj section.wyraj-prohod prohod-oath > img {
-  display: block;
-  width: auto;
-  height: 170px;
-  margin: 0 auto;
 }
 
 
@@ -829,95 +739,53 @@ fiche.wyraj section.wyraj-prohod prohod-oath > img {
 ================================================== */
 
 @media (max-width: 570px) {
-  fiche.wyraj section.wyraj-story > t1 {
-    width: 100%;
+  fiche.wyraj section.wyraj-story > t1,
+  fiche.wyraj section.wyraj-chrono > t1 {
     margin-left: 0 !important;
+    margin-right: 0 !important;
+    width: 100%;
   }
 
-  fiche.wyraj section.wyraj-story > wy-story {
+  fiche.wyraj .wy-story,
+  fiche.wyraj .wy-chrono {
     display: block;
   }
 
-  fiche.wyraj section.wyraj-story wy-story-media {
+  fiche.wyraj .wy-media,
+  fiche.wyraj .prohod-media {
     position: relative;
+    top: auto;
+    float: none;
     width: 100%;
     height: 90px;
     margin: 0 0 18px;
-    border-right: 0;
     border-left: 0;
+    border-right: 0;
     border-top: 1px solid rgba(103, 53, 60, .55);
     border-bottom: 1px solid rgba(103, 53, 60, .55);
   }
 
-  fiche.wyraj section.wyraj-story wy-story-main {
-    padding: 0 8px 18px;
+  fiche.wyraj .wy-media img {
+    object-position: center 45%;
   }
 
-  fiche.wyraj section.wyraj-story wy-story-text {
-    font-size: 13px;
-  }
-
-  fiche.wyraj .wyraj-pres-row .chrono desc {
-    width: auto;
-  }
-
-  fiche.wyraj section.wyraj-information > wy-info,
-  fiche.wyraj section.wyraj-prohod > wy-prohod {
-    padding-right: 10px;
-    padding-left: 10px;
-  }
-
-  fiche.wyraj section.wyraj-information wy-info-facts,
-  fiche.wyraj section.wyraj-information wy-info-row,
-  fiche.wyraj section.wyraj-information wy-relation {
+  fiche.wyraj .wy-info-grid,
+  fiche.wyraj .wy-info-row,
+  fiche.wyraj .wv-single-stage,
+  fiche.wyraj .wv-simple-entry {
     grid-template-columns: 1fr;
-    gap: 10px;
+    gap: 12px;
   }
 
-  fiche.wyraj section.wyraj-organisation > wy-org {
-    padding-right: 10px;
-    padding-left: 10px;
-  }
-
-  fiche.wyraj section.wyraj-organisation wy-org-intro,
-  fiche.wyraj section.wyraj-organisation wy-org-tabs,
-  fiche.wyraj section.wyraj-organisation wy-org-panel {
-    margin-right: 10px;
-    margin-left: 10px;
-  }
-
-  fiche.wyraj section.wyraj-organisation wy-org-tabs {
-    gap: 21px;
-  }
-
-  fiche.wyraj section.wyraj-organisation wy-kolo {
-    grid-template-columns: 1fr;
-    gap: 14px;
-  }
-
-  fiche.wyraj section.wyraj-organisation wy-voice-tabs {
+  fiche.wyraj .wv-voice-tabs {
     flex-direction: row;
     flex-wrap: wrap;
     gap: 4px 16px;
   }
 
-  fiche.wyraj section.wyraj-organisation wy-voice-tabs label {
-    padding-right: 19px;
+  fiche.wyraj label.wv-voice-tab {
     font-size: 16px;
   }
 
-  fiche.wyraj section.wyraj-organisation wy-entry {
-    grid-template-columns: 1fr;
-    gap: 8px;
-  }
-
-  fiche.wyraj section.wyraj-prohod prohod-media {
-    width: 125px;
-    height: 300px;
-    margin-right: 19px;
-  }
-
-  fiche.wyraj section.wyraj-prohod prohod-body {
-    max-height: 420px;
-  }
+  fiche.wyraj .wy-quote { width: 100%; }
 }
