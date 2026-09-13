@@ -1,5 +1,5 @@
 /* ==================================================
-   TABLEAU DE CHASSES / QUÊTES
+      TABLEAU DE QUÊTES
 ================================================== */
 
 hunt-board,
@@ -11,7 +11,6 @@ hunt-board {
   --hunt-gap: 18px;
   --hunt-radius: 18px;
 
-  --hunt-bg: #111114;
   --hunt-card: rgba(20, 20, 24, .96);
   --hunt-border: rgba(153, 130, 172, .22);
 
@@ -28,30 +27,22 @@ hunt-board {
   margin: 25px auto;
 }
 
-
-/* ==================================================
-   CARTE
-================================================== */
-
 hunt-card {
   display: flex;
   flex-direction: column;
+
   flex: 1 1 calc(50% - var(--hunt-gap));
   min-width: 320px;
 
   padding: 26px 28px 24px;
 
   background: var(--hunt-card);
+
   border: 1px solid var(--hunt-border);
   border-radius: var(--hunt-radius);
 
   color: var(--hunt-text);
 }
-
-
-/* ==================================================
-   HAUT DE CARTE
-================================================== */
 
 hunt-title {
   display: block;
@@ -59,7 +50,12 @@ hunt-title {
   margin-bottom: 12px;
 
   color: var(--hunt-title);
-  font: 400 34px/1.05 Georgia, serif;
+
+  font:
+    400
+    34px/1.05
+    Georgia,
+    serif;
 }
 
 hunt-kind {
@@ -71,36 +67,40 @@ hunt-kind {
   border-bottom: 1px solid var(--hunt-line);
 
   color: var(--hunt-soft);
-  font: 400 11px/1.2 Arial, sans-serif;
+
+  font:
+    400
+    11px/1.2
+    Arial,
+    sans-serif;
+
   letter-spacing: .28em;
   text-transform: uppercase;
 }
-
-
-/* ==================================================
-   TEXTE
-================================================== */
 
 hunt-text {
   display: block;
 
   margin-bottom: 22px;
 
-  font: 400 15px/1.65 Georgia, serif;
+  font:
+    400
+    15px/1.65
+    Georgia,
+    serif;
+
   text-align: left;
 }
 
 hunt-sep {
   display: block;
+
   height: 1px;
+
   margin: 0 0 20px;
+
   background: var(--hunt-line);
 }
-
-
-/* ==================================================
-   INFOS BASSES
-================================================== */
 
 hunt-meta {
   display: block;
@@ -108,20 +108,23 @@ hunt-meta {
 
 hunt-row {
   display: grid;
+
   grid-template-columns: 24px 1fr;
   column-gap: 12px;
 
-  margin-bottom: 14px;
-
   align-items: start;
+
+  margin-bottom: 14px;
 }
 
 hunt-icon {
   display: block;
 
   color: var(--hunt-soft);
+
   font-size: 20px;
   line-height: 1;
+
   text-align: center;
 }
 
@@ -129,17 +132,17 @@ hunt-info {
   display: block;
 
   color: var(--hunt-text);
-  font: 400 15px/1.45 Georgia, serif;
+
+  font:
+    400
+    15px/1.45
+    Georgia,
+    serif;
 }
 
 hunt-label {
   color: var(--hunt-soft);
 }
-
-
-/* ==================================================
-   VARIANTE SI OBJECTIF PLUS LONG
-================================================== */
 
 hunt-row.objectif hunt-icon {
   font-size: 22px;
@@ -151,6 +154,7 @@ hunt-row.objectif hunt-icon {
 ================================================== */
 
 @media (max-width: 760px) {
+
   hunt-board {
     display: block;
   }
