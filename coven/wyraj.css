@@ -106,14 +106,10 @@ fiche.wyraj section.wyraj-story {
 /* TITRE DU FORUM */
 
 fiche.wyraj section.wyraj-story > t1 {
-  width: calc(
-    100% - var(--wy-story-media-width) - var(--wy-story-gap)
-  );
-
-  margin-left: calc(
-    var(--wy-story-media-width) + var(--wy-story-gap)
-  );
-
+  position: relative;
+  width: calc(100% - 117px) !important;
+  margin-left: 117px !important;
+  margin-bottom: 8px !important;
   box-sizing: border-box;
 }
 
