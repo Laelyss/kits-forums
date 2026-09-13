@@ -1,58 +1,43 @@
 /* ==================================================
-    TABLEAU DE QUÊTES
+   TABLEAU DE QUÊTES
 ================================================== */
 
-hunt-board,
-hunt-board * {
+quests,
+quests * {
   box-sizing: border-box;
 }
 
-
-/* ==================================================
-   CONTENEUR — 2 PETITES CARTES
-================================================== */
-
-hunt-board {
-  --hunt-gap: 14px;
-  --hunt-radius: 14px;
-
-  --hunt-card: #121216;
-  --hunt-border: rgba(154, 131, 174, .25);
-
-  --hunt-title: #ece8e5;
-  --hunt-text: #c9c7cc;
-  --hunt-soft: #a58ab8;
-  --hunt-line: rgba(165, 138, 184, .28);
+quests {
+  --q-card: #121216;
+  --q-border: rgba(154, 131, 174, .25);
+  --q-title: #ece8e5;
+  --q-text: #c9c7cc;
+  --q-accent: #a58ab8;
+  --q-line: rgba(165, 138, 184, .28);
 
   display: grid;
   grid-template-columns: repeat(2, minmax(0, 1fr));
-  gap: var(--hunt-gap);
+  gap: 14px;
 
   width: 100%;
   max-width: 650px;
-
   margin: 22px auto;
 }
 
 
-/* ==================================================
-   CARTE
-================================================== */
+/* CARTE */
 
-hunt-card {
-  display: flex;
-  flex-direction: column;
-
+quest {
+  display: block;
   min-width: 0;
 
-  padding: 20px 20px 18px;
+  padding: 20px;
 
-  background: var(--hunt-card);
+  background: var(--q-card);
+  border: 1px solid var(--q-border);
+  border-radius: 14px;
 
-  border: 1px solid var(--hunt-border);
-  border-radius: var(--hunt-radius);
-
-  color: var(--hunt-text);
+  color: var(--q-text);
 
   font-family:
     system-ui,
@@ -64,178 +49,100 @@ hunt-card {
 }
 
 
-/* ==================================================
-   TITRE
-================================================== */
+/* TITRE */
 
-hunt-title {
+qtitle {
   display: block;
 
-  margin-bottom: 7px;
+  margin-bottom: 6px;
 
-  color: var(--hunt-title);
+  color: var(--q-title);
 
-  font-family:
-    system-ui,
-    -apple-system,
-    BlinkMacSystemFont,
-    "Segoe UI",
-    Arial,
-    sans-serif;
-
-  font-size: 22px;
+  font-size: 21px;
   font-weight: 600;
-  line-height: 1.15;
+  line-height: 1.2;
 }
 
 
-/* ==================================================
-   TYPE DE QUÊTE
-================================================== */
+/* TYPE */
 
-hunt-kind {
+qtype {
   display: block;
 
-  margin-bottom: 16px;
-  padding-bottom: 12px;
+  margin-bottom: 15px;
+  padding-bottom: 11px;
 
-  border-bottom: 1px solid var(--hunt-line);
+  border-bottom: 1px solid var(--q-line);
 
-  color: var(--hunt-soft);
+  color: var(--q-accent);
 
   font-size: 9px;
   font-weight: 600;
-  line-height: 1.2;
-
-  letter-spacing: .22em;
+  letter-spacing: .2em;
   text-transform: uppercase;
 }
 
 
-/* ==================================================
-   DESCRIPTION
-================================================== */
+/* DESCRIPTION */
 
-hunt-text {
+qtext {
   display: block;
 
-  margin-bottom: 17px;
+  margin-bottom: 15px;
+  padding-bottom: 15px;
 
-  color: var(--hunt-text);
+  border-bottom: 1px solid var(--q-line);
 
-  font-size: 12.5px;
-  font-weight: 400;
+  font-size: 12px;
   line-height: 1.55;
-
-  text-align: left;
 }
 
 
-/* ==================================================
-   SÉPARATION
-================================================== */
+/* INFORMATIONS */
 
-hunt-sep {
-  display: block;
-
-  width: 100%;
-  height: 1px;
-
-  margin: auto 0 16px;
-
-  background: var(--hunt-line);
-}
-
-
-/* ==================================================
-   INFORMATIONS
-================================================== */
-
-hunt-meta {
-  display: block;
-}
-
-hunt-row {
+qinfo {
   display: grid;
+  grid-template-columns: 82px minmax(0, 1fr);
+  gap: 8px;
 
-  grid-template-columns: 18px minmax(0, 1fr);
-  column-gap: 9px;
-
-  align-items: start;
-
-  margin-bottom: 10px;
-}
-
-hunt-row:last-child {
-  margin-bottom: 0;
-}
-
-
-/* ==================================================
-   ICÔNES
-================================================== */
-
-hunt-icon {
-  display: block;
-
-  color: var(--hunt-soft);
-
-  font-size: 15px;
-  line-height: 1.3;
-
-  text-align: center;
-}
-
-
-/* ==================================================
-   TEXTE DES INFOS
-================================================== */
-
-hunt-info {
-  display: block;
-
-  min-width: 0;
-
-  color: var(--hunt-text);
+  margin-bottom: 9px;
 
   font-size: 11.5px;
-  font-weight: 400;
   line-height: 1.45;
 }
 
-hunt-label {
-  color: var(--hunt-soft);
+qinfo:last-child {
+  margin-bottom: 0;
+}
+
+qinfo::before {
+  color: var(--q-accent);
   font-weight: 600;
 }
 
-
-/* ==================================================
-   OBJECTIF
-================================================== */
-
-hunt-row.objectif {
-  margin-top: 2px;
+quest qinfo:nth-of-type(1)::before {
+  content: "⌖  Lieu :";
 }
 
-hunt-row.objectif hunt-icon {
-  font-size: 16px;
+quest qinfo:nth-of-type(2)::before {
+  content: "⚠  Danger :";
+}
+
+quest qinfo:nth-of-type(3)::before {
+  content: "◉  Connu :";
+}
+
+quest qinfo:nth-of-type(4)::before {
+  content: "★  Objectif :";
 }
 
 
-/* ==================================================
-   MOBILE
-================================================== */
+/* MOBILE */
 
 @media (max-width: 580px) {
 
-  hunt-board {
+  quests {
     grid-template-columns: 1fr;
-
-    width: 94%;
     max-width: 330px;
-  }
-
-  hunt-card {
-    width: 100%;
   }
 }
