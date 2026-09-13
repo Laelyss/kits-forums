@@ -1,0 +1,512 @@
+/* ==================================================
+   WYRAJ — rubans (version à jour)
+   Repères chiffrés en marge, image en ruban duotone,
+   typo condensée du forum (--font2 / --font3).
+   Couleurs et image d'origine conservées.
+================================================== */
+
+fiche.wyraj {
+  container-type: inline-size;
+  container-name: wyraj;
+
+  --wyraj-rust: #632228;
+  --wyraj-red: #2d1119;
+  --wyraj-lightred: #715454;
+  --wyraj-charcoal: #29282a;
+
+  --accent0: rgb(18, 16, 20) !important;
+  --accent1: var(--wyraj-red) !important;
+  --accent2: var(--wyraj-lightred) !important;
+  --accent3: var(--wyraj-rust) !important;
+  --accent4: var(--wyraj-rust) !important;
+  --accent5: var(--wyraj-charcoal) !important;
+
+  --wy-rail: 26px;      /* marge des repères I, II, III… */
+  --wy-strip: 78px;     /* largeur du ruban image */
+  --wy-gap: 20px;
+  --wy-ink: #c4bdbf;
+  --wy-mute: #96908f;
+  --wy-dim: #6b6567;
+  --wy-line: #322c2f;
+  --wy-cream: #d8d1d3;
+  --wy-rose: #aa737b;
+}
+
+fiche.wyraj *,
+fiche.wyraj *::before,
+fiche.wyraj *::after { box-sizing: border-box; }
+
+fiche.wyraj m1 { color: var(--accent3) !important; }
+fiche.wyraj m2 { color: var(--accent2) !important; }
+fiche.wyraj u3, fiche.wyraj u4 { text-shadow: var(--text-shadow); }
+fiche.wyraj [hidden] { display: none !important; }
+
+fiche.wyraj input[type="radio"] {
+  position: absolute !important; opacity: 0 !important;
+  pointer-events: none !important;
+  width: 0 !important; height: 0 !important; margin: 0 !important;
+}
+
+fiche.wyraj section + div,
+fiche.wyraj section + section,
+fiche.wyraj div + section { margin-top: 14px; }
+
+fiche.wyraj section { text-align: left; overflow-wrap: break-word; }
+
+fiche.wyraj label.wv-main-tab,
+fiche.wyraj label.wv-voice-tab {
+  border: 0; background: transparent; cursor: pointer; display: inline-block;
+}
+
+fiche.wyraj section.wyraj-story,
+fiche.wyraj section.wyraj-chrono {
+  scrollbar-width: thin;
+  scrollbar-color: rgba(99,34,40,.5) transparent;
+}
+fiche.wyraj section.wyraj-story::-webkit-scrollbar,
+fiche.wyraj section.wyraj-chrono::-webkit-scrollbar { width: 3px; }
+fiche.wyraj section.wyraj-story::-webkit-scrollbar-thumb,
+fiche.wyraj section.wyraj-chrono::-webkit-scrollbar-thumb { background: rgba(99,34,40,.5); }
+
+/* ---------- Repères en marge ---------- */
+
+fiche.wyraj .wy-story,
+fiche.wyraj .wy-chrono,
+fiche.wyraj .wy-info,
+fiche.wyraj .wv-org,
+fiche.wyraj .wy-prohod { position: relative; }
+
+fiche.wyraj .wy-story::before,
+fiche.wyraj .wy-chrono::before,
+fiche.wyraj .wy-info::before,
+fiche.wyraj .wv-org::before,
+fiche.wyraj .wy-prohod::before {
+  position: absolute;
+  top: 22px; left: 4px;
+  color: var(--wy-rose);
+  font-family: var(--font3), sans-serif;
+  font-size: 9px; font-weight: 600;
+  letter-spacing: .24em;
+  writing-mode: vertical-rl;
+  opacity: .75;
+}
+fiche.wyraj .wy-story::before { content: "I"; }
+fiche.wyraj .wy-chrono::before { content: "II"; }
+fiche.wyraj .wy-info::before { content: "III"; }
+fiche.wyraj .wv-org::before { content: "IV"; }
+fiche.wyraj .wy-prohod::before { content: "V"; }
+
+fiche.wyraj .wy-info::after,
+fiche.wyraj .wv-org::after,
+fiche.wyraj .wy-prohod::after {
+  content: "";
+  position: absolute;
+  top: 46px; bottom: 16px; left: 8px;
+  width: 1px;
+  background: linear-gradient(180deg, rgba(99,34,40,.6), transparent);
+}
+
+/* ---------- Ruban image ---------- */
+
+fiche.wyraj .wy-media {
+  position: relative;
+  display: block; width: 100%; height: 118px;
+  margin: 0 0 22px;
+  overflow: hidden;
+  background: #0d0d0d;
+}
+fiche.wyraj .wy-media::after {
+  content: "";
+  position: absolute; inset: 0;
+  background: linear-gradient(170deg, rgba(45,17,25,.55), rgba(99,34,40,.45));
+  mix-blend-mode: multiply;
+  pointer-events: none;
+}
+fiche.wyraj .wy-media img {
+  display: block;
+  width: 100% !important; height: 100% !important; max-width: none !important;
+  object-fit: cover !important;
+  object-position: center 40%;
+  filter: grayscale(.55) contrast(1.06) brightness(.92);
+  opacity: .95;
+}
+
+/* ---------- Histoire ---------- */
+
+fiche.wyraj section.wyraj-story,
+fiche.wyraj section.wyraj-chrono {
+  max-height: 470px;
+  overflow-x: hidden; overflow-y: auto;
+  padding: 10px 12px 10px 10px;
+}
+
+fiche.wyraj .wy-story,
+fiche.wyraj .wy-chrono {
+  display: flex; flex-direction: column;
+  padding: 20px 4px 6px var(--wy-rail);
+}
+fiche.wyraj .wy-chrono .wy-media { order: -1; }
+fiche.wyraj .wy-col, fiche.wyraj .wy-tl { min-width: 0; }
+
+fiche.wyraj .wy-quote {
+  display: block; width: 100%;
+  margin: 0 0 26px; padding: 14px 0 0;
+  border-top: 1px solid var(--wy-line);
+  color: var(--wy-mute);
+  font-family: var(--font3), sans-serif;
+  font-size: 10.5px; letter-spacing: .07em; line-height: 1.9;
+  text-align: left; text-transform: uppercase;
+}
+fiche.wyraj .wy-source {
+  display: block; margin-top: 10px;
+  color: var(--wy-rose);
+  font-size: 9px; font-weight: 600; letter-spacing: .3em;
+}
+
+fiche.wyraj .wy-story-text p {
+  margin: 0 0 15px; color: var(--wy-ink);
+  font-size: 13px; line-height: 1.85; text-align: left;
+}
+fiche.wyraj .wy-drop::first-letter {
+  float: left; padding: .06em .14em 0 0;
+  color: var(--wy-rose);
+  font-family: var(--font2), serif;
+  font-size: 3em; font-weight: 400; line-height: .78;
+}
+fiche.wyraj .wy-aside {
+  margin: 4px 0 24px !important; color: var(--wy-dim);
+  font-family: var(--font3), sans-serif;
+  font-size: 11px !important; letter-spacing: .12em;
+  text-align: right !important; text-transform: uppercase;
+}
+fiche.wyraj .wy-center {
+  margin: 26px 0 !important; padding: 20px 14px;
+  border-left: 1px solid rgba(99,34,40,.55);
+  background: linear-gradient(90deg, rgba(45,17,25,.4), transparent 70%);
+  text-align: left !important;
+  font-size: 13px !important; line-height: 1.85 !important;
+}
+
+/* ---------- Chronologie ---------- */
+
+fiche.wyraj .wy-tl { counter-reset: wytl; }
+
+fiche.wyraj .wy-tl-item {
+  position: relative;
+  margin: 0 0 4px;
+  padding: 16px 0 16px 42px;
+  border: 0; border-top: 1px solid var(--wy-line);
+}
+fiche.wyraj .wy-tl-item:first-child { border-top: 0; padding-top: 0; }
+fiche.wyraj .wy-tl-item::before {
+  counter-increment: wytl;
+  content: counter(wytl, decimal-leading-zero);
+  position: absolute; left: 0; top: 17px;
+  color: rgba(170,115,123,.55);
+  font-family: var(--font3), sans-serif;
+  font-size: 10px; font-weight: 600; letter-spacing: .16em;
+}
+fiche.wyraj .wy-tl-item:first-child::before { top: 1px; }
+fiche.wyraj .wy-tl-mark { display: none; }
+
+fiche.wyraj .wy-tl-head {
+  margin-bottom: 7px; color: var(--wy-cream);
+  font-family: var(--font3), sans-serif;
+  font-size: 11.5px; font-weight: 600; letter-spacing: .2em;
+  line-height: 1.4; text-transform: uppercase;
+}
+fiche.wyraj .wy-tl-item p {
+  margin: 0; color: var(--wy-mute); font-size: 12.5px; line-height: 1.75;
+}
+
+/* ---------- Typo commune ---------- */
+
+fiche.wyraj .wv-kicker {
+  margin-bottom: 9px; color: var(--wy-rose);
+  font-family: var(--font3), sans-serif;
+  font-size: 9px; font-weight: 600;
+  letter-spacing: .3em; text-transform: uppercase;
+}
+
+fiche.wyraj .wv-heading {
+  margin: 0 0 12px; color: var(--wy-cream);
+  font-family: var(--font2), serif;
+  font-size: 22px; font-weight: 400;
+  letter-spacing: 1px; line-height: 1.2;
+  text-transform: lowercase;
+  text-shadow: var(--text-shadow2);
+}
+
+fiche.wyraj .wv-lead {
+  max-width: none; margin: 0 0 18px;
+  color: #938d8f; font-size: 12.5px; line-height: 1.8;
+}
+
+/* ---------- Informations ---------- */
+
+fiche.wyraj .wy-info { padding: 24px 6px 12px var(--wy-rail); }
+
+fiche.wyraj .wy-info-grid {
+  display: grid; grid-template-columns: repeat(auto-fit, minmax(175px, 1fr));
+  gap: 22px 26px; padding: 0 0 24px;
+  border-bottom: 1px solid var(--wy-line);
+}
+fiche.wyraj .wy-info-fact { padding-top: 12px; border-top: 1px solid rgba(99,34,40,.5); }
+fiche.wyraj .wy-info-fact p {
+  margin: 7px 0 0; color: var(--wy-ink); font-size: 12.5px; line-height: 1.7;
+}
+
+fiche.wyraj .wy-info-row {
+  display: grid; grid-template-columns: minmax(0, 1fr);
+  gap: 10px; padding: 22px 0;
+  border-bottom: 1px solid var(--wy-line);
+}
+fiche.wyraj .wy-info-label {
+  color: var(--wy-cream);
+  font-family: var(--font2), serif;
+  font-size: 18px; font-weight: 400; letter-spacing: 1px;
+  line-height: 1.25; text-transform: lowercase;
+  text-shadow: var(--text-shadow2);
+}
+fiche.wyraj .wy-info-label span {
+  display: block; margin-top: 7px; color: var(--wy-rose);
+  font-family: var(--font3), sans-serif;
+  font-size: 9px; font-weight: 600;
+  letter-spacing: .3em; text-transform: uppercase;
+}
+fiche.wyraj .wy-info-row p {
+  margin: 0; color: var(--wy-mute); font-size: 12.5px; line-height: 1.8;
+}
+
+/* ---------- Onglets ---------- */
+
+fiche.wyraj .wv-main-tabs {
+  display: flex; flex-wrap: wrap; gap: 2px 26px;
+  margin: 0; border-bottom: 1px solid var(--wy-line);
+}
+fiche.wyraj label.wv-main-tab {
+  position: relative;
+  min-height: 34px; line-height: 34px; padding: 0 1px 9px;
+  color: #676163;
+  font-family: var(--font3), sans-serif;
+  font-size: 10px; font-weight: 600;
+  letter-spacing: .26em; text-transform: uppercase;
+  transition: color .3s;
+}
+fiche.wyraj label.wv-main-tab:hover { color: #a8a1a4; }
+
+fiche.wyraj .wy-rel label[for="wy-rel-wallace"],
+fiche.wyraj .wv-org label[for="wy-org-kolo"] { color: var(--wy-cream); }
+fiche.wyraj .wy-rel label[for="wy-rel-wallace"]::after,
+fiche.wyraj .wv-org label[for="wy-org-kolo"]::after {
+  content: ""; position: absolute; right: 0; bottom: -1px; left: 0;
+  height: 1px; background: var(--wy-rose);
+}
+fiche.wyraj .wy-rel:has(#wy-rel-zelote:checked) label[for="wy-rel-wallace"],
+fiche.wyraj .wy-rel:has(#wy-rel-vampires:checked) label[for="wy-rel-wallace"],
+fiche.wyraj .wv-org:has(#wy-org-membres:checked) label[for="wy-org-kolo"],
+fiche.wyraj .wv-org:has(#wy-org-termes:checked) label[for="wy-org-kolo"] { color: #676163; }
+fiche.wyraj .wy-rel:has(#wy-rel-zelote:checked) label[for="wy-rel-wallace"]::after,
+fiche.wyraj .wy-rel:has(#wy-rel-vampires:checked) label[for="wy-rel-wallace"]::after,
+fiche.wyraj .wv-org:has(#wy-org-membres:checked) label[for="wy-org-kolo"]::after,
+fiche.wyraj .wv-org:has(#wy-org-termes:checked) label[for="wy-org-kolo"]::after { content: none; }
+fiche.wyraj .wy-rel:has(#wy-rel-zelote:checked) label[for="wy-rel-zelote"],
+fiche.wyraj .wy-rel:has(#wy-rel-vampires:checked) label[for="wy-rel-vampires"],
+fiche.wyraj .wv-org:has(#wy-org-membres:checked) label[for="wy-org-membres"],
+fiche.wyraj .wv-org:has(#wy-org-termes:checked) label[for="wy-org-termes"] { color: var(--wy-cream); }
+fiche.wyraj .wy-rel:has(#wy-rel-zelote:checked) label[for="wy-rel-zelote"]::after,
+fiche.wyraj .wy-rel:has(#wy-rel-vampires:checked) label[for="wy-rel-vampires"]::after,
+fiche.wyraj .wv-org:has(#wy-org-membres:checked) label[for="wy-org-membres"]::after,
+fiche.wyraj .wv-org:has(#wy-org-termes:checked) label[for="wy-org-termes"]::after {
+  content: ""; position: absolute; right: 0; bottom: -1px; left: 0;
+  height: 1px; background: var(--wy-rose);
+}
+
+fiche.wyraj .wy-rel { position: relative; margin-top: 20px; }
+fiche.wyraj .wy-rel-panel { display: none; padding: 22px 0 6px; }
+fiche.wyraj .wy-rel .panel-wallace { display: block; }
+fiche.wyraj .wy-rel:has(#wy-rel-zelote:checked) .panel-wallace,
+fiche.wyraj .wy-rel:has(#wy-rel-vampires:checked) .panel-wallace { display: none; }
+fiche.wyraj .wy-rel:has(#wy-rel-zelote:checked) .panel-zelote,
+fiche.wyraj .wy-rel:has(#wy-rel-vampires:checked) .panel-vampires { display: block; }
+fiche.wyraj .wy-rel-panel .wv-heading { margin-bottom: 8px; }
+fiche.wyraj .wy-rel-panel p {
+  max-width: none; margin: 13px 0 0;
+  color: var(--wy-mute); font-size: 12.5px; line-height: 1.8;
+}
+
+fiche.wyraj .wv-main-panel { display: none; margin: 0; padding-top: 22px; }
+fiche.wyraj .wv-org .panel-kolo { display: block; }
+fiche.wyraj .wv-org:has(#wy-org-membres:checked) .panel-kolo,
+fiche.wyraj .wv-org:has(#wy-org-termes:checked) .panel-kolo { display: none; }
+fiche.wyraj .wv-org:has(#wy-org-membres:checked) .panel-membres,
+fiche.wyraj .wv-org:has(#wy-org-termes:checked) .panel-termes { display: block; }
+
+/* ---------- Organisation ---------- */
+
+fiche.wyraj .wv-org { width: 100%; margin: 0; padding: 24px 6px 14px var(--wy-rail); }
+fiche.wyraj .wv-intro { margin: 0 0 22px; }
+fiche.wyraj .wv-intro p { margin: 0 0 12px; color: #a09a9c; font-size: 12.5px; line-height: 1.85; }
+fiche.wyraj .wv-intro p:last-child { margin-bottom: 0; color: #7a7476; font-size: 12px; }
+
+fiche.wyraj .wv-single-stage {
+  display: grid; grid-template-columns: minmax(0, 1fr);
+  gap: 16px; padding: 6px 0 4px;
+}
+
+fiche.wyraj .wv-voice-tabs {
+  display: flex; flex-direction: row; flex-wrap: wrap;
+  gap: 4px 18px; padding-top: 4px;
+}
+fiche.wyraj label.wv-voice-tab {
+  position: relative;
+  padding: 6px 0 6px 14px;
+  color: #625c5e;
+  font-family: var(--font3), sans-serif;
+  font-size: 11px; font-weight: 600;
+  letter-spacing: .24em; text-transform: uppercase;
+  transition: color .3s;
+}
+fiche.wyraj label.wv-voice-tab::before {
+  content: ""; position: absolute; left: 0; top: 50%;
+  width: 7px; height: 1px; margin-top: -1px;
+  background: #3f393b; transition: background .3s, width .3s;
+}
+fiche.wyraj label.wv-voice-tab:hover { color: #a8a1a4; }
+
+fiche.wyraj .wv-voices label[for="wy-voice-jarilo"] { color: var(--wy-cream); }
+fiche.wyraj .wv-voices label[for="wy-voice-jarilo"]::before { background: var(--wy-rose); width: 10px; }
+fiche.wyraj .wv-voices:has(#wy-voice-kupala:checked) label[for="wy-voice-jarilo"],
+fiche.wyraj .wv-voices:has(#wy-voice-mokosh:checked) label[for="wy-voice-jarilo"],
+fiche.wyraj .wv-voices:has(#wy-voice-marzanna:checked) label[for="wy-voice-jarilo"] { color: #625c5e; }
+fiche.wyraj .wv-voices:has(#wy-voice-kupala:checked) label[for="wy-voice-jarilo"]::before,
+fiche.wyraj .wv-voices:has(#wy-voice-mokosh:checked) label[for="wy-voice-jarilo"]::before,
+fiche.wyraj .wv-voices:has(#wy-voice-marzanna:checked) label[for="wy-voice-jarilo"]::before { background: #3f393b; width: 7px; }
+fiche.wyraj .wv-voices:has(#wy-voice-kupala:checked) label[for="wy-voice-kupala"],
+fiche.wyraj .wv-voices:has(#wy-voice-mokosh:checked) label[for="wy-voice-mokosh"],
+fiche.wyraj .wv-voices:has(#wy-voice-marzanna:checked) label[for="wy-voice-marzanna"] { color: var(--wy-cream); }
+fiche.wyraj .wv-voices:has(#wy-voice-kupala:checked) label[for="wy-voice-kupala"]::before,
+fiche.wyraj .wv-voices:has(#wy-voice-mokosh:checked) label[for="wy-voice-mokosh"]::before,
+fiche.wyraj .wv-voices:has(#wy-voice-marzanna:checked) label[for="wy-voice-marzanna"]::before { background: var(--wy-rose); width: 10px; }
+
+fiche.wyraj .wv-voice-panels { min-width: 0; }
+fiche.wyraj .wv-voice-panel {
+  display: none; position: relative;
+  padding: 20px 30px 8px 16px;
+  border-left: 1px solid rgba(99,34,40,.5);
+  background: linear-gradient(90deg, rgba(45,17,25,.35), transparent 65%);
+}
+fiche.wyraj .wv-voices .panel-jarilo { display: block; }
+fiche.wyraj .wv-voices:has(#wy-voice-kupala:checked) .panel-jarilo,
+fiche.wyraj .wv-voices:has(#wy-voice-mokosh:checked) .panel-jarilo,
+fiche.wyraj .wv-voices:has(#wy-voice-marzanna:checked) .panel-jarilo { display: none; }
+fiche.wyraj .wv-voices:has(#wy-voice-kupala:checked) .panel-kupala,
+fiche.wyraj .wv-voices:has(#wy-voice-mokosh:checked) .panel-mokosh,
+fiche.wyraj .wv-voices:has(#wy-voice-marzanna:checked) .panel-marzanna { display: block; }
+
+/* la saison : petite étiquette verticale, plus de typo géante */
+fiche.wyraj .wv-voice-season {
+  position: absolute; top: 20px; right: 6px;
+  color: rgba(170,115,123,.5);
+  font-family: var(--font3), sans-serif;
+  font-size: 9px; font-weight: 600;
+  letter-spacing: .34em; text-transform: uppercase;
+  writing-mode: vertical-rl;
+  white-space: nowrap; pointer-events: none;
+}
+fiche.wyraj .wv-voice-name {
+  margin: 0 0 14px; color: var(--wy-cream);
+  font-family: var(--font2), serif;
+  font-size: 26px; font-weight: 400; letter-spacing: 1px;
+  line-height: 1; text-transform: lowercase;
+  text-shadow: var(--text-shadow2);
+}
+fiche.wyraj .wv-voice-panel p {
+  margin: 0; color: #9d9799; font-size: 12.5px; line-height: 1.85;
+}
+
+fiche.wyraj .wv-simple-list { border-top: 1px solid var(--wy-line); }
+fiche.wyraj .wv-simple-entry {
+  display: grid; grid-template-columns: minmax(0, 1fr);
+  gap: 8px; padding: 18px 0;
+  border-bottom: 1px solid var(--wy-line);
+}
+fiche.wyraj .wv-simple-name {
+  color: var(--wy-cream);
+  font-family: var(--font3), sans-serif;
+  font-size: 11px; font-weight: 600;
+  letter-spacing: .24em; text-transform: uppercase;
+}
+fiche.wyraj .wv-simple-entry p {
+  margin: 0; color: var(--wy-mute); font-size: 12.5px; line-height: 1.8;
+}
+
+/* ---------- Prohod ---------- */
+
+fiche.wyraj .wy-prohod { padding: 24px 6px 14px var(--wy-rail); }
+fiche.wyraj .prohod-stage { overflow: hidden; }
+fiche.wyraj .wy-media.prohod-media {
+  float: none; width: 100%; height: 130px; margin: 0 0 24px;
+}
+fiche.wyraj .prohod-copy { color: #b6b1b1; font-size: 13px; line-height: 1.85; }
+fiche.wyraj .prohod-copy p { margin: 0 0 16px; }
+
+fiche.wyraj .prohod-oath {
+  clear: both; margin: 8px 0 0; padding: 22px 0 4px;
+  border-top: 1px solid rgba(99,34,40,.5);
+}
+fiche.wyraj .prohod-oath .wv-kicker { margin-bottom: 18px; }
+fiche.wyraj .prohod-oath-line {
+  margin-bottom: 18px; padding-left: 14px;
+  border-left: 1px solid var(--wy-line);
+}
+fiche.wyraj .prohod-polish {
+  margin-bottom: 7px; color: var(--wy-cream);
+  font-size: 12.5px; font-style: italic; line-height: 1.65;
+}
+fiche.wyraj .prohod-translation {
+  color: #857f81; font-family: var(--font3), sans-serif;
+  font-size: 10.5px; letter-spacing: .06em; line-height: 1.7;
+}
+
+/* ==================================================
+   Fiche assez large : le ruban passe à la verticale
+================================================== */
+
+@container wyraj (min-width: 430px) {
+  fiche.wyraj section.wyraj-story > t1 {
+    margin-left: calc(var(--wy-rail) + var(--wy-strip) + var(--wy-gap)) !important;
+  }
+  fiche.wyraj section.wyraj-chrono > t1 {
+    margin-right: calc(var(--wy-strip) + var(--wy-gap)) !important;
+  }
+
+  fiche.wyraj .wy-story, fiche.wyraj .wy-chrono {
+    flex-direction: row; align-items: flex-start;
+    gap: var(--wy-gap); padding-top: 0;
+  }
+  fiche.wyraj .wy-chrono .wy-media { order: 2; }
+
+  fiche.wyraj .wy-story > .wy-media,
+  fiche.wyraj .wy-chrono > .wy-media {
+    position: sticky; top: 0;
+    flex: 0 0 var(--wy-strip); width: var(--wy-strip);
+    height: 430px; margin: -27px 0 0;
+    -webkit-mask-image: linear-gradient(180deg, #000 72%, transparent);
+            mask-image: linear-gradient(180deg, #000 72%, transparent);
+  }
+  fiche.wyraj .wy-col, fiche.wyraj .wy-tl { flex: 1 1 auto; padding-top: 22px; }
+
+  fiche.wyraj .wy-info-row,
+  fiche.wyraj .wv-simple-entry { grid-template-columns: 140px minmax(0,1fr); gap: 24px; }
+
+  fiche.wyraj .wv-single-stage { grid-template-columns: 112px minmax(0,1fr); gap: 22px; }
+  fiche.wyraj .wv-voice-tabs { flex-direction: column; gap: 6px; padding-top: 22px; }
+  fiche.wyraj .wv-voice-panel { min-height: 240px; }
+}
+
+@container wyraj (max-width: 429px) {
+  fiche.wyraj .wy-info::after,
+  fiche.wyraj .wv-org::after,
+  fiche.wyraj .wy-prohod::after { display: none; }
+}
