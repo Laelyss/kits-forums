@@ -5,20 +5,17 @@ WYRAJ — rubans (version test avant de mettre sur le vrai wyraj.css)
 .wyraj {
   container-type: inline-size;
   container-name: wyraj;
-
   --wyraj-rust: #632228;
   --wyraj-red: #2d1119;
   --wyraj-lightred: #715454;
   --wyraj-charcoal: #29282a;
-
   --accent0: rgb(18, 16, 20) !important;
   --accent1: var(--wyraj-red) !important;
   --accent2: var(--wyraj-lightred) !important;
   --accent3: var(--wyraj-rust) !important;
   --accent4: var(--wyraj-rust) !important;
   --accent5: var(--wyraj-charcoal) !important;
-
-  --wy-strip: 78px;     /* largeur du ruban image */
+  --wy-strip: 78px;
   --wy-gap: 20px;
   --wy-mute: #96908f;
   --wy-dim: #6b6567;
@@ -29,21 +26,11 @@ WYRAJ — rubans (version test avant de mettre sur le vrai wyraj.css)
 
 .wyraj *,
 .wyraj *::before,
-.wyraj *::after {
-  box-sizing: border-box;
-}
-.wyraj m1 {
-  color: var(--accent3) !important;
-}
-.wyraj m2 {
-  color: var(--accent2) !important;
-}
-.wyraj u3, .wyraj u4 {
-  text-shadow: var(--text-shadow);
-}
-.wyraj [hidden] {
-  display: none !important;
-}
+.wyraj *::after { box-sizing: border-box; }
+.wyraj m1 { color: var(--accent3) !important; }
+.wyraj m2 { color: var(--accent2) !important; }
+.wyraj u3, .wyraj u4 { text-shadow: var(--text-shadow); }
+.wyraj [hidden] { display: none !important; }
 .wyraj input[type="radio"] {
   position: absolute !important;
   opacity: 0 !important;
@@ -52,21 +39,10 @@ WYRAJ — rubans (version test avant de mettre sur le vrai wyraj.css)
   height: 0 !important;
   margin: 0 !important;
 }
-
 .wyraj > section + section,
-.wyraj .wy-alert + section {
-  margin-top: 14px;
-}
-.wyraj section {
-  text-align: left;
-  overflow-wrap: break-word;
-}
-
-.wyraj .wy-alert {
-  margin-top: 5px;
-  text-align: center;
-}
-
+.wyraj .wy-alert + section { margin-top: 14px; }
+.wyraj section { text-align: left; overflow-wrap: break-word; }
+.wyraj .wy-alert { margin-top: 5px; text-align: center; }
 .wyraj label.wv-main-tab,
 .wyraj label.wv-voice-tab {
   display: inline-block;
@@ -74,22 +50,15 @@ WYRAJ — rubans (version test avant de mettre sur le vrai wyraj.css)
   background: transparent;
   cursor: pointer;
 }
-
 .wyraj section.wyraj-story,
 .wyraj section.wyraj-chrono {
   scrollbar-width: thin;
   scrollbar-color: rgba(99,34,40,.5) transparent;
 }
-
 .wyraj section.wyraj-story::-webkit-scrollbar,
-.wyraj section.wyraj-chrono::-webkit-scrollbar {
-  width: 3px;
-}
+.wyraj section.wyraj-chrono::-webkit-scrollbar { width: 3px; }
 .wyraj section.wyraj-story::-webkit-scrollbar-thumb,
-.wyraj section.wyraj-chrono::-webkit-scrollbar-thumb {
-  background: rgba(99,34,40,.5);
-}
-/* ---------- Ruban image ---------- */
+.wyraj section.wyraj-chrono::-webkit-scrollbar-thumb { background: rgba(99,34,40,.5); }
 
 .wyraj .wy-media {
   position: relative;
@@ -100,7 +69,6 @@ WYRAJ — rubans (version test avant de mettre sur le vrai wyraj.css)
   overflow: hidden;
   background: #0d0d0d;
 }
-
 .wyraj .wy-media::after {
   content: "";
   position: absolute;
@@ -109,7 +77,6 @@ WYRAJ — rubans (version test avant de mettre sur le vrai wyraj.css)
   mix-blend-mode: multiply;
   pointer-events: none;
 }
-
 .wyraj .wy-media img {
   display: block;
   width: 100% !important;
@@ -121,8 +88,6 @@ WYRAJ — rubans (version test avant de mettre sur le vrai wyraj.css)
   opacity: .95;
 }
 
-/* ---------- SECTION 1 Histoire ---------- */
-
 .wyraj section.wyraj-story,
 .wyraj section.wyraj-chrono {
   max-height: 470px;
@@ -130,20 +95,15 @@ WYRAJ — rubans (version test avant de mettre sur le vrai wyraj.css)
   overflow-y: auto;
   padding: 10px 12px 10px 10px;
 }
-
 .wyraj .wy-story,
 .wyraj .wy-chrono {
   display: flex;
   flex-direction: column;
   padding: 20px 4px 6px;
 }
+.wyraj .wy-copy { min-width: 0; }
+.wyraj .wy-chrono .wy-media { order: -1; }
 
-.wyraj .wy-copy {
-  min-width: 0;
-}
-.wyraj .wy-chrono .wy-media {
-  order: -1;
-}
 .wyraj wy-quote {
   position: relative;
   display: block;
@@ -159,7 +119,6 @@ WYRAJ — rubans (version test avant de mettre sur le vrai wyraj.css)
   text-align: justify;
   text-transform: none;
 }
-
 .wyraj wy-quote::before {
   content: "\201C";
   position: absolute;
@@ -171,7 +130,6 @@ WYRAJ — rubans (version test avant de mettre sur le vrai wyraj.css)
   font-style: normal;
   line-height: 1;
 }
-
 .wyraj wy-source {
   display: block;
   margin-top: 8px;
@@ -184,19 +142,8 @@ WYRAJ — rubans (version test avant de mettre sur le vrai wyraj.css)
   text-align: left;
   text-transform: uppercase;
 }
-
-.wyraj wy-source::before {
-  content: "— ";
-  letter-spacing: .05em;
-}
-
-.wyraj wy-text {
-  display: block;
-  font-size: 13px;
-  line-height: 1.7;
-  text-align: justify;
-}
-
+.wyraj wy-source::before { content: "— "; letter-spacing: .05em; }
+.wyraj wy-text { display: block; font-size: 13px; line-height: 1.7; text-align: justify; }
 .wyraj .wy-drop::first-letter {
   float: left;
   padding: .06em .14em 0 0;
@@ -206,7 +153,6 @@ WYRAJ — rubans (version test avant de mettre sur le vrai wyraj.css)
   font-weight: 400;
   line-height: .78;
 }
-
 .wyraj wy-aside {
   display: block;
   color: var(--wy-dim);
@@ -216,12 +162,7 @@ WYRAJ — rubans (version test avant de mettre sur le vrai wyraj.css)
   text-align: right;
   text-transform: uppercase;
 }
-
-.wyraj wy-center i1 {
-  display: block;
-}
-
-/* ---------- SECTION 2 Chronologie ---------- */
+.wyraj wy-center i1 { display: block; }
 
 .wyraj wy-events {
   position: relative;
@@ -231,7 +172,6 @@ WYRAJ — rubans (version test avant de mettre sur le vrai wyraj.css)
   margin: 0 auto;
   padding-left: 48px;
 }
-
 .wyraj wy-events::before {
   content: "";
   position: absolute;
@@ -241,19 +181,14 @@ WYRAJ — rubans (version test avant de mettre sur le vrai wyraj.css)
   width: 1px;
   background: rgba(170,115,123,.35);
 }
-
 .wyraj wy-event {
   position: relative;
   display: block;
-    padding: 0;
-    color: var(--wy-mute);
-    font-size: 13px;
+  padding: 0;
+  color: var(--wy-mute);
+  font-size: 13px;
 }
-
-.wyraj wy-event:last-of-type {
-  margin-bottom: 0;
-}
-
+.wyraj wy-event:last-of-type { margin-bottom: 0; }
 .wyraj wy-event::before {
   content: "";
   position: absolute;
@@ -264,7 +199,6 @@ WYRAJ — rubans (version test avant de mettre sur le vrai wyraj.css)
   border-radius: 50%;
   background: var(--wy-rose);
 }
-
 .wyraj wy-year {
   display: block;
   margin: 0;
@@ -276,7 +210,6 @@ WYRAJ — rubans (version test avant de mettre sur le vrai wyraj.css)
   line-height: 1.4;
   text-transform: uppercase;
 }
-
 .wyraj wy-title {
   display: block;
   margin: 2px 0 5px;
@@ -286,68 +219,47 @@ WYRAJ — rubans (version test avant de mettre sur le vrai wyraj.css)
   letter-spacing: .02em;
   line-height: 1.2;
 }
-
-.wyraj wy-note {
-  display: block;
-  max-width: 370px;
-  text-align: justify;
-}
-
-.wyraj wy-year + wy-note {
-  margin-top: 7px;
-}
-
-/* ---------- Typo commune ---------- */
+.wyraj wy-note { display: block; max-width: 370px; text-align: justify; }
+.wyraj wy-year + wy-note { margin-top: 7px; }
 
 .wyraj .wv-kicker {
   margin-bottom: 9px;
   color: var(--wy-rose);
-
   font-family: var(--font3), sans-serif;
   font-size: 9px;
   font-weight: 600;
-
   letter-spacing: .3em;
   text-transform: uppercase;
-
 }
-
 .wyraj .wv-heading {
   margin: 0 0 12px;
   color: var(--wy-cream);
-
   font-family: var(--font2), serif;
   font-size: 22px;
   font-weight: 400;
-
   letter-spacing: 1px;
   line-height: 1.2;
-
   text-transform: lowercase;
   text-shadow: var(--text-shadow2);
 }
-
 .wyraj .wv-lead {
   max-width: none;
   margin: 0 0 18px;
-
   color: #938d8f;
   font-size: 12.5px;
   line-height: 1.8;
-
 }
 
 /* ---------- SECTION 3 Informations ---------- */
-
-fiche.wyraj .wyraj-information infos,
-fiche.wyraj .wyraj-information faits,
-fiche.wyraj .wyraj-information fait,
-fiche.wyraj .wyraj-information titre,
-fiche.wyraj .wyraj-information bloc,
-fiche.wyraj .wyraj-information shop,
-fiche.wyraj .wyraj-information relation,
-fiche.wyraj .wyraj-information onglets,
-fiche.wyraj .wyraj-information texte {
+.wyraj .wyraj-information infos,
+.wyraj .wyraj-information faits,
+.wyraj .wyraj-information fait,
+.wyraj .wyraj-information titre,
+.wyraj .wyraj-information bloc,
+.wyraj .wyraj-information shop,
+.wyraj .wyraj-information relation,
+.wyraj .wyraj-information onglets,
+.wyraj .wyraj-information texte {
   display: block;
   margin: 0;
   padding: 0;
@@ -355,25 +267,21 @@ fiche.wyraj .wyraj-information texte {
   background: none;
   box-shadow: none;
 }
-
-fiche.wyraj .wyraj-information infos { padding: 22px 16px 18px; }
-
-fiche.wyraj .wyraj-information faits {
+.wyraj .wyraj-information infos { padding: 22px 16px 18px; }
+.wyraj .wyraj-information faits {
   display: grid;
   grid-template-columns: 1fr 1fr;
   gap: 24px 48px;
   margin: 0 0 32px;
 }
-
-fiche.wyraj .wyraj-information fait {
+.wyraj .wyraj-information fait {
   color: var(--wy-cream);
   font-family: Georgia, "Palatino Linotype", Palatino, serif;
   font-size: 14px;
   line-height: 1.55;
   text-align: left;
 }
-
-fiche.wyraj .wyraj-information titre {
+.wyraj .wyraj-information titre {
   display: block;
   margin: 0 0 8px;
   color: var(--wy-rose);
@@ -385,20 +293,17 @@ fiche.wyraj .wyraj-information titre {
   text-align: left;
   text-transform: uppercase;
 }
-
-fiche.wyraj .wyraj-information bloc,
-fiche.wyraj .wyraj-information shop,
-fiche.wyraj .wyraj-information texte {
+.wyraj .wyraj-information bloc,
+.wyraj .wyraj-information shop,
+.wyraj .wyraj-information texte {
   color: var(--wy-mute);
   font-family: Georgia, "Palatino Linotype", Palatino, serif;
   font-size: 14px;
   line-height: 1.85;
   text-align: justify;
 }
-
-fiche.wyraj .wyraj-information bloc { margin: 0 0 28px; }
-
-fiche.wyraj .wyraj-information h4 {
+.wyraj .wyraj-information bloc { margin: 0 0 28px; }
+.wyraj .wyraj-information h4 {
   margin: 0 0 12px;
   color: var(--wy-cream);
   font-family: var(--font2), serif;
@@ -409,25 +314,21 @@ fiche.wyraj .wyraj-information h4 {
   text-transform: lowercase;
   text-shadow: var(--text-shadow2);
 }
-
-fiche.wyraj .wyraj-information shop {
+.wyraj .wyraj-information shop {
   margin: 0 0 30px;
   padding: 18px 20px 20px;
   border-radius: 8px;
   background: linear-gradient(105deg, rgba(99, 34, 40, .2), rgba(22, 18, 19, .12) 52%, transparent);
 }
-
-fiche.wyraj .wyraj-information relation { margin-top: 8px; }
-
-fiche.wyraj .wyraj-information onglets {
+.wyraj .wyraj-information relation { margin-top: 8px; }
+.wyraj .wyraj-information onglets {
   display: flex;
   flex-wrap: wrap;
   gap: 6px 26px;
   justify-content: flex-start;
   margin: 0 0 18px;
 }
-
-fiche.wyraj .wyraj-information onglets label {
+.wyraj .wyraj-information onglets label {
   position: relative;
   flex: 0 0 auto;
   padding: 0 0 10px;
@@ -440,8 +341,7 @@ fiche.wyraj .wyraj-information onglets label {
   text-transform: uppercase;
   cursor: pointer;
 }
-
-fiche.wyraj .wyraj-information onglets label::after {
+.wyraj .wyraj-information onglets label::after {
   content: "";
   position: absolute;
   right: 0; bottom: 0; left: 0;
@@ -449,66 +349,40 @@ fiche.wyraj .wyraj-information onglets label::after {
   height: 1px;
   background: var(--wy-rose);
 }
+.wyraj .wyraj-information texte { display: none; }
+.wyraj .wyraj-information texte a { color: var(--wy-rose); }
+.wyraj .wyraj-information .wallace { display: block; }
+.wyraj .wyraj-information label[for="wy-rel-wallace"] { color: var(--wy-cream); }
+.wyraj .wyraj-information label[for="wy-rel-wallace"]::after { width: 100%; }
+.wyraj .wyraj-information relation:has(#wy-rel-zelote:checked) .wallace,
+.wyraj .wyraj-information relation:has(#wy-rel-vampires:checked) .wallace { display: none; }
+.wyraj .wyraj-information relation:has(#wy-rel-zelote:checked) .zelote,
+.wyraj .wyraj-information relation:has(#wy-rel-vampires:checked) .vampires { display: block; }
+.wyraj .wyraj-information relation:has(#wy-rel-zelote:checked) label[for="wy-rel-wallace"],
+.wyraj .wyraj-information relation:has(#wy-rel-vampires:checked) label[for="wy-rel-wallace"] { color: #676163; }
+.wyraj .wyraj-information relation:has(#wy-rel-zelote:checked) label[for="wy-rel-wallace"]::after,
+.wyraj .wyraj-information relation:has(#wy-rel-vampires:checked) label[for="wy-rel-wallace"]::after { width: 0; }
+.wyraj .wyraj-information relation:has(#wy-rel-zelote:checked) label[for="wy-rel-zelote"],
+.wyraj .wyraj-information relation:has(#wy-rel-vampires:checked) label[for="wy-rel-vampires"] { color: var(--wy-cream); }
+.wyraj .wyraj-information relation:has(#wy-rel-zelote:checked) label[for="wy-rel-zelote"]::after,
+.wyraj .wyraj-information relation:has(#wy-rel-vampires:checked) label[for="wy-rel-vampires"]::after { width: 100%; }
 
-fiche.wyraj .wyraj-information texte { display: none; }
-fiche.wyraj .wyraj-information texte a { color: var(--wy-rose); }
-
-fiche.wyraj .wyraj-information .wallace { display: block; }
-fiche.wyraj .wyraj-information label[for="wy-rel-wallace"] { color: var(--wy-cream); }
-fiche.wyraj .wyraj-information label[for="wy-rel-wallace"]::after { width: 100%; }
-
-fiche.wyraj .wyraj-information relation:has(#wy-rel-zelote:checked) .wallace,
-fiche.wyraj .wyraj-information relation:has(#wy-rel-vampires:checked) .wallace { display: none; }
-fiche.wyraj .wyraj-information relation:has(#wy-rel-zelote:checked) .zelote,
-fiche.wyraj .wyraj-information relation:has(#wy-rel-vampires:checked) .vampires { display: block; }
-
-fiche.wyraj .wyraj-information relation:has(#wy-rel-zelote:checked) label[for="wy-rel-wallace"],
-fiche.wyraj .wyraj-information relation:has(#wy-rel-vampires:checked) label[for="wy-rel-wallace"] { color: #676163; }
-fiche.wyraj .wyraj-information relation:has(#wy-rel-zelote:checked) label[for="wy-rel-wallace"]::after,
-fiche.wyraj .wyraj-information relation:has(#wy-rel-vampires:checked) label[for="wy-rel-wallace"]::after { width: 0; }
-
-fiche.wyraj .wyraj-information relation:has(#wy-rel-zelote:checked) label[for="wy-rel-zelote"],
-fiche.wyraj .wyraj-information relation:has(#wy-rel-vampires:checked) label[for="wy-rel-vampires"] { color: var(--wy-cream); }
-fiche.wyraj .wyraj-information relation:has(#wy-rel-zelote:checked) label[for="wy-rel-zelote"]::after,
-fiche.wyraj .wyraj-information relation:has(#wy-rel-vampires:checked) label[for="wy-rel-vampires"]::after { width: 100%; }
-/* ---------- SECTION 4 Organisation ---------- */
-
-.wyraj .wv-org {
-  width: 100%;
-  margin: 0;
-  padding: 24px 6px 14px 6px;
-}
-.wyraj .wv-intro {
-  margin: 0 0 22px;
-}
-.wyraj .wv-intro p {
-  margin: 0 0 12px;
-  color: #a09a9c;
-  font-size: 12.5px;
-  line-height: 1.85;
-}
-.wyraj .wv-intro p:last-child {
-  margin-bottom: 0;
-  color: #7a7476;
-  font-size: 12px;
-}
+.wyraj .wv-org { width: 100%; margin: 0; padding: 24px 6px 14px 6px; }
+.wyraj .wv-intro { margin: 0 0 22px; }
+.wyraj .wv-intro p { margin: 0 0 12px; color: #a09a9c; font-size: 12.5px; line-height: 1.85; }
+.wyraj .wv-intro p:last-child { margin-bottom: 0; color: #7a7476; font-size: 12px; }
 .wyraj .wv-single-stage {
   display: grid;
   grid-template-columns: minmax(0, 1fr);
-
   gap: 16px;
   padding: 6px 0 4px;
-
 }
-
 .wyraj .wv-voice-tabs {
   display: flex;
   flex-direction: row;
   flex-wrap: wrap;
-
   gap: 4px 18px;
   padding-top: 4px;
-
 }
 .wyraj label.wv-voice-tab {
   position: relative;
@@ -517,10 +391,8 @@ fiche.wyraj .wyraj-information relation:has(#wy-rel-vampires:checked) label[for=
   font-family: var(--font3), sans-serif;
   font-size: 11px;
   font-weight: 600;
-
   letter-spacing: .24em;
   text-transform: uppercase;
-
   transition: color .3s;
 }
 .wyraj label.wv-voice-tab::before {
@@ -528,120 +400,74 @@ fiche.wyraj .wyraj-information relation:has(#wy-rel-vampires:checked) label[for=
   position: absolute;
   left: 0;
   top: 50%;
-
   width: 7px;
   height: 1px;
   margin-top: -1px;
-
   background: #3f393b;
   transition: background .3s, width .3s;
-
 }
-.wyraj label.wv-voice-tab:hover {
-  color: #a8a1a4;
-}
-.wyraj .wv-voices label[for="wy-voice-jarilo"] {
-  color: var(--wy-cream);
-}
-.wyraj .wv-voices label[for="wy-voice-jarilo"]::before {
-  background: var(--wy-rose);
-  width: 10px;
-}
+.wyraj label.wv-voice-tab:hover { color: #a8a1a4; }
+.wyraj .wv-voices label[for="wy-voice-jarilo"] { color: var(--wy-cream); }
+.wyraj .wv-voices label[for="wy-voice-jarilo"]::before { background: var(--wy-rose); width: 10px; }
 .wyraj .wv-voices:has(#wy-voice-kupala:checked) label[for="wy-voice-jarilo"],
 .wyraj .wv-voices:has(#wy-voice-mokosh:checked) label[for="wy-voice-jarilo"],
-.wyraj .wv-voices:has(#wy-voice-marzanna:checked) label[for="wy-voice-jarilo"] {
-  color: #625c5e;
-}
+.wyraj .wv-voices:has(#wy-voice-marzanna:checked) label[for="wy-voice-jarilo"] { color: #625c5e; }
 .wyraj .wv-voices:has(#wy-voice-kupala:checked) label[for="wy-voice-jarilo"]::before,
 .wyraj .wv-voices:has(#wy-voice-mokosh:checked) label[for="wy-voice-jarilo"]::before,
-.wyraj .wv-voices:has(#wy-voice-marzanna:checked) label[for="wy-voice-jarilo"]::before {
-  background: #3f393b;
-  width: 7px;
-}
+.wyraj .wv-voices:has(#wy-voice-marzanna:checked) label[for="wy-voice-jarilo"]::before { background: #3f393b; width: 7px; }
 .wyraj .wv-voices:has(#wy-voice-kupala:checked) label[for="wy-voice-kupala"],
 .wyraj .wv-voices:has(#wy-voice-mokosh:checked) label[for="wy-voice-mokosh"],
-.wyraj .wv-voices:has(#wy-voice-marzanna:checked) label[for="wy-voice-marzanna"] {
-  color: var(--wy-cream);
-}
+.wyraj .wv-voices:has(#wy-voice-marzanna:checked) label[for="wy-voice-marzanna"] { color: var(--wy-cream); }
 .wyraj .wv-voices:has(#wy-voice-kupala:checked) label[for="wy-voice-kupala"]::before,
 .wyraj .wv-voices:has(#wy-voice-mokosh:checked) label[for="wy-voice-mokosh"]::before,
-.wyraj .wv-voices:has(#wy-voice-marzanna:checked) label[for="wy-voice-marzanna"]::before {
-  background: var(--wy-rose);
-  width: 10px;
-}
-.wyraj .wv-voice-panels {
-  min-width: 0;
-}
+.wyraj .wv-voices:has(#wy-voice-marzanna:checked) label[for="wy-voice-marzanna"]::before { background: var(--wy-rose); width: 10px; }
+.wyraj .wv-voice-panels { min-width: 0; }
 .wyraj .wv-voice-panel {
   display: none;
   position: relative;
-
   padding: 20px 30px 8px 16px;
   border-left: 1px solid rgba(99,34,40,.5);
   background: linear-gradient(90deg, rgba(45,17,25,.35), transparent 65%);
 }
-.wyraj .wv-voices .panel-jarilo {
-  display: block;
-}
+.wyraj .wv-voices .panel-jarilo { display: block; }
 .wyraj .wv-voices:has(#wy-voice-kupala:checked) .panel-jarilo,
 .wyraj .wv-voices:has(#wy-voice-mokosh:checked) .panel-jarilo,
-.wyraj .wv-voices:has(#wy-voice-marzanna:checked) .panel-jarilo {
-  display: none;
-}
+.wyraj .wv-voices:has(#wy-voice-marzanna:checked) .panel-jarilo { display: none; }
 .wyraj .wv-voices:has(#wy-voice-kupala:checked) .panel-kupala,
 .wyraj .wv-voices:has(#wy-voice-mokosh:checked) .panel-mokosh,
-.wyraj .wv-voices:has(#wy-voice-marzanna:checked) .panel-marzanna {
-  display: block;
-}
-/* la saison : petite étiquette verticale, plus de typo géante */
+.wyraj .wv-voices:has(#wy-voice-marzanna:checked) .panel-marzanna { display: block; }
 .wyraj .wv-voice-season {
   position: absolute;
   top: 20px;
   right: 6px;
-
   color: rgba(170,115,123,.5);
   font-family: var(--font3), sans-serif;
   font-size: 9px;
   font-weight: 600;
-
   letter-spacing: .34em;
   text-transform: uppercase;
-
   writing-mode: vertical-rl;
   white-space: nowrap;
   pointer-events: none;
-
 }
 .wyraj .wv-voice-name {
   margin: 0 0 14px;
   color: var(--wy-cream);
-
   font-family: var(--font2), serif;
   font-size: 26px;
   font-weight: 400;
   letter-spacing: 1px;
-
   line-height: 1;
   text-transform: lowercase;
-
   text-shadow: var(--text-shadow2);
 }
-.wyraj .wv-voice-panel p {
-  margin: 0;
-  color: #9d9799;
-  font-size: 12.5px;
-  line-height: 1.85;
-}
-.wyraj .wv-simple-list {
-  border-top: 1px solid var(--wy-line);
-}
+.wyraj .wv-voice-panel p { margin: 0; color: #9d9799; font-size: 12.5px; line-height: 1.85; }
+.wyraj .wv-simple-list { border-top: 1px solid var(--wy-line); }
 .wyraj .wv-simple-entry {
   display: grid;
   grid-template-columns: minmax(0, 1fr);
-
   gap: 8px;
   padding: 18px 0;
-
   border-bottom: 1px solid var(--wy-line);
 }
 .wyraj .wv-simple-name {
@@ -649,85 +475,50 @@ fiche.wyraj .wyraj-information relation:has(#wy-rel-vampires:checked) label[for=
   font-family: var(--font3), sans-serif;
   font-size: 11px;
   font-weight: 600;
-
   letter-spacing: .24em;
   text-transform: uppercase;
+}
+.wyraj .wv-simple-entry p { margin: 0; color: var(--wy-mute); font-size: 12.5px; line-height: 1.8; }
 
-}
-.wyraj .wv-simple-entry p {
-  margin: 0;
-  color: var(--wy-mute);
-  font-size: 12.5px;
-  line-height: 1.8;
-}
-/* ---------- Prohod ---------- */
-
-.wyraj .wy-prohod {
-  padding: 24px 6px 14px 6px;
-}
-.wyraj .prohod-stage {
-  overflow: hidden;
-}
-.wyraj .wy-media.prohod-media {
-  float: none;
-  width: 100%;
-  height: 130px;
-  margin: 0 0 24px;
-}
-.wyraj .prohod-copy {
-  color: #b6b1b1;
-  font-size: 13px;
-  line-height: 1.85;
-}
-.wyraj .prohod-copy p {
-  margin: 0 0 16px;
-}
+.wyraj .wy-prohod { padding: 24px 6px 14px 6px; }
+.wyraj .prohod-stage { overflow: hidden; }
+.wyraj .wy-media.prohod-media { float: none; width: 100%; height: 130px; margin: 0 0 24px; }
+.wyraj .prohod-copy { color: #b6b1b1; font-size: 13px; line-height: 1.85; }
+.wyraj .prohod-copy p { margin: 0 0 16px; }
 .wyraj .prohod-oath {
   clear: both;
   margin: 8px 0 0;
   padding: 22px 0 4px;
-
   border-top: 1px solid rgba(99,34,40,.5);
 }
-.wyraj .prohod-oath .wv-kicker {
-  margin-bottom: 18px;
-}
+.wyraj .prohod-oath .wv-kicker { margin-bottom: 18px; }
 .wyraj .prohod-oath-line {
   margin-bottom: 18px;
   padding-left: 14px;
-
   border-left: 1px solid var(--wy-line);
 }
 .wyraj .prohod-polish {
   margin-bottom: 7px;
   color: var(--wy-cream);
-
   font-size: 12.5px;
   font-style: italic;
   line-height: 1.65;
-
 }
 .wyraj .prohod-translation {
   color: #857f81;
   font-family: var(--font3), sans-serif;
-
   font-size: 10.5px;
   letter-spacing: .06em;
   line-height: 1.7;
-
 }
-
-/* ==================================================
-   Fiche assez large : le ruban passe à la verticale
-================================================== */
 
 @container wyraj (min-width: 430px) {
   .wyraj section.wyraj-story > t1 {
-  margin-left: calc(var(--wy-strip) + var(--wy-gap)) !important;
-}
+    margin-left: calc(var(--wy-strip) + var(--wy-gap)) !important;
+  }
   .wyraj section.wyraj-chrono > t1 {
-  margin-right: calc(var(--wy-strip) + var(--wy-gap)) !important;
-}
+    margin-right: calc(var(--wy-strip) + var(--wy-gap)) !important;
+  }
   .wyraj .wy-story {
     display: grid;
     grid-template-columns: var(--wy-strip) minmax(0, 1fr);
@@ -735,14 +526,12 @@ fiche.wyraj .wyraj-information relation:has(#wy-rel-vampires:checked) label[for=
     align-items: flex-start;
     padding-top: 0;
   }
-
   .wyraj .wy-chrono {
     display: grid;
     grid-template-columns: minmax(0, 1fr) var(--wy-strip);
     align-items: flex-start;
     padding-top: 0;
   }
-
   .wyraj .wy-story > .wy-media,
   .wyraj .wy-chrono > .wy-media {
     position: sticky;
@@ -753,45 +542,34 @@ fiche.wyraj .wyraj-information relation:has(#wy-rel-vampires:checked) label[for=
     -webkit-mask-image: linear-gradient(180deg, #000 72%, transparent);
             mask-image: linear-gradient(180deg, #000 72%, transparent);
   }
-
-  .wyraj .wy-story > .wy-media {
-  grid-column: 1;
-}
-  .wyraj .wy-story > .wy-copy {
-    grid-column: 2;
-    padding: 0px 14px 0px 14px;
-  }
-
+  .wyraj .wy-story > .wy-media { grid-column: 1; }
+  .wyraj .wy-story > .wy-copy { grid-column: 2; padding: 0 14px; }
   .wyraj .wy-chrono > .wy-media {
     order: initial;
     grid-column: 2;
     grid-row: 1 / span 99;
   }
-
-.wyraj .wy-chrono > wy-events {
-  grid-column: 1;
-  width: min(460px, 100%);
-  margin: 0 0 0 40px;
-}
-
-  .wyraj .wy-info-row,
+  .wyraj .wy-chrono > wy-events {
+    grid-column: 1;
+    width: min(460px, 100%);
+    margin: 0 0 0 40px;
+  }
   .wyraj .wv-simple-entry {
     grid-template-columns: 140px minmax(0, 1fr);
     gap: 24px;
   }
-
   .wyraj .wv-single-stage {
     grid-template-columns: 112px minmax(0, 1fr);
     gap: 22px;
   }
-
   .wyraj .wv-voice-tabs {
     flex-direction: column;
     gap: 6px;
     padding-top: 22px;
   }
-
-  .wyraj .wv-voice-panel {
-  min-height: 240px;
+  .wyraj .wv-voice-panel { min-height: 240px; }
 }
+
+@media (max-width: 570px) {
+  .wyraj .wyraj-information faits { grid-template-columns: 1fr; }
 }
