@@ -21,7 +21,6 @@ fiche.wyraj {
   --accent4: var(--wyraj-rust) !important;
   --accent5: var(--wyraj-charcoal) !important;
 
-  --wy-rail: 26px;      /* marge des repères I, II, III… */
   --wy-strip: 78px;     /* largeur du ruban image */
   --wy-gap: 20px;
   --wy-ink: #c4bdbf;
@@ -68,44 +67,6 @@ fiche.wyraj section.wyraj-chrono::-webkit-scrollbar { width: 3px; }
 fiche.wyraj section.wyraj-story::-webkit-scrollbar-thumb,
 fiche.wyraj section.wyraj-chrono::-webkit-scrollbar-thumb { background: rgba(99,34,40,.5); }
 
-/* ---------- Repères en marge ---------- */
-
-fiche.wyraj .wy-story,
-fiche.wyraj .wy-chrono,
-fiche.wyraj .wy-info,
-fiche.wyraj .wv-org,
-fiche.wyraj .wy-prohod { position: relative; }
-
-fiche.wyraj .wy-story::before,
-fiche.wyraj .wy-chrono::before,
-fiche.wyraj .wy-info::before,
-fiche.wyraj .wv-org::before,
-fiche.wyraj .wy-prohod::before {
-  position: absolute;
-  top: 22px; left: 4px;
-  color: var(--wy-rose);
-  font-family: var(--font3), sans-serif;
-  font-size: 9px; font-weight: 600;
-  letter-spacing: .24em;
-  writing-mode: vertical-rl;
-  opacity: .75;
-}
-fiche.wyraj .wy-story::before { content: "I"; }
-fiche.wyraj .wy-chrono::before { content: "II"; }
-fiche.wyraj .wy-info::before { content: "III"; }
-fiche.wyraj .wv-org::before { content: "IV"; }
-fiche.wyraj .wy-prohod::before { content: "V"; }
-
-fiche.wyraj .wy-info::after,
-fiche.wyraj .wv-org::after,
-fiche.wyraj .wy-prohod::after {
-  content: "";
-  position: absolute;
-  top: 46px; bottom: 16px; left: 8px;
-  width: 1px;
-  background: linear-gradient(180deg, rgba(99,34,40,.6), transparent);
-}
-
 /* ---------- Ruban image ---------- */
 
 fiche.wyraj .wy-media {
@@ -143,7 +104,7 @@ fiche.wyraj section.wyraj-chrono {
 fiche.wyraj .wy-story,
 fiche.wyraj .wy-chrono {
   display: flex; flex-direction: column;
-  padding: 20px 4px 6px var(--wy-rail);
+  padding: 20px 4px 6px 4px;
 }
 fiche.wyraj .wy-chrono .wy-media { order: -1; }
 fiche.wyraj .wy-col, fiche.wyraj .wy-tl { min-width: 0; }
@@ -189,24 +150,13 @@ fiche.wyraj .wy-center {
 
 /* ---------- Chronologie ---------- */
 
-fiche.wyraj .wy-tl { counter-reset: wytl; }
-
 fiche.wyraj .wy-tl-item {
   position: relative;
   margin: 0 0 4px;
-  padding: 16px 0 16px 42px;
+  padding: 16px 0;
   border: 0; border-top: 1px solid var(--wy-line);
 }
 fiche.wyraj .wy-tl-item:first-child { border-top: 0; padding-top: 0; }
-fiche.wyraj .wy-tl-item::before {
-  counter-increment: wytl;
-  content: counter(wytl, decimal-leading-zero);
-  position: absolute; left: 0; top: 17px;
-  color: rgba(170,115,123,.55);
-  font-family: var(--font3), sans-serif;
-  font-size: 10px; font-weight: 600; letter-spacing: .16em;
-}
-fiche.wyraj .wy-tl-item:first-child::before { top: 1px; }
 fiche.wyraj .wy-tl-mark { display: none; }
 
 fiche.wyraj .wy-tl-head {
@@ -244,7 +194,7 @@ fiche.wyraj .wv-lead {
 
 /* ---------- Informations ---------- */
 
-fiche.wyraj .wy-info { padding: 24px 6px 12px var(--wy-rail); }
+fiche.wyraj .wy-info { padding: 24px 6px 12px 6px; }
 
 fiche.wyraj .wy-info-grid {
   display: grid; grid-template-columns: repeat(auto-fit, minmax(175px, 1fr));
@@ -344,7 +294,7 @@ fiche.wyraj .wv-org:has(#wy-org-termes:checked) .panel-termes { display: block; 
 
 /* ---------- Organisation ---------- */
 
-fiche.wyraj .wv-org { width: 100%; margin: 0; padding: 24px 6px 14px var(--wy-rail); }
+fiche.wyraj .wv-org { width: 100%; margin: 0; padding: 24px 6px 14px 6px; }
 fiche.wyraj .wv-intro { margin: 0 0 22px; }
 fiche.wyraj .wv-intro p { margin: 0 0 12px; color: #a09a9c; font-size: 12.5px; line-height: 1.85; }
 fiche.wyraj .wv-intro p:last-child { margin-bottom: 0; color: #7a7476; font-size: 12px; }
@@ -443,7 +393,7 @@ fiche.wyraj .wv-simple-entry p {
 
 /* ---------- Prohod ---------- */
 
-fiche.wyraj .wy-prohod { padding: 24px 6px 14px var(--wy-rail); }
+fiche.wyraj .wy-prohod { padding: 24px 6px 14px 6px; }
 fiche.wyraj .prohod-stage { overflow: hidden; }
 fiche.wyraj .wy-media.prohod-media {
   float: none; width: 100%; height: 130px; margin: 0 0 24px;
@@ -475,7 +425,7 @@ fiche.wyraj .prohod-translation {
 
 @container wyraj (min-width: 430px) {
   fiche.wyraj section.wyraj-story > t1 {
-    margin-left: calc(var(--wy-rail) + var(--wy-strip) + var(--wy-gap)) !important;
+    margin-left: calc(var(--wy-strip) + var(--wy-gap)) !important;
   }
   fiche.wyraj section.wyraj-chrono > t1 {
     margin-right: calc(var(--wy-strip) + var(--wy-gap)) !important;
@@ -503,10 +453,4 @@ fiche.wyraj .prohod-translation {
   fiche.wyraj .wv-single-stage { grid-template-columns: 112px minmax(0,1fr); gap: 22px; }
   fiche.wyraj .wv-voice-tabs { flex-direction: column; gap: 6px; padding-top: 22px; }
   fiche.wyraj .wv-voice-panel { min-height: 240px; }
-}
-
-@container wyraj (max-width: 429px) {
-  fiche.wyraj .wy-info::after,
-  fiche.wyraj .wv-org::after,
-  fiche.wyraj .wy-prohod::after { display: none; }
 }
