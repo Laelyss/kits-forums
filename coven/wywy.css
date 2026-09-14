@@ -1,8 +1,5 @@
 /* ==================================================
-WYRAJ — rubans (version à jour)
-Repères chiffrés en marge, image en ruban duotone,
-typo condensée du forum (--font2 / --font3).
-Couleurs et image d'origine conservées.
+WYRAJ — rubans (version test avant de mettre sur le vrai wyraj.css)
 ================================================== */
 
 .wyraj {
@@ -124,7 +121,7 @@ Couleurs et image d'origine conservées.
   opacity: .95;
 }
 
-/* ---------- Histoire ---------- */
+/* ---------- SECTION 1 Histoire ---------- */
 
 .wyraj section.wyraj-story,
 .wyraj section.wyraj-chrono {
@@ -224,7 +221,7 @@ Couleurs et image d'origine conservées.
   display: block;
 }
 
-/* ---------- Chronologie ---------- */
+/* ---------- SECTION 2 Chronologie ---------- */
 
 .wyraj wy-events {
   position: relative;
@@ -340,40 +337,40 @@ Couleurs et image d'origine conservées.
 
 }
 
-/* ---------- Informations ---------- */
+/* ---------- SECTION 3 Informations ---------- */
 
-.wyraj .wyraj-information wy-info,
-.wyraj .wyraj-information wy-facts,
-.wyraj .wyraj-information wy-fact,
-.wyraj .wyraj-information wy-topic,
-.wyraj .wyraj-information wy-shop {
+.wyraj .wyraj-information infos,
+.wyraj .wyraj-information faits,
+.wyraj .wyraj-information fait,
+.wyraj .wyraj-information titre,
+.wyraj .wyraj-information bloc,
+.wyraj .wyraj-information shop,
+.wyraj .wyraj-information relation,
+.wyraj .wyraj-information onglets,
+.wyraj .wyraj-information texte {
   display: block;
 }
 
-.wyraj .wy-info,
 .wyraj .wyraj-information infos {
   padding: 24px 10px 12px;
 }
 
-.wyraj .wyraj-information facts {
+.wyraj .wyraj-information faits {
   display: grid;
   grid-template-columns: repeat(auto-fit, minmax(210px, 1fr));
   gap: 24px 54px;
   margin: 0 0 30px;
 }
 
-.wyraj .wyraj-information fact {
+.wyraj .wyraj-information fait {
   color: var(--wy-cream);
   font-family: var(--font1), serif;
   font-size: 14px;
   line-height: 1.55;
 }
 
-.wyraj .wyraj-information fact::before,
-.wyraj .wyraj-information shop::before {
-  content: attr(data-k);
-  display: block;
-  margin-bottom: 9px;
+.wyraj .wyraj-information titre {
+  margin: 0 0 9px;
   color: var(--wy-rose);
   font-family: var(--font3), sans-serif;
   font-size: 9px;
@@ -383,13 +380,18 @@ Couleurs et image d'origine conservées.
   text-transform: uppercase;
 }
 
-.wyraj .wyraj-information topic {
-  margin: 0 0 30px;
+.wyraj .wyraj-information bloc,
+.wyraj .wyraj-information shop,
+.wyraj .wyraj-information texte {
   color: var(--wy-mute);
   font-family: var(--font1), serif;
   font-size: 14px;
   line-height: 1.85;
   text-align: justify;
+}
+
+.wyraj .wyraj-information bloc {
+  margin: 0 0 30px;
 }
 
 .wyraj .wyraj-information h4 {
@@ -398,7 +400,6 @@ Couleurs et image d'origine conservées.
   font-family: var(--font2), serif;
   font-size: 25px;
   font-weight: 400;
-  letter-spacing: .02em;
   line-height: 1.2;
   text-transform: lowercase;
   text-shadow: var(--text-shadow2);
@@ -407,60 +408,26 @@ Couleurs et image d'origine conservées.
 .wyraj .wyraj-information shop {
   margin: 0 16px 32px;
   padding: 18px 18px 20px;
-  color: var(--wy-mute);
-  font-family: var(--font1), serif;
-  font-size: 14px;
-  line-height: 1.85;
-  text-align: justify;
   border-radius: 8px;
   background: linear-gradient(105deg, rgba(99,34,40,.22), rgba(22,18,19,.28) 55%, rgba(18,18,18,0));
 }
 
-.wyraj .wyraj-information shop h4 {
-  margin-bottom: 13px;
-}
-
-/* ---------- Onglets organisation ---------- */
-
-.wyraj .wv-main-panel {
-  display: none;
-  margin: 0;
-  padding-top: 22px;
-}
-
-.wyraj .wv-org .panel-kolo {
-  display: block;
-}
-
-.wyraj .wv-org:has(#wy-org-membres:checked) .panel-kolo,
-.wyraj .wv-org:has(#wy-org-termes:checked) .panel-kolo {
-  display: none;
-}
-
-.wyraj .wv-org:has(#wy-org-membres:checked) .panel-membres,
-.wyraj .wv-org:has(#wy-org-termes:checked) .panel-termes {
-  display: block;
-}
-
-/* ---------- Relations ---------- */
-
-.wyraj .wyraj-information rel {
-  position: relative;
+.wyraj .wyraj-information relation {
   margin-top: 22px;
 }
 
-.wyraj .wyraj-information rel > input {
+.wyraj .wyraj-information relation input {
   display: none;
 }
 
-.wyraj .wyraj-information tabs {
+.wyraj .wyraj-information onglets {
   display: grid;
   grid-template-columns: repeat(auto-fit, minmax(105px, 1fr));
-  gap: 8px 26px;
+  gap: 8px 22px;
   margin: 0 0 24px;
 }
 
-.wyraj .wyraj-information tabs label {
+.wyraj .wyraj-information onglets label {
   position: relative;
   padding: 0 0 13px;
   color: #676163;
@@ -468,14 +435,12 @@ Couleurs et image d'origine conservées.
   font-size: 10px;
   font-weight: 600;
   letter-spacing: .32em;
-  line-height: 1.4;
   text-align: left;
   text-transform: uppercase;
   cursor: pointer;
-  transition: color .25s;
 }
 
-.wyraj .wyraj-information tabs label::after {
+.wyraj .wyraj-information onglets label::after {
   content: "";
   position: absolute;
   bottom: 0;
@@ -483,11 +448,14 @@ Couleurs et image d'origine conservées.
   width: 0;
   height: 1px;
   background: rgba(170,115,123,.55);
-  transition: width .25s;
 }
 
-.wyraj .wyraj-information tabs label:hover {
-  color: #a8a1a4;
+.wyraj .wyraj-information texte {
+  display: none;
+}
+
+.wyraj .wyraj-information .wallace {
+  display: block;
 }
 
 .wyraj .wyraj-information label[for="wy-rel-wallace"] {
@@ -498,50 +466,37 @@ Couleurs et image d'origine conservées.
   width: 100%;
 }
 
-.wyraj .wyraj-information rel:has(#wy-rel-zelote:checked) label[for="wy-rel-wallace"],
-.wyraj .wyraj-information rel:has(#wy-rel-vampires:checked) label[for="wy-rel-wallace"] {
+.wyraj .wyraj-information relation:has(#wy-rel-zelote:checked) .wallace,
+.wyraj .wyraj-information relation:has(#wy-rel-vampires:checked) .wallace {
+  display: none;
+}
+
+.wyraj .wyraj-information relation:has(#wy-rel-zelote:checked) .zelote,
+.wyraj .wyraj-information relation:has(#wy-rel-vampires:checked) .vampires {
+  display: block;
+}
+
+.wyraj .wyraj-information relation:has(#wy-rel-zelote:checked) label[for="wy-rel-wallace"],
+.wyraj .wyraj-information relation:has(#wy-rel-vampires:checked) label[for="wy-rel-wallace"] {
   color: #676163;
 }
 
-.wyraj .wyraj-information rel:has(#wy-rel-zelote:checked) label[for="wy-rel-wallace"]::after,
-.wyraj .wyraj-information rel:has(#wy-rel-vampires:checked) label[for="wy-rel-wallace"]::after {
+.wyraj .wyraj-information relation:has(#wy-rel-zelote:checked) label[for="wy-rel-wallace"]::after,
+.wyraj .wyraj-information relation:has(#wy-rel-vampires:checked) label[for="wy-rel-wallace"]::after {
   width: 0;
 }
 
-.wyraj .wyraj-information rel:has(#wy-rel-zelote:checked) label[for="wy-rel-zelote"],
-.wyraj .wyraj-information rel:has(#wy-rel-vampires:checked) label[for="wy-rel-vampires"] {
+.wyraj .wyraj-information relation:has(#wy-rel-zelote:checked) label[for="wy-rel-zelote"],
+.wyraj .wyraj-information relation:has(#wy-rel-vampires:checked) label[for="wy-rel-vampires"] {
   color: var(--wy-cream);
 }
 
-.wyraj .wyraj-information rel:has(#wy-rel-zelote:checked) label[for="wy-rel-zelote"]::after,
-.wyraj .wyraj-information rel:has(#wy-rel-vampires:checked) label[for="wy-rel-vampires"]::after {
+.wyraj .wyraj-information relation:has(#wy-rel-zelote:checked) label[for="wy-rel-zelote"]::after,
+.wyraj .wyraj-information relation:has(#wy-rel-vampires:checked) label[for="wy-rel-vampires"]::after {
   width: 100%;
 }
 
-.wyraj .wyraj-information panel {
-  display: none;
-  color: var(--wy-mute);
-  font-family: var(--font1), serif;
-  font-size: 14px;
-  line-height: 1.85;
-  text-align: justify;
-}
-
-.wyraj .wyraj-information .wallace {
-  display: block;
-}
-
-.wyraj .wyraj-information rel:has(#wy-rel-zelote:checked) .wallace,
-.wyraj .wyraj-information rel:has(#wy-rel-vampires:checked) .wallace {
-  display: none;
-}
-
-.wyraj .wyraj-information rel:has(#wy-rel-zelote:checked) .zelote,
-.wyraj .wyraj-information rel:has(#wy-rel-vampires:checked) .vampires {
-  display: block;
-}
-
-/* ---------- Organisation ---------- */
+/* ---------- SECTION 4 Organisation ---------- */
 
 .wyraj .wv-org {
   width: 100%;
