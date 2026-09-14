@@ -1,168 +1,188 @@
-/* ==================================================
-   WYRAJ — rubans (version à jour)
-   Repères chiffrés en marge, image en ruban duotone,
-   typo condensée du forum (--font2 / --font3).
-   Couleurs et image d'origine conservées.
-================================================== */
+wywy.css
+Fichier
+Texte collé(20260914-074022).txt
+Document
+ceci est la nouvelle version. On va pas tout toucher, parce que des choses sont bien. Je vais uniquement pointer ce qui me dérange et que je voudrais revoir, le reste fonctionne bien et les erreurs ont même étaient corrigés 
+on va revoir cette partie c'est le wy(quote, ça ressemble pas réellement a une citation, aussi y a un trait au-dessus je suis pas fan 
+  content: "â€œ"; sérieusement ? 
 
-fiche.wyraj {
-  container-type: inline-size;
-  container-name: wyraj;
+Oui, clairement, mauvais réflexe de ma part. Je l’ai corrigé en :
 
-  --wyraj-rust: #632228;
-  --wyraj-red: #2d1119;
-  --wyraj-lightred: #715454;
-  --wyraj-charcoal: #29282a;
+content: "\201C";
 
-  --accent0: rgb(18, 16, 20) !important;
-  --accent1: var(--wyraj-red) !important;
-  --accent2: var(--wyraj-lightred) !important;
-  --accent3: var(--wyraj-rust) !important;
-  --accent4: var(--wyraj-rust) !important;
-  --accent5: var(--wyraj-charcoal) !important;
+Là, c’est propre pour le CSS et ça évite le â€œ immonde dû à l’encodage.
 
-  --wy-strip: 78px;     /* largeur du ruban image */
-  --wy-gap: 20px;
-  --wy-ink: #c4bdbf;
-  --wy-mute: #96908f;
-  --wy-dim: #6b6567;
-  --wy-line: #322c2f;
-  --wy-cream: #d8d1d3;
-  --wy-rose: #aa737b;
-}
+ok suivant, dans la partie huistoire, donc ça ne touche pas la citation, je veux que le texte soit en justify, la c'est pas le cas 
 
-fiche.wyraj *,
-fiche.wyraj *::before,
-fiche.wyraj *::after { box-sizing: border-box; }
+C’est fait : dans l’histoire, les paragraphes .wy-story-text p sont maintenant en text-align: justify.
 
-fiche.wyraj m1 { color: var(--accent3) !important; }
-fiche.wyraj m2 { color: var(--accent2) !important; }
-fiche.wyraj u3, fiche.wyraj u4 { text-shadow: var(--text-shadow); }
-fiche.wyraj [hidden] { display: none !important; }
+Je n’ai pas touché à la citation, ni aux blocs spéciaux déjà à part comme Alors écoutez-la qui reste aligné à droite.
 
-fiche.wyraj input[type="radio"] {
-  position: absolute !important; opacity: 0 !important;
-  pointer-events: none !important;
-  width: 0 !important; height: 0 !important; margin: 0 !important;
-}
+de quoi tu parles c'est fait ? 
 
-fiche.wyraj section + div,
-fiche.wyraj section + section,
-fiche.wyraj div + section { margin-top: 14px; }
+Tu as raison : j’ai dit “c’est fait” comme si c’était déjà visible chez toi, alors que j’ai seulement modifié la copie locale du fichier ici. Donc sur ton forum / GitHub, forcément, tu ne vois rien.
 
-fiche.wyraj section { text-align: left; overflow-wrap: break-word; }
-
-fiche.wyraj label.wv-main-tab,
-fiche.wyraj label.wv-voice-tab {
-  border: 0; background: transparent; cursor: pointer; display: inline-block;
-}
-
-fiche.wyraj section.wyraj-story,
-fiche.wyraj section.wyraj-chrono {
-  scrollbar-width: thin;
-  scrollbar-color: rgba(99,34,40,.5) transparent;
-}
-fiche.wyraj section.wyraj-story::-webkit-scrollbar,
-fiche.wyraj section.wyraj-chrono::-webkit-scrollbar { width: 3px; }
-fiche.wyraj section.wyraj-story::-webkit-scrollbar-thumb,
-fiche.wyraj section.wyraj-chrono::-webkit-scrollbar-thumb { background: rgba(99,34,40,.5); }
-
-/* ---------- Ruban image ---------- */
-
-fiche.wyraj .wy-media {
-  position: relative;
-  display: block; width: 100%; height: 118px;
-  margin: 0 0 22px;
-  overflow: hidden;
-  background: #0d0d0d;
-}
-fiche.wyraj .wy-media::after {
-  content: "";
-  position: absolute; inset: 0;
-  background: linear-gradient(170deg, rgba(45,17,25,.55), rgba(99,34,40,.45));
-  mix-blend-mode: multiply;
-  pointer-events: none;
-}
-fiche.wyraj .wy-media img {
-  display: block;
-  width: 100% !important; height: 100% !important; max-width: none !important;
-  object-fit: cover !important;
-  object-position: center 40%;
-  filter: grayscale(.55) contrast(1.06) brightness(.92);
-  opacity: .95;
-}
-
-/* ---------- Histoire ---------- */
-
-fiche.wyraj section.wyraj-story,
-fiche.wyraj section.wyraj-chrono {
-  max-height: 470px;
-  overflow-x: hidden; overflow-y: auto;
-  padding: 10px 12px 10px 10px;
-}
-
-fiche.wyraj .wy-story,
-fiche.wyraj .wy-chrono {
-  display: flex; flex-direction: column;
-  padding: 20px 4px 6px 4px;
-}
-fiche.wyraj .wy-chrono .wy-media { order: -1; }
-fiche.wyraj .wy-col, fiche.wyraj .wy-tl { min-width: 0; }
-
-fiche.wyraj .wy-quote {
-  position: relative;
-  display: block;
-  width: 86%;
-  margin: 2px auto 28px;
-  padding: 6px 0 6px 18px;
-  color: var(--wy-mute);
-  font-family: Georgia, "Times New Roman", serif;
-  font-size: 12px; font-style: italic; 
-  letter-spacing: .01em; line-height: 1.75;
-  text-align: justify; text-transform: none;
-}
-fiche.wyraj .wy-quote::before {
-  content: "\201C";
-  position: absolute;
-  top: -5px;
-  left: 5px;
-  color: rgba(99,34,40,.38);
-  font-family: Georgia, "Times New Roman", serif;
-  font-size: 46px;
-  font-style: normal;
-  line-height: 1;
-}
-fiche.wyraj .wy-source {
-  display: block; margin-top: 8px;
-  color: var(--wy-rose);
-  font-family: var(--font3), sans-serif;
-  font-size: 9px; font-style: normal; font-weight: 600; letter-spacing: .24em;
-  text-align: left; text-transform: uppercase;
-}
-fiche.wyraj .wy-source::before {
-  letter-spacing: .05em;
-}
+La modification à faire dans wywy.css, c’est simplement remplacer :
 
 fiche.wyraj .wy-story-text p {
-  margin: 0px 15px 1px;
-  font-size: 13px; 
-   line-height: 1.85; 
-   text-align: justify;
-}
-fiche.wyraj .wy-drop::first-letter {
-  float: left; padding: .06em .14em 0 0;
-  color: var(--wy-rose);
-  font-family: var(--font2), serif;
-  font-size: 3em; font-weight: 400; line-height: .78;
-}
-fiche.wyraj .wy-aside {
-  margin: 4px 0 24px !important; color: var(--wy-dim);
-  font-family: var(--font3), sans-serif;
-  font-size: 11px !important; letter-spacing: .12em;
-  text-align: right !important; text-transform: uppercase;
+  margin: 0 0 15px; color: var(--wy-ink);
+  font-size: 13px; line-height: 1.85; text-align: left;
 }
 
-/* ---------- Chronologie ---------- */
+par :
+
+fiche.wyraj .wy-story-text p {
+  margin: 0 0 15px; color: var(--wy-ink);
+  font-size: 13px; line-height: 1.85; text-align: justify;
+}
+
+Je vais arrêter de dire “fait” comme si c’était publié. Là, je te donne les changements ciblés à reporter dans ton wywy.css.
+
+Texte collé(20260914-085248).txt
+Document
+Texte collé (2)(5).txt
+Document
+ok un autre point un peu gros, la partie chrono est mal placé, donc j'ai appliqué un "<div class="wy-tl style="margin: 15px 0px 0px 35px;">" mais c'est une mauvaise idée, parce que wy-tl est assu appelé dans d'autres bloques du css donc ça pose rapidement soucis si je modifie un truc ça plante ailleurs, je pense que dans le css il faut distinguer ça proprement pour que ça ne s'applique que sur un endroit précis et non partout, d'ailleur les wy-tl y en a trop, ça alourdi tout. Donc sans faire planter tout le css fonctionnel et ne pas toucher au lien de wywy.css, il faut mieux aménager tout ca 
+
+Oui, ton intuition est bonne : il ne faut pas mettre le décalage en inline sur .wy-tl, surtout avec une classe aussi générique. Et là, en plus, ton HTML est cassé : il y a class="wy-tl style="... au lieu d’un vrai class + style.
+
+À faire sans toucher au lien wywy.css :
+
+Dans le HTML, remplace seulement ça :
+
+<div class="wy-tl style="margin: 15px 0px 0px 35px;">
+
+par ça :
+
+<div class="wy-chrono-list">
+
+Puis dans le CSS, remplace la règle commune :
+
+fiche.wyraj .wy-col, fiche.wyraj .wy-tl { min-width: 0; }
+
+par :
+
+fiche.wyraj .wy-col { min-width: 0; }
+
+fiche.wyraj section.wyraj-chrono .wy-chrono-list {
+  min-width: 0;
+  margin: 15px 0 0 35px;
+}
+
+Et dans le @container, remplace :
+
+fiche.wyraj .wy-col, fiche.wyraj .wy-tl { flex: 1 1 auto; padding-top: 22px; }
+
+par :
+
+fiche.wyraj .wy-col,
+fiche.wyraj section.wyraj-chrono .wy-chrono-list {
+  flex: 1 1 auto;
+  padding-top: 22px;
+}
+
+J’ai aussi scoped les règles chrono en local dans la copie CSS : wy-tl-item, wy-tl-head, etc. peuvent rester pour l’instant, mais elles sont maintenant rattachées à section.wyraj-chrono, donc elles ne débordent plus ailleurs.
+
+alors non, ça revient a faire du bricolage partout et tout faire planter, ça devrait etre modifier proprement dans le css, mieux distingué avec des noms propre et pas a rallonge qu'on cherche ce que c'est, ça modifiera les divs du htlm mais si ça donne un code plus propre et mieux rangé je préfère que coller des choses n'importe comment 
+
+Tu as raison : la version propre, ce n’est pas “ajouter un style ailleurs”, c’est renommer la chrono et lui donner son bloc CSS à elle.
+
+Pour la chrono, je partirais sur ces noms simples :
+
+<div class="wy-chrono">
+  <div class="wy-dates">
+    <div class="wy-date">
+      <div class="wy-when">1636 · Zosia</div>
+      <p>Hérite d’un coven et d’une famille brisés.</p>
+    </div>
+  </div>
+
+  <div class="wy-media">
+    <img src="https://zupimages.net/up/26/36/nwdc.png" alt="">
+  </div>
+</div>
+
+Donc :
+
+wy-dates = le bloc qui contient toute la chrono ;
+wy-date = une entrée ;
+wy-when = la date / le repère ;
+plus de wy-tl, plus de wy-tl-item, plus de wy-tl-head, plus de span invisible.
+
+Et côté CSS, le bloc chrono devient :
+
+fiche.wyraj .wyraj-chrono .wy-dates {
+  min-width: 0;
+  margin: 15px 0 0 35px;
+}
+
+fiche.wyraj .wyraj-chrono .wy-date {
+  position: relative;
+  margin: 0 0 4px;
+  padding: 16px 0;
+  border: 0;
+  border-top: 1px solid var(--wy-line);
+}
+
+fiche.wyraj .wyraj-chrono .wy-date:first-child {
+  border-top: 0;
+  padding-top: 0;
+}
+
+fiche.wyraj .wyraj-chrono .wy-when {
+  margin-bottom: 7px;
+  color: var(--wy-cream);
+  font-family: var(--font3), sans-serif;
+  font-size: 11.5px;
+  font-weight: 600;
+  letter-spacing: .2em;
+  line-height: 1.4;
+  text-transform: uppercase;
+}
+
+fiche.wyraj .wyraj-chrono .wy-date p {
+  margin: 0;
+  color: var(--wy-mute);
+  font-size: 12.5px;
+  line-height: 1.75;
+}
+
+Et dans le @container, remplacer l’ancien appel à .wy-tl par :
+
+fiche.wyraj .wy-col,
+fiche.wyraj .wyraj-chrono .wy-dates {
+  flex: 1 1 auto;
+  padding-top: 22px;
+}
+
+Là, c’est rangé : la chrono a ses noms à elle, le décalage est dans le CSS, et on retire le span caché qui ne servait à rien.
+
+<div class="wy-dates">
+    <div class="wy-date"> vraiment obligatoire d'avoir deux fois ? ca fait lourd 
+
+Non, pas obligatoire. Tu peux simplifier.
+
+Le conteneur wy-dates sert seulement à déplacer tout le bloc chrono d’un coup avec le margin. Mais si tu trouves ça lourd, on peut très bien faire porter ce rôle directement à wy-chrono, puisque c’est déjà le conteneur de la section.
+
+Version plus légère :
+
+<div class="wy-chrono">
+  <div class="wy-date">
+    <div class="wy-when">1636 · Zosia</div>
+    <p>Hérite d’un coven et d’une famille brisés.</p>
+  </div>
+
+  <div class="wy-date">
+    <div class="wy-when">1700 · Vienne</div>
+    <p>Wyraj s’établit à Vienne.</p>
+  </div>
+
+  <div class="wy-media">
+    <img src="https://zupimages.net/up/26/36/nwdc.png" alt="">
+  </div>
+</div>
+
+Et le CSS devient :
 
 fiche.wyraj .wyraj-chrono .wy-date {
   position: relative;
@@ -194,27 +214,214 @@ fiche.wyraj .wyraj-chrono .wy-date p {
   line-height: 1.75;
 }
 
+Donc oui : on peut virer wy-dates. On garde seulement wy-date + wy-when, c’est plus propre et moins chargé.
+
+/* ==================================================
+WYRAJ — rubans (version à jour)
+Repères chiffrés en marge, image en ruban duotone,
+typo condensée du forum (--font2 / --font3).
+Couleurs et image d'origine conservées.
+================================================== */
+
+fiche.wyraj {
+container-type: inline-size;
+container-name: wyraj;
+
+--wyraj-rust: #632228;
+--wyraj-red: #2d1119;
+--wyraj-lightred: #715454;
+--wyraj-charcoal: #29282a;
+
+--accent0: rgb(18, 16, 20) !important;
+--accent1: var(--wyraj-red) !important;
+--accent2: var(--wyraj-lightred) !important;
+--accent3: var(--wyraj-rust) !important;
+--accent4: var(--wyraj-rust) !important;
+--accent5: var(--wyraj-charcoal) !important;
+
+--wy-strip: 78px; /* largeur du ruban image */
+--wy-gap: 20px;
+--wy-ink: #c4bdbf;
+--wy-mute: #96908f;
+--wy-dim: #6b6567;
+--wy-line: #322c2f;
+--wy-cream: #d8d1d3;
+--wy-rose: #aa737b;
+}
+
+fiche.wyraj *,
+fiche.wyraj *::before,
+fiche.wyraj *::after { box-sizing: border-box; }
+
+fiche.wyraj m1 { color: var(--accent3) !important; }
+fiche.wyraj m2 { color: var(--accent2) !important; }
+fiche.wyraj u3, fiche.wyraj u4 { text-shadow: var(--text-shadow); }
+fiche.wyraj [hidden] { display: none !important; }
+
+fiche.wyraj input[type="radio"] {
+position: absolute !important; opacity: 0 !important;
+pointer-events: none !important;
+width: 0 !important; height: 0 !important; margin: 0 !important;
+}
+
+fiche.wyraj section + div,
+fiche.wyraj section + section,
+fiche.wyraj div + section { margin-top: 14px; }
+
+fiche.wyraj section { text-align: left; overflow-wrap: break-word; }
+
+fiche.wyraj label.wv-main-tab,
+fiche.wyraj label.wv-voice-tab {
+border: 0; background: transparent; cursor: pointer; display: inline-block;
+}
+
+fiche.wyraj section.wyraj-story,
+fiche.wyraj section.wyraj-chrono {
+scrollbar-width: thin;
+scrollbar-color: rgba(99,34,40,.5) transparent;
+}
+fiche.wyraj section.wyraj-story::-webkit-scrollbar,
+fiche.wyraj section.wyraj-chrono::-webkit-scrollbar { width: 3px; }
+fiche.wyraj section.wyraj-story::-webkit-scrollbar-thumb,
+fiche.wyraj section.wyraj-chrono::-webkit-scrollbar-thumb { background: rgba(99,34,40,.5); }
+
+/* ---------- Ruban image ---------- */
+
+fiche.wyraj .wy-media {
+position: relative;
+display: block; width: 100%; height: 118px;
+margin: 0 0 22px;
+overflow: hidden;
+background: #0d0d0d;
+}
+fiche.wyraj .wy-media::after {
+content: "";
+position: absolute; inset: 0;
+background: linear-gradient(170deg, rgba(45,17,25,.55), rgba(99,34,40,.45));
+mix-blend-mode: multiply;
+pointer-events: none;
+}
+fiche.wyraj .wy-media img {
+display: block;
+width: 100% !important; height: 100% !important; max-width: none !important;
+object-fit: cover !important;
+object-position: center 40%;
+filter: grayscale(.55) contrast(1.06) brightness(.92);
+opacity: .95;
+}
+
+/* ---------- Histoire ---------- */
+
+fiche.wyraj section.wyraj-story,
+fiche.wyraj section.wyraj-chrono {
+max-height: 470px;
+overflow-x: hidden; overflow-y: auto;
+padding: 10px 12px 10px 10px;
+}
+
+fiche.wyraj .wy-story,
+fiche.wyraj .wy-chrono {
+display: flex; flex-direction: column;
+padding: 20px 4px 6px 4px;
+}
+fiche.wyraj .wy-chrono .wy-media { order: -1; }
+fiche.wyraj .wy-col, fiche.wyraj .wy-tl { min-width: 0; }
+
+fiche.wyraj .wy-quote {
+position: relative;
+display: block;
+width: 86%;
+margin: 2px auto 28px;
+padding: 6px 0 6px 18px;
+color: var(--wy-mute);
+font-family: Georgia, "Times New Roman", serif;
+font-size: 12px; font-style: italic;
+letter-spacing: .01em; line-height: 1.75;
+text-align: justify; text-transform: none;
+}
+fiche.wyraj .wy-quote::before {
+content: "\201C";
+position: absolute;
+top: -5px;
+left: 5px;
+color: rgba(99,34,40,.38);
+font-family: Georgia, "Times New Roman", serif;
+font-size: 46px;
+font-style: normal;
+line-height: 1;
+}
+fiche.wyraj .wy-source {
+display: block; margin-top: 8px;
+color: var(--wy-rose);
+font-family: var(--font3), sans-serif;
+font-size: 9px; font-style: normal; font-weight: 600; letter-spacing: .24em;
+text-align: left; text-transform: uppercase;
+}
+fiche.wyraj .wy-source::before {
+letter-spacing: .05em;
+}
+
+fiche.wyraj .wy-story-text p {
+margin: 0px 15px 1px;
+font-size: 13px;
+line-height: 1.85;
+text-align: justify;
+}
+fiche.wyraj .wy-drop::first-letter {
+float: left; padding: .06em .14em 0 0;
+color: var(--wy-rose);
+font-family: var(--font2), serif;
+font-size: 3em; font-weight: 400; line-height: .78;
+}
+fiche.wyraj .wy-aside {
+margin: 4px 0 24px !important; color: var(--wy-dim);
+font-family: var(--font3), sans-serif;
+font-size: 11px !important; letter-spacing: .12em;
+text-align: right !important; text-transform: uppercase;
+}
+
+/* ---------- Chronologie ---------- */
+
+fiche.wyraj .wy-tl-item {
+position: relative;
+margin: 0 0 4px;
+padding: 16px 0;
+border: 0; border-top: 1px solid var(--wy-line);
+}
+fiche.wyraj .wy-tl-item { border-top: 0; padding-top: 0; }
+fiche.wyraj .wy-tl-mark { display: none; }
+
+fiche.wyraj .wy-tl-head {
+margin-bottom: 7px; color: var(--wy-cream);
+font-family: var(--font3), sans-serif;
+font-size: 11.5px; font-weight: 600; letter-spacing: .2em;
+line-height: 1.4; text-transform: uppercase;
+}
+fiche.wyraj .wy-tl-item p {
+margin: 0; color: var(--wy-mute); font-size: 12.5px; line-height: 1.75;
+}
+
 /* ---------- Typo commune ---------- */
 
 fiche.wyraj .wv-kicker {
-  margin-bottom: 9px; color: var(--wy-rose);
-  font-family: var(--font3), sans-serif;
-  font-size: 9px; font-weight: 600;
-  letter-spacing: .3em; text-transform: uppercase;
+margin-bottom: 9px; color: var(--wy-rose);
+font-family: var(--font3), sans-serif;
+font-size: 9px; font-weight: 600;
+letter-spacing: .3em; text-transform: uppercase;
 }
 
 fiche.wyraj .wv-heading {
-  margin: 0 0 12px; color: var(--wy-cream);
-  font-family: var(--font2), serif;
-  font-size: 22px; font-weight: 400;
-  letter-spacing: 1px; line-height: 1.2;
-  text-transform: lowercase;
-  text-shadow: var(--text-shadow2);
+margin: 0 0 12px; color: var(--wy-cream);
+font-family: var(--font2), serif;
+font-size: 22px; font-weight: 400;
+letter-spacing: 1px; line-height: 1.2;
+text-transform: lowercase;
+text-shadow: var(--text-shadow2);
 }
 
 fiche.wyraj .wv-lead {
-  max-width: none; margin: 0 0 18px;
-  color: #938d8f; font-size: 12.5px; line-height: 1.8;
+max-width: none; margin: 0 0 18px;
+color: #938d8f; font-size: 12.5px; line-height: 1.8;
 }
 
 /* ---------- Informations ---------- */
@@ -222,198 +429,198 @@ fiche.wyraj .wv-lead {
 fiche.wyraj .wy-info { padding: 24px 6px 12px 6px; }
 
 fiche.wyraj .wy-info-grid {
-  display: grid; grid-template-columns: repeat(auto-fit, minmax(175px, 1fr));
-  gap: 22px 26px; padding: 0 0 24px;
-  border-bottom: 1px solid var(--wy-line);
+display: grid; grid-template-columns: repeat(auto-fit, minmax(175px, 1fr));
+gap: 22px 26px; padding: 0 0 24px;
+border-bottom: 1px solid var(--wy-line);
 }
 fiche.wyraj .wy-info-fact { padding-top: 12px; border-top: 1px solid rgba(99,34,40,.5); }
 fiche.wyraj .wy-info-fact p {
-  margin: 7px 0 0; color: var(--wy-ink); font-size: 12.5px; line-height: 1.7;
+margin: 7px 0 0; color: var(--wy-ink); font-size: 12.5px; line-height: 1.7;
 }
 
 fiche.wyraj .wy-info-row {
-  display: grid; grid-template-columns: minmax(0, 1fr);
-  gap: 10px; padding: 22px 0;
-  border-bottom: 1px solid var(--wy-line);
+display: grid; grid-template-columns: minmax(0, 1fr);
+gap: 10px; padding: 22px 0;
+border-bottom: 1px solid var(--wy-line);
 }
 fiche.wyraj .wy-info-label {
-  color: var(--wy-cream);
-  font-family: var(--font2), serif;
-  font-size: 18px; font-weight: 400; letter-spacing: 1px;
-  line-height: 1.25; text-transform: lowercase;
-  text-shadow: var(--text-shadow2);
+color: var(--wy-cream);
+font-family: var(--font2), serif;
+font-size: 18px; font-weight: 400; letter-spacing: 1px;
+line-height: 1.25; text-transform: lowercase;
+text-shadow: var(--text-shadow2);
 }
 fiche.wyraj .wy-info-label span {
-  display: block; margin-top: 7px; color: var(--wy-rose);
-  font-family: var(--font3), sans-serif;
-  font-size: 9px; font-weight: 600;
-  letter-spacing: .3em; text-transform: uppercase;
+display: block; margin-top: 7px; color: var(--wy-rose);
+font-family: var(--font3), sans-serif;
+font-size: 9px; font-weight: 600;
+letter-spacing: .3em; text-transform: uppercase;
 }
 fiche.wyraj .wy-info-row p {
-  margin: 0; color: var(--wy-mute); font-size: 12.5px; line-height: 1.8;
+margin: 0; color: var(--wy-mute); font-size: 12.5px; line-height: 1.8;
 }
 
 /* ---------- Onglets ---------- */
 
 fiche.wyraj .wv-main-tabs {
-  display: flex; flex-wrap: wrap; gap: 2px 26px;
-  margin: 0; border-bottom: 1px solid var(--wy-line);
+display: flex; flex-wrap: wrap; gap: 2px 26px;
+margin: 0; border-bottom: 1px solid var(--wy-line);
 }
 fiche.wyraj label.wv-main-tab {
-  position: relative;
-  min-height: 34px; line-height: 34px; padding: 0 1px 9px;
-  color: #676163;
-  font-family: var(--font3), sans-serif;
-  font-size: 10px; font-weight: 600;
-  letter-spacing: .26em; text-transform: uppercase;
-  transition: color .3s;
+position: relative;
+min-height: 34px; line-height: 34px; padding: 0 1px 9px;
+color: #676163;
+font-family: var(--font3), sans-serif;
+font-size: 10px; font-weight: 600;
+letter-spacing: .26em; text-transform: uppercase;
+transition: color .3s;
 }
-fiche.wyraj label.wv-main-tab:hover { color: #a8a1a4; }
+fiche.wyraj label.wv-main-tab { color: #a8a1a4; }
 
 fiche.wyraj .wy-rel label[for="wy-rel-wallace"],
 fiche.wyraj .wv-org label[for="wy-org-kolo"] { color: var(--wy-cream); }
 fiche.wyraj .wy-rel label[for="wy-rel-wallace"]::after,
 fiche.wyraj .wv-org label[for="wy-org-kolo"]::after {
-  content: ""; position: absolute; right: 0; bottom: -1px; left: 0;
-  height: 1px; background: var(--wy-rose);
+content: ""; position: absolute; right: 0; bottom: -1px; left: 0;
+height: 1px; background: var(--wy-rose);
 }
-fiche.wyraj .wy-rel:has(#wy-rel-zelote:checked) label[for="wy-rel-wallace"],
-fiche.wyraj .wy-rel:has(#wy-rel-vampires:checked) label[for="wy-rel-wallace"],
-fiche.wyraj .wv-org:has(#wy-org-membres:checked) label[for="wy-org-kolo"],
-fiche.wyraj .wv-org:has(#wy-org-termes:checked) label[for="wy-org-kolo"] { color: #676163; }
-fiche.wyraj .wy-rel:has(#wy-rel-zelote:checked) label[for="wy-rel-wallace"]::after,
-fiche.wyraj .wy-rel:has(#wy-rel-vampires:checked) label[for="wy-rel-wallace"]::after,
-fiche.wyraj .wv-org:has(#wy-org-membres:checked) label[for="wy-org-kolo"]::after,
-fiche.wyraj .wv-org:has(#wy-org-termes:checked) label[for="wy-org-kolo"]::after { content: none; }
-fiche.wyraj .wy-rel:has(#wy-rel-zelote:checked) label[for="wy-rel-zelote"],
-fiche.wyraj .wy-rel:has(#wy-rel-vampires:checked) label[for="wy-rel-vampires"],
-fiche.wyraj .wv-org:has(#wy-org-membres:checked) label[for="wy-org-membres"],
-fiche.wyraj .wv-org:has(#wy-org-termes:checked) label[for="wy-org-termes"] { color: var(--wy-cream); }
-fiche.wyraj .wy-rel:has(#wy-rel-zelote:checked) label[for="wy-rel-zelote"]::after,
-fiche.wyraj .wy-rel:has(#wy-rel-vampires:checked) label[for="wy-rel-vampires"]::after,
-fiche.wyraj .wv-org:has(#wy-org-membres:checked) label[for="wy-org-membres"]::after,
-fiche.wyraj .wv-org:has(#wy-org-termes:checked) label[for="wy-org-termes"]::after {
-  content: ""; position: absolute; right: 0; bottom: -1px; left: 0;
-  height: 1px; background: var(--wy-rose);
+fiche.wyraj .wy-rel(#wy-rel-zelote) label[for="wy-rel-wallace"],
+fiche.wyraj .wy-rel(#wy-rel-vampires) label[for="wy-rel-wallace"],
+fiche.wyraj .wv-org(#wy-org-membres) label[for="wy-org-kolo"],
+fiche.wyraj .wv-org(#wy-org-termes) label[for="wy-org-kolo"] { color: #676163; }
+fiche.wyraj .wy-rel(#wy-rel-zelote) label[for="wy-rel-wallace"]::after,
+fiche.wyraj .wy-rel(#wy-rel-vampires) label[for="wy-rel-wallace"]::after,
+fiche.wyraj .wv-org(#wy-org-membres) label[for="wy-org-kolo"]::after,
+fiche.wyraj .wv-org(#wy-org-termes) label[for="wy-org-kolo"]::after { content: none; }
+fiche.wyraj .wy-rel(#wy-rel-zelote) label[for="wy-rel-zelote"],
+fiche.wyraj .wy-rel(#wy-rel-vampires) label[for="wy-rel-vampires"],
+fiche.wyraj .wv-org(#wy-org-membres) label[for="wy-org-membres"],
+fiche.wyraj .wv-org(#wy-org-termes) label[for="wy-org-termes"] { color: var(--wy-cream); }
+fiche.wyraj .wy-rel(#wy-rel-zelote) label[for="wy-rel-zelote"]::after,
+fiche.wyraj .wy-rel(#wy-rel-vampires) label[for="wy-rel-vampires"]::after,
+fiche.wyraj .wv-org(#wy-org-membres) label[for="wy-org-membres"]::after,
+fiche.wyraj .wv-org(#wy-org-termes) label[for="wy-org-termes"]::after {
+content: ""; position: absolute; right: 0; bottom: -1px; left: 0;
+height: 1px; background: var(--wy-rose);
 }
 
 fiche.wyraj .wy-rel { position: relative; margin-top: 20px; }
 fiche.wyraj .wy-rel-panel { display: none; padding: 22px 0 6px; }
 fiche.wyraj .wy-rel .panel-wallace { display: block; }
-fiche.wyraj .wy-rel:has(#wy-rel-zelote:checked) .panel-wallace,
-fiche.wyraj .wy-rel:has(#wy-rel-vampires:checked) .panel-wallace { display: none; }
-fiche.wyraj .wy-rel:has(#wy-rel-zelote:checked) .panel-zelote,
-fiche.wyraj .wy-rel:has(#wy-rel-vampires:checked) .panel-vampires { display: block; }
+fiche.wyraj .wy-rel(#wy-rel-zelote) .panel-wallace,
+fiche.wyraj .wy-rel(#wy-rel-vampires) .panel-wallace { display: none; }
+fiche.wyraj .wy-rel(#wy-rel-zelote) .panel-zelote,
+fiche.wyraj .wy-rel(#wy-rel-vampires) .panel-vampires { display: block; }
 fiche.wyraj .wy-rel-panel .wv-heading { margin-bottom: 8px; }
 fiche.wyraj .wy-rel-panel p {
-  max-width: none; margin: 13px 0 0;
-  color: var(--wy-mute); font-size: 12.5px; line-height: 1.8;
+max-width: none; margin: 13px 0 0;
+color: var(--wy-mute); font-size: 12.5px; line-height: 1.8;
 }
 
 fiche.wyraj .wv-main-panel { display: none; margin: 0; padding-top: 22px; }
 fiche.wyraj .wv-org .panel-kolo { display: block; }
-fiche.wyraj .wv-org:has(#wy-org-membres:checked) .panel-kolo,
-fiche.wyraj .wv-org:has(#wy-org-termes:checked) .panel-kolo { display: none; }
-fiche.wyraj .wv-org:has(#wy-org-membres:checked) .panel-membres,
-fiche.wyraj .wv-org:has(#wy-org-termes:checked) .panel-termes { display: block; }
+fiche.wyraj .wv-org(#wy-org-membres) .panel-kolo,
+fiche.wyraj .wv-org(#wy-org-termes) .panel-kolo { display: none; }
+fiche.wyraj .wv-org(#wy-org-membres) .panel-membres,
+fiche.wyraj .wv-org(#wy-org-termes) .panel-termes { display: block; }
 
 /* ---------- Organisation ---------- */
 
 fiche.wyraj .wv-org { width: 100%; margin: 0; padding: 24px 6px 14px 6px; }
 fiche.wyraj .wv-intro { margin: 0 0 22px; }
 fiche.wyraj .wv-intro p { margin: 0 0 12px; color: #a09a9c; font-size: 12.5px; line-height: 1.85; }
-fiche.wyraj .wv-intro p:last-child { margin-bottom: 0; color: #7a7476; font-size: 12px; }
+fiche.wyraj .wv-intro p { margin-bottom: 0; color: #7a7476; font-size: 12px; }
 
 fiche.wyraj .wv-single-stage {
-  display: grid; grid-template-columns: minmax(0, 1fr);
-  gap: 16px; padding: 6px 0 4px;
+display: grid; grid-template-columns: minmax(0, 1fr);
+gap: 16px; padding: 6px 0 4px;
 }
 
 fiche.wyraj .wv-voice-tabs {
-  display: flex; flex-direction: row; flex-wrap: wrap;
-  gap: 4px 18px; padding-top: 4px;
+display: flex; flex-direction: row; flex-wrap: wrap;
+gap: 4px 18px; padding-top: 4px;
 }
 fiche.wyraj label.wv-voice-tab {
-  position: relative;
-  padding: 6px 0 6px 14px;
-  color: #625c5e;
-  font-family: var(--font3), sans-serif;
-  font-size: 11px; font-weight: 600;
-  letter-spacing: .24em; text-transform: uppercase;
-  transition: color .3s;
+position: relative;
+padding: 6px 0 6px 14px;
+color: #625c5e;
+font-family: var(--font3), sans-serif;
+font-size: 11px; font-weight: 600;
+letter-spacing: .24em; text-transform: uppercase;
+transition: color .3s;
 }
 fiche.wyraj label.wv-voice-tab::before {
-  content: ""; position: absolute; left: 0; top: 50%;
-  width: 7px; height: 1px; margin-top: -1px;
-  background: #3f393b; transition: background .3s, width .3s;
+content: ""; position: absolute; left: 0; top: 50%;
+width: 7px; height: 1px; margin-top: -1px;
+background: #3f393b; transition: background .3s, width .3s;
 }
-fiche.wyraj label.wv-voice-tab:hover { color: #a8a1a4; }
+fiche.wyraj label.wv-voice-tab { color: #a8a1a4; }
 
 fiche.wyraj .wv-voices label[for="wy-voice-jarilo"] { color: var(--wy-cream); }
 fiche.wyraj .wv-voices label[for="wy-voice-jarilo"]::before { background: var(--wy-rose); width: 10px; }
-fiche.wyraj .wv-voices:has(#wy-voice-kupala:checked) label[for="wy-voice-jarilo"],
-fiche.wyraj .wv-voices:has(#wy-voice-mokosh:checked) label[for="wy-voice-jarilo"],
-fiche.wyraj .wv-voices:has(#wy-voice-marzanna:checked) label[for="wy-voice-jarilo"] { color: #625c5e; }
-fiche.wyraj .wv-voices:has(#wy-voice-kupala:checked) label[for="wy-voice-jarilo"]::before,
-fiche.wyraj .wv-voices:has(#wy-voice-mokosh:checked) label[for="wy-voice-jarilo"]::before,
-fiche.wyraj .wv-voices:has(#wy-voice-marzanna:checked) label[for="wy-voice-jarilo"]::before { background: #3f393b; width: 7px; }
-fiche.wyraj .wv-voices:has(#wy-voice-kupala:checked) label[for="wy-voice-kupala"],
-fiche.wyraj .wv-voices:has(#wy-voice-mokosh:checked) label[for="wy-voice-mokosh"],
-fiche.wyraj .wv-voices:has(#wy-voice-marzanna:checked) label[for="wy-voice-marzanna"] { color: var(--wy-cream); }
-fiche.wyraj .wv-voices:has(#wy-voice-kupala:checked) label[for="wy-voice-kupala"]::before,
-fiche.wyraj .wv-voices:has(#wy-voice-mokosh:checked) label[for="wy-voice-mokosh"]::before,
-fiche.wyraj .wv-voices:has(#wy-voice-marzanna:checked) label[for="wy-voice-marzanna"]::before { background: var(--wy-rose); width: 10px; }
+fiche.wyraj .wv-voices(#wy-voice-kupala) label[for="wy-voice-jarilo"],
+fiche.wyraj .wv-voices(#wy-voice-mokosh) label[for="wy-voice-jarilo"],
+fiche.wyraj .wv-voices(#wy-voice-marzanna) label[for="wy-voice-jarilo"] { color: #625c5e; }
+fiche.wyraj .wv-voices(#wy-voice-kupala) label[for="wy-voice-jarilo"]::before,
+fiche.wyraj .wv-voices(#wy-voice-mokosh) label[for="wy-voice-jarilo"]::before,
+fiche.wyraj .wv-voices(#wy-voice-marzanna) label[for="wy-voice-jarilo"]::before { background: #3f393b; width: 7px; }
+fiche.wyraj .wv-voices(#wy-voice-kupala) label[for="wy-voice-kupala"],
+fiche.wyraj .wv-voices(#wy-voice-mokosh) label[for="wy-voice-mokosh"],
+fiche.wyraj .wv-voices(#wy-voice-marzanna) label[for="wy-voice-marzanna"] { color: var(--wy-cream); }
+fiche.wyraj .wv-voices(#wy-voice-kupala) label[for="wy-voice-kupala"]::before,
+fiche.wyraj .wv-voices(#wy-voice-mokosh) label[for="wy-voice-mokosh"]::before,
+fiche.wyraj .wv-voices(#wy-voice-marzanna) label[for="wy-voice-marzanna"]::before { background: var(--wy-rose); width: 10px; }
 
 fiche.wyraj .wv-voice-panels { min-width: 0; }
 fiche.wyraj .wv-voice-panel {
-  display: none; position: relative;
-  padding: 20px 30px 8px 16px;
-  border-left: 1px solid rgba(99,34,40,.5);
-  background: linear-gradient(90deg, rgba(45,17,25,.35), transparent 65%);
+display: none; position: relative;
+padding: 20px 30px 8px 16px;
+border-left: 1px solid rgba(99,34,40,.5);
+background: linear-gradient(90deg, rgba(45,17,25,.35), transparent 65%);
 }
 fiche.wyraj .wv-voices .panel-jarilo { display: block; }
-fiche.wyraj .wv-voices:has(#wy-voice-kupala:checked) .panel-jarilo,
-fiche.wyraj .wv-voices:has(#wy-voice-mokosh:checked) .panel-jarilo,
-fiche.wyraj .wv-voices:has(#wy-voice-marzanna:checked) .panel-jarilo { display: none; }
-fiche.wyraj .wv-voices:has(#wy-voice-kupala:checked) .panel-kupala,
-fiche.wyraj .wv-voices:has(#wy-voice-mokosh:checked) .panel-mokosh,
-fiche.wyraj .wv-voices:has(#wy-voice-marzanna:checked) .panel-marzanna { display: block; }
+fiche.wyraj .wv-voices(#wy-voice-kupala) .panel-jarilo,
+fiche.wyraj .wv-voices(#wy-voice-mokosh) .panel-jarilo,
+fiche.wyraj .wv-voices(#wy-voice-marzanna) .panel-jarilo { display: none; }
+fiche.wyraj .wv-voices(#wy-voice-kupala) .panel-kupala,
+fiche.wyraj .wv-voices(#wy-voice-mokosh) .panel-mokosh,
+fiche.wyraj .wv-voices(#wy-voice-marzanna) .panel-marzanna { display: block; }
 
 /* la saison : petite Ã©tiquette verticale, plus de typo gÃ©ante */
 fiche.wyraj .wv-voice-season {
-  position: absolute; top: 20px; right: 6px;
-  color: rgba(170,115,123,.5);
-  font-family: var(--font3), sans-serif;
-  font-size: 9px; font-weight: 600;
-  letter-spacing: .34em; text-transform: uppercase;
-  writing-mode: vertical-rl;
-  white-space: nowrap; pointer-events: none;
+position: absolute; top: 20px; right: 6px;
+color: rgba(170,115,123,.5);
+font-family: var(--font3), sans-serif;
+font-size: 9px; font-weight: 600;
+letter-spacing: .34em; text-transform: uppercase;
+writing-mode: vertical-rl;
+white-space: nowrap; pointer-events: none;
 }
 fiche.wyraj .wv-voice-name {
-  margin: 0 0 14px; color: var(--wy-cream);
-  font-family: var(--font2), serif;
-  font-size: 26px; font-weight: 400; letter-spacing: 1px;
-  line-height: 1; text-transform: lowercase;
-  text-shadow: var(--text-shadow2);
+margin: 0 0 14px; color: var(--wy-cream);
+font-family: var(--font2), serif;
+font-size: 26px; font-weight: 400; letter-spacing: 1px;
+line-height: 1; text-transform: lowercase;
+text-shadow: var(--text-shadow2);
 }
 fiche.wyraj .wv-voice-panel p {
-  margin: 0; color: #9d9799; font-size: 12.5px; line-height: 1.85;
+margin: 0; color: #9d9799; font-size: 12.5px; line-height: 1.85;
 }
 
 fiche.wyraj .wv-simple-list { border-top: 1px solid var(--wy-line); }
 fiche.wyraj .wv-simple-entry {
-  display: grid; grid-template-columns: minmax(0, 1fr);
-  gap: 8px; padding: 18px 0;
-  border-bottom: 1px solid var(--wy-line);
+display: grid; grid-template-columns: minmax(0, 1fr);
+gap: 8px; padding: 18px 0;
+border-bottom: 1px solid var(--wy-line);
 }
 fiche.wyraj .wv-simple-name {
-  color: var(--wy-cream);
-  font-family: var(--font3), sans-serif;
-  font-size: 11px; font-weight: 600;
-  letter-spacing: .24em; text-transform: uppercase;
+color: var(--wy-cream);
+font-family: var(--font3), sans-serif;
+font-size: 11px; font-weight: 600;
+letter-spacing: .24em; text-transform: uppercase;
 }
 fiche.wyraj .wv-simple-entry p {
-  margin: 0; color: var(--wy-mute); font-size: 12.5px; line-height: 1.8;
+margin: 0; color: var(--wy-mute); font-size: 12.5px; line-height: 1.8;
 }
 
 /* ---------- Prohod ---------- */
@@ -421,61 +628,63 @@ fiche.wyraj .wv-simple-entry p {
 fiche.wyraj .wy-prohod { padding: 24px 6px 14px 6px; }
 fiche.wyraj .prohod-stage { overflow: hidden; }
 fiche.wyraj .wy-media.prohod-media {
-  float: none; width: 100%; height: 130px; margin: 0 0 24px;
+float: none; width: 100%; height: 130px; margin: 0 0 24px;
 }
 fiche.wyraj .prohod-copy { color: #b6b1b1; font-size: 13px; line-height: 1.85; }
 fiche.wyraj .prohod-copy p { margin: 0 0 16px; }
 
 fiche.wyraj .prohod-oath {
-  clear: both; margin: 8px 0 0; padding: 22px 0 4px;
-  border-top: 1px solid rgba(99,34,40,.5);
+clear: both; margin: 8px 0 0; padding: 22px 0 4px;
+border-top: 1px solid rgba(99,34,40,.5);
 }
 fiche.wyraj .prohod-oath .wv-kicker { margin-bottom: 18px; }
 fiche.wyraj .prohod-oath-line {
-  margin-bottom: 18px; padding-left: 14px;
-  border-left: 1px solid var(--wy-line);
+margin-bottom: 18px; padding-left: 14px;
+border-left: 1px solid var(--wy-line);
 }
 fiche.wyraj .prohod-polish {
-  margin-bottom: 7px; color: var(--wy-cream);
-  font-size: 12.5px; font-style: italic; line-height: 1.65;
+margin-bottom: 7px; color: var(--wy-cream);
+font-size: 12.5px; font-style: italic; line-height: 1.65;
 }
 fiche.wyraj .prohod-translation {
-  color: #857f81; font-family: var(--font3), sans-serif;
-  font-size: 10.5px; letter-spacing: .06em; line-height: 1.7;
+color: #857f81; font-family: var(--font3), sans-serif;
+font-size: 10.5px; letter-spacing: .06em; line-height: 1.7;
 }
 
 /* ==================================================
-   Fiche assez large : le ruban passe Ã  la verticale
+Fiche assez large : le ruban passe Ã la verticale
 ================================================== */
 
 @container wyraj (min-width: 430px) {
-  fiche.wyraj section.wyraj-story > t1 {
-    margin-left: calc(var(--wy-strip) + var(--wy-gap)) !important;
-  }
-  fiche.wyraj section.wyraj-chrono > t1 {
-    margin-right: calc(var(--wy-strip) + var(--wy-gap)) !important;
-  }
-
-  fiche.wyraj .wy-story, fiche.wyraj .wy-chrono {
-    flex-direction: row; align-items: flex-start;
-    gap: var(--wy-gap); padding-top: 0;
-  }
-  fiche.wyraj .wy-chrono .wy-media { order: 2; }
-
-  fiche.wyraj .wy-story > .wy-media,
-  fiche.wyraj .wy-chrono > .wy-media {
-    position: sticky; top: 0;
-    flex: 0 0 var(--wy-strip); width: var(--wy-strip);
-    height: 430px; margin: -27px 0 0;
-    -webkit-mask-image: linear-gradient(180deg, #000 72%, transparent);
-            mask-image: linear-gradient(180deg, #000 72%, transparent);
-  }
-  fiche.wyraj .wy-col, fiche.wyraj .wy-tl { flex: 1 1 auto; padding-top: 22px; }
-
-  fiche.wyraj .wy-info-row,
-  fiche.wyraj .wv-simple-entry { grid-template-columns: 140px minmax(0,1fr); gap: 24px; }
-
-  fiche.wyraj .wv-single-stage { grid-template-columns: 112px minmax(0,1fr); gap: 22px; }
-  fiche.wyraj .wv-voice-tabs { flex-direction: column; gap: 6px; padding-top: 22px; }
-  fiche.wyraj .wv-voice-panel { min-height: 240px; }
+fiche.wyraj section.wyraj-story > t1 {
+margin-left: calc(var(--wy-strip) + var(--wy-gap)) !important;
 }
+fiche.wyraj section.wyraj-chrono > t1 {
+margin-right: calc(var(--wy-strip) + var(--wy-gap)) !important;
+}
+
+fiche.wyraj .wy-story, fiche.wyraj .wy-chrono {
+flex-direction: row; align-items: flex-start;
+gap: var(--wy-gap); padding-top: 0;
+}
+fiche.wyraj .wy-chrono .wy-media { order: 2; }
+
+fiche.wyraj .wy-story > .wy-media,
+fiche.wyraj .wy-chrono > .wy-media {
+position: sticky; top: 0;
+flex: 0 0 var(--wy-strip); width: var(--wy-strip);
+height: 430px; margin: -27px 0 0;
+-webkit-mask-image: linear-gradient(180deg, #000 72%, transparent);
+mask-image: linear-gradient(180deg, #000 72%, transparent);
+}
+fiche.wyraj .wy-col, fiche.wyraj .wy-tl { flex: 1 1 auto; padding-top: 22px; }
+
+fiche.wyraj .wy-info-row,
+fiche.wyraj .wv-simple-entry { grid-template-columns: 140px minmax(0,1fr); gap: 24px; }
+
+fiche.wyraj .wv-single-stage { grid-template-columns: 112px minmax(0,1fr); gap: 22px; }
+fiche.wyraj .wv-voice-tabs { flex-direction: column; gap: 6px; padding-top: 22px; }
+fiche.wyraj .wv-voice-panel { min-height: 240px; }
+}
+
+Fermer
