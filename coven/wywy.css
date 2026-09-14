@@ -164,23 +164,34 @@ fiche.wyraj .wy-aside {
 
 /* ---------- Chronologie ---------- */
 
-fiche.wyraj .wy-tl-item {
+fiche.wyraj .wyraj-chrono .wy-date {
   position: relative;
-  margin: 0 0 4px;
+  margin: 0 0 4px 35px;
   padding: 16px 0;
-  border: 0; border-top: 1px solid var(--wy-line);
+  border-top: 1px solid var(--wy-line);
 }
-fiche.wyraj .wy-tl-item:first-child { border-top: 0; padding-top: 0; }
-fiche.wyraj .wy-tl-mark { display: none; }
 
-fiche.wyraj .wy-tl-head {
-  margin-bottom: 7px; color: var(--wy-cream);
-  font-family: var(--font3), sans-serif;
-  font-size: 11.5px; font-weight: 600; letter-spacing: .2em;
-  line-height: 1.4; text-transform: uppercase;
+fiche.wyraj .wyraj-chrono .wy-date:first-child {
+  border-top: 0;
+  padding-top: 15px;
 }
-fiche.wyraj .wy-tl-item p {
-  margin: 0; color: var(--wy-mute); font-size: 12.5px; line-height: 1.75;
+
+fiche.wyraj .wyraj-chrono .wy-when {
+  margin-bottom: 7px;
+  color: var(--wy-cream);
+  font-family: var(--font3), sans-serif;
+  font-size: 11.5px;
+  font-weight: 600;
+  letter-spacing: .2em;
+  line-height: 1.4;
+  text-transform: uppercase;
+}
+
+fiche.wyraj .wyraj-chrono .wy-date p {
+  margin: 0;
+  color: var(--wy-mute);
+  font-size: 12.5px;
+  line-height: 1.75;
 }
 
 /* ---------- Typo commune ---------- */
