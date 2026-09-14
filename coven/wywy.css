@@ -491,7 +491,7 @@ WYRAJ — rubans (version test avant de mettre sur le vrai wyraj.css)
 .wyraj .wyraj-information .vampires::before { content: "hostilités"; }
 
 .wyraj .wyraj-information texte a {
-  display: table;
+ /* display: table;
   margin: 16px 0 0;
   padding: 7px 12px;
   background: #3d1c22;
@@ -505,6 +505,13 @@ WYRAJ — rubans (version test avant de mettre sur le vrai wyraj.css)
   text-decoration: none;
   text-transform: uppercase;
   transition: all .2s ease-in;
+
+  font-family: var(--font3); */
+   
+        text-decoration-color: var(--accent3);
+        text-decoration-style: dashed;
+        text-underline-offset: 4px;
+        transition: all 0.2s ease-in;
 }
 .wyraj .wyraj-information texte a:hover {
   background: var(--wyraj-rust);
