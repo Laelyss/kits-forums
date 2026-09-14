@@ -339,163 +339,138 @@ WYRAJ — rubans (version test avant de mettre sur le vrai wyraj.css)
 
 /* ---------- SECTION 3 Informations ---------- */
 
-.wyraj .wyraj-information infos,
-.wyraj .wyraj-information faits,
-.wyraj .wyraj-information fait,
-.wyraj .wyraj-information titre,
-.wyraj .wyraj-information bloc,
-.wyraj .wyraj-information shop,
-.wyraj .wyraj-information relation,
-.wyraj .wyraj-information onglets,
-.wyraj .wyraj-information texte {
+fiche.wyraj .wyraj-information infos,
+fiche.wyraj .wyraj-information faits,
+fiche.wyraj .wyraj-information fait,
+fiche.wyraj .wyraj-information titre,
+fiche.wyraj .wyraj-information bloc,
+fiche.wyraj .wyraj-information shop,
+fiche.wyraj .wyraj-information relation,
+fiche.wyraj .wyraj-information onglets,
+fiche.wyraj .wyraj-information texte {
   display: block;
+  margin: 0;
+  padding: 0;
+  border: 0;
+  background: none;
+  box-shadow: none;
 }
 
-.wyraj .wyraj-information infos {
-  padding: 24px 10px 12px;
-}
+fiche.wyraj .wyraj-information infos { padding: 22px 16px 18px; }
 
-.wyraj .wyraj-information faits {
+fiche.wyraj .wyraj-information faits {
   display: grid;
-  grid-template-columns: repeat(auto-fit, minmax(210px, 1fr));
-  gap: 24px 54px;
-  margin: 0 0 30px;
+  grid-template-columns: 1fr 1fr;
+  gap: 24px 48px;
+  margin: 0 0 32px;
 }
 
-.wyraj .wyraj-information fait {
+fiche.wyraj .wyraj-information fait {
   color: var(--wy-cream);
-  font-family: var(--font1), serif;
+  font-family: Georgia, "Palatino Linotype", Palatino, serif;
   font-size: 14px;
   line-height: 1.55;
+  text-align: left;
 }
 
-.wyraj .wyraj-information titre {
-  margin: 0 0 9px;
+fiche.wyraj .wyraj-information titre {
+  display: block;
+  margin: 0 0 8px;
   color: var(--wy-rose);
   font-family: var(--font3), sans-serif;
   font-size: 9px;
   font-weight: 600;
-  letter-spacing: .34em;
+  letter-spacing: .32em;
   line-height: 1.4;
+  text-align: left;
   text-transform: uppercase;
 }
 
-.wyraj .wyraj-information bloc,
-.wyraj .wyraj-information shop,
-.wyraj .wyraj-information texte {
+fiche.wyraj .wyraj-information bloc,
+fiche.wyraj .wyraj-information shop,
+fiche.wyraj .wyraj-information texte {
   color: var(--wy-mute);
-  font-family: var(--font1), serif;
+  font-family: Georgia, "Palatino Linotype", Palatino, serif;
   font-size: 14px;
   line-height: 1.85;
   text-align: justify;
 }
 
-.wyraj .wyraj-information bloc {
-  margin: 0 0 30px;
-}
+fiche.wyraj .wyraj-information bloc { margin: 0 0 28px; }
 
-.wyraj .wyraj-information h4 {
-  margin: 0 0 14px;
+fiche.wyraj .wyraj-information h4 {
+  margin: 0 0 12px;
   color: var(--wy-cream);
   font-family: var(--font2), serif;
   font-size: 25px;
   font-weight: 400;
   line-height: 1.2;
+  text-align: left;
   text-transform: lowercase;
   text-shadow: var(--text-shadow2);
 }
 
-.wyraj .wyraj-information shop {
-  margin: 0 16px 32px;
-  padding: 18px 18px 20px;
+fiche.wyraj .wyraj-information shop {
+  margin: 0 0 30px;
+  padding: 18px 20px 20px;
   border-radius: 8px;
-  background: linear-gradient(105deg, rgba(99,34,40,.22), rgba(22,18,19,.28) 55%, rgba(18,18,18,0));
+  background: linear-gradient(105deg, rgba(99, 34, 40, .2), rgba(22, 18, 19, .12) 52%, transparent);
 }
 
-.wyraj .wyraj-information relation {
-  margin-top: 22px;
+fiche.wyraj .wyraj-information relation { margin-top: 8px; }
+
+fiche.wyraj .wyraj-information onglets {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 6px 26px;
+  justify-content: flex-start;
+  margin: 0 0 18px;
 }
 
-.wyraj .wyraj-information relation input {
-  display: none;
-}
-
-.wyraj .wyraj-information onglets {
-  display: grid;
-  grid-template-columns: repeat(auto-fit, minmax(105px, 1fr));
-  gap: 8px 22px;
-  margin: 0 0 24px;
-}
-
-.wyraj .wyraj-information onglets label {
+fiche.wyraj .wyraj-information onglets label {
   position: relative;
-  padding: 0 0 13px;
+  flex: 0 0 auto;
+  padding: 0 0 10px;
   color: #676163;
   font-family: var(--font3), sans-serif;
   font-size: 10px;
   font-weight: 600;
-  letter-spacing: .32em;
+  letter-spacing: .28em;
   text-align: left;
   text-transform: uppercase;
   cursor: pointer;
 }
 
-.wyraj .wyraj-information onglets label::after {
+fiche.wyraj .wyraj-information onglets label::after {
   content: "";
   position: absolute;
-  bottom: 0;
-  left: 0;
+  right: 0; bottom: 0; left: 0;
   width: 0;
   height: 1px;
-  background: rgba(170,115,123,.55);
+  background: var(--wy-rose);
 }
 
-.wyraj .wyraj-information texte {
-  display: none;
-}
+fiche.wyraj .wyraj-information texte { display: none; }
+fiche.wyraj .wyraj-information texte a { color: var(--wy-rose); }
 
-.wyraj .wyraj-information .wallace {
-  display: block;
-}
+fiche.wyraj .wyraj-information .wallace { display: block; }
+fiche.wyraj .wyraj-information label[for="wy-rel-wallace"] { color: var(--wy-cream); }
+fiche.wyraj .wyraj-information label[for="wy-rel-wallace"]::after { width: 100%; }
 
-.wyraj .wyraj-information label[for="wy-rel-wallace"] {
-  color: var(--wy-cream);
-}
+fiche.wyraj .wyraj-information relation:has(#wy-rel-zelote:checked) .wallace,
+fiche.wyraj .wyraj-information relation:has(#wy-rel-vampires:checked) .wallace { display: none; }
+fiche.wyraj .wyraj-information relation:has(#wy-rel-zelote:checked) .zelote,
+fiche.wyraj .wyraj-information relation:has(#wy-rel-vampires:checked) .vampires { display: block; }
 
-.wyraj .wyraj-information label[for="wy-rel-wallace"]::after {
-  width: 100%;
-}
+fiche.wyraj .wyraj-information relation:has(#wy-rel-zelote:checked) label[for="wy-rel-wallace"],
+fiche.wyraj .wyraj-information relation:has(#wy-rel-vampires:checked) label[for="wy-rel-wallace"] { color: #676163; }
+fiche.wyraj .wyraj-information relation:has(#wy-rel-zelote:checked) label[for="wy-rel-wallace"]::after,
+fiche.wyraj .wyraj-information relation:has(#wy-rel-vampires:checked) label[for="wy-rel-wallace"]::after { width: 0; }
 
-.wyraj .wyraj-information relation:has(#wy-rel-zelote:checked) .wallace,
-.wyraj .wyraj-information relation:has(#wy-rel-vampires:checked) .wallace {
-  display: none;
-}
-
-.wyraj .wyraj-information relation:has(#wy-rel-zelote:checked) .zelote,
-.wyraj .wyraj-information relation:has(#wy-rel-vampires:checked) .vampires {
-  display: block;
-}
-
-.wyraj .wyraj-information relation:has(#wy-rel-zelote:checked) label[for="wy-rel-wallace"],
-.wyraj .wyraj-information relation:has(#wy-rel-vampires:checked) label[for="wy-rel-wallace"] {
-  color: #676163;
-}
-
-.wyraj .wyraj-information relation:has(#wy-rel-zelote:checked) label[for="wy-rel-wallace"]::after,
-.wyraj .wyraj-information relation:has(#wy-rel-vampires:checked) label[for="wy-rel-wallace"]::after {
-  width: 0;
-}
-
-.wyraj .wyraj-information relation:has(#wy-rel-zelote:checked) label[for="wy-rel-zelote"],
-.wyraj .wyraj-information relation:has(#wy-rel-vampires:checked) label[for="wy-rel-vampires"] {
-  color: var(--wy-cream);
-}
-
-.wyraj .wyraj-information relation:has(#wy-rel-zelote:checked) label[for="wy-rel-zelote"]::after,
-.wyraj .wyraj-information relation:has(#wy-rel-vampires:checked) label[for="wy-rel-vampires"]::after {
-  width: 100%;
-}
-
+fiche.wyraj .wyraj-information relation:has(#wy-rel-zelote:checked) label[for="wy-rel-zelote"],
+fiche.wyraj .wyraj-information relation:has(#wy-rel-vampires:checked) label[for="wy-rel-vampires"] { color: var(--wy-cream); }
+fiche.wyraj .wyraj-information relation:has(#wy-rel-zelote:checked) label[for="wy-rel-zelote"]::after,
+fiche.wyraj .wyraj-information relation:has(#wy-rel-vampires:checked) label[for="wy-rel-vampires"]::after { width: 100%; }
 /* ---------- SECTION 4 Organisation ---------- */
 
 .wyraj .wv-org {
