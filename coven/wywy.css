@@ -295,7 +295,6 @@ WYRAJ — rubans (version test avant de mettre sur le vrai wyraj.css)
   color: inherit;
   font-size: 12.5px;
   line-height: 1.8;
-  white-space: pre-line;
 }
 
 /* ---------- SECTION 3 Informations ---------- */
@@ -325,29 +324,24 @@ WYRAJ — rubans (version test avant de mettre sur le vrai wyraj.css)
 .wyraj .wyraj-information infos > br,
 .wyraj .wyraj-information faits > br,
 .wyraj .wyraj-information onglets > br,
-.wyraj .wyraj-information relation > br {
+.wyraj .wyraj-information relation > br,
+.wyraj .wv-org > br,
+.wyraj .wv-main-tabs > br,
+.wyraj .wv-voice-tabs > br,
+.wyraj .wv-voices > br,
+.wyraj .wv-single-stage > br,
+.wyraj .wv-main-panel > br,
+.wyraj .wv-voice-panel > br,
+.wyraj .wv-simple-list > br,
+.wyraj .wv-simple-entry > br,
+.wyraj .wv-intro > br {
   display: none !important;
-}
-.wyraj .wyraj-information texte br,
-.wyraj .wyraj-information fait br,
-.wyraj .wyraj-information bloc br,
-.wyraj .wyraj-information shop br,
-.wyraj .wv-intro br,
-.wyraj .wv-lead br,
-.wyraj .wv-voice-panel br,
-.wyraj .wv-simple-entry br {
-  display: block;
-  content: "";
-  margin: .5em 0 0;
-  line-height: 0;
-  height: 0;
 }
 .wyraj .wyraj-information fait {
   color: inherit;
   font-size: 13px;
   line-height: 1.6;
   text-align: left;
-  white-space: pre-line;
 }
 .wyraj .wyraj-information titre {
   display: block;
@@ -369,7 +363,6 @@ WYRAJ — rubans (version test avant de mettre sur le vrai wyraj.css)
   font-size: 13px;
   line-height: 1.6;
   text-align: justify;
-  white-space: pre-line;
 }
 .wyraj .wyraj-information bloc { margin: 0 0 28px; }
 .wyraj .wyraj-information h4 {
@@ -507,13 +500,11 @@ WYRAJ — rubans (version test avant de mettre sur le vrai wyraj.css)
   margin: 0;
   padding: 22px 22px 26px;
 }
-.wyraj .wv-org > br,
-.wyraj .wv-main-tabs > br,
-.wyraj .wv-voice-tabs > br,
-.wyraj .wv-voices > br,
-.wyraj .wv-single-stage > br,
-.wyraj .wv-main-panel > br {
-  display: none !important;
+.wyraj .wv-org blockquote {
+  margin: 0;
+  padding: 0;
+  border: 0;
+  background: none;
 }
 .wyraj .wv-intro {
   grid-column: 1;
@@ -522,7 +513,6 @@ WYRAJ — rubans (version test avant de mettre sur le vrai wyraj.css)
   font-size: 13px;
   line-height: 1.7;
   text-align: justify;
-  white-space: pre-line;
 }
 .wyraj .wv-intro p {
   margin: 0;
@@ -530,9 +520,8 @@ WYRAJ — rubans (version test avant de mettre sur le vrai wyraj.css)
   font-size: inherit;
   line-height: inherit;
   text-align: inherit;
-  white-space: pre-line;
 }
-.wyraj .wv-intro p + p { margin-top: .5em; }
+.wyraj .wv-intro p + p { margin-top: .55em; }
 .wyraj .wv-intro p:last-child {
   color: #7a7476;
   font-size: 12px;
@@ -598,8 +587,9 @@ WYRAJ — rubans (version test avant de mettre sur le vrai wyraj.css)
 .wyraj .wv-single-stage {
   display: grid;
   grid-template-columns: minmax(0, 1fr);
+  align-items: start;
   gap: 16px 28px;
-  padding: 6px 0 4px;
+  padding: 0;
 }
 .wyraj .wv-voice-tabs {
   position: relative;
@@ -607,7 +597,7 @@ WYRAJ — rubans (version test avant de mettre sur le vrai wyraj.css)
   flex-direction: row;
   flex-wrap: wrap;
   gap: 2px 16px;
-  padding-top: 4px;
+  padding-top: 0;
 }
 .wyraj label.wv-voice-tab {
   position: relative;
@@ -638,7 +628,8 @@ WYRAJ — rubans (version test avant de mettre sur le vrai wyraj.css)
   display: none;
   position: relative;
   overflow: hidden;
-  padding: 2px 8px 8px 0;
+  min-height: 0;
+  padding: 0 8px 0 0;
   border: 0;
   background: none;
   animation: wy-panel-in .4s ease;
@@ -654,7 +645,7 @@ WYRAJ — rubans (version test avant de mettre sur le vrai wyraj.css)
   position: relative;
   z-index: 1;
   display: block;
-  margin: 0 0 8px;
+  margin: 0 0 6px;
   color: var(--wy-rose);
   font-family: var(--font3), sans-serif;
   font-size: 9px;
@@ -665,21 +656,20 @@ WYRAJ — rubans (version test avant de mettre sur le vrai wyraj.css)
   pointer-events: none;
 }
 .wyraj .wv-voice-panel::after {
-  content: "";
   position: absolute;
-  top: 46%;
-  right: -8px;
+  top: 28px;
+  right: 0;
   z-index: 0;
-  color: rgba(216, 209, 211, .07);
+  color: rgba(216, 209, 211, .08);
   font-family: var(--font2), Georgia, serif;
-  font-size: 72px;
+  font-size: 64px;
   font-weight: 400;
   letter-spacing: .04em;
   line-height: 1;
   text-transform: uppercase;
   white-space: nowrap;
   pointer-events: none;
-  transform: translateY(-50%);
+  transform: none;
 }
 .wyraj .panel-jarilo::after { content: "printemps"; }
 .wyraj .panel-kupala::after { content: "été"; }
@@ -688,7 +678,7 @@ WYRAJ — rubans (version test avant de mettre sur le vrai wyraj.css)
 .wyraj .wv-voice-name {
   position: relative;
   z-index: 1;
-  margin: 0 0 14px;
+  margin: 0 0 10px;
   color: var(--wy-cream);
   font-family: var(--font2), serif;
   font-size: 28px;
@@ -711,20 +701,19 @@ WYRAJ — rubans (version test avant de mettre sur le vrai wyraj.css)
   margin: 0;
   color: inherit;
   font-size: 13px;
-  line-height: 1.85;
+  line-height: 1.7;
   text-align: justify;
-  white-space: pre-line;
 }
-.wyraj .wv-voice-panel p + p { margin-top: .5em; }
 .wyraj .wv-simple-list {
   border-top: 1px solid var(--wy-line);
 }
 .wyraj .wv-simple-entry {
   display: block;
-  padding: 10px 0;
+  padding: 12px 0;
   border-bottom: 1px solid var(--wy-line);
 }
 .wyraj .wv-simple-name {
+  margin: 0 0 4px;
   color: var(--wy-cream);
   font-family: var(--font3), sans-serif;
   font-size: 11px;
@@ -736,11 +725,10 @@ WYRAJ — rubans (version test avant de mettre sur le vrai wyraj.css)
   margin: 0;
   color: inherit;
   font-size: 13px;
-  line-height: 1.8;
+  line-height: 1.7;
   text-align: justify;
-  white-space: pre-line;
 }
-.wyraj .wv-simple-entry p + p { margin-top: .5em; }
+.wyraj .wv-simple-entry p + p { margin-top: .45em; }
 
 /* ---------- SECTION 5 Prohod ---------- */
 .wyraj .wy-prohod {
@@ -842,14 +830,12 @@ WYRAJ — rubans (version test avant de mettre sur le vrai wyraj.css)
   }
   .wyraj .wv-single-stage {
     grid-template-columns: 112px minmax(0, 1fr);
+    align-items: start;
     gap: 22px;
   }
   .wyraj .wv-voice-tabs {
     flex-direction: column;
     gap: 6px;
-    padding-top: 22px;
-  }
-  .wyraj .wv-voice-panel {
-    min-height: 240px;
+    padding-top: 34px;
   }
 }
