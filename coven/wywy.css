@@ -295,11 +295,11 @@ Couleurs et image d'origine conservées.
 .wyraj wy-note {
   display: block;
   max-width: 370px;
+  text-align: justify;
 }
 
 .wyraj wy-year + wy-note {
   margin-top: 7px;
-  text-align: justify;
 }
 
 /* ---------- Typo commune ---------- */
