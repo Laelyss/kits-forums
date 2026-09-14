@@ -115,17 +115,17 @@ fiche.wyraj .wy-quote {
   width: 86%;
   margin: 2px auto 28px;
   padding: 6px 0 6px 18px;
-  border-left: 1px solid rgba(170,115,123,.48);
   color: var(--wy-mute);
   font-family: Georgia, "Times New Roman", serif;
-  font-size: 12px; font-style: italic; letter-spacing: .01em; line-height: 1.75;
+  font-size: 12px; font-style: italic; 
+  letter-spacing: .01em; line-height: 1.75;
   text-align: justify; text-transform: none;
 }
 fiche.wyraj .wy-quote::before {
   content: "\201C";
   position: absolute;
-  top: -14px;
-  left: -13px;
+  top: -5px;
+  left: 5px;
   color: rgba(99,34,40,.38);
   font-family: Georgia, "Times New Roman", serif;
   font-size: 46px;
@@ -144,8 +144,10 @@ fiche.wyraj .wy-source::before {
 }
 
 fiche.wyraj .wy-story-text p {
-  margin: 0 0 15px; color: var(--wy-ink);
-  font-size: 13px; line-height: 1.85; text-align: left;
+  margin: 0 0 15px;
+  font-size: 13px; 
+   line-height: 1.85; 
+   text-align: justify;
 }
 fiche.wyraj .wy-drop::first-letter {
   float: left; padding: .06em .14em 0 0;
