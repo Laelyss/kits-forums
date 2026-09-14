@@ -342,14 +342,11 @@ Couleurs et image d'origine conservées.
 
 /* ---------- Informations ---------- */
 
-.wyraj .wyraj-information infos,
-.wyraj .wyraj-information facts,
-.wyraj .wyraj-information fact,
-.wyraj .wyraj-information topic,
-.wyraj .wyraj-information shop,
-.wyraj .wyraj-information rel,
-.wyraj .wyraj-information tabs,
-.wyraj .wyraj-information panel {
+.wyraj .wyraj-information wy-info,
+.wyraj .wyraj-information wy-facts,
+.wyraj .wyraj-information wy-fact,
+.wyraj .wyraj-information wy-topic,
+.wyraj .wyraj-information wy-shop {
   display: block;
 }
 
