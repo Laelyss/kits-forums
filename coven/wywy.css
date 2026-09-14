@@ -555,158 +555,281 @@ WYRAJ — rubans (version test avant de mettre sur le vrai wyraj.css)
 /* ---------- SECTION 4 Organisation ---------- */
 
 .wyraj .wv-org {
+  display: grid;
+  grid-template-columns: minmax(0, 1fr);
   width: 100%;
   margin: 0;
   padding: 24px 6px 14px 6px;
 }
+.wyraj .wv-org br {
+  display: none !important;
+}
+
 .wyraj .wv-intro {
+  grid-column: 1;
   margin: 0 0 22px;
 }
 .wyraj .wv-intro p {
   margin: 0 0 12px;
   color: #a09a9c;
-  font-size: 12.5px;
+  font-size: 13px;
   line-height: 1.85;
+  text-align: justify;
 }
 .wyraj .wv-intro p:last-child {
   margin-bottom: 0;
   color: #7a7476;
   font-size: 12px;
 }
+
+.wyraj .wv-main-tabs {
+  grid-column: 1;
+  display: flex;
+  flex-wrap: wrap;
+  gap: 6px 26px;
+  justify-content: flex-start;
+  margin: 0 0 22px;
+}
+.wyraj label.wv-main-tab {
+  position: relative;
+  display: inline-block;
+  flex: 0 0 auto;
+  padding: 0 0 10px;
+  border: 0;
+  background: transparent;
+  color: #676163;
+  font-family: var(--font3), sans-serif;
+  font-size: 10px;
+  font-weight: 600;
+  letter-spacing: .28em;
+  text-align: left;
+  text-transform: uppercase;
+  cursor: pointer;
+  transition: color .35s ease;
+}
+.wyraj label.wv-main-tab::after {
+  content: "";
+  position: absolute;
+  right: 0;
+  bottom: 0;
+  left: 0;
+  width: 0;
+  height: 1px;
+  background: var(--wy-rose);
+  transition: width .35s ease;
+}
+.wyraj .wv-org label[for="wy-org-kolo"] { color: var(--wy-cream); }
+.wyraj .wv-org label[for="wy-org-kolo"]::after { width: 100%; }
+
+.wyraj .wv-main-panel {
+  grid-column: 1;
+  grid-row: 3;
+  opacity: 0;
+  visibility: hidden;
+  pointer-events: none;
+  transform: translateY(8px);
+  transition: opacity .4s ease, transform .4s ease, visibility .4s ease;
+}
+.wyraj .wv-org .panel-kolo {
+  opacity: 1;
+  visibility: visible;
+  pointer-events: auto;
+  transform: none;
+}
+.wyraj .wv-org:has(#wy-org-membres:checked) .panel-kolo,
+.wyraj .wv-org:has(#wy-org-termes:checked) .panel-kolo {
+  opacity: 0;
+  visibility: hidden;
+  pointer-events: none;
+  transform: translateY(8px);
+}
+.wyraj .wv-org:has(#wy-org-membres:checked) .panel-membres,
+.wyraj .wv-org:has(#wy-org-termes:checked) .panel-termes {
+  opacity: 1;
+  visibility: visible;
+  pointer-events: auto;
+  transform: none;
+}
+.wyraj .wv-org:has(#wy-org-membres:checked) label[for="wy-org-kolo"],
+.wyraj .wv-org:has(#wy-org-termes:checked) label[for="wy-org-kolo"] {
+  color: #676163;
+}
+.wyraj .wv-org:has(#wy-org-membres:checked) label[for="wy-org-kolo"]::after,
+.wyraj .wv-org:has(#wy-org-termes:checked) label[for="wy-org-kolo"]::after {
+  width: 0;
+}
+.wyraj .wv-org:has(#wy-org-membres:checked) label[for="wy-org-membres"],
+.wyraj .wv-org:has(#wy-org-termes:checked) label[for="wy-org-termes"] {
+  color: var(--wy-cream);
+}
+.wyraj .wv-org:has(#wy-org-membres:checked) label[for="wy-org-membres"]::after,
+.wyraj .wv-org:has(#wy-org-termes:checked) label[for="wy-org-termes"]::after {
+  width: 100%;
+}
+
 .wyraj .wv-single-stage {
   display: grid;
   grid-template-columns: minmax(0, 1fr);
   gap: 16px;
   padding: 6px 0 4px;
 }
-
 .wyraj .wv-voice-tabs {
   display: flex;
   flex-direction: row;
   flex-wrap: wrap;
-  gap: 4px 18px;
+  gap: 2px 16px;
   padding-top: 4px;
 }
 .wyraj label.wv-voice-tab {
   position: relative;
-  padding: 6px 0 6px 14px;
+  display: inline-block;
+  padding: 4px 0;
+  border: 0;
+  background: transparent;
   color: #625c5e;
-  font-family: var(--font3), sans-serif;
-  font-size: 11px;
-  font-weight: 600;
-  letter-spacing: .24em;
-  text-transform: uppercase;
-  transition: color .3s;
+  font-family: var(--font2), Georgia, serif;
+  font-size: 16px;
+  font-weight: 400;
+  letter-spacing: 0;
+  text-transform: none;
+  cursor: pointer;
+  transition: color .3s ease;
 }
-.wyraj label.wv-voice-tab::before {
-  content: "";
-  position: absolute;
-  left: 0;
-  top: 50%;
-  width: 7px;
-  height: 1px;
-  margin-top: -1px;
-  background: #3f393b;
-  transition: background .3s, width .3s;
-}
-.wyraj label.wv-voice-tab:hover {
-  color: #a8a1a4;
-}
-.wyraj .wv-voices label[for="wy-voice-jarilo"] {
-  color: var(--wy-cream);
-}
-.wyraj .wv-voices label[for="wy-voice-jarilo"]::before {
-  background: var(--wy-rose);
-  width: 10px;
-}
+.wyraj label.wv-voice-tab::before { display: none; }
+.wyraj label.wv-voice-tab:hover { color: #a8a1a4; }
+
+.wyraj .wv-voices label[for="wy-voice-jarilo"] { color: var(--wy-cream); }
 .wyraj .wv-voices:has(#wy-voice-kupala:checked) label[for="wy-voice-jarilo"],
 .wyraj .wv-voices:has(#wy-voice-mokosh:checked) label[for="wy-voice-jarilo"],
 .wyraj .wv-voices:has(#wy-voice-marzanna:checked) label[for="wy-voice-jarilo"] {
   color: #625c5e;
-}
-.wyraj .wv-voices:has(#wy-voice-kupala:checked) label[for="wy-voice-jarilo"]::before,
-.wyraj .wv-voices:has(#wy-voice-mokosh:checked) label[for="wy-voice-jarilo"]::before,
-.wyraj .wv-voices:has(#wy-voice-marzanna:checked) label[for="wy-voice-jarilo"]::before {
-  background: #3f393b;
-  width: 7px;
 }
 .wyraj .wv-voices:has(#wy-voice-kupala:checked) label[for="wy-voice-kupala"],
 .wyraj .wv-voices:has(#wy-voice-mokosh:checked) label[for="wy-voice-mokosh"],
 .wyraj .wv-voices:has(#wy-voice-marzanna:checked) label[for="wy-voice-marzanna"] {
   color: var(--wy-cream);
 }
-.wyraj .wv-voices:has(#wy-voice-kupala:checked) label[for="wy-voice-kupala"]::before,
-.wyraj .wv-voices:has(#wy-voice-mokosh:checked) label[for="wy-voice-mokosh"]::before,
-.wyraj .wv-voices:has(#wy-voice-marzanna:checked) label[for="wy-voice-marzanna"]::before {
-  background: var(--wy-rose);
-  width: 10px;
-}
+
 .wyraj .wv-voice-panels {
+  display: grid;
   min-width: 0;
 }
 .wyraj .wv-voice-panel {
-  display: none;
+  grid-column: 1;
+  grid-row: 1;
+  display: block;
   position: relative;
-  padding: 20px 30px 8px 16px;
-  border-left: 1px solid rgba(99,34,40,.5);
-  background: linear-gradient(90deg, rgba(45,17,25,.35), transparent 65%);
+  overflow: hidden;
+  padding: 2px 4px 8px 0;
+  border: 0;
+  background: none;
+  opacity: 0;
+  visibility: hidden;
+  pointer-events: none;
+  transform: translateY(6px);
+  transition: opacity .4s ease, transform .4s ease, visibility .4s ease;
 }
 .wyraj .wv-voices .panel-jarilo {
-  display: block;
+  opacity: 1;
+  visibility: visible;
+  pointer-events: auto;
+  transform: none;
 }
 .wyraj .wv-voices:has(#wy-voice-kupala:checked) .panel-jarilo,
 .wyraj .wv-voices:has(#wy-voice-mokosh:checked) .panel-jarilo,
 .wyraj .wv-voices:has(#wy-voice-marzanna:checked) .panel-jarilo {
-  display: none;
+  opacity: 0;
+  visibility: hidden;
+  pointer-events: none;
+  transform: translateY(6px);
 }
 .wyraj .wv-voices:has(#wy-voice-kupala:checked) .panel-kupala,
 .wyraj .wv-voices:has(#wy-voice-mokosh:checked) .panel-mokosh,
 .wyraj .wv-voices:has(#wy-voice-marzanna:checked) .panel-marzanna {
-  display: block;
+  opacity: 1;
+  visibility: visible;
+  pointer-events: auto;
+  transform: none;
 }
-/* la saison : petite étiquette verticale, plus de typo géante */
+
 .wyraj .wv-voice-season {
-  position: absolute;
-  top: 20px;
-  right: 6px;
-  color: rgba(170,115,123,.5);
+  position: relative;
+  z-index: 1;
+  display: block;
+  margin: 0 0 8px;
+  color: var(--wy-rose);
   font-family: var(--font3), sans-serif;
   font-size: 9px;
   font-weight: 600;
-  letter-spacing: .34em;
+  letter-spacing: .32em;
   text-transform: uppercase;
-  writing-mode: vertical-rl;
-  white-space: nowrap;
+  writing-mode: horizontal-tb;
   pointer-events: none;
 }
+
+.wyraj .wv-voice-panel::after {
+  content: "";
+  position: absolute;
+  top: 46%;
+  right: -8px;
+  z-index: 0;
+  color: rgba(216, 209, 211, .07);
+  font-family: var(--font2), Georgia, serif;
+  font-size: 72px;
+  font-weight: 400;
+  letter-spacing: .04em;
+  line-height: 1;
+  text-transform: uppercase;
+  white-space: nowrap;
+  pointer-events: none;
+  transform: translateY(-50%);
+}
+.wyraj .panel-jarilo::after { content: "printemps"; }
+.wyraj .panel-kupala::after { content: "été"; }
+.wyraj .panel-mokosh::after { content: "automne"; }
+.wyraj .panel-marzanna::after { content: "hiver"; }
+
 .wyraj .wv-voice-name {
+  position: relative;
+  z-index: 1;
   margin: 0 0 14px;
   color: var(--wy-cream);
   font-family: var(--font2), serif;
-  font-size: 26px;
+  font-size: 28px;
   font-weight: 400;
   letter-spacing: 1px;
   line-height: 1;
   text-transform: lowercase;
   text-shadow: var(--text-shadow2);
 }
-.wyraj .wv-voice-panel p {
-  margin: 0;
-  color: #9d9799;
-  font-size: 12.5px;
-  line-height: 1.85;
+.wyraj .wv-voice-name::after {
+  content: " \26B6";
+  color: var(--wy-rose);
+  font-size: .42em;
+  letter-spacing: 0;
+  vertical-align: 6px;
 }
+.wyraj .wv-voice-panel p {
+  position: relative;
+  z-index: 1;
+  margin: 0 0 12px;
+  color: #9d9799;
+  font-size: 13px;
+  line-height: 1.85;
+  text-align: justify;
+}
+.wyraj .wv-voice-panel p:last-child { margin-bottom: 0; }
+
 .wyraj .wv-simple-list {
   border-top: 1px solid var(--wy-line);
 }
 .wyraj .wv-simple-entry {
-  display: grid;
-  grid-template-columns: minmax(0, 1fr);
-  gap: 8px;
-  padding: 18px 0;
+  display: block;
+  padding: 16px 0;
   border-bottom: 1px solid var(--wy-line);
 }
 .wyraj .wv-simple-name {
+  margin: 0 0 6px;
   color: var(--wy-cream);
   font-family: var(--font3), sans-serif;
   font-size: 11px;
@@ -715,13 +838,15 @@ WYRAJ — rubans (version test avant de mettre sur le vrai wyraj.css)
   text-transform: uppercase;
 }
 .wyraj .wv-simple-entry p {
-  margin: 0;
+  margin: 0 0 8px;
   color: var(--wy-mute);
-  font-size: 12.5px;
+  font-size: 13px;
   line-height: 1.8;
+  text-align: justify;
 }
+.wyraj .wv-simple-entry p:last-child { margin-bottom: 0; }
 
-/* ---------- Prohod ---------- */
+/* ---------- SECTION 5 Prohod ---------- */
 
 .wyraj .wy-prohod {
   padding: 24px 6px 14px 6px;
@@ -829,20 +954,17 @@ WYRAJ — rubans (version test avant de mettre sur le vrai wyraj.css)
     margin: 0 0 0 40px;
   }
 
-  .wyraj .wv-simple-entry {
-    grid-template-columns: 140px minmax(0, 1fr);
-    gap: 24px;
-  }
-
   .wyraj .wv-single-stage {
     grid-template-columns: 112px minmax(0, 1fr);
     gap: 22px;
   }
-
   .wyraj .wv-voice-tabs {
     flex-direction: column;
     gap: 6px;
     padding-top: 22px;
+  }
+  .wyraj .wv-voice-panel {
+    min-height: 240px;
   }
 
   .wyraj .wv-voice-panel {
