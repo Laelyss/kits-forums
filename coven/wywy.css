@@ -367,10 +367,9 @@ WYRAJ — rubans (version test avant de mettre sur le vrai wyraj.css)
 }
 
 .wyraj .wyraj-information fait {
-  color: var(--wy-cream);
-  font-family: Georgia, "Palatino Linotype", Palatino, serif;
-  font-size: 14px;
-  line-height: 1.55;
+  color: var(--wy-cream); 
+  font-size: 13px;
+  line-height: 1.6;
   text-align: left;
 }
 
@@ -385,15 +384,15 @@ WYRAJ — rubans (version test avant de mettre sur le vrai wyraj.css)
   line-height: 1.4;
   text-align: left;
   text-transform: uppercase;
+  text-shadow: 1px 1px black;
 }
 
 .wyraj .wyraj-information bloc,
 .wyraj .wyraj-information shop,
 .wyraj .wyraj-information texte {
   color: var(--wy-mute);
-  font-family: Georgia, "Palatino Linotype", Palatino, serif;
-  font-size: 14px;
-  line-height: 1.85;
+  font-size: 13px;
+  line-height: 1.6;
   text-align: justify;
 }
 
