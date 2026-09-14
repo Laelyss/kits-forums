@@ -110,18 +110,38 @@ fiche.wyraj .wy-chrono .wy-media { order: -1; }
 fiche.wyraj .wy-col, fiche.wyraj .wy-tl { min-width: 0; }
 
 fiche.wyraj .wy-quote {
-  display: block; width: 100%;
-  margin: 0 0 26px; padding: 14px 0 0;
-  border-top: 1px solid var(--wy-line);
+  position: relative;
+  display: block;
+  width: 86%;
+  margin: 2px auto 28px;
+  padding: 6px 0 6px 18px;
+  border-left: 1px solid rgba(170,115,123,.48);
   color: var(--wy-mute);
-  font-family: var(--font3), sans-serif;
-  font-size: 10.5px; letter-spacing: .07em; line-height: 1.9;
-  text-align: left; text-transform: uppercase;
+  font-family: Georgia, "Times New Roman", serif;
+  font-size: 12px; font-style: italic; letter-spacing: .01em; line-height: 1.75;
+  text-align: justify; text-transform: none;
+}
+fiche.wyraj .wy-quote::before {
+  content: "â€œ";
+  position: absolute;
+  top: -14px;
+  left: -13px;
+  color: rgba(99,34,40,.38);
+  font-family: Georgia, "Times New Roman", serif;
+  font-size: 46px;
+  font-style: normal;
+  line-height: 1;
 }
 fiche.wyraj .wy-source {
-  display: block; margin-top: 10px;
+  display: block; margin-top: 8px;
   color: var(--wy-rose);
-  font-size: 9px; font-weight: 600; letter-spacing: .3em;
+  font-family: var(--font3), sans-serif;
+  font-size: 9px; font-style: normal; font-weight: 600; letter-spacing: .24em;
+  text-align: left; text-transform: uppercase;
+}
+fiche.wyraj .wy-source::before {
+  content: "â€” ";
+  letter-spacing: .05em;
 }
 
 fiche.wyraj .wy-story-text p {
@@ -354,7 +374,7 @@ fiche.wyraj .wv-voices:has(#wy-voice-kupala:checked) .panel-kupala,
 fiche.wyraj .wv-voices:has(#wy-voice-mokosh:checked) .panel-mokosh,
 fiche.wyraj .wv-voices:has(#wy-voice-marzanna:checked) .panel-marzanna { display: block; }
 
-/* la saison : petite étiquette verticale, plus de typo géante */
+/* la saison : petite Ã©tiquette verticale, plus de typo gÃ©ante */
 fiche.wyraj .wv-voice-season {
   position: absolute; top: 20px; right: 6px;
   color: rgba(170,115,123,.5);
@@ -420,7 +440,7 @@ fiche.wyraj .prohod-translation {
 }
 
 /* ==================================================
-   Fiche assez large : le ruban passe à la verticale
+   Fiche assez large : le ruban passe Ã  la verticale
 ================================================== */
 
 @container wyraj (min-width: 430px) {
