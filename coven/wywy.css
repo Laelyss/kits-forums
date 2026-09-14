@@ -48,9 +48,11 @@ WYRAJ — rubans (version test avant de mettre sur le vrai wyraj.css)
   position: absolute !important;
   opacity: 0 !important;
   pointer-events: none !important;
-  width: 0 !important;
-  height: 0 !important;
+  width: 1px !important;
+  height: 1px !important;
   margin: 0 !important;
+  overflow: hidden !important;
+  clip: rect(0, 0, 0, 0) !important;
 }
 
 .wyraj > section + section,
@@ -554,12 +556,17 @@ WYRAJ — rubans (version test avant de mettre sur le vrai wyraj.css)
 
 /* ---------- SECTION 4 Organisation ---------- */
 
+@keyframes wy-panel-in {
+  from { opacity: 0; transform: translateY(8px); }
+  to { opacity: 1; transform: none; }
+}
+
 .wyraj .wv-org {
   display: grid;
   grid-template-columns: minmax(0, 1fr);
   width: 100%;
   margin: 0;
-  padding: 24px 6px 14px 6px;
+  padding: 22px 22px 26px;
 }
 .wyraj .wv-org br {
   display: none !important;
@@ -567,7 +574,7 @@ WYRAJ — rubans (version test avant de mettre sur le vrai wyraj.css)
 
 .wyraj .wv-intro {
   grid-column: 1;
-  margin: 0 0 22px;
+  margin: 0 0 26px;
 }
 .wyraj .wv-intro p {
   margin: 0 0 12px;
@@ -583,9 +590,11 @@ WYRAJ — rubans (version test avant de mettre sur le vrai wyraj.css)
 }
 
 .wyraj .wv-main-tabs {
+  position: relative;
   grid-column: 1;
   display: flex;
   flex-wrap: wrap;
+  align-items: flex-end;
   gap: 6px 26px;
   justify-content: flex-start;
   margin: 0 0 22px;
@@ -623,57 +632,32 @@ WYRAJ — rubans (version test avant de mettre sur le vrai wyraj.css)
 
 .wyraj .wv-main-panel {
   grid-column: 1;
-  grid-row: 3;
-  opacity: 0;
-  visibility: hidden;
-  pointer-events: none;
-  transform: translateY(8px);
-  transition: opacity .4s ease, transform .4s ease, visibility .4s ease;
+  display: none;
+  animation: wy-panel-in .4s ease;
 }
-.wyraj .wv-org .panel-kolo {
-  opacity: 1;
-  visibility: visible;
-  pointer-events: auto;
-  transform: none;
-}
+.wyraj .wv-org .panel-kolo { display: block; }
 .wyraj .wv-org:has(#wy-org-membres:checked) .panel-kolo,
-.wyraj .wv-org:has(#wy-org-termes:checked) .panel-kolo {
-  opacity: 0;
-  visibility: hidden;
-  pointer-events: none;
-  transform: translateY(8px);
-}
+.wyraj .wv-org:has(#wy-org-termes:checked) .panel-kolo { display: none; }
 .wyraj .wv-org:has(#wy-org-membres:checked) .panel-membres,
-.wyraj .wv-org:has(#wy-org-termes:checked) .panel-termes {
-  opacity: 1;
-  visibility: visible;
-  pointer-events: auto;
-  transform: none;
-}
+.wyraj .wv-org:has(#wy-org-termes:checked) .panel-termes { display: block; }
+
 .wyraj .wv-org:has(#wy-org-membres:checked) label[for="wy-org-kolo"],
-.wyraj .wv-org:has(#wy-org-termes:checked) label[for="wy-org-kolo"] {
-  color: #676163;
-}
+.wyraj .wv-org:has(#wy-org-termes:checked) label[for="wy-org-kolo"] { color: #676163; }
 .wyraj .wv-org:has(#wy-org-membres:checked) label[for="wy-org-kolo"]::after,
-.wyraj .wv-org:has(#wy-org-termes:checked) label[for="wy-org-kolo"]::after {
-  width: 0;
-}
+.wyraj .wv-org:has(#wy-org-termes:checked) label[for="wy-org-kolo"]::after { width: 0; }
 .wyraj .wv-org:has(#wy-org-membres:checked) label[for="wy-org-membres"],
-.wyraj .wv-org:has(#wy-org-termes:checked) label[for="wy-org-termes"] {
-  color: var(--wy-cream);
-}
+.wyraj .wv-org:has(#wy-org-termes:checked) label[for="wy-org-termes"] { color: var(--wy-cream); }
 .wyraj .wv-org:has(#wy-org-membres:checked) label[for="wy-org-membres"]::after,
-.wyraj .wv-org:has(#wy-org-termes:checked) label[for="wy-org-termes"]::after {
-  width: 100%;
-}
+.wyraj .wv-org:has(#wy-org-termes:checked) label[for="wy-org-termes"]::after { width: 100%; }
 
 .wyraj .wv-single-stage {
   display: grid;
   grid-template-columns: minmax(0, 1fr);
-  gap: 16px;
+  gap: 16px 28px;
   padding: 6px 0 4px;
 }
 .wyraj .wv-voice-tabs {
+  position: relative;
   display: flex;
   flex-direction: row;
   flex-wrap: wrap;
@@ -701,56 +685,28 @@ WYRAJ — rubans (version test avant de mettre sur le vrai wyraj.css)
 .wyraj .wv-voices label[for="wy-voice-jarilo"] { color: var(--wy-cream); }
 .wyraj .wv-voices:has(#wy-voice-kupala:checked) label[for="wy-voice-jarilo"],
 .wyraj .wv-voices:has(#wy-voice-mokosh:checked) label[for="wy-voice-jarilo"],
-.wyraj .wv-voices:has(#wy-voice-marzanna:checked) label[for="wy-voice-jarilo"] {
-  color: #625c5e;
-}
+.wyraj .wv-voices:has(#wy-voice-marzanna:checked) label[for="wy-voice-jarilo"] { color: #625c5e; }
 .wyraj .wv-voices:has(#wy-voice-kupala:checked) label[for="wy-voice-kupala"],
 .wyraj .wv-voices:has(#wy-voice-mokosh:checked) label[for="wy-voice-mokosh"],
-.wyraj .wv-voices:has(#wy-voice-marzanna:checked) label[for="wy-voice-marzanna"] {
-  color: var(--wy-cream);
-}
+.wyraj .wv-voices:has(#wy-voice-marzanna:checked) label[for="wy-voice-marzanna"] { color: var(--wy-cream); }
 
-.wyraj .wv-voice-panels {
-  display: grid;
-  min-width: 0;
-}
+.wyraj .wv-voice-panels { min-width: 0; }
 .wyraj .wv-voice-panel {
-  grid-column: 1;
-  grid-row: 1;
-  display: block;
+  display: none;
   position: relative;
   overflow: hidden;
-  padding: 2px 4px 8px 0;
+  padding: 2px 8px 8px 0;
   border: 0;
   background: none;
-  opacity: 0;
-  visibility: hidden;
-  pointer-events: none;
-  transform: translateY(6px);
-  transition: opacity .4s ease, transform .4s ease, visibility .4s ease;
+  animation: wy-panel-in .4s ease;
 }
-.wyraj .wv-voices .panel-jarilo {
-  opacity: 1;
-  visibility: visible;
-  pointer-events: auto;
-  transform: none;
-}
+.wyraj .wv-voices .panel-jarilo { display: block; }
 .wyraj .wv-voices:has(#wy-voice-kupala:checked) .panel-jarilo,
 .wyraj .wv-voices:has(#wy-voice-mokosh:checked) .panel-jarilo,
-.wyraj .wv-voices:has(#wy-voice-marzanna:checked) .panel-jarilo {
-  opacity: 0;
-  visibility: hidden;
-  pointer-events: none;
-  transform: translateY(6px);
-}
+.wyraj .wv-voices:has(#wy-voice-marzanna:checked) .panel-jarilo { display: none; }
 .wyraj .wv-voices:has(#wy-voice-kupala:checked) .panel-kupala,
 .wyraj .wv-voices:has(#wy-voice-mokosh:checked) .panel-mokosh,
-.wyraj .wv-voices:has(#wy-voice-marzanna:checked) .panel-marzanna {
-  opacity: 1;
-  visibility: visible;
-  pointer-events: auto;
-  transform: none;
-}
+.wyraj .wv-voices:has(#wy-voice-marzanna:checked) .panel-marzanna { display: block; }
 
 .wyraj .wv-voice-season {
   position: relative;
