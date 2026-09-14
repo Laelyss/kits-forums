@@ -474,18 +474,16 @@ WYRAJ — rubans (version test avant de mettre sur le vrai wyraj.css)
 }
 
 .wyraj .wyraj-information texte::before {
-  display: block;
-  margin: 0 0 10px;
-  color: var(--wy-cream);
-  font-family: var(--font2), Georgia, serif;
-  font-size: 20px;
-  font-style: italic;
-  font-weight: 400;
-  letter-spacing: .02em;
-  line-height: 1.15;
-  text-align: left;
-  text-transform: lowercase;
-  text-shadow: var(--text-shadow2);
+    display: block;
+    margin: 0 0 10px;
+    font-size: 20px;
+    font-size: 11px;
+    color: var(--wy-rose);
+    letter-spacing: 1.02em;
+    line-height: 1.15;
+    text-align: left;
+    text-transform: uppercase;
+    text-shadow: var(--text-shadow2);
 }
 
 .wyraj .wyraj-information .wallace::before { content: "entente"; }
@@ -493,18 +491,14 @@ WYRAJ — rubans (version test avant de mettre sur le vrai wyraj.css)
 .wyraj .wyraj-information .vampires::before { content: "hostilités"; }
 
 .wyraj .wyraj-information texte a {
-  display: table;
-  margin: 16px 0 0;
-  padding: 7px 12px;
-  background: #3d1c22;
-  color: var(--wy-cream);
-  font-family: var(--font3), sans-serif;
-  font-size: 9px;
-  font-weight: 600;
-  letter-spacing: .22em;
-  text-decoration: none;
-  text-transform: uppercase;
-  transition: background .3s ease;
+    display: table;
+    padding: 7px 12px;
+    background: #3d1c22;
+    color: var(--wy-cream);
+    font-family: var(--font3), sans-serif;
+    font-size: 9px;
+    border-radius: 5px;
+    font-weight: 600;
 }
 .wyraj .wyraj-information texte a:hover {
   background: var(--wyraj-rust);
