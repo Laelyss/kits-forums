@@ -144,7 +144,7 @@ fiche.wyraj .wy-source::before {
 }
 
 fiche.wyraj .wy-story-text p {
-  margin: 0 0 15px;
+  margin: 0px 15px 1px;
   font-size: 13px; 
    line-height: 1.85; 
    text-align: justify;
