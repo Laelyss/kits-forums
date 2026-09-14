@@ -721,11 +721,10 @@ WYRAJ — rubans (version test avant de mettre sur le vrai wyraj.css)
 }
 .wyraj .wv-simple-entry {
   display: block;
-  padding: 16px 0;
+  padding: 10px 0;
   border-bottom: 1px solid var(--wy-line);
 }
 .wyraj .wv-simple-name {
-  margin: 0 0 6px;
   color: var(--wy-cream);
   font-family: var(--font3), sans-serif;
   font-size: 11px;
