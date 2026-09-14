@@ -122,7 +122,7 @@ fiche.wyraj .wy-quote {
   text-align: justify; text-transform: none;
 }
 fiche.wyraj .wy-quote::before {
-  content: "â€œ";
+  content: "\201C";
   position: absolute;
   top: -14px;
   left: -13px;
@@ -140,7 +140,6 @@ fiche.wyraj .wy-source {
   text-align: left; text-transform: uppercase;
 }
 fiche.wyraj .wy-source::before {
-  content: "â€” ";
   letter-spacing: .05em;
 }
 
@@ -159,13 +158,6 @@ fiche.wyraj .wy-aside {
   font-family: var(--font3), sans-serif;
   font-size: 11px !important; letter-spacing: .12em;
   text-align: right !important; text-transform: uppercase;
-}
-fiche.wyraj .wy-center {
-  margin: 26px 0 !important; padding: 20px 14px;
-  border-left: 1px solid rgba(99,34,40,.55);
-  background: linear-gradient(90deg, rgba(45,17,25,.4), transparent 70%);
-  text-align: left !important;
-  font-size: 13px !important; line-height: 1.85 !important;
 }
 
 /* ---------- Chronologie ---------- */
