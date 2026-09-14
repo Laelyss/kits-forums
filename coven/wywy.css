@@ -224,34 +224,85 @@ Couleurs et image d'origine conservées.
 .wyraj wy-center i1 {
   display: block;
 }
+
 /* ---------- Chronologie ---------- */
 
-.wyraj wy-event {
-  display: block;
+.wyraj wy-events {
   position: relative;
-  margin: 0 0 4px;
-  padding: 16px 0;
-  border-top: 1px solid var(--wy-line);
-  color: var(--wy-mute);
-  font-size: 12.5px;
-  line-height: 1.75;
+  display: block;
+  width: min(480px, 100%);
+  min-width: 0;
+  margin: 0 auto;
+  padding-left: 48px;
 }
 
-.wyraj wy-event:first-of-type {
-  border-top: 0;
-  padding-top: 0;
+.wyraj wy-events::before {
+  content: "";
+  position: absolute;
+  top: 8px;
+  bottom: 10px;
+  left: 8px;
+  width: 1px;
+  background: rgba(170,115,123,.35);
+}
+
+.wyraj wy-event {
+  position: relative;
+  display: block;
+  margin: 0 0 28px;
+  padding: 0;
+  border: 0;
+  color: var(--wy-mute);
+  font-size: 13px;
+  line-height: 1.7;
+}
+
+.wyraj wy-event:last-of-type {
+  margin-bottom: 0;
+}
+
+.wyraj wy-event::before {
+  content: "";
+  position: absolute;
+  top: 6px;
+  left: -45px;
+  width: 11px;
+  height: 11px;
+  border-radius: 50%;
+  background: var(--wy-rose);
 }
 
 .wyraj wy-year {
   display: block;
-  margin-bottom: 7px;
-  color: var(--wy-cream);
+  margin: 0;
+  color: var(--wy-rose);
   font-family: var(--font3), sans-serif;
-  font-size: 11.5px;
+  font-size: 10px;
   font-weight: 600;
-  letter-spacing: .2em;
+  letter-spacing: .24em;
   line-height: 1.4;
   text-transform: uppercase;
+}
+
+.wyraj wy-title {
+  display: block;
+  margin: 2px 0 5px;
+  color: var(--wy-cream);
+  font-family: var(--font3), sans-serif;
+  font-size: 20px;
+  font-weight: 600;
+  letter-spacing: .02em;
+  line-height: 1.2;
+  text-transform: uppercase;
+}
+
+.wyraj wy-note {
+  display: block;
+  max-width: 420px;
+}
+
+.wyraj wy-year + wy-note {
+  margin-top: 7px;
 }
 
 /* ---------- Typo commune ---------- */
@@ -782,10 +833,11 @@ Couleurs et image d'origine conservées.
     grid-row: 1 / span 99;
   }
 
-  .wyraj .wy-chrono > wy-event {
-    grid-column: 1;
-    margin-left: 35px;
-  }
+.wyraj .wy-chrono > wy-events {
+  grid-column: 1;
+  width: min(460px, 100%);
+  margin: 0 0 0 18px;
+}
 
   .wyraj .wy-info-row,
   .wyraj .wv-simple-entry {
