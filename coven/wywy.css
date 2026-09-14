@@ -576,13 +576,14 @@ WYRAJ — rubans (version test avant de mettre sur le vrai wyraj.css)
   grid-column: 1;
   margin: 0 0 26px;
 }
+
 .wyraj .wv-intro p {
   margin: 0 0 12px;
-  color: #a09a9c;
   font-size: 13px;
-  line-height: 1.85;
+  line-height: 1.5;
   text-align: justify;
 }
+
 .wyraj .wv-intro p:last-child {
   margin-bottom: 0;
   color: #7a7476;
