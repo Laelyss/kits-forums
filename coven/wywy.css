@@ -358,16 +358,16 @@ WYRAJ — rubans (version test avant de mettre sur le vrai wyraj.css)
   margin: 0 0 32px;
 }
 
-/* Forumactif glisse des <br> entre les tags : ils volaient la 1re colonne */
 .wyraj .wyraj-information infos > br,
 .wyraj .wyraj-information faits > br,
 .wyraj .wyraj-information onglets > br,
-.wyraj .wyraj-information relation > br {
+.wyraj .wyraj-information relation > br,
+.wyraj .wyraj-information texte > br {
   display: none !important;
 }
 
 .wyraj .wyraj-information fait {
-  color: var(--wy-cream); 
+  color: var(--wy-cream);
   font-size: 13px;
   line-height: 1.6;
   text-align: left;
@@ -417,9 +417,14 @@ WYRAJ — rubans (version test avant de mettre sur le vrai wyraj.css)
   background: linear-gradient(105deg, rgba(99, 34, 40, .2), rgba(22, 18, 19, .12) 52%, transparent);
 }
 
-.wyraj .wyraj-information relation { margin-top: 8px; }
+.wyraj .wyraj-information relation {
+  display: grid;
+  grid-template-columns: minmax(0, 1fr);
+  margin-top: 8px;
+}
 
 .wyraj .wyraj-information onglets {
+  grid-column: 1;
   display: flex;
   flex-wrap: wrap;
   gap: 6px 26px;
@@ -439,6 +444,7 @@ WYRAJ — rubans (version test avant de mettre sur le vrai wyraj.css)
   text-align: left;
   text-transform: uppercase;
   cursor: pointer;
+  transition: color .35s ease;
 }
 
 .wyraj .wyraj-information onglets label::after {
@@ -450,19 +456,84 @@ WYRAJ — rubans (version test avant de mettre sur le vrai wyraj.css)
   width: 0;
   height: 1px;
   background: var(--wy-rose);
+  transition: width .35s ease;
 }
 
-.wyraj .wyraj-information texte { display: none; }
-.wyraj .wyraj-information texte a { color: var(--wy-rose); }
+.wyraj .wyraj-information texte {
+  grid-column: 1;
+  grid-row: 2;
+  display: block;
+  margin: 0;
+  padding: 2px 2px 4px 16px;
+  border-left: 1px solid rgba(170, 115, 123, .42);
+  opacity: 0;
+  visibility: hidden;
+  pointer-events: none;
+  transform: translateY(8px);
+  transition: opacity .4s ease, transform .4s ease, visibility .4s ease;
+}
 
-.wyraj .wyraj-information .wallace { display: block; }
+.wyraj .wyraj-information texte::before {
+  display: block;
+  margin: 0 0 10px;
+  color: var(--wy-cream);
+  font-family: var(--font2), Georgia, serif;
+  font-size: 20px;
+  font-style: italic;
+  font-weight: 400;
+  letter-spacing: .02em;
+  line-height: 1.15;
+  text-align: left;
+  text-transform: lowercase;
+  text-shadow: var(--text-shadow2);
+}
+
+.wyraj .wyraj-information .wallace::before { content: "entente"; }
+.wyraj .wyraj-information .zelote::before,
+.wyraj .wyraj-information .vampires::before { content: "hostilités"; }
+
+.wyraj .wyraj-information texte a {
+  display: table;
+  margin: 16px 0 0;
+  padding: 7px 12px;
+  background: #3d1c22;
+  color: var(--wy-cream);
+  font-family: var(--font3), sans-serif;
+  font-size: 9px;
+  font-weight: 600;
+  letter-spacing: .22em;
+  text-decoration: none;
+  text-transform: uppercase;
+  transition: background .3s ease;
+}
+.wyraj .wyraj-information texte a:hover {
+  background: var(--wyraj-rust);
+  color: var(--wy-cream);
+}
+
+.wyraj .wyraj-information .wallace {
+  opacity: 1;
+  visibility: visible;
+  pointer-events: auto;
+  transform: none;
+}
 .wyraj .wyraj-information label[for="wy-rel-wallace"] { color: var(--wy-cream); }
 .wyraj .wyraj-information label[for="wy-rel-wallace"]::after { width: 100%; }
 
 .wyraj .wyraj-information relation:has(#wy-rel-zelote:checked) .wallace,
-.wyraj .wyraj-information relation:has(#wy-rel-vampires:checked) .wallace { display: none; }
+.wyraj .wyraj-information relation:has(#wy-rel-vampires:checked) .wallace {
+  opacity: 0;
+  visibility: hidden;
+  pointer-events: none;
+  transform: translateY(8px);
+}
 .wyraj .wyraj-information relation:has(#wy-rel-zelote:checked) .zelote,
-.wyraj .wyraj-information relation:has(#wy-rel-vampires:checked) .vampires { display: block; }
+.wyraj .wyraj-information relation:has(#wy-rel-vampires:checked) .vampires {
+  opacity: 1;
+  visibility: visible;
+  pointer-events: auto;
+  transform: none;
+}
 
 .wyraj .wyraj-information relation:has(#wy-rel-zelote:checked) label[for="wy-rel-wallace"],
 .wyraj .wyraj-information relation:has(#wy-rel-vampires:checked) label[for="wy-rel-wallace"] { color: #676163; }
