@@ -299,6 +299,7 @@ Couleurs et image d'origine conservées.
 
 .wyraj wy-year + wy-note {
   margin-top: 7px;
+  text-align: justify;
 }
 
 /* ---------- Typo commune ---------- */
