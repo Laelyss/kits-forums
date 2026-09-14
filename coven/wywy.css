@@ -342,30 +342,40 @@ Couleurs et image d'origine conservées.
 
 /* ---------- Informations ---------- */
 
-.wyraj .wyraj-information wy-facts,
-.wyraj .wyraj-information wy-fact,
-.wyraj .wyraj-information wy-kicker,
-.wyraj .wyraj-information wy-heading,
-.wyraj .wyraj-information wy-text,
-.wyraj .wyraj-information wy-topic,
-.wyraj .wyraj-information wy-shop,
-.wyraj .wyraj-information wy-tabs,
-.wyraj .wyraj-information wy-panel {
+.wyraj .wyraj-information infos,
+.wyraj .wyraj-information facts,
+.wyraj .wyraj-information fact,
+.wyraj .wyraj-information topic,
+.wyraj .wyraj-information shop,
+.wyraj .wyraj-information rel,
+.wyraj .wyraj-information tabs,
+.wyraj .wyraj-information panel {
   display: block;
 }
 
-.wyraj .wy-info {
+.wyraj .wy-info,
+.wyraj .wyraj-information infos {
   padding: 24px 10px 12px;
 }
 
-.wyraj .wy-info wy-facts {
+.wyraj .wyraj-information facts {
   display: grid;
   grid-template-columns: repeat(auto-fit, minmax(210px, 1fr));
   gap: 24px 54px;
   margin: 0 0 30px;
 }
 
-.wyraj .wy-info wy-kicker {
+.wyraj .wyraj-information fact {
+  color: var(--wy-cream);
+  font-family: var(--font1), serif;
+  font-size: 14px;
+  line-height: 1.55;
+}
+
+.wyraj .wyraj-information fact::before,
+.wyraj .wyraj-information shop::before {
+  content: attr(data-k);
+  display: block;
   margin-bottom: 9px;
   color: var(--wy-rose);
   font-family: var(--font3), sans-serif;
@@ -376,27 +386,16 @@ Couleurs et image d'origine conservées.
   text-transform: uppercase;
 }
 
-.wyraj .wy-info wy-text {
-  margin: 0;
+.wyraj .wyraj-information topic {
+  margin: 0 0 30px;
   color: var(--wy-mute);
-  font-family: var(--font1, serif);
+  font-family: var(--font1), serif;
   font-size: 14px;
   line-height: 1.85;
   text-align: justify;
 }
 
-.wyraj .wy-info wy-fact wy-text {
-  color: var(--wy-cream);
-  font-size: 14px;
-  line-height: 1.55;
-  text-align: left;
-}
-
-.wyraj .wy-info wy-topic {
-  margin: 0 0 30px;
-}
-
-.wyraj .wy-info wy-heading {
+.wyraj .wyraj-information h4 {
   margin: 0 0 14px;
   color: var(--wy-cream);
   font-family: var(--font2), serif;
@@ -408,14 +407,19 @@ Couleurs et image d'origine conservées.
   text-shadow: var(--text-shadow2);
 }
 
-.wyraj .wy-info wy-shop {
+.wyraj .wyraj-information shop {
   margin: 0 16px 32px;
   padding: 18px 18px 20px;
+  color: var(--wy-mute);
+  font-family: var(--font1), serif;
+  font-size: 14px;
+  line-height: 1.85;
+  text-align: justify;
   border-radius: 8px;
   background: linear-gradient(105deg, rgba(99,34,40,.22), rgba(22,18,19,.28) 55%, rgba(18,18,18,0));
 }
 
-.wyraj .wy-info wy-shop wy-heading {
+.wyraj .wyraj-information shop h4 {
   margin-bottom: 13px;
 }
 
@@ -443,23 +447,23 @@ Couleurs et image d'origine conservées.
 
 /* ---------- Relations ---------- */
 
-.wyraj .wy-rel {
+.wyraj .wyraj-information rel {
   position: relative;
   margin-top: 22px;
 }
 
-.wyraj .wy-rel > input {
+.wyraj .wyraj-information rel > input {
   display: none;
 }
 
-.wyraj .wy-rel wy-tabs {
+.wyraj .wyraj-information tabs {
   display: grid;
-  grid-template-columns: repeat(auto-fit, minmax(110px, 1fr));
+  grid-template-columns: repeat(auto-fit, minmax(105px, 1fr));
   gap: 8px 26px;
   margin: 0 0 24px;
 }
 
-.wyraj .wy-rel wy-tabs label {
+.wyraj .wyraj-information tabs label {
   position: relative;
   padding: 0 0 13px;
   color: #676163;
@@ -474,10 +478,9 @@ Couleurs et image d'origine conservées.
   transition: color .25s;
 }
 
-.wyraj .wy-rel wy-tabs label::after {
+.wyraj .wyraj-information tabs label::after {
   content: "";
   position: absolute;
-  right: auto;
   bottom: 0;
   left: 0;
   width: 0;
@@ -486,61 +489,59 @@ Couleurs et image d'origine conservées.
   transition: width .25s;
 }
 
-.wyraj .wy-rel wy-tabs label:hover {
+.wyraj .wyraj-information tabs label:hover {
   color: #a8a1a4;
 }
 
-.wyraj .wy-rel label[for="wy-rel-wallace"] {
+.wyraj .wyraj-information label[for="wy-rel-wallace"] {
   color: var(--wy-cream);
 }
 
-.wyraj .wy-rel label[for="wy-rel-wallace"]::after {
+.wyraj .wyraj-information label[for="wy-rel-wallace"]::after {
   width: 100%;
 }
 
-.wyraj .wy-rel:has(#wy-rel-zelote:checked) label[for="wy-rel-wallace"],
-.wyraj .wy-rel:has(#wy-rel-vampires:checked) label[for="wy-rel-wallace"] {
+.wyraj .wyraj-information rel:has(#wy-rel-zelote:checked) label[for="wy-rel-wallace"],
+.wyraj .wyraj-information rel:has(#wy-rel-vampires:checked) label[for="wy-rel-wallace"] {
   color: #676163;
 }
 
-.wyraj .wy-rel:has(#wy-rel-zelote:checked) label[for="wy-rel-wallace"]::after,
-.wyraj .wy-rel:has(#wy-rel-vampires:checked) label[for="wy-rel-wallace"]::after {
+.wyraj .wyraj-information rel:has(#wy-rel-zelote:checked) label[for="wy-rel-wallace"]::after,
+.wyraj .wyraj-information rel:has(#wy-rel-vampires:checked) label[for="wy-rel-wallace"]::after {
   width: 0;
 }
 
-.wyraj .wy-rel:has(#wy-rel-zelote:checked) label[for="wy-rel-zelote"],
-.wyraj .wy-rel:has(#wy-rel-vampires:checked) label[for="wy-rel-vampires"] {
+.wyraj .wyraj-information rel:has(#wy-rel-zelote:checked) label[for="wy-rel-zelote"],
+.wyraj .wyraj-information rel:has(#wy-rel-vampires:checked) label[for="wy-rel-vampires"] {
   color: var(--wy-cream);
 }
 
-.wyraj .wy-rel:has(#wy-rel-zelote:checked) label[for="wy-rel-zelote"]::after,
-.wyraj .wy-rel:has(#wy-rel-vampires:checked) label[for="wy-rel-vampires"]::after {
+.wyraj .wyraj-information rel:has(#wy-rel-zelote:checked) label[for="wy-rel-zelote"]::after,
+.wyraj .wyraj-information rel:has(#wy-rel-vampires:checked) label[for="wy-rel-vampires"]::after {
   width: 100%;
 }
 
-.wyraj .wy-rel wy-panel {
+.wyraj .wyraj-information panel {
   display: none;
-  padding-top: 2px;
-}
-
-.wyraj .wy-rel .panel-wallace {
-  display: block;
-}
-
-.wyraj .wy-rel:has(#wy-rel-zelote:checked) .panel-wallace,
-.wyraj .wy-rel:has(#wy-rel-vampires:checked) .panel-wallace {
-  display: none;
-}
-
-.wyraj .wy-rel:has(#wy-rel-zelote:checked) .panel-zelote,
-.wyraj .wy-rel:has(#wy-rel-vampires:checked) .panel-vampires {
-  display: block;
-}
-
-.wyraj .wy-rel wy-panel wy-text {
-  margin: 0 0 13px;
-  max-width: none;
+  color: var(--wy-mute);
+  font-family: var(--font1), serif;
+  font-size: 14px;
+  line-height: 1.85;
   text-align: justify;
+}
+
+.wyraj .wyraj-information .wallace {
+  display: block;
+}
+
+.wyraj .wyraj-information rel:has(#wy-rel-zelote:checked) .wallace,
+.wyraj .wyraj-information rel:has(#wy-rel-vampires:checked) .wallace {
+  display: none;
+}
+
+.wyraj .wyraj-information rel:has(#wy-rel-zelote:checked) .zelote,
+.wyraj .wyraj-information rel:has(#wy-rel-vampires:checked) .vampires {
+  display: block;
 }
 
 /* ---------- Organisation ---------- */
