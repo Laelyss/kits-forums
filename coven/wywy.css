@@ -249,12 +249,9 @@ Couleurs et image d'origine conservées.
 .wyraj wy-event {
   position: relative;
   display: block;
-  margin: 0 0 28px;
-  padding: 0;
-  border: 0;
-  color: var(--wy-mute);
-  font-size: 13px;
-  line-height: 1.7;
+    padding: 0;
+    color: var(--wy-mute);
+    font-size: 13px;
 }
 
 .wyraj wy-event:last-of-type {
@@ -298,7 +295,7 @@ Couleurs et image d'origine conservées.
 
 .wyraj wy-note {
   display: block;
-  max-width: 420px;
+  max-width: 370px;
 }
 
 .wyraj wy-year + wy-note {
@@ -803,7 +800,6 @@ Couleurs et image d'origine conservées.
   .wyraj .wy-chrono {
     display: grid;
     grid-template-columns: minmax(0, 1fr) var(--wy-strip);
-    gap: var(--wy-gap);
     align-items: flex-start;
     padding-top: 0;
   }
@@ -836,7 +832,7 @@ Couleurs et image d'origine conservées.
 .wyraj .wy-chrono > wy-events {
   grid-column: 1;
   width: min(460px, 100%);
-  margin: 0 0 0 18px;
+  margin: 0 0 0 40px;
 }
 
   .wyraj .wy-info-row,
