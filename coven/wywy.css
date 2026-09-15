@@ -492,7 +492,7 @@ WYRAJ — rubans (version test avant de mettre sur le vrai wyraj.css)
   border: 0;
   background: transparent !important;
   color-scheme: normal;
-  overflow: auto;
+  overflow: hidden;
 }
 
 @keyframes wy-panel-in {
