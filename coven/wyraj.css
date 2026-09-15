@@ -511,7 +511,7 @@
   grid-template-columns: minmax(0, 1fr);
   gap: 18px;
   padding: 18px 14px 22px;
-  --wy-ava-overlap: 28px; /* chevauchement des 2 ronds : 36 = collés, 16 = plus d'air */
+  --wy-ava-overlap: 20px; /* chevauchement des 2 ronds : 36 = collés, 16 = plus d'air */
 }
 
 /* onglets (Kolo / Membres / …) */
