@@ -325,16 +325,11 @@ WYRAJ — rubans (version test avant de mettre sur le vrai wyraj.css)
 .wyraj .wyraj-information faits > br,
 .wyraj .wyraj-information onglets > br,
 .wyraj .wyraj-information relation > br,
-.wyraj .wv-org > br,
 .wyraj .wv-main-tabs > br,
 .wyraj .wv-voice-tabs > br,
 .wyraj .wv-voices > br,
 .wyraj .wv-single-stage > br,
-.wyraj .wv-main-panel > br,
-.wyraj .wv-voice-panel > br,
-.wyraj .wv-simple-list > br,
-.wyraj .wv-simple-entry > br,
-.wyraj .wv-intro > br {
+.wyraj .wv-voice-panel > br {
   display: none !important;
 }
 .wyraj .wyraj-information fait {
@@ -500,31 +495,9 @@ WYRAJ — rubans (version test avant de mettre sur le vrai wyraj.css)
   margin: 0;
   padding: 22px 22px 26px;
 }
-.wyraj .wv-org blockquote {
-  margin: 0;
-  padding: 0;
-  border: 0;
-  background: none;
-}
 .wyraj .wv-intro {
   grid-column: 1;
   margin: 0 0 26px;
-  color: inherit;
-  font-size: 13px;
-  line-height: 1.7;
-  text-align: justify;
-}
-.wyraj .wv-intro p {
-  margin: 0;
-  color: inherit;
-  font-size: inherit;
-  line-height: inherit;
-  text-align: inherit;
-}
-.wyraj .wv-intro p + p { margin-top: .55em; }
-.wyraj .wv-intro p:last-child {
-  color: #7a7476;
-  font-size: 12px;
 }
 .wyraj .wv-main-tabs {
   position: relative;
@@ -633,31 +606,59 @@ WYRAJ — rubans (version test avant de mettre sur le vrai wyraj.css)
   border: 0;
   background: none;
   animation: wy-panel-in .4s ease;
+  grid-template-columns: minmax(0, 1fr);
+  grid-template-rows: 18px 36px auto;
+  align-items: start;
 }
-.wyraj .wv-voices .panel-jarilo { display: block; }
+.wyraj .wv-voices .panel-jarilo { display: grid; }
 .wyraj .wv-voices:has(#wy-voice-kupala:checked) .panel-jarilo,
 .wyraj .wv-voices:has(#wy-voice-mokosh:checked) .panel-jarilo,
 .wyraj .wv-voices:has(#wy-voice-marzanna:checked) .panel-jarilo { display: none; }
 .wyraj .wv-voices:has(#wy-voice-kupala:checked) .panel-kupala,
 .wyraj .wv-voices:has(#wy-voice-mokosh:checked) .panel-mokosh,
-.wyraj .wv-voices:has(#wy-voice-marzanna:checked) .panel-marzanna { display: block; }
+.wyraj .wv-voices:has(#wy-voice-marzanna:checked) .panel-marzanna { display: grid; }
 .wyraj .wv-voice-season {
+  grid-row: 1;
   position: relative;
   z-index: 1;
   display: block;
-  margin: 0 0 6px;
+  margin: 0;
   color: var(--wy-rose);
   font-family: var(--font3), sans-serif;
   font-size: 9px;
   font-weight: 600;
   letter-spacing: .32em;
+  line-height: 1;
   text-transform: uppercase;
   writing-mode: horizontal-tb;
   pointer-events: none;
+  align-self: end;
 }
-.wyraj .wv-voice-panel::after {
+.wyraj .wv-voice-name {
+  grid-row: 2;
+  position: relative;
+  z-index: 1;
+  margin: 0;
+  color: var(--wy-cream);
+  font-family: var(--font2), serif;
+  font-size: 28px;
+  font-weight: 400;
+  letter-spacing: 1px;
+  line-height: 1;
+  text-transform: lowercase;
+  text-shadow: var(--text-shadow2);
+  align-self: start;
+}
+.wyraj .wv-voice-name::after {
+  content: " \26B6";
+  color: var(--wy-rose);
+  font-size: .42em;
+  letter-spacing: 0;
+  vertical-align: 6px;
+}
+.wyraj .wv-voice-name::before {
   position: absolute;
-  top: 28px;
+  top: 0;
   right: 0;
   z-index: 0;
   color: rgba(216, 209, 211, .08);
@@ -669,36 +670,16 @@ WYRAJ — rubans (version test avant de mettre sur le vrai wyraj.css)
   text-transform: uppercase;
   white-space: nowrap;
   pointer-events: none;
-  transform: none;
 }
-.wyraj .panel-jarilo::after { content: "printemps"; }
-.wyraj .panel-kupala::after { content: "été"; }
-.wyraj .panel-mokosh::after { content: "automne"; }
-.wyraj .panel-marzanna::after { content: "hiver"; }
-.wyraj .wv-voice-name {
-  position: relative;
-  z-index: 1;
-  margin: 0 0 10px;
-  color: var(--wy-cream);
-  font-family: var(--font2), serif;
-  font-size: 28px;
-  font-weight: 400;
-  letter-spacing: 1px;
-  line-height: 1;
-  text-transform: lowercase;
-  text-shadow: var(--text-shadow2);
-}
-.wyraj .wv-voice-name::after {
-  content: " \26B6";
-  color: var(--wy-rose);
-  font-size: .42em;
-  letter-spacing: 0;
-  vertical-align: 6px;
-}
+.wyraj .panel-jarilo .wv-voice-name::before { content: "printemps"; }
+.wyraj .panel-kupala .wv-voice-name::before { content: "été"; }
+.wyraj .panel-mokosh .wv-voice-name::before { content: "automne"; }
+.wyraj .panel-marzanna .wv-voice-name::before { content: "hiver"; }
 .wyraj .wv-voice-panel p {
   position: relative;
   z-index: 1;
   margin: 0;
+  padding-top: 10px;
   color: inherit;
   font-size: 13px;
   line-height: 1.7;
@@ -836,6 +817,6 @@ WYRAJ — rubans (version test avant de mettre sur le vrai wyraj.css)
   .wyraj .wv-voice-tabs {
     flex-direction: column;
     gap: 6px;
-    padding-top: 34px;
+    padding-top: 18px;
   }
 }
