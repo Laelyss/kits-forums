@@ -14,6 +14,12 @@
       --font2: "Pirata One", cursive;
       --font-oath: "Cormorant Garamond", Georgia, serif;
       --text-shadow2: 1px 1px #000;
+      --accent0: var(--wy-cream);
+      --accent1: #2d1119;
+      --accent2: #715454;
+      --accent3: #632228;
+      --accent4: #632228;
+      --accent5: #29282a;
     }
     * { box-sizing: border-box; }
     html, body {
@@ -56,6 +62,38 @@
       text-align: justify;
     }
     .prohod-copy p:last-child { margin-bottom: 0; }
+    m0, m1, m2, m3, m4, m5,
+    i0, i1, u0, u1, u2, u3, u4 {
+      display: inline;
+      font-size: inherit;
+      line-height: inherit;
+    }
+    m0 { color: var(--accent0); }
+    m1 { color: var(--accent3); }
+    m2 { color: var(--accent2); }
+    m3 { color: var(--wy-rose); }
+    m4 { color: var(--accent4); }
+    m5 { color: var(--accent5); }
+    i0 { font-style: italic; }
+    i1 { color: var(--wy-rose); font-style: italic; }
+    u0, u1, u2, u3, u4 {
+      text-decoration: underline;
+      text-decoration-style: solid;
+      text-decoration-thickness: 1px;
+      text-underline-offset: 3px;
+    }
+    u0 { text-decoration-color: currentColor; }
+    u1 { text-decoration-color: var(--wy-rose); }
+    u2 { text-decoration-color: var(--accent3); }
+    u3 {
+      color: var(--wy-cream);
+      text-decoration-color: var(--wy-cream);
+      text-shadow: var(--text-shadow2);
+    }
+    u4 {
+      text-decoration-color: var(--wy-rose);
+      text-shadow: var(--text-shadow2);
+    }
     .prohod-oath {
       margin: 22px 0 0;
       padding: 20px 0 4px;
@@ -157,13 +195,10 @@
   <div class="prohod">
     <div class="prohod-main">
       <div class="prohod-copy">
-        <p>La cérémonie se tient <m0>en dehors</m0> de Vienne, au plus profond du Wienerwald, là où les ravins se ramifient entre les arbres. Un ruisseau court au fond de l’un d’eux, loin de tout village.
-           On forme un cercle, un <i1>chant slave</i1> fredonné à plusieurs voix. Au centre, les préparatifs commencent.
-           Une <u1>corde</u1> passe autour de sa taille. Une autre sous la poitrine. La dernière ramène les bras contre le torse avant d’être <u2>nouée dans le dos</u2>.
-           Sous les arbres, on le mène jusqu’à l’eau. Le chant accompagne ses pas jusqu’à ce qu’elle gagne les chevilles, les jambes, la taille. Des mains se posent sur ses épaules. Son corps est alors <u4>plongé entièrement</u4>.
-
-           On le ramène à la surface avant de le guider jusqu’à la berge, où il se dresse devant le Kolo venus apposer leur signe sur sa peau.
-           La première fait perler son propre sang avant de tracer le signe de Jarilo sur le front. Kupala marque la joue droite, Mokosh la gauche. Marzanna achève le tracé contre le menton.
+        <p>La cérémonie se tient <m0>en dehors</m0> de Vienne, au plus profond du Wienerwald, là où les ravins se ramifient entre les arbres. Un ruisseau court au fond de l’un d’eux, loin de tout village.</p>
+        <p>On forme un cercle, un <i1>chant slave</i1> fredonné à plusieurs voix. Au centre, les préparatifs commencent. Une <u1>corde</u1> passe autour de sa taille. Une autre sous la poitrine. La dernière ramène les bras contre le torse avant d’être <u2>nouée dans le dos</u2>.</p>
+        <p>Sous les arbres, on le mène jusqu’à l’eau. Le chant accompagne ses pas jusqu’à ce qu’elle gagne les chevilles, les jambes, la taille. Des mains se posent sur ses épaules. Son corps est alors <u4>plongé entièrement</u4>.</p>
+        <p>On le ramène à la surface avant de le guider jusqu’à la berge, où il se dresse devant le Kolo venus apposer leur signe sur sa peau. La première fait perler son propre sang avant de tracer le signe de Jarilo sur le front. Kupala marque la joue droite, Mokosh la gauche. Marzanna achève le tracé contre le menton.</p>
         <p>Vient ensuite le serment à prononcer, appris dans la langue ancestrale.</p>
       </div>
       <div class="prohod-oath">
