@@ -567,7 +567,7 @@
   height: 64px;
   border-radius: 50%;
   object-fit: cover;
-  background: #241e21;
+  background: #241e21 center / cover no-repeat;
   box-shadow: 0 0 0 3px rgba(22, 19, 20, .9);
 }
 .wyraj .wy-prelien-avatars > * + * { margin-left: -28px; }
