@@ -83,14 +83,16 @@
     .wv-org:has(#wy-org-termes:checked) label[for="wy-org-termes"] { color: var(--wy-cream); }
     .wv-org:has(#wy-org-membres:checked) label[for="wy-org-membres"]::after,
     .wv-org:has(#wy-org-termes:checked) label[for="wy-org-termes"]::after { width: 100%; }
+   
     .wv-kicker {
-      margin: 0 0 8px;
-      color: var(--wy-rose);
-      font-family: var(--font2);
-      font-size: 11px;
-      letter-spacing: .3em;
-      text-transform: uppercase;
+    margin: 0 0 8px;
+    color: var(--wy-rose);
+    font-family: sans-serif;
+    font-size: 9px;
+    letter-spacing: .3em;
+    text-transform: uppercase;
     }
+    
     .wv-heading {
       margin: 0 0 12px;
       color: var(--wy-cream);
@@ -102,13 +104,15 @@
       text-transform: lowercase;
       text-shadow: var(--text-shadow2);
     }
-    .wv-lead {
-      margin: 0 0 18px;
-      color: inherit;
-      font-size: 12.5px;
-      line-height: 1.8;
+    
+  .wv-lead {
+    margin: 0 0 18px;
+    color: inherit;
+    font-family: var(--font, Georgia, serif); /* le nom exact ci-dessous */
+    font-size: 13px;
+    line-height: 1.6;
     }
-    .wv-single-stage {
+      .wv-single-stage {
       display: grid;
       grid-template-columns: minmax(0, 1fr);
       align-items: start;
@@ -155,13 +159,14 @@
     .wv-voices:has(#wy-voice-kupala:checked) .panel-kupala,
     .wv-voices:has(#wy-voice-mokosh:checked) .panel-mokosh,
     .wv-voices:has(#wy-voice-marzanna:checked) .panel-marzanna { display: grid; }
+   
     .wv-voice-season {
       grid-row: 1;
       position: relative;
       z-index: 1;
       color: var(--wy-rose);
-      font-family: var(--font2);
-      font-size: 11px;
+      font-family: sans-serif;
+      font-size: 9px;
       letter-spacing: .32em;
       text-transform: uppercase;
       align-self: end;
