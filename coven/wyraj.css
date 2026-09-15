@@ -503,18 +503,23 @@
    Fiche assez large : le ruban passe à la verticale
 ================================================== */
 @container wyraj (min-width: 430px) {
+  .wyraj section.wyraj-story {
+    display: grid;
+    grid-template-columns: var(--wy-strip) minmax(0, 1fr);
+    column-gap: var(--wy-gap);
+    align-items: start;
+  }
   .wyraj section.wyraj-story > t1 {
-    margin-left: calc(var(--wy-strip) + var(--wy-gap)) !important;
+    grid-column: 2;
+    grid-row: 1;
+    margin-left: 0 !important;
+    width: auto !important;
   }
   .wyraj section.wyraj-chrono > t1 {
     margin-right: calc(var(--wy-strip) + var(--wy-gap)) !important;
   }
   .wyraj .wy-story {
-    display: flex;
-    flex-direction: row;
-    align-items: flex-start;
-    gap: var(--wy-gap);
-    padding-top: 0;
+    display: contents;
   }
   .wyraj .wy-chrono {
     display: grid;
@@ -529,16 +534,19 @@
     width: var(--wy-strip);
     height: 430px;
     min-height: 0;
-    margin: -27px 0 0;
     -webkit-mask-image: linear-gradient(180deg, #000 72%, transparent);
             mask-image: linear-gradient(180deg, #000 72%, transparent);
   }
   .wyraj .wy-story > .wy-media {
-    flex: 0 0 var(--wy-strip);
+    grid-column: 1;
+    grid-row: 1 / span 2;
+    align-self: start;
     z-index: 1;
+    margin: 0;
   }
   .wyraj .wy-story > .wy-copy {
-    flex: 1 1 auto;
+    grid-column: 2;
+    grid-row: 2;
     min-width: 0;
     padding: 0 14px;
   }
@@ -546,6 +554,7 @@
     order: initial;
     grid-column: 2;
     grid-row: 1 / span 99;
+    margin: -27px 0 0;
   }
   .wyraj .wy-chrono > wy-events {
     grid-column: 1;
