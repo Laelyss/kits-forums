@@ -7,6 +7,8 @@
   <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@1,600;1,700&family=Pirata+One&display=swap">
   <style>
     :root {
+      --wy-line: #322c2f;
+      --wy-cream: #d8d1d3;
       --wy-rose: #aa737b;
       --font: sans-serif;
       --font2: "Pirata One", cursive;
@@ -21,16 +23,14 @@
       overflow: hidden;
       background: transparent !important;
       background-color: transparent !important;
-      color: CanvasText;
-      color-scheme: light dark;
+      color: #b6b1b1;
       font-family: var(--font);
       font-size: 13px;
       line-height: 1.75;
     }
-    p { color: inherit; }
     .prohod {
       display: grid;
-      grid-template-columns: minmax(0, 1fr) 200px;
+      grid-template-columns: minmax(0, 1fr) 188px;
       height: 100%;
       min-height: 0;
     }
@@ -39,7 +39,7 @@
       min-height: 0;
       overflow-x: hidden;
       overflow-y: auto;
-      padding: 16px 26px 28px 10px;
+      padding: 16px 28px 28px 10px;
       scrollbar-width: thin;
       scrollbar-color: rgba(99, 34, 40, .55) transparent;
     }
@@ -54,61 +54,60 @@
       font-size: 13px;
       line-height: 1.8;
       text-align: justify;
-      color: inherit;
     }
     .prohod-copy p:last-child { margin-bottom: 0; }
     .prohod-oath {
       margin: 22px 0 0;
-      padding: 22px 24px 18px;
-      border: 1px solid color-mix(in srgb, currentColor 16%, transparent);
-      border-radius: 14px;
-      background: color-mix(in srgb, currentColor 5%, transparent);
+      padding: 20px 0 4px;
+      border-top: 1px solid rgba(99, 34, 40, .5);
     }
     .prohod-kicker {
-      margin: 0 0 18px;
+      margin: 0 0 16px;
       color: var(--wy-rose);
+      font-family: var(--font);
       font-size: 9px;
       letter-spacing: .32em;
       text-transform: uppercase;
     }
-    .prohod-line { margin: 0 0 20px; }
-    .prohod-line:last-child { margin-bottom: 4px; }
+    .prohod-line { margin: 0 0 18px; }
+    .prohod-line:last-child { margin-bottom: 0; }
     .prohod-polish {
-      margin: 0;
-      color: light-dark(#24181b, #d8d1d3);
+      margin: 0 0 6px;
+      color: var(--wy-cream);
       font-family: var(--font-oath);
-      font-size: 22px;
+      font-size: 21px;
       font-style: italic;
       font-weight: 700;
       letter-spacing: .01em;
-      line-height: 1.32;
+      line-height: 1.35;
     }
     .prohod-fr {
-      margin: 8px 0 0;
-      padding: 0 0 0 16px;
-      border-left: 1px solid color-mix(in srgb, currentColor 28%, transparent);
-      color: inherit;
+      margin: 0;
+      color: #8d8789;
       font-size: 12.5px;
       line-height: 1.65;
-      opacity: .78;
     }
     .prohod-close {
-      margin: 20px 0 0;
-      color: inherit;
+      margin: 22px 0 0;
+      padding: 16px 0 0;
+      border-top: 1px solid rgba(99, 34, 40, .35);
+      color: #b6b1b1;
       font-size: 13px;
       line-height: 1.8;
     }
-    .prohod-close p { margin: 0; color: inherit; }
+    .prohod-close p { margin: 0; }
     .prohod-aside {
+      position: relative;
       display: flex;
       flex-direction: column;
       align-items: center;
-      padding: 28px 18px 24px 20px;
-      border-left: 1px solid color-mix(in srgb, var(--wy-rose) 45%, transparent);
+      justify-content: flex-start;
+      padding: 28px 16px 24px 18px;
+      border-left: 1px solid rgba(170, 115, 123, .22);
       background: linear-gradient(
         210deg,
-        color-mix(in srgb, #2d1119 72%, transparent) 0%,
-        color-mix(in srgb, #2d1119 32%, transparent) 46%,
+        rgba(45, 17, 25, .62) 0%,
+        rgba(45, 17, 25, .28) 42%,
         transparent 100%
       );
       text-align: center;
@@ -122,7 +121,7 @@
     }
     .prohod-aside-title {
       margin: 0 0 16px;
-      color: light-dark(#2d1119, #d8d1d3);
+      color: var(--wy-cream);
       font-family: var(--font2);
       font-size: 34px;
       font-weight: 400;
@@ -133,12 +132,9 @@
     }
     .prohod-aside-text {
       margin: 0;
-      color: inherit;
+      color: #9a9496;
       font-size: 12px;
       line-height: 1.7;
-    }
-    @media (prefers-color-scheme: light) {
-      .prohod-aside-title { text-shadow: none; }
     }
     @media (max-width: 520px) {
       .prohod {
@@ -147,13 +143,12 @@
       }
       .prohod-aside {
         border-left: 0;
-        border-bottom: 1px solid color-mix(in srgb, var(--wy-rose) 45%, transparent);
+        border-bottom: 1px solid rgba(170, 115, 123, .22);
         padding: 16px 14px 14px;
-        background: linear-gradient(180deg, color-mix(in srgb, #2d1119 50%, transparent), transparent);
+        background: linear-gradient(180deg, rgba(45, 17, 25, .5), transparent);
       }
       .prohod-aside-title { font-size: 28px; margin-bottom: 8px; }
       .prohod-main { padding: 16px 12px 20px 8px; }
-      .prohod-oath { padding: 18px 16px 14px; }
       .prohod-polish { font-size: 19px; }
     }
   </style>
