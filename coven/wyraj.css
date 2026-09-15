@@ -504,12 +504,17 @@
 }
 
 /* ---------- SECTION 6 Prés-liens ---------- */
+
+/* mise en page générale */
 .wyraj .wy-pres {
   display: grid;
   grid-template-columns: minmax(0, 1fr);
   gap: 18px;
   padding: 18px 14px 22px;
+  --wy-ava-overlap: 28px; /* chevauchement des 2 ronds : 36 = collés, 16 = plus d'air */
 }
+
+/* onglets (Kolo / Membres / …) */
 .wyraj .wy-pres-nav {
   display: flex;
   flex-wrap: wrap;
@@ -549,6 +554,8 @@
   animation: wy-panel-in .4s ease;
 }
 .wyraj .wy-pres .panel-1 { display: block; }
+
+/* une fiche prélien */
 .wyraj .wy-prelien { min-width: 0; }
 .wyraj .wy-prelien-top {
   display: flex;
@@ -556,10 +563,12 @@
   gap: 18px;
   margin: 0 0 16px;
 }
+
+/* avatars (ronds qui se chevauchent) */
 .wyraj .wy-prelien-avatars {
   display: flex;
   flex: 0 0 auto;
-  width: 96px;
+  width: auto;
 }
 .wyraj .wy-prelien-avatars > * {
   display: block;
@@ -570,7 +579,11 @@
   background: #241e21 center / cover no-repeat;
   box-shadow: 0 0 0 3px rgba(22, 19, 20, .9);
 }
-.wyraj .wy-prelien-avatars > * + * { margin-left: -28px; }
+.wyraj .wy-prelien-avatars > * + * {
+  margin-left: calc(var(--wy-ava-overlap) * -1);
+}
+
+/* nom + TW */
 .wyraj .wy-prelien-head { min-width: 0; }
 .wyraj .wy-prelien-kicker {
   margin: 0 0 2px;
@@ -602,6 +615,8 @@
   line-height: 1.45;
   text-transform: uppercase;
 }
+
+/* texte */
 .wyraj .wy-prelien-copy,
 .wyraj .wy-prelien-copy p {
   margin: 0 0 12px;
@@ -611,6 +626,8 @@
   text-align: justify;
 }
 .wyraj .wy-prelien-copy p:last-child { margin-bottom: 0; }
+
+/* séparateur entre 2 préliens du même onglet */
 .wyraj .wy-pres-sep {
   display: block;
   position: relative;
@@ -631,6 +648,8 @@
   padding: 0 8px;
   transform: translate(-50%, -50%);
 }
+
+/* changement d'onglet */
 .wyraj .wy-pres:has(#wy-pres-2:checked) .panel-1,
 .wyraj .wy-pres:has(#wy-pres-3:checked) .panel-1,
 .wyraj .wy-pres:has(#wy-pres-4:checked) .panel-1 { display: none; }
