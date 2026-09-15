@@ -22,7 +22,6 @@
   --wy-line: #322c2f;
   --wy-cream: #d8d1d3;
   --wy-rose: #aa737b;
-  --wy-pres-h: 350px;
 }
 .wyraj *,
 .wyraj *::before,
@@ -78,6 +77,7 @@
   height: 118px;
   margin: 0 0 22px;
   overflow: hidden;
+  min-height: 0;
   background: #0d0d0d;
 }
 .wyraj .wy-media::after {
@@ -307,7 +307,10 @@
 .wyraj .wv-voice-tabs > br,
 .wyraj .wv-voices > br,
 .wyraj .wv-single-stage > br,
-.wyraj .wv-voice-panel > br { display: none !important; }
+.wyraj .wv-voice-panel > br,
+.wyraj .wy-pres-nav > br,
+.wyraj .wy-pres-stage > br,
+.wyraj .wy-prelien-top > br { display: none !important; }
 .wyraj .wyraj-information fait {
   color: inherit;
   font-size: 13px;
@@ -501,45 +504,151 @@
 }
 
 /* ---------- SECTION 6 Prés-liens ---------- */
-.wyraj .wyraj-pres-row {
-  display: flex !important;
-  flex-direction: row !important;
-  flex-wrap: nowrap !important;
-  gap: .5em;
-  width: 100%;
-  height: var(--wy-pres-h);
-  margin: 0 0 8px;
-  align-items: stretch;
-  overflow: visible;
+.wyraj .wy-pres {
+  display: grid;
+  grid-template-columns: minmax(0, 1fr);
+  gap: 18px;
+  padding: 18px 14px 22px;
 }
-.wyraj .wyraj-pres-row > section {
-  display: block !important;
-  flex: 1 1 auto !important;
-  width: auto !important;
-  max-width: none !important;
-  min-width: 0 !important;
-  height: 100% !important;
-  margin: 0 !important;
-  padding: 0 !important;
-  overflow: hidden;
+.wyraj .wy-pres-nav {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 6px 18px;
+  margin: 0;
 }
-.wyraj .wyraj-pres-row .pres_id {
-  height: 100% !important;
-  max-height: none !important;
-  overflow-x: hidden;
-  overflow-y: auto;
-  padding-right: 8px;
-  scrollbar-width: thin;
-  scrollbar-color: rgba(99, 34, 40, .5) transparent;
+.wyraj .wy-pres-nav label {
+  position: relative;
+  display: inline-block;
+  padding: 2px 0 2px 14px;
+  color: #676163;
+  font-family: var(--font3), sans-serif;
+  font-size: 10px;
+  font-weight: 600;
+  letter-spacing: .28em;
+  text-transform: uppercase;
+  cursor: pointer;
+  transition: color .35s ease;
 }
-.wyraj .wyraj-pres-row .pres_id::-webkit-scrollbar { width: 3px; }
-.wyraj .wyraj-pres-row .pres_id::-webkit-scrollbar-thumb { background: rgba(99, 34, 40, .5); }
-.wyraj .wyraj-pres-row > div {
-  flex: 0 0 auto !important;
-  width: auto !important;
-  height: 100%;
-  overflow: visible;
+.wyraj .wy-pres-nav label::before {
+  content: "";
+  position: absolute;
+  left: 0;
+  top: 50%;
+  width: 10px;
+  height: 1px;
+  background: var(--wy-rose);
+  transform: scaleX(0);
+  transform-origin: left center;
+  transition: transform .35s ease;
 }
+.wyraj .wy-pres label[for="wy-pres-1"] { color: var(--wy-cream); }
+.wyraj .wy-pres label[for="wy-pres-1"]::before { transform: scaleX(1); }
+.wyraj .wy-pres-stage { position: relative; min-width: 0; }
+.wyraj .wy-pres-panel {
+  display: none;
+  animation: wy-panel-in .4s ease;
+}
+.wyraj .wy-pres .panel-1 { display: block; }
+.wyraj .wy-prelien { min-width: 0; }
+.wyraj .wy-prelien-top {
+  display: flex;
+  align-items: center;
+  gap: 18px;
+  margin: 0 0 16px;
+}
+.wyraj .wy-prelien-avatars {
+  display: flex;
+  flex: 0 0 auto;
+  width: 96px;
+}
+.wyraj .wy-prelien-avatars > * {
+  display: block;
+  width: 64px;
+  height: 64px;
+  border-radius: 50%;
+  object-fit: cover;
+  background: #241e21;
+  box-shadow: 0 0 0 3px rgba(22, 19, 20, .9);
+}
+.wyraj .wy-prelien-avatars > * + * { margin-left: -28px; }
+.wyraj .wy-prelien-head { min-width: 0; }
+.wyraj .wy-prelien-kicker {
+  margin: 0 0 2px;
+  color: var(--wy-rose);
+  font-family: var(--font3), sans-serif;
+  font-size: 9px;
+  font-weight: 600;
+  letter-spacing: .28em;
+  text-transform: uppercase;
+}
+.wyraj .wy-prelien-name {
+  margin: 0;
+  color: var(--wy-cream);
+  font-family: var(--font2), serif;
+  font-size: 26px;
+  font-weight: 400;
+  letter-spacing: .02em;
+  line-height: 1.1;
+  text-transform: lowercase;
+  text-shadow: var(--text-shadow2);
+}
+.wyraj .wy-prelien-tw {
+  margin: 6px 0 0;
+  color: var(--wy-rose);
+  font-family: var(--font3), sans-serif;
+  font-size: 9px;
+  font-weight: 600;
+  letter-spacing: .12em;
+  line-height: 1.45;
+  text-transform: uppercase;
+}
+.wyraj .wy-prelien-copy,
+.wyraj .wy-prelien-copy p {
+  margin: 0 0 12px;
+  color: inherit;
+  font-size: 13px;
+  line-height: 1.75;
+  text-align: justify;
+}
+.wyraj .wy-prelien-copy p:last-child { margin-bottom: 0; }
+.wyraj .wy-pres-sep {
+  display: block;
+  position: relative;
+  width: min(240px, 70%);
+  height: 1px;
+  margin: 28px auto;
+  border: 0;
+  background: linear-gradient(90deg, transparent, rgba(170, 115, 123, .55), transparent);
+}
+.wyraj .wy-pres-sep::after {
+  content: "✦";
+  position: absolute;
+  left: 50%;
+  top: 50%;
+  color: var(--wy-rose);
+  font-size: 9px;
+  line-height: 1;
+  padding: 0 8px;
+  transform: translate(-50%, -50%);
+}
+.wyraj .wy-pres:has(#wy-pres-2:checked) .panel-1,
+.wyraj .wy-pres:has(#wy-pres-3:checked) .panel-1,
+.wyraj .wy-pres:has(#wy-pres-4:checked) .panel-1 { display: none; }
+.wyraj .wy-pres:has(#wy-pres-2:checked) .panel-2,
+.wyraj .wy-pres:has(#wy-pres-3:checked) .panel-3,
+.wyraj .wy-pres:has(#wy-pres-4:checked) .panel-4 { display: block; }
+.wyraj .wy-pres:has(#wy-pres-2:checked) label[for="wy-pres-1"],
+.wyraj .wy-pres:has(#wy-pres-3:checked) label[for="wy-pres-1"],
+.wyraj .wy-pres:has(#wy-pres-4:checked) label[for="wy-pres-1"] { color: #676163; }
+.wyraj .wy-pres:has(#wy-pres-2:checked) label[for="wy-pres-1"]::before,
+.wyraj .wy-pres:has(#wy-pres-3:checked) label[for="wy-pres-1"]::before,
+.wyraj .wy-pres:has(#wy-pres-4:checked) label[for="wy-pres-1"]::before { transform: scaleX(0); }
+.wyraj .wy-pres:has(#wy-pres-2:checked) label[for="wy-pres-2"],
+.wyraj .wy-pres:has(#wy-pres-3:checked) label[for="wy-pres-3"],
+.wyraj .wy-pres:has(#wy-pres-4:checked) label[for="wy-pres-4"] { color: var(--wy-cream); }
+.wyraj .wy-pres:has(#wy-pres-2:checked) label[for="wy-pres-2"]::before,
+.wyraj .wy-pres:has(#wy-pres-3:checked) label[for="wy-pres-3"]::before,
+.wyraj .wy-pres:has(#wy-pres-4:checked) label[for="wy-pres-4"]::before { transform: scaleX(1); }
 
 /* ==================================================
    Fiche assez large : le ruban passe à la verticale
@@ -603,4 +712,15 @@
     width: min(460px, 100%);
     margin: 0 0 0 40px;
   }
+  .wyraj .wy-pres {
+    grid-template-columns: 108px minmax(0, 1fr);
+    gap: 8px 28px;
+    align-items: start;
+  }
+  .wyraj .wy-pres-nav {
+    flex-direction: column;
+    gap: 8px;
+    padding-top: 10px;
+  }
+  .wyraj .wy-pres-stage { grid-column: 2; }
 }
