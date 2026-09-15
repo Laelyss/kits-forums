@@ -22,6 +22,7 @@
   --wy-line: #322c2f;
   --wy-cream: #d8d1d3;
   --wy-rose: #aa737b;
+  --wy-pres-h: 350px;
 }
 .wyraj *,
 .wyraj *::before,
@@ -497,6 +498,58 @@
   background: transparent !important;
   color-scheme: normal;
   overflow: hidden;
+}
+
+/* ---------- SECTION 6 Prés-liens ---------- */
+.wyraj .wyraj-pres-row {
+  display: flex;
+  gap: .5em;
+  height: var(--wy-pres-h);
+  margin: 0 0 8px;
+  align-items: stretch;
+  overflow: visible;
+}
+.wyraj .wyraj-pres-row > section {
+  flex: 1 1 auto;
+  min-width: 0;
+  min-height: 0;
+  height: 100%;
+  display: flex;
+  flex-direction: column;
+  overflow: hidden;
+}
+.wyraj .wyraj-pres-row > section > t1 { flex: 0 0 auto; }
+.wyraj .wyraj-pres-row .pres_id {
+  flex: 1 1 auto;
+  min-height: 0;
+  height: auto !important;
+  max-height: none !important;
+  overflow-x: hidden;
+  overflow-y: auto;
+  padding-right: 8px;
+  scrollbar-width: thin;
+  scrollbar-color: rgba(99, 34, 40, .5) transparent;
+}
+.wyraj .wyraj-pres-row .pres_id::-webkit-scrollbar { width: 3px; }
+.wyraj .wyraj-pres-row .pres_id::-webkit-scrollbar-thumb { background: rgba(99, 34, 40, .5); }
+.wyraj .wyraj-pres-row > div {
+  flex: 0 0 auto;
+  overflow: visible;
+}
+.wyraj .wy-prelien-keys {
+  margin: 6px 0 32px;
+  padding: 4px 8px 0;
+}
+.wyraj .wy-prelien-keys h4 {
+  margin: 0 0 10px;
+  color: var(--wy-cream);
+  font-family: var(--font2), serif;
+  font-size: 22px;
+  font-weight: 400;
+  letter-spacing: 1px;
+  line-height: 1.2;
+  text-transform: lowercase;
+  text-shadow: var(--text-shadow2);
 }
 
 /* ==================================================
