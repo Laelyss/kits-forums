@@ -512,8 +512,10 @@
   .wyraj .wy-story {
     display: grid;
     grid-template-columns: var(--wy-strip) minmax(0, 1fr);
+    grid-template-rows: auto;
+    grid-auto-rows: 0;
     gap: var(--wy-gap);
-    align-items: flex-start;
+    align-items: start;
     padding-top: 0;
   }
   .wyraj .wy-chrono {
