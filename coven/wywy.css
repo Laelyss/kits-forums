@@ -721,54 +721,17 @@ WYRAJ — rubans (version test avant de mettre sur le vrai wyraj.css)
 }
 .wyraj .wv-simple-entry p + p { margin-top: .45em; }
 
-/* ---------- SECTION 5 Prohod ---------- */
-.wyraj .wy-prohod {
-  padding: 24px 6px 14px 6px;
-}
-.wyraj .prohod-stage {
-  overflow: hidden;
-}
-.wyraj .wy-media.prohod-media {
-  float: none;
+/* ---------- SECTION 5 Prohod (iframe) ---------- */
+.wyraj iframe.wv-prohod-frame {
+  display: block;
   width: 100%;
-  height: 130px;
-  margin: 0 0 24px;
-}
-.wyraj .prohod-copy {
-  color: #b6b1b1;
-  font-size: 13px;
-  line-height: 1.85;
-}
-.wyraj .prohod-copy p {
-  margin: 0 0 16px;
-}
-.wyraj .prohod-oath {
-  clear: both;
-  margin: 8px 0 0;
-  padding: 22px 0 4px;
-  border-top: 1px solid rgba(99,34,40,.5);
-}
-.wyraj .prohod-oath .wv-kicker {
-  margin-bottom: 18px;
-}
-.wyraj .prohod-oath-line {
-  margin-bottom: 18px;
-  padding-left: 14px;
-  border-left: 1px solid var(--wy-line);
-}
-.wyraj .prohod-polish {
-  margin-bottom: 7px;
-  color: var(--wy-cream);
-  font-size: 12.5px;
-  font-style: italic;
-  line-height: 1.65;
-}
-.wyraj .prohod-translation {
-  color: #857f81;
-  font-family: var(--font3), sans-serif;
-  font-size: 10.5px;
-  letter-spacing: .06em;
-  line-height: 1.7;
+  height: 520px;
+  margin: 0;
+  padding: 0;
+  border: 0;
+  background: transparent !important;
+  color-scheme: normal;
+  overflow: hidden;
 }
 
 /* ==================================================
