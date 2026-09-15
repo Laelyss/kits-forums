@@ -270,7 +270,7 @@ WYRAJ — rubans (version test avant de mettre sur le vrai wyraj.css)
 
 /* ---------- Typo commune ---------- */
 .wyraj .wv-kicker {
-  margin-bottom: 9px;
+  margin-bottom: -15px;
   color: var(--wy-rose);
   font-family: var(--font3), sans-serif;
   font-size: 9px;
@@ -279,7 +279,6 @@ WYRAJ — rubans (version test avant de mettre sur le vrai wyraj.css)
   text-transform: uppercase;
 }
 .wyraj .wv-heading {
-  margin: 0 0 12px;
   color: var(--wy-cream);
   font-family: var(--font2), serif;
   font-size: 22px;
@@ -291,7 +290,7 @@ WYRAJ — rubans (version test avant de mettre sur le vrai wyraj.css)
 }
 .wyraj .wv-lead {
   max-width: none;
-  margin: 0 0 18px;
+  margin: 0 0 -6px;
   color: inherit;
   font-size: 12.5px;
   line-height: 1.8;
@@ -507,7 +506,6 @@ WYRAJ — rubans (version test avant de mettre sur le vrai wyraj.css)
   align-items: flex-end;
   gap: 6px 26px;
   justify-content: flex-start;
-  margin: 0 0 22px;
 }
 .wyraj label.wv-main-tab {
   position: relative;
@@ -690,11 +688,11 @@ WYRAJ — rubans (version test avant de mettre sur le vrai wyraj.css)
 }
 .wyraj .wv-simple-entry {
   display: block;
-  padding: 12px 0;
+  padding: 2px 0;
   border-bottom: 1px solid var(--wy-line);
 }
 .wyraj .wv-simple-name {
-  margin: 0 0 4px;
+  margin: 0 0 -10px;
   color: var(--wy-cream);
   font-family: var(--font3), sans-serif;
   font-size: 11px;
