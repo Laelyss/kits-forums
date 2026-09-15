@@ -1311,3 +1311,358 @@ WYRAJ — rubans (version test avant de mettre sur le vrai wyraj.css)
     padding-top: 18px;
   }
 }
+
+
+/* ==================================================
+     VERSION WYRAJ1
+================================================== */
+
+/* ==================================================
+   WYRAJ — PALETTE
+================================================== */
+
+wyraj,
+.wyraj {
+  --wyraj-rust: #632228;
+  --wyraj-red: #2d1119;
+  --wyraj-lightred: #715454;
+  --wyraj-charcoal: #29282a;
+
+  --accent0: rgb(18, 16, 20) !important;
+  --accent1: var(--wyraj-red) !important;
+  --accent2: var(--wyraj-lightred) !important;
+  --accent3: var(--wyraj-rust) !important;
+  --accent4: currentColor !important;
+  --accent5: var(--wyraj-charcoal) !important;
+
+  /* HAUTEURS FACILES À MODIFIER */
+  --wyraj-scroll-height: 520px;
+  --wyraj-pres-height: 520px;
+}
+
+
+/* ==================================================
+   ÉLÉMENTS DE LA FICHE
+================================================== */
+
+wyraj m1,
+.wyraj m1 {
+  color: var(--accent3) !important;
+}
+
+wyraj m2,
+.wyraj m2 {
+  color: var(--accent2) !important;
+}
+
+wyraj t1,
+wyraj tbox,
+.wyraj t1,
+.wyraj tbox {
+  color: var(--accent1) !important;
+}
+
+wyraj u3,
+wyraj u4,
+.wyraj u3,
+.wyraj u4 {
+  text-shadow: var(--text-shadow);
+}
+
+wyraj hr1,
+wyraj hr2,
+wyraj hr3,
+.wyraj hr1,
+.wyraj hr2,
+.wyraj hr3 {
+  color: var(--accent4) !important;
+  border-color: var(--accent4) !important;
+}
+
+
+/* ==================================================
+   SECTION AVEC SCROLL
+================================================== */
+
+fiche.wyraj section.wyraj-scroll {
+  max-height: var(--wyraj-scroll-height);
+
+  overflow-y: auto;
+  overflow-x: hidden;
+
+  padding-right: 10px;
+
+  scrollbar-width: thin;
+  scrollbar-color:
+    rgba(120, 120, 120, .35)
+    transparent;
+}
+
+fiche.wyraj section.wyraj-scroll::-webkit-scrollbar {
+  width: 4px;
+}
+
+fiche.wyraj section.wyraj-scroll::-webkit-scrollbar-track {
+  background: transparent;
+}
+
+fiche.wyraj section.wyraj-scroll::-webkit-scrollbar-thumb {
+  background: rgba(120, 120, 120, .35);
+  border-radius: 10px;
+}
+
+
+/* ==================================================
+   HISTOIRE
+================================================== */
+
+fiche.wyraj section.wyraj-story {
+  --wy-story-media-width: 105px;
+  --wy-story-gap: 12px;
+}
+
+
+/* TITRE DU FORUM */
+
+fiche.wyraj section.wyraj-story > t1 {
+position: relative;
+margin-left: 122px !important;
+}
+
+
+/* CONTENU HISTOIRE */
+
+fiche.wyraj section.wyraj-story > wy-story {
+  display: flex;
+  align-items: flex-start;
+
+  gap: var(--wy-story-gap);
+
+  width: 100%;
+  box-sizing: border-box;
+}
+
+
+/* ==================================================
+   BANDEAU IMAGE HISTOIRE
+================================================== */
+
+fiche.wyraj section.wyraj-story wy-story-media {
+  position: sticky;
+  top: 0;
+
+  display: block;
+
+  flex: 0 0 var(--wy-story-media-width);
+
+  margin-top: -43px;
+
+  height: calc(var(--wyraj-scroll-height) - 20px);
+
+  box-sizing: border-box;
+  overflow: hidden;
+
+  border: 1px solid rgba(103, 53, 60, .55);
+  border-right-color: rgba(113, 84, 84, .75);
+
+  background: #111;
+}
+
+
+fiche.wyraj section.wyraj-story wy-story-media img {
+  display: block;
+
+  width: 100%;
+  height: 100%;
+
+  object-fit: cover;
+  object-position: center center;
+
+  opacity: .88;
+}
+
+
+/* ==================================================
+   COLONNE TEXTE
+================================================== */
+
+fiche.wyraj section.wyraj-story wy-story-main {
+  display: block;
+
+  flex: 1;
+  min-width: 0;
+
+  padding: 8px 14px 24px 8px;
+
+  box-sizing: border-box;
+}
+
+/* TEXTE */
+
+fiche.wyraj section.wyraj-story wy-story-text {
+  display: block;
+
+  min-width: 0;
+
+  font-size: 14px;
+  line-height: 1.65;
+
+  text-align: justify;
+  white-space: pre-line;
+
+  overflow-wrap: break-word;
+}
+
+/* ==================================================
+   PETITE TABULATION
+================================================== */
+
+fiche.wyraj wy-tab {
+  display: inline-block;
+  width: 1.4em;
+}
+
+
+/* ==================================================
+   PRES_ID + IMAGE LATÉRALE
+================================================== */
+
+fiche.wyraj .wyraj-pres-row {
+  display: flex;
+  gap: .5em;
+
+  height: var(--wyraj-pres-height);
+
+  align-items: stretch;
+}
+
+
+/* SECTION TEXTE */
+
+fiche.wyraj .wyraj-pres-row > section {
+  flex: 1;
+
+  min-width: 0;
+  min-height: 0;
+
+  height: 100%;
+
+  display: flex;
+  flex-direction: column;
+
+  overflow: hidden;
+}
+
+
+/* LE TITRE GARDE SA HAUTEUR NORMALE */
+
+fiche.wyraj .wyraj-pres-row > section > t1 {
+  flex: 0 0 auto;
+}
+
+
+/* PRES_ID PREND L'ESPACE RESTANT */
+
+fiche.wyraj .wyraj-pres-row > section > .pres_id {
+  flex: 1 1 auto;
+
+  min-height: 0;
+
+  height: auto !important;
+  max-height: none !important;
+
+  overflow-y: auto;
+  overflow-x: hidden;
+
+  padding-right: 8px;
+}
+
+/* ==================================================
+   CITATION WYRAJ
+================================================== */
+
+fiche.wyraj wy-quote {
+    position: relative;
+    display: block;
+    width: 80%;
+    padding: 8px 0 8px 14px;
+    font-size: 10px;
+    line-height: 1.7;
+    text-align: justify;
+    text-transform: uppercase;
+}
+
+/* GUILLEMET DISCRET */
+
+fiche.wyraj wy-quote::before {
+  content: "“";
+
+  position: absolute;
+  top: -8px;
+  left: 0;
+
+  color: rgba(99, 34, 40, .22);
+
+  font-family: Georgia, serif;
+  font-size: 56px;
+  line-height: 1;
+}
+
+
+/* SIGNATURE */
+
+fiche.wyraj wy-source {
+  display: block;
+
+  margin-top: 5px;
+
+  color: #777272;
+
+  font-size: 10px;
+  font-style: normal;
+  text-align: left;
+}
+
+/* ==================================================
+   MOBILE
+================================================== */
+
+@media (max-width: 520px) {
+
+  fiche.wyraj section.wyraj-story > t1 {
+    width: 100%;
+    margin-left: 0;
+  }
+
+  fiche.wyraj section.wyraj-story > wy-story {
+    display: block;
+  }
+
+  fiche.wyraj section.wyraj-story wy-story-media {
+    position: relative;
+    top: auto;
+
+    width: 100%;
+    height: 90px;
+
+    margin-top: 0;
+    margin-bottom: 18px;
+
+    border-left: none;
+    border-right: none;
+    border-top: 1px solid rgba(103, 53, 60, .55);
+    border-bottom: 1px solid rgba(103, 53, 60, .55);
+  }
+
+  fiche.wyraj section.wyraj-story wy-story-media img {
+    object-position: center 45%;
+  }
+
+  fiche.wyraj section.wyraj-story wy-story-main {
+    padding: 0 8px 18px;
+  }
+
+  fiche.wyraj section.wyraj-story wy-story-text {
+    font-size: 13px;
+  }
+}
