@@ -483,6 +483,16 @@ WYRAJ — rubans (version test avant de mettre sur le vrai wyraj.css)
 .wyraj .wyraj-information relation:has(#wy-rel-vampires:checked) label[for="wy-rel-vampires"]::after { width: 100%; }
 
 /* ---------- SECTION 4 Organisation ---------- */
+.wyraj iframe.wv-org-frame {
+  display: block;
+  width: 100%;
+  height: 820px;
+  margin: 0;
+  padding: 0;
+  border: 0;
+  background: transparent;
+  overflow: hidden;
+}
 @keyframes wy-panel-in {
   from { opacity: 0; transform: translateY(8px); }
   to { opacity: 1; transform: none; }
