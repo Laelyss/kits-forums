@@ -10,6 +10,7 @@
       --wy-line: #322c2f;
       --wy-cream: #d8d1d3;
       --wy-rose: #aa737b;
+      --font: sans-serif;
       --font2: "Pirata One", cursive;
       --text-shadow2: 1px 1px #000;
     }
@@ -19,10 +20,15 @@
       padding: 0;
       background: transparent !important;
       background-color: transparent !important;
-      color: inherit;
+      color: #b6b1b1;
       color-scheme: dark;
+      font-family: var(--font);
       font-size: 13px;
       line-height: 1.7;
+    }
+    p, .wv-lead {
+      font-family: var(--font);
+      color: inherit;
     }
     input[type="radio"] {
       position: absolute;
@@ -83,16 +89,15 @@
     .wv-org:has(#wy-org-termes:checked) label[for="wy-org-termes"] { color: var(--wy-cream); }
     .wv-org:has(#wy-org-membres:checked) label[for="wy-org-membres"]::after,
     .wv-org:has(#wy-org-termes:checked) label[for="wy-org-termes"]::after { width: 100%; }
-   
+
     .wv-kicker {
-    margin: 0 0 8px;
-    color: var(--wy-rose);
-    font-family: sans-serif;
-    font-size: 9px;
-    letter-spacing: .3em;
-    text-transform: uppercase;
+      margin: 0 0 8px;
+      color: var(--wy-rose);
+      font-family: var(--font);
+      font-size: 9px;
+      letter-spacing: .3em;
+      text-transform: uppercase;
     }
-    
     .wv-heading {
       margin: 0 0 12px;
       color: var(--wy-cream);
@@ -104,15 +109,14 @@
       text-transform: lowercase;
       text-shadow: var(--text-shadow2);
     }
-    
-  .wv-lead {
-    margin: 0 0 18px;
-    color: inherit;
-    font-family: var(--font, Georgia, serif); /* le nom exact ci-dessous */
-    font-size: 13px;
-    line-height: 1.6;
+    .wv-lead {
+      margin: 0 0 18px;
+      color: inherit;
+      font-family: var(--font);
+      font-size: 13px;
+      line-height: 1.6;
     }
-      .wv-single-stage {
+    .wv-single-stage {
       display: grid;
       grid-template-columns: minmax(0, 1fr);
       align-items: start;
@@ -159,13 +163,12 @@
     .wv-voices:has(#wy-voice-kupala:checked) .panel-kupala,
     .wv-voices:has(#wy-voice-mokosh:checked) .panel-mokosh,
     .wv-voices:has(#wy-voice-marzanna:checked) .panel-marzanna { display: grid; }
-   
     .wv-voice-season {
       grid-row: 1;
       position: relative;
       z-index: 1;
       color: var(--wy-rose);
-      font-family: sans-serif;
+      font-family: var(--font);
       font-size: 9px;
       letter-spacing: .32em;
       text-transform: uppercase;
@@ -213,9 +216,11 @@
       z-index: 1;
       margin: 0;
       padding-top: 10px;
+      font-family: var(--font);
       font-size: 13px;
       line-height: 1.7;
       text-align: justify;
+      color: inherit;
     }
     .wv-simple-list { border-top: 1px solid var(--wy-line); }
     .wv-simple-entry {
@@ -232,9 +237,11 @@
     }
     .wv-simple-entry p {
       margin: 0;
+      font-family: var(--font);
       font-size: 13px;
       line-height: 1.7;
       text-align: justify;
+      color: inherit;
     }
     .wv-simple-entry p + p { margin-top: .5em; }
   </style>
@@ -249,7 +256,6 @@
       <input type="radio" name="wy-org" id="wy-org-termes">
       <label class="wv-main-tab" for="wy-org-termes">Termes</label>
     </div>
-
     <div class="wv-main-panel panel-kolo">
       <div class="wv-kicker">Le conseil</div>
       <div class="wv-heading">Les quatre voix</div>
@@ -291,7 +297,6 @@
         </div>
       </div>
     </div>
-
     <div class="wv-main-panel panel-membres">
       <div class="wv-simple-list">
         <div class="wv-simple-entry">
@@ -311,7 +316,6 @@
         </div>
       </div>
     </div>
-
     <div class="wv-main-panel panel-termes">
       <div class="wv-kicker">Nota Bene</div>
       <p class="wv-lead"><i>Termes polonais</i></p>
