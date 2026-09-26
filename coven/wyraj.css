@@ -308,9 +308,13 @@
 .wyraj .wv-voices > br,
 .wyraj .wv-single-stage > br,
 .wyraj .wv-voice-panel > br,
+.wyraj .wy-pres > br,
 .wyraj .wy-pres-nav > br,
-.wyraj .wy-pres-stage > br,
-.wyraj .wy-prelien-top > br { display: none !important; }
+.wyraj .wy-cat > br,
+.wyraj .wy-row > br,
+.wyraj .wy-card > br,
+.wyraj .wy-pane > br,
+.wyraj .wy-scroll > br { display: none !important; }
 .wyraj .wyraj-information fait {
   color: inherit;
   font-size: 13px;
@@ -597,7 +601,7 @@
 }
 .wyraj .wy-row i::before { left: 0; background-image: var(--a); }
 .wyraj .wy-row i::after { left: calc(var(--wy-ava) - var(--wy-ava-overlap)); background-image: var(--b); }
-.wyraj .wy-card { display: none; }
+.wyraj .wy-card { display: none !important; }
 .wyraj .wy-cat:has(> input:nth-of-type(1):checked) > .wy-card:nth-of-type(1),
 .wyraj .wy-cat:has(> input:nth-of-type(2):checked) > .wy-card:nth-of-type(2),
 .wyraj .wy-cat:has(> input:nth-of-type(3):checked) > .wy-card:nth-of-type(3),
@@ -606,12 +610,14 @@
 .wyraj .wy-cat:has(> input:nth-of-type(6):checked) > .wy-card:nth-of-type(6),
 .wyraj .wy-cat:has(> input:nth-of-type(7):checked) > .wy-card:nth-of-type(7),
 .wyraj .wy-cat:has(> input:nth-of-type(8):checked) > .wy-card:nth-of-type(8) {
-  display: grid;
-  grid-template-columns: minmax(168px, 220px) minmax(0, 1fr);
+  display: grid !important;
+  grid-template-columns: minmax(168px, 220px) minmax(0, 1fr) !important;
   gap: 22px 34px;
   align-items: start;
   animation: wy-panel-in .35s ease;
 }
+.wyraj .wy-card > aside { grid-column: 1; grid-row: 1; min-width: 0; }
+.wyraj .wy-card > .wy-pane { grid-column: 2; grid-row: 1; min-width: 0; }
 .wyraj .wy-cat:has(> input:nth-of-type(1):checked) > .wy-row > label:nth-of-type(1),
 .wyraj .wy-cat:has(> input:nth-of-type(2):checked) > .wy-row > label:nth-of-type(2),
 .wyraj .wy-cat:has(> input:nth-of-type(3):checked) > .wy-row > label:nth-of-type(3),
@@ -750,7 +756,4 @@
     width: min(460px, 100%);
     margin: 0 0 0 40px;
   }
-}
-@container wyraj (max-width: 520px) {
-  .wyraj .wy-card { grid-template-columns: 1fr !important; }
 }
