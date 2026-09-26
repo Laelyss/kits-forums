@@ -585,7 +585,7 @@
   cursor: pointer;
   transition: color .3s ease;
 }
-.wyraj .qui:has(input:checked) > label { color: var(--wy-cream); }
+.wyraj .qui:has(> label > input:checked) > label { color: var(--wy-cream); }
 .wyraj .qui > label img {
   display: inline-block;
   width: 58px;
@@ -603,7 +603,7 @@
   flex: 1 0 100%;
   display: none !important;
 }
-.wyraj .qui:has(input:checked) > .carte {
+.wyraj .qui:has(> label > input:checked) > .carte {
   display: grid !important;
   grid-template-columns: minmax(168px, 220px) minmax(0, 1fr) !important;
   gap: 22px 34px;
