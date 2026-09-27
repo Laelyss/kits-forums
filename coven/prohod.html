@@ -9,9 +9,8 @@
     :root {
       --wy-cream: #f3ecec;
       --wy-rose: #c48990;
-      --wy-dim: #8a8486;
       --wy-mute: #6e686a;
-      --ink: #c8c2c3;
+      --ink: #939393;
       --font: sans-serif;
       --font2: "Pirata One", cursive;
       --font-oath: "Cormorant Garamond", Georgia, serif;
@@ -21,11 +20,11 @@
       height: 100%;
       margin: 0;
       overflow: hidden;
-      background: #161416;
+      background: transparent;
       color: var(--ink);
       font-family: var(--font);
       font-size: 13.5px;
-      line-height: 1.75;
+      line-height: 1.65;
     }
     input[type="radio"] {
       position: absolute;
@@ -36,21 +35,25 @@
     }
     .prohod {
       display: grid;
-      grid-template-columns: minmax(0, 1fr) 168px;
+      grid-template-columns: minmax(0, 1fr) 112px;
+      column-gap: 18px;
       height: 100%;
       min-height: 0;
+      padding: 0 12px 0 16px;
     }
     .sheet {
       min-width: 0;
       min-height: 0;
       overflow: auto;
+      padding: 12px 18px 28px 6px;
       scrollbar-width: thin;
-      scrollbar-color: rgba(170, 115, 123, .7) transparent;
+      scrollbar-color: rgba(170, 115, 123, .45) transparent;
     }
-    .sheet::-webkit-scrollbar { width: 6px; }
+    .sheet::-webkit-scrollbar { width: 3px; }
+    .sheet::-webkit-scrollbar-track { background: transparent; }
     .sheet::-webkit-scrollbar-thumb {
-      background: rgba(170, 115, 123, .65);
-      border-radius: 6px;
+      background: rgba(170, 115, 123, .45);
+      border-radius: 3px;
     }
     .panel { display: none; }
     .prohod:has(#s1:checked) .p1,
@@ -58,12 +61,12 @@
     .prohod:has(#s3:checked) .p3,
     .prohod:has(#s4:checked) .p4 { display: block; }
     .hero {
-      padding: 36px 48px 28px;
+      margin: 0;
+      padding: 26px 28px 22px;
       text-align: center;
-      background:
-        radial-gradient(120% 90% at 50% -10%, rgba(120, 36, 48, .55), transparent 58%),
-        linear-gradient(180deg, #2c151b 0%, #1c1416 100%);
-      border-bottom: 1px solid rgba(255, 255, 255, .06);
+      background: rgba(99, 34, 40, .38);
+      border: 0;
+      border-radius: 2px;
     }
     .kicker {
       margin: 0 0 8px;
@@ -74,10 +77,10 @@
       text-transform: uppercase;
     }
     .hero h2 {
-      margin: 0 0 14px;
+      margin: 0 0 12px;
       color: var(--wy-cream);
       font-family: var(--font2);
-      font-size: 54px;
+      font-size: 48px;
       font-weight: 400;
       letter-spacing: 1px;
       line-height: .9;
@@ -85,17 +88,15 @@
       text-shadow: 0 2px 0 #000;
     }
     .hero p {
-      max-width: 460px;
+      max-width: 520px;
       margin: 0 auto;
       color: #b7b1b2;
       font-size: 13px;
       line-height: 1.65;
     }
-    .body {
-      padding: 28px 42px 40px;
-    }
+    .body { padding: 20px 4px 8px; }
     .body p {
-      margin: 0 0 16px;
+      margin: 0 0 14px;
       text-align: justify;
     }
     .drop::first-letter {
@@ -116,12 +117,12 @@
     u2 { text-decoration-color: var(--wy-rose); }
     u4 { text-decoration-color: #d7c4c6; }
     .oath {
-      margin-top: 8px;
-      padding-top: 8px;
+      margin-top: 6px;
+      padding-top: 4px;
       text-align: center;
     }
     .oath-kicker {
-      margin: 18px 0 22px;
+      margin: 16px 0 18px;
       color: #b7a4a6;
       font-size: 11px;
       letter-spacing: .28em;
@@ -137,7 +138,7 @@
       line-height: 1.35;
     }
     .oath-fr {
-      margin: 0 0 22px;
+      margin: 0 0 20px;
       color: #8d8688;
       font-size: 12.5px;
       font-style: italic;
@@ -148,15 +149,16 @@
       display: flex;
       flex-direction: column;
       justify-content: center;
-      gap: 34px;
-      padding: 20px 16px 20px 0;
+      gap: 30px;
+      min-height: 0;
+      padding: 12px 0;
     }
     .rail::before {
       content: "";
       position: absolute;
-      top: 12%;
-      bottom: 12%;
-      left: 27px;
+      top: 14%;
+      bottom: 14%;
+      left: 7px;
       width: 1px;
       background: rgba(170, 115, 123, .35);
     }
@@ -164,31 +166,30 @@
       position: relative;
       display: flex;
       flex-direction: column;
-      align-items: flex-start;
       gap: 1px;
-      padding-left: 52px;
+      padding-left: 26px;
       color: var(--wy-mute);
       cursor: pointer;
     }
     .rail label::before {
       content: "";
       position: absolute;
-      left: 23px;
-      top: 14px;
+      left: 3px;
+      top: 12px;
       width: 8px;
       height: 8px;
       border: 1px solid rgba(170, 115, 123, .65);
       border-radius: 50%;
-      background: #161416;
+      background: transparent;
     }
     .rail .num {
       font-size: 9px;
       font-style: normal;
-      letter-spacing: .22em;
+      letter-spacing: .2em;
     }
     .rail .name {
       font-family: var(--font2);
-      font-size: 22px;
+      font-size: 20px;
       font-weight: 400;
       line-height: 1;
       text-transform: lowercase;
@@ -203,7 +204,6 @@
     .prohod:has(#s4:checked) label[for="s4"]::before {
       background: var(--wy-rose);
       border-color: var(--wy-rose);
-      box-shadow: 0 0 8px rgba(196, 137, 144, .65);
     }
   </style>
 </head>
@@ -213,7 +213,6 @@
     <input type="radio" name="sec" id="s2">
     <input type="radio" name="sec" id="s3">
     <input type="radio" name="sec" id="s4">
-
     <div class="sheet" id="sheet">
       <article class="panel p1">
         <header class="hero">
@@ -226,7 +225,6 @@
           <p>Duis aute irure dolor <u1>in reprehenderit</u1> in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in <u2>culpa qui officia</u2> deserunt mollit anim id est laborum.</p>
         </div>
       </article>
-
       <article class="panel p2">
         <header class="hero">
           <div class="kicker">Prohod</div>
@@ -253,7 +251,6 @@
           <p>Les cordes sont retirées. La marque de Wyraj est ensuite tatouée à l’endroit choisi.</p>
         </div>
       </article>
-
       <article class="panel p3">
         <header class="hero">
           <div class="kicker">Section III</div>
@@ -264,7 +261,6 @@
           <p class="drop">Texte de la section, à remplacer.</p>
         </div>
       </article>
-
       <article class="panel p4">
         <header class="hero">
           <div class="kicker">Section IV</div>
@@ -276,7 +272,6 @@
         </div>
       </article>
     </div>
-
     <nav class="rail">
       <label for="s1"><i class="num">I</i><span class="name">lorem</span></label>
       <label for="s2"><i class="num">II</i><span class="name">passage</span></label>
