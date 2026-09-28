@@ -11,11 +11,19 @@
   border-radius: 14px;
   background: #2a2427;
   color: #d4ced0;
+  box-shadow: 0 7px 14px rgba(0, 0, 0, .45);
   font-size: 13px;
   line-height: 1.45;
   text-align: left;
 }
-.sms br { display: none !important; }
+.sms > br { display: none !important; }
+.sms p {
+  grid-area: msg;
+  margin: 0;
+  color: #d4ced0;
+  white-space: pre-line;
+}
+.sms p br { display: block; margin: 0; line-height: 1.45; }
 .sms i {
   grid-area: ava;
   align-self: start;
