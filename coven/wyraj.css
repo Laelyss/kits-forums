@@ -22,7 +22,16 @@
   --wy-line: #322c2f;
   --wy-cream: #d8d1d3;
   --wy-rose: #aa737b;
+  color: var(--textColor1);
 }
+html[data-color-scheme="light"] .wyraj {
+  --wy-mute: var(--textColor1);
+  --wy-dim: #5c5658;
+  --wy-cream: #2a2426;
+  --wy-line: #d9d2d4;
+  --wy-rose: #7a3e49;
+}
+
 .wyraj *,
 .wyraj *::before,
 .wyraj *::after {
