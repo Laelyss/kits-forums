@@ -775,3 +775,16 @@ html[data-color-scheme="light"] .wyraj {
     margin: 0 0 0 40px;
   }
 }
+
+/* ==================================================
+      DETAILS PRATICO PRATIQUE
+================================================== */
+.toc-item a::before,
+.toc-item a.toc-active::before {
+  content: "\2726" !important;
+  font-family: "Open Sans", sans-serif !important;
+}
+.toc-subsection a::before {
+  content: "\2727" !important;
+  font-family: "Open Sans", sans-serif !important;
+}
