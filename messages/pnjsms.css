@@ -1,0 +1,51 @@
+.sms {
+  display: grid;
+  grid-template-columns: 34px minmax(0, 1fr) auto;
+  grid-template-areas: "ava nom date" "ava msg msg";
+  column-gap: 10px;
+  row-gap: 3px;
+  align-items: center;
+  max-width: 440px;
+  margin: 8px 0;
+  padding: 11px 14px 12px 11px;
+  border-radius: 14px;
+  background: #2a2427;
+  color: #d4ced0;
+  font-size: 13px;
+  line-height: 1.45;
+  text-align: left;
+}
+.sms br { display: none !important; }
+.sms i {
+  grid-area: ava;
+  align-self: start;
+  display: grid;
+  place-items: center;
+  width: 34px;
+  height: 34px;
+  border-radius: 8px;
+  background: #8c2f3c center / cover no-repeat;
+  color: #fff;
+  font-style: normal;
+  font-weight: 600;
+  font-size: 15px;
+  line-height: 1;
+  text-transform: lowercase;
+}
+.sms b {
+  grid-area: nom;
+  color: #f3ecee;
+  font-weight: 600;
+  font-size: 13.5px;
+}
+.sms time {
+  grid-area: date;
+  color: #8d8688;
+  font-size: 11px;
+  font-weight: 400;
+}
+.sms p {
+  grid-area: msg;
+  margin: 0;
+  color: #d4ced0;
+}
