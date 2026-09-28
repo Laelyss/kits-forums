@@ -214,10 +214,14 @@
       text-shadow: var(--text-shadow2);
     }
     .wv-voice-name::after {
-      content: " \2726";
-      color: var(--wy-rose);
-      font-size: .42em;
-      vertical-align: 6px;
+      content: "";
+      display: inline-block;
+      width: 5px;
+      height: 5px;
+      margin-left: 8px;
+      background: var(--wy-rose);
+      transform: rotate(45deg);
+      vertical-align: 3px;
     }
     .wv-voice-name::before {
       position: absolute;
