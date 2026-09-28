@@ -1,289 +1,329 @@
 <!DOCTYPE html>
 <html lang="fr">
 <head>
-  <meta charset="utf-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1">
-  <title>Wyraj — Prohod</title>
-  <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@1,600;1,700&family=Pirata+One&display=swap">
-  <style>
-    :root {
-      --wy-cream: #f3ecec;
-      --wy-rose: #c48990;
-      --wy-mute: #6e686a;
-      --ink: #939393;
-      --font: sans-serif;
-      --font2: "Pirata One", cursive;
-      --font-oath: "Cormorant Garamond", Georgia, serif;
-    }
-    * { box-sizing: border-box; }
-    html, body {
-      height: 100%;
-      margin: 0;
-      overflow: hidden;
-      background: transparent;
-      color: var(--ink);
-      font-family: var(--font);
-      font-size: 13.5px;
-      line-height: 1.65;
-    }
-    input[type="radio"] {
-      position: absolute;
-      opacity: 0;
-      pointer-events: none;
-      width: 1px;
-      height: 1px;
-    }
-    .prohod {
-      display: grid;
-      grid-template-columns: minmax(0, 1fr) 112px;
-      column-gap: 18px;
-      height: 100%;
-      min-height: 0;
-      padding: 0 12px 0 16px;
-    }
-    .sheet {
-      min-width: 0;
-      min-height: 0;
-      overflow: auto;
-      padding: 12px 18px 28px 6px;
-      scrollbar-width: thin;
-      scrollbar-color: rgba(170, 115, 123, .45) transparent;
-    }
-    .sheet::-webkit-scrollbar { width: 3px; }
-    .sheet::-webkit-scrollbar-track { background: transparent; }
-    .sheet::-webkit-scrollbar-thumb {
-      background: rgba(170, 115, 123, .45);
-      border-radius: 3px;
-    }
-    .panel { display: none; }
-    .prohod:has(#s1:checked) .p1,
-    .prohod:has(#s2:checked) .p2,
-    .prohod:has(#s3:checked) .p3,
-    .prohod:has(#s4:checked) .p4 { display: block; }
-    .hero {
-      margin: 0;
-      padding: 26px 28px 22px;
-      text-align: center;
-      background: rgb(45 15 22 / 64%);
-      border: 0;
-      border-radius: 2px;
-    }
-    .kicker {
-      margin: 0 0 8px;
-      color: #d7aeb4;
-      font-size: 10px;
-      font-weight: 600;
-      letter-spacing: .42em;
-      text-transform: uppercase;
-    }
-    .hero h2 {
-      margin: 0 0 12px;
-      color: var(--wy-cream);
-      font-family: var(--font2);
-      font-size: 48px;
-      font-weight: 400;
-      letter-spacing: 1px;
-      line-height: .9;
-      text-transform: lowercase;
-      text-shadow: 0 2px 0 #000;
-    }
-    .hero p {
-      max-width: 520px;
-      margin: 0 auto;
-      color: #b7b1b2;
-      font-size: 13px;
-      line-height: 1.65;
-    }
-    .body { padding: 20px 4px 8px; }
-    .body p {
-      margin: 0 0 14px;
-      text-align: justify;
-    }
-    .drop::first-letter {
-      float: left;
-      margin: 4px 8px 0 0;
-      color: var(--wy-rose);
-      font-family: var(--font2);
-      font-size: 3.1em;
-      line-height: .72;
-    }
-    m0 { color: var(--wy-cream); font-weight: 700; }
-    i1 { font-style: italic; }
-    u1, u2, u4 {
-      text-underline-offset: 3px;
-      text-decoration-thickness: 1px;
-    }
-    u1 { text-decoration-color: #9a8f90; }
-    u2 { text-decoration-color: var(--wy-rose); }
-    u4 { text-decoration-color: #d7c4c6; }
-    .oath {
-      margin-top: 6px;
-      padding-top: 4px;
-      text-align: center;
-    }
-    .oath-kicker {
-      margin: 16px 0 18px;
-      color: #b7a4a6;
-      font-size: 11px;
-      letter-spacing: .28em;
-      text-transform: uppercase;
-    }
-    .oath-pl {
-      margin: 0 0 8px;
-      color: var(--wy-cream);
-      font-family: var(--font-oath);
-      font-size: 22px;
-      font-style: italic;
-      font-weight: 700;
-      line-height: 1.35;
-    }
-    .oath-fr {
-      margin: 0 0 20px;
-      color: #8d8688;
-      font-size: 12.5px;
-      font-style: italic;
-      line-height: 1.55;
-    }
-    .rail {
-      position: relative;
-      display: flex;
-      flex-direction: column;
-      justify-content: center;
-      gap: 30px;
-      min-height: 0;
-      padding: 12px 0;
-    }
-    .rail::before {
-      content: "";
-      position: absolute;
-      top: 14%;
-      bottom: 14%;
-      left: 7px;
-      width: 1px;
-      background: rgba(170, 115, 123, .35);
-    }
-    .rail label {
-      position: relative;
-      display: flex;
-      flex-direction: column;
-      gap: 1px;
-      padding-left: 26px;
-      color: var(--wy-mute);
-      cursor: pointer;
-    }
-    .rail label::before {
-    content: "";
-    position: absolute;
-    left: 3px;
-    width: 7px;
-    height: 7px;
-    border: 1px solid rgba(170, 115, 123, .65);
-    border-radius: 50%;
-    background: transparent;
-    }
-    .rail .num {
-      font-size: 9px;
-      font-style: normal;
-      letter-spacing: .2em;
-    }
-    .rail .name {
-      font-family: var(--font2);
-      font-size: 20px;
-      font-weight: 400;
-      line-height: 1;
-      text-transform: lowercase;
-    }
-    .prohod:has(#s1:checked) label[for="s1"],
-    .prohod:has(#s2:checked) label[for="s2"],
-    .prohod:has(#s3:checked) label[for="s3"],
-    .prohod:has(#s4:checked) label[for="s4"] { color: var(--wy-cream); }
-    .prohod:has(#s1:checked) label[for="s1"]::before,
-    .prohod:has(#s2:checked) label[for="s2"]::before,
-    .prohod:has(#s3:checked) label[for="s3"]::before,
-    .prohod:has(#s4:checked) label[for="s4"]::before {
-      background: var(--wy-rose);
-      border-color: var(--wy-rose);
-    }
-  </style>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Wyraj — Prohod</title>
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Open+Sans:ital,wght@0,400;0,600;1,400&family=Pirata+One&family=Roboto+Condensed:wght@400;600&display=swap">
+<style>
+html, body {
+  height: 100%;
+  margin: 0;
+  overflow: hidden;
+  background: transparent;
+}
+.ph {
+  --ph-hauteur: 100%;
+  height: 100%;
+  display: grid;
+  grid-template-columns: minmax(0, 1fr) 150px;
+  background: #1f1b1c;
+  overflow: hidden;
+}
+.ph-lecture {
+  position: relative;
+  min-width: 0;
+  height: var(--ph-hauteur);
+  overflow-y: auto;
+  scrollbar-width: none;
+  -ms-overflow-style: none;
+  padding: 34px 32px 40px 30px;
+  box-sizing: border-box;
+  font-family: "Open Sans", sans-serif;
+  font-size: 12.5px;
+  line-height: 1.85;
+  color: #958f90;
+  text-align: justify;
+  hyphens: auto;
+}
+.ph-lecture::-webkit-scrollbar { display: none; }
+.ph-lecture p { margin: 0; }
+.ph-texte { display: flex; flex-direction: column; gap: 14px; }
+.ph-texte strong { color: #e2dbdd; font-weight: 600; }
+.ph-texte em { color: #c98a93; }
+.ph-texte .ph-souligne { color: #c4bcbe; border-bottom: 1px solid #6e4a50; }
+.ph-separateur { height: 1px; margin: 56px 0 50px; background: #2f282a; }
+.ph-entree { position: relative; padding: 22px 0 26px; text-align: center; }
+.ph-entree-num {
+  position: absolute;
+  left: 0; right: 0; top: -14px;
+  color: #262022;
+  font-family: "Pirata One", serif;
+  font-size: 150px;
+  line-height: 1;
+  pointer-events: none;
+}
+.ph-kicker {
+  position: relative;
+  color: #aa737b;
+  font-family: "Roboto Condensed", sans-serif;
+  font-size: 9px;
+  font-weight: 600;
+  letter-spacing: .42em;
+  text-transform: uppercase;
+}
+.ph-entree-titre {
+  position: relative;
+  margin: 8px 0 0;
+  color: #e2dbdd;
+  font-family: "Pirata One", serif;
+  font-size: 48px;
+  line-height: .9;
+  text-transform: lowercase;
+}
+.ph-entree .ph-sens {
+  position: relative;
+  max-width: 310px;
+  margin: 16px auto 0;
+  color: #c4bcbe;
+  font-size: 12px;
+  font-style: italic;
+  line-height: 1.8;
+  text-align: center;
+}
+.ph-ornement { display: flex; align-items: center; justify-content: center; gap: 8px; margin: 0 0 26px; }
+.ph-ornement span { width: 40px; height: 1px; background: #3a3134; }
+.ph-ornement i { width: 5px; height: 5px; transform: rotate(45deg); background: #aa737b; }
+.ph-entree-fin {
+  margin: 28px auto 0 !important;
+  max-width: 300px;
+  color: #7f7779;
+  font-size: 11.5px;
+  font-style: italic;
+  line-height: 1.75;
+  text-align: center;
+}
+.ph-tete {
+  display: grid;
+  grid-template-columns: auto minmax(0, 1fr);
+  gap: 0 16px;
+  align-items: end;
+  margin: 0 0 22px;
+}
+.ph-tete-num {
+  color: #3a3134;
+  font-family: "Pirata One", serif;
+  font-size: 72px;
+  line-height: .8;
+}
+.ph-tete-txt { display: flex; flex-direction: column; gap: 6px; }
+.ph-tete-titre {
+  color: #e2dbdd;
+  font-family: "Pirata One", serif;
+  font-size: 38px;
+  line-height: .9;
+  text-transform: lowercase;
+}
+.ph-section > .ph-sens {
+  margin: 0 0 26px;
+  padding: 0 0 22px;
+  border-bottom: 1px solid #2f282a;
+  color: #c4bcbe;
+  font-size: 12px;
+  font-style: italic;
+  line-height: 1.8;
+  text-align: left;
+}
+.ph-bloc { margin: 34px 0 0; display: flex; flex-direction: column; gap: 22px; text-align: center; }
+.ph-bloc-titre { display: flex; align-items: center; gap: 14px; }
+.ph-bloc-titre span { flex: 1; height: 1px; background: #3a3134; }
+.ph-bloc-titre b {
+  color: #aa737b;
+  font-family: "Roboto Condensed", sans-serif;
+  font-size: 9px;
+  font-weight: 600;
+  letter-spacing: .42em;
+  text-transform: uppercase;
+}
+.ph-vers { display: flex; flex-direction: column; gap: 6px; }
+.ph-vers-pl { color: #dcd5d7; font-family: "Pirata One", serif; font-size: 19px; line-height: 1.35; }
+.ph-vers-fr { color: #7f7779; font-size: 11.5px; font-style: italic; line-height: 1.65; }
+.ph-losange { width: 5px; height: 5px; margin: 0 auto; transform: rotate(45deg); background: #aa737b; }
+.ph-bloc-fin { color: #a49c9e; }
+.ph-menu {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  padding: 30px 20px;
+  border-left: 1px solid #2f282a;
+  background: #1a1617;
+}
+.ph-menu a {
+  position: relative;
+  display: flex;
+  flex-direction: column;
+  align-items: flex-end;
+  gap: 4px;
+  padding: 0 22px 34px 0;
+  text-align: right;
+  text-decoration: none;
+  cursor: pointer;
+}
+.ph-menu a:last-child { padding-bottom: 0; }
+.ph-menu-ligne, .ph-menu-remplissage { position: absolute; right: 6px; top: 16px; width: 1px; }
+.ph-menu-ligne { bottom: -7px; background: #3a3134; }
+.ph-menu-remplissage { height: 0; background: #aa737b; transition: height .12s linear; }
+.ph-menu a:last-child .ph-menu-ligne,
+.ph-menu a:last-child .ph-menu-remplissage { display: none; }
+.ph-menu-point {
+  position: absolute;
+  right: 2px; top: 7px;
+  width: 9px; height: 9px;
+  border-radius: 50%;
+  box-sizing: border-box;
+  border: 1px solid #4a3d40;
+  background: #1a1617;
+  transition: background .2s, border-color .2s;
+}
+.ph-menu-num {
+  color: #5a5355;
+  font-family: "Roboto Condensed", sans-serif;
+  font-size: 8.5px;
+  font-weight: 600;
+  letter-spacing: .3em;
+  transition: color .2s;
+}
+.ph-menu-titre {
+  color: #7a7375;
+  font-family: "Pirata One", serif;
+  font-size: 19px;
+  line-height: 1;
+  text-transform: lowercase;
+  transition: color .2s;
+}
+.ph-menu a:hover .ph-menu-titre { color: #b6aeb0; }
+.ph-menu a.is-actif .ph-menu-point { background: #aa737b; border-color: #aa737b; }
+.ph-menu a.is-actif .ph-menu-num { color: #aa737b; }
+.ph-menu a.is-actif .ph-menu-titre { color: #e2dbdd; }
+</style>
 </head>
 <body>
-  <div class="prohod">
-    <input type="radio" name="sec" id="s1" checked>
-    <input type="radio" name="sec" id="s2">
-    <input type="radio" name="sec" id="s3">
-    <input type="radio" name="sec" id="s4">
-    <div class="sheet" id="sheet">
-      <article class="panel p1">
-        <header class="hero">
-          <div class="kicker">Section I</div>
-          <h2>lorem</h2>
-          <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Sed do eiusmod tempor incididunt ut labore.</p>
-        </header>
-        <div class="body">
-          <p class="drop"><m0>Lorem ipsum</m0> dolor sit amet, <m0>consectetur</m0> adipiscing elit. Sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation.</p>
-          <p>Duis aute irure dolor <u1>in reprehenderit</u1> in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in <u2>culpa qui officia</u2> deserunt mollit anim id est laborum.</p>
-        </div>
-      </article>
-      <article class="panel p2">
-        <header class="hero">
-          <div class="kicker">Prohod</div>
-          <h2>passage</h2>
-          <p>Son nom signifie « passage ». Le rituel scelle l’appartenance au coven. Tous se rassemblent, témoins de la cérémonie et du serment qui fait du nouveau membre l’un des leurs.</p>
-        </header>
-        <div class="body">
-          <p class="drop">La cérémonie se tient <m0>en dehors</m0> de Vienne, au plus profond du Wienerwald, là où les ravins se ramifient entre les arbres. Un ruisseau court au fond de l’un d’eux, loin de tout village.</p>
-          <p>On forme un cercle, un <i1>chant slave</i1> fredonné à plusieurs voix. Au centre, les préparatifs commencent. Une <u1>corde</u1> passe autour de sa taille. Une autre sous la poitrine. La dernière ramène les bras contre le torse avant d’être <u2>nouée dans le dos</u2>.</p>
-          <p>Sous les arbres, on le mène jusqu’à l’eau. Le chant accompagne ses pas jusqu’à ce qu’elle gagne les chevilles, les jambes, la taille. Des mains se posent sur ses épaules. Son corps est alors <u4>plongé entièrement</u4>.</p>
-          <p>On le ramène à la surface avant de le guider jusqu’à la berge, où il se dresse devant le Kolo venus apposer leur signe sur sa peau. Chacun fait perler son propre sang avant de tracer son signe : Jarilo sur le front, Kupala la joue droite, Mokosh la joue gauche, Marzanna sur le menton.</p>
-          <p>Vient ensuite le serment à prononcer, appris dans la langue ancestrale.</p>
-          <div class="oath">
-            <div class="oath-kicker">— Le serment —</div>
-            <p class="oath-pl" lang="pl">Przyjmuję swoje miejsce pośród was.</p>
-            <p class="oath-fr">Je reçois ma place parmi les vôtres.</p>
-            <p class="oath-pl" lang="pl">Nie podporządkuję sobie żadnej woli. Nie będę zatrzymywać zmarłych ani przerywać ich przejścia. Oddaję swoją siłę, swoją wiedzę i swój głos.</p>
-            <p class="oath-fr">Je ne soumettrai aucune volonté. Je n’arrêterai pas les morts, ni n’interromprai leur passage. Je donne ma force, mon savoir et ma voix.</p>
-            <p class="oath-pl" lang="pl">Będę czuwać nad tymi, którzy mnie przyjmują, jak oni czuwać będą nade mną.</p>
-            <p class="oath-fr">Je veillerai sur ceux qui m’accueillent comme ils veilleront sur moi.</p>
-            <p class="oath-pl" lang="pl">Poniosę swoje winy, nie składając ich na innych. Przyjmuję prawa Wyraju. I przed nim daję swoje słowo.</p>
-            <p class="oath-fr">Je porterai mes fautes sans les livrer aux autres. Je reçois les lois de Wyraj. Et devant lui, je donne ma parole.</p>
-          </div>
-          <p>Les cordes sont retirées. La marque de Wyraj est ensuite tatouée à l’endroit choisi.</p>
-        </div>
-      </article>
-      <article class="panel p3">
-        <header class="hero">
-          <div class="kicker">Section III</div>
-          <h2>ipsum</h2>
-          <p>Duis aute irure dolor in reprehenderit</p>
-        </header>
-        <div class="body">
-          <p class="drop">Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.</p>
-        </div>
-      </article>
-      <article class="panel p4">
-        <header class="hero">
-          <div class="kicker">Section IV</div>
-          <h2>dolor</h2>
-          <p>Duis aute irure dolor in reprehenderit</p>
-        </header>
-        <div class="body">
-          <p class="drop">Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.</p>
-        </div>
-      </article>
+<div class="ph">
+  <div class="ph-lecture">
+    <div class="ph-section" id="ph-s1">
+      <div class="ph-entree">
+        <div class="ph-entree-num">I</div>
+        <div class="ph-kicker">Le cours</div>
+        <div class="ph-entree-titre">seuil</div>
+        <p class="ph-sens">Lorem ipsum dolor sit amet, consectetur adipiscing elit. Sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.</p>
+      </div>
+      <div class="ph-ornement"><span></span><i></i><span></span></div>
+      <div class="ph-texte">
+        <p>Lorem ipsum dolor sit amet, <strong>consectetur adipiscing</strong> elit. Sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat.</p>
+        <p>Duis aute irure dolor in <em>reprehenderit</em> in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in <span class="ph-souligne">culpa qui officia</span> deserunt mollit anim id est laborum.</p>
+        <p>Sed ut perspiciatis unde omnis iste natus error sit voluptatem accusantium doloremque laudantium, totam rem aperiam, eaque ipsa quae ab illo inventore veritatis et quasi architecto beatae vitae dicta sunt explicabo.</p>
+      </div>
+      <p class="ph-entree-fin">Nemo enim ipsam voluptatem quia voluptas sit aspernatur aut odit aut fugit.</p>
     </div>
-    <nav class="rail">
-      <label for="s1"><i class="num">I</i><span class="name">lorem</span></label>
-      <label for="s2"><i class="num">II</i><span class="name">passage</span></label>
-      <label for="s3"><i class="num">III</i><span class="name">ipsum</span></label>
-      <label for="s4"><i class="num">IV</i><span class="name">dolor</span></label>
-    </nav>
+    <div class="ph-separateur"></div>
+
+    <div class="ph-section" id="ph-s2">
+      <div class="ph-tete">
+        <div class="ph-tete-num">II</div>
+        <div class="ph-tete-txt"><span class="ph-kicker">Prohod</span><span class="ph-tete-titre">passage</span></div>
+      </div>
+      <p class="ph-sens">Son nom signifie « passage ». Le rituel scelle l’appartenance au coven. Tous se rassemblent, témoins de la cérémonie et du serment qui fait du nouveau membre l’un des leurs.</p>
+      <div class="ph-texte">
+        <p>La cérémonie se tient <strong>en dehors</strong> de Vienne, au plus profond du Wienerwald, là où les ravins se ramifient entre les arbres. Un ruisseau court au fond de l’un d’eux, loin de tout village.</p>
+        <p>On forme un cercle, un <em>chant slave</em> fredonné à plusieurs voix. Au centre, les préparatifs commencent. Une <span class="ph-souligne">corde</span> passe autour de sa taille. Une autre sous la poitrine. La dernière ramène les bras contre le torse avant d’être <span class="ph-souligne">nouée dans le dos</span>.</p>
+        <p>Sous les arbres, on le mène jusqu’à l’eau. Le chant accompagne ses pas jusqu’à ce qu’elle gagne les chevilles, les jambes, la taille. Des mains se posent sur ses épaules. Son corps est alors <span class="ph-souligne">plongé entièrement</span>.</p>
+        <p>On le ramène à la surface avant de le guider jusqu’à la berge, où il se dresse devant le Kolo venus apposer leur signe sur sa peau. Chacun fait perler son propre sang avant de tracer son signe : Jarilo sur le front, Kupala sur la joue droite, Mokosh sur la joue gauche, Marzanna sur le menton.</p>
+        <p>Vient ensuite le serment à prononcer, appris dans la langue ancestrale.</p>
+      </div>
+      <div class="ph-bloc">
+        <div class="ph-bloc-titre"><span></span><b>Le serment</b><span></span></div>
+        <div class="ph-vers"><div class="ph-vers-pl">Przyjmuję swoje miejsce pośród was.</div><div class="ph-vers-fr">Je reçois ma place parmi les vôtres.</div></div>
+        <div class="ph-vers"><div class="ph-vers-pl">Nie podporządkuję sobie żadnej woli. Nie będę zatrzymywać zmarłych ani przerywać ich przejścia. Oddaję swoją siłę, swoją wiedzę i swój głos.</div><div class="ph-vers-fr">Je ne soumettrai aucune volonté. Je n’arrêterai pas les morts, ni n’interromprai leur passage. Je donne ma force, mon savoir et ma voix.</div></div>
+        <div class="ph-vers"><div class="ph-vers-pl">Będę czuwać nad tymi, którzy mnie przyjmują, jak oni czuwać będą nade mną.</div><div class="ph-vers-fr">Je veillerai sur ceux qui m’accueillent comme ils veilleront sur moi.</div></div>
+        <div class="ph-vers"><div class="ph-vers-pl">Poniosę swoje winy, nie składając ich na innych. Przyjmuję prawa Wyraju. I przed nim daję swoje słowo.</div><div class="ph-vers-fr">Je porterai mes fautes sans les livrer aux autres. Je reçois les lois de Wyraj. Et devant lui, je donne ma parole.</div></div>
+        <div class="ph-losange"></div>
+        <p class="ph-bloc-fin">Les cordes sont retirées. La marque de Wyraj est ensuite tatouée à l’endroit choisi.</p>
+      </div>
+    </div>
+    <div class="ph-separateur"></div>
+
+    <div class="ph-section" id="ph-s3">
+      <div class="ph-tete">
+        <div class="ph-tete-num">III</div>
+        <div class="ph-tete-txt"><span class="ph-kicker">Section III</span><span class="ph-tete-titre">ipsum</span></div>
+      </div>
+      <p class="ph-sens">Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat.</p>
+      <div class="ph-texte">
+        <p>Neque porro quisquam est, qui <strong>dolorem ipsum</strong> quia dolor sit amet, consectetur, adipisci velit, sed quia non numquam eius modi tempora incidunt ut labore et dolore magnam aliquam.</p>
+        <p>Ut enim ad minima veniam, quis nostrum exercitationem ullam corporis suscipit laboriosam, nisi ut <em>aliquid ex ea</em> commodi consequatur. Quis autem vel eum iure reprehenderit qui in ea voluptate velit esse.</p>
+        <p>At vero eos et accusamus et iusto odio dignissimos ducimus qui blanditiis praesentium voluptatum deleniti atque <span class="ph-souligne">corrupti quos dolores</span> et quas molestias excepturi.</p>
+      </div>
+      <div class="ph-bloc">
+        <div class="ph-bloc-titre"><span></span><b>Lorem ipsum</b><span></span></div>
+        <div class="ph-vers"><div class="ph-vers-pl">Lorem ipsum dolor sit amet.</div><div class="ph-vers-fr">Consectetur adipiscing elit, sed do eiusmod.</div></div>
+        <div class="ph-vers"><div class="ph-vers-pl">Ut enim ad minim veniam, quis nostrud exercitation.</div><div class="ph-vers-fr">Duis aute irure dolor in reprehenderit in voluptate.</div></div>
+        <div class="ph-vers"><div class="ph-vers-pl">Excepteur sint occaecat cupidatat non proident.</div><div class="ph-vers-fr">Sunt in culpa qui officia deserunt mollit anim.</div></div>
+        <div class="ph-losange"></div>
+        <p class="ph-bloc-fin">Nam libero tempore, cum soluta nobis est eligendi optio cumque nihil impedit.</p>
+      </div>
+    </div>
+    <div class="ph-separateur"></div>
+
+    <div class="ph-section" id="ph-s4">
+      <div class="ph-tete">
+        <div class="ph-tete-num">IV</div>
+        <div class="ph-tete-txt"><span class="ph-kicker">Section IV</span><span class="ph-tete-titre">dolor</span></div>
+      </div>
+      <p class="ph-sens">Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur.</p>
+      <div class="ph-texte">
+        <p>Temporibus autem quibusdam et aut officiis debitis aut rerum <strong>necessitatibus</strong> saepe eveniet ut et voluptates repudiandae sint et molestiae non recusandae.</p>
+        <p>Itaque earum rerum hic tenetur a sapiente delectus, ut aut reiciendis voluptatibus maiores alias consequatur aut <em>perferendis doloribus</em> asperiores repellat.</p>
+        <p>Nam libero tempore, cum soluta nobis est eligendi optio cumque nihil impedit quo minus id quod maxime placeat facere possimus, omnis voluptas assumenda est, omnis dolor <span class="ph-souligne">repellendus</span>.</p>
+      </div>
+      <div class="ph-bloc">
+        <div class="ph-bloc-titre"><span></span><b>Dolor sit</b><span></span></div>
+        <div class="ph-vers"><div class="ph-vers-pl">Temporibus autem quibusdam.</div><div class="ph-vers-fr">Et aut officiis debitis aut rerum necessitatibus.</div></div>
+        <div class="ph-vers"><div class="ph-vers-pl">Itaque earum rerum hic tenetur a sapiente delectus.</div><div class="ph-vers-fr">Ut aut reiciendis voluptatibus maiores alias.</div></div>
+        <div class="ph-losange"></div>
+        <p class="ph-bloc-fin">Similique sunt in culpa qui officia deserunt mollitia animi, id est laborum.</p>
+      </div>
+    </div>
   </div>
-  <script>
-    document.querySelectorAll('input[name="sec"]').forEach(function (el) {
-      el.addEventListener("change", function () {
-        document.getElementById("sheet").scrollTop = 0;
+  <nav class="ph-menu">
+    <a data-cible="ph-s1" class="is-actif"><span class="ph-menu-ligne"></span><span class="ph-menu-remplissage"></span><span class="ph-menu-point"></span><span class="ph-menu-num">I</span><span class="ph-menu-titre">seuil</span></a>
+    <a data-cible="ph-s2"><span class="ph-menu-ligne"></span><span class="ph-menu-remplissage"></span><span class="ph-menu-point"></span><span class="ph-menu-num">II</span><span class="ph-menu-titre">passage</span></a>
+    <a data-cible="ph-s3"><span class="ph-menu-ligne"></span><span class="ph-menu-remplissage"></span><span class="ph-menu-point"></span><span class="ph-menu-num">III</span><span class="ph-menu-titre">ipsum</span></a>
+    <a data-cible="ph-s4"><span class="ph-menu-ligne"></span><span class="ph-menu-remplissage"></span><span class="ph-menu-point"></span><span class="ph-menu-num">IV</span><span class="ph-menu-titre">dolor</span></a>
+  </nav>
+</div>
+<script>
+(function () {
+  document.querySelectorAll(".ph").forEach(function (bloc) {
+    var zone = bloc.querySelector(".ph-lecture");
+    var liens = [].slice.call(bloc.querySelectorAll(".ph-menu a"));
+    var sections = liens.map(function (a) { return bloc.querySelector("#" + a.dataset.cible); });
+    var SEUIL = 0.3;
+    function top(el) { return el.getBoundingClientRect().top - zone.getBoundingClientRect().top + zone.scrollTop; }
+    function maj() {
+      var y = zone.scrollTop + zone.clientHeight * SEUIL;
+      var actif = 0;
+      sections.forEach(function (s, i) { if (top(s) <= y) actif = i; });
+      var fin = zone.scrollTop >= zone.scrollHeight - zone.clientHeight - 2;
+      if (fin) actif = sections.length - 1;
+      var s = sections[actif];
+      var p = fin ? 1 : (y - top(s)) / Math.max(1, s.offsetHeight);
+      p = Math.max(0, Math.min(1, p));
+      liens.forEach(function (a, i) {
+        a.classList.toggle("is-actif", i === actif);
+        a.querySelector(".ph-menu-remplissage").style.height = i < actif ? "100%" : i === actif ? (p * 100) + "%" : "0%";
+      });
+    }
+    liens.forEach(function (a, i) {
+      a.addEventListener("click", function (e) {
+        e.preventDefault();
+        zone.scrollTo({ top: top(sections[i]) - 34, behavior: "smooth" });
       });
     });
-  </script>
+    zone.addEventListener("scroll", maj, { passive: true });
+    window.addEventListener("resize", maj);
+    maj();
+  });
+})();
+</script>
 </body>
 </html>
