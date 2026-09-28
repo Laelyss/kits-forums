@@ -144,10 +144,15 @@
       align-items: start;
       gap: 16px 28px;
     }
+    
     @media (min-width: 430px) {
       .wv-single-stage { grid-template-columns: 112px minmax(0, 1fr); gap: 22px; }
       .wv-voice-tabs { flex-direction: column; gap: 6px; padding-top: 18px; }
     }
+    @media (prefers-color-scheme: light) {
+      body { color: #3a3436; }
+    }
+    
     .wv-voice-tabs {
       display: flex;
       flex-wrap: wrap;
