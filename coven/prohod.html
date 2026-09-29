@@ -11,6 +11,7 @@ html, body {
   margin: 0;
   overflow: hidden;
   background: transparent;
+  color-scheme: light dark;
 }
 .ph {
   --ph-hauteur: 100%;
@@ -41,8 +42,51 @@ html, body {
 .ph-texte strong { color: #e2dbdd; font-weight: 600; }
 .ph-texte em { color: #c98a93; }
 .ph-texte .ph-souligne { color: #c4bcbe; border-bottom: 1px solid #6e4a50; }
-.ph-separateur { height: 1px; margin: 56px 0 50px; background: #2f282a; }
-.ph-entree { position: relative; padding: 22px 0 26px; text-align: center; }
+.ph-texte i1 {
+  display: inline;
+  font-style: italic;
+  background: linear-gradient(120deg, #c98a93, #e2dbdd);
+  -webkit-background-clip: text;
+  background-clip: text;
+  -webkit-text-fill-color: transparent;
+}
+.ph-texte m0,
+.ph-texte m1,
+.ph-texte m2 {
+  display: inline;
+  font-family: "Roboto Condensed", sans-serif;
+  font-size: 11px;
+  font-weight: 600;
+  font-style: normal;
+  letter-spacing: 1.5px;
+  text-transform: uppercase;
+}
+.ph-texte m0,
+.ph-texte m2 { color: #c4a0a4; }
+.ph-texte m1 { color: #aa737b; }
+.ph-texte u1 {
+  display: inline;
+  padding-bottom: 0.12em;
+  text-decoration: none;
+  background-image: linear-gradient(120deg, #aa737b, #715454);
+  background-repeat: no-repeat;
+  background-size: 100% 1px;
+  background-position: 0 95%;
+}
+.ph-texte u3 {
+  display: inline;
+  padding-inline: 0.15em;
+  color: #e2dbdd;
+  font-family: "Pirata One", serif;
+  font-size: 1.25em;
+  font-weight: 400;
+  letter-spacing: 1px;
+  line-height: 1;
+  text-shadow: 1px 1px 0 #000;
+  box-shadow: inset 0 -8px 0 rgba(170, 115, 123, .45);
+}
+.ph-separateur { height: 1px; margin: 48px 0 42px; background: #3a3134; }
+.ph-entree { position: relative; padding: 22px 0 8px; text-align: center; }
 .ph-entree-num {
   position: absolute;
   left: 0; right: 0; top: -14px;
@@ -80,9 +124,14 @@ html, body {
   line-height: 1.8;
   text-align: center;
 }
-.ph-ornement { display: flex; align-items: center; justify-content: center; gap: 8px; margin: 0 0 26px; }
-.ph-ornement span { width: 40px; height: 1px; background: #3a3134; }
-.ph-ornement i { width: 5px; height: 5px; transform: rotate(45deg); background: #aa737b; }
+.ph-ornement {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  margin: 18px 0 26px;
+}
+.ph-ornement span { flex: 1; height: 1px; background: #3a3134; }
+.ph-ornement i { flex: none; width: 5px; height: 5px; transform: rotate(45deg); background: #aa737b; }
 .ph-entree-fin {
   margin: 28px auto 0 !important;
   max-width: 300px;
@@ -114,9 +163,9 @@ html, body {
   text-transform: lowercase;
 }
 .ph-section > .ph-sens {
-  margin: 0 0 26px;
-  padding: 0 0 22px;
-  border-bottom: 1px solid #2f282a;
+  margin: 0 0 0;
+  padding: 0;
+  border: 0;
   color: #c4bcbe;
   font-size: 12px;
   font-style: italic;
@@ -199,21 +248,38 @@ html, body {
   .ph-texte strong,
   .ph-entree-titre,
   .ph-tete-titre,
-  .ph-vers-pl { color: #2a2426; }
+  .ph-vers-pl,
+  .ph-menu a.is-actif .ph-menu-titre { color: #2a2426; }
   .ph-texte em,
-  .ph-kicker { color: #8a4550; }
+  .ph-kicker,
+  .ph-texte m1,
+  .ph-menu a.is-actif .ph-menu-num { color: #8a4550; }
+  .ph-texte m0,
+  .ph-texte m2 { color: #6e3038; }
+  .ph-texte i1 { background: linear-gradient(120deg, #8a4550, #6e3038); }
+  .ph-texte u1 { background-image: linear-gradient(120deg, #8a4550, #6e3038); }
+  .ph-texte u3 { color: #2a2426; text-shadow: none; box-shadow: inset 0 -8px 0 rgba(138, 69, 80, .28); }
   .ph-texte .ph-souligne { color: #4a4446; border-bottom-color: #b08990; }
   .ph-entree .ph-sens,
   .ph-section > .ph-sens,
   .ph-entree-fin,
   .ph-vers-fr,
-  .ph-bloc-fin { color: #5c5658; }
-  .ph-section > .ph-sens { border-bottom-color: #ddd6d8; }
+  .ph-bloc-fin,
+  .ph-menu-titre { color: #5c5658; }
   .ph-separateur,
   .ph-ornement span,
-  .ph-bloc-titre span { background: #ddd6d8; }
+  .ph-bloc-titre span,
+  .ph-menu-ligne { background: #ddd6d8; }
+  .ph-ornement i,
+  .ph-losange,
+  .ph-menu-remplissage,
+  .ph-menu a.is-actif .ph-menu-point { background: #8a4550; }
+  .ph-menu a.is-actif .ph-menu-point { border-color: #8a4550; }
   .ph-entree-num { color: #e7e0e2; }
   .ph-tete-num { color: #cfc6c8; }
+  .ph-menu { background: transparent; border-left-color: #ddd6d8; }
+  .ph-menu-point { background: transparent; border-color: #cfc6c8; }
+  .ph-menu-num { color: #8a8284; }
 }
 </style>
 </head>
@@ -224,19 +290,16 @@ html, body {
       <div class="ph-entree">
         <div class="ph-entree-num">I</div>
         <div class="ph-entree-titre">Explication</div>
-        <p class="ph-sens">Wyraj vit au rythme de traditions qui accompagnent les changements du coven. </p>
+        <p class="ph-sens">Wyraj vit au rythme de traditions qui accompagnent les changements du coven.</p>
       </div>
       <div class="ph-ornement"><span></span><i></i><span></span></div>
       <div class="ph-texte">
-        <p>Certains Swoi <i1>naissent</i1> au sein du coven. À <m2>seize ans</m2>, ils passent le Prohod et reçoivent leur marque. 
-Pour ceux qui approchent Wyraj sans y avoir grandi, l’attente peut durer longtemps, jusqu’à ce que leurs <u1>actes</u1> aient raison de la méfiance et qu’une place leur soit <u1>accordée</u1>. Ce n’est qu’alors qu’ils passent à leur tour le <m1>Prohod</m1>. La route diffère ; le rite et le signe demeurent les mêmes. 
-
-Quatre voix gouvernent Wyraj. Celle de <i1>Kupala</i1> se transmet dans la lignée de <m0>Zosia</m0>. Pour les trois autres, lorsque l'une vient à manquer, certains se présentent d’<i1>eux-mêmes</i1> ; d’autres voient les regards se tourner vers eux. 
-Avant de confier la place, le coven veut voir le prétendant à l'œuvre. Le Prohod marque l’appartenance ; le <m0>Naznaczenie</m0> décide si le prétendant prendra place au Kolo. Il n’en connaîtra l’issue qu’au terme du rite. 
-
-Certains liens finissent pourtant par se <m2>briser</m2>. Un serment trahi ou une faute qui expose les autres ; un membre peut être banni, la <u3>mort</u3> demeure la sentence la plus grave, réservée aux actes qui menacent la survie du coven. 
-
-Chaque année, les saisons ramènent leurs propres célébrations. Wyraj y <m1>honore</m1> les divinités qui veillent sur chacune d’elles ; tous ses membres y sont <i1>conviés</i1>. </p>
+        <p>Certains Swoi <i1>naissent</i1> au sein du coven. À <m2>seize ans</m2>, ils passent le Prohod et reçoivent leur marque.</p>
+        <p>Pour ceux qui approchent Wyraj sans y avoir grandi, l’attente peut durer longtemps, jusqu’à ce que leurs <u1>actes</u1> aient raison de la méfiance et qu’une place leur soit <u1>accordée</u1>. Ce n’est qu’alors qu’ils passent à leur tour le <m1>Prohod</m1>. La route diffère ; le rite et le signe demeurent les mêmes.</p>
+        <p>Quatre voix gouvernent Wyraj. Celle de <i1>Kupala</i1> se transmet dans la lignée de <m0>Zosia</m0>. Pour les trois autres, lorsque l'une vient à manquer, certains se présentent d’<i1>eux-mêmes</i1> ; d’autres voient les regards se tourner vers eux.</p>
+        <p>Avant de confier la place, le coven veut voir le prétendant à l'œuvre. Le Prohod marque l’appartenance ; le <m0>Naznaczenie</m0> décide si le prétendant prendra place au Kolo. Il n’en connaîtra l’issue qu’au terme du rite.</p>
+        <p>Certains liens finissent pourtant par se <m2>briser</m2>. Un serment trahi ou une faute qui expose les autres ; un membre peut être banni, la <u3>mort</u3> demeure la sentence la plus grave, réservée aux actes qui menacent la survie du coven.</p>
+        <p>Chaque année, les saisons ramènent leurs propres célébrations. Wyraj y <m1>honore</m1> les divinités qui veillent sur chacune d’elles ; tous ses membres y sont <i1>conviés</i1>.</p>
       </div>
     </div>
     <div class="ph-separateur"></div>
@@ -246,6 +309,7 @@ Chaque année, les saisons ramènent leurs propres célébrations. Wyraj y <m1>h
         <div class="ph-tete-txt"><span class="ph-kicker">Prohod</span><span class="ph-tete-titre">passage</span></div>
       </div>
       <p class="ph-sens">Son nom signifie « passage ». Le rituel scelle l’appartenance au coven. Tous se rassemblent, témoins de la cérémonie et du serment qui fait du nouveau membre l’un des leurs.</p>
+      <div class="ph-ornement"><span></span><i></i><span></span></div>
       <div class="ph-texte">
         <p>La cérémonie se tient <strong>en dehors</strong> de Vienne, au plus profond du Wienerwald, là où les ravins se ramifient entre les arbres. Un ruisseau court au fond de l’un d’eux, loin de tout village.</p>
         <p>On forme un cercle, un <em>chant slave</em> fredonné à plusieurs voix. Au centre, les préparatifs commencent. Une <span class="ph-souligne">corde</span> passe autour de sa taille. Une autre sous la poitrine. La dernière ramène les bras contre le torse avant d’être <span class="ph-souligne">nouée dans le dos</span>.</p>
@@ -270,6 +334,7 @@ Chaque année, les saisons ramènent leurs propres célébrations. Wyraj y <m1>h
         <div class="ph-tete-txt"><span class="ph-kicker">Section III</span><span class="ph-tete-titre">ipsum</span></div>
       </div>
       <p class="ph-sens">Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat.</p>
+      <div class="ph-ornement"><span></span><i></i><span></span></div>
       <div class="ph-texte">
         <p>Neque porro quisquam est, qui <strong>dolorem ipsum</strong> quia dolor sit amet, consectetur, adipisci velit, sed quia non numquam eius modi tempora incidunt ut labore et dolore magnam aliquam.</p>
         <p>Ut enim ad minima veniam, quis nostrum exercitationem ullam corporis suscipit laboriosam, nisi ut <em>aliquid ex ea</em> commodi consequatur. Quis autem vel eum iure reprehenderit qui in ea voluptate velit esse.</p>
@@ -291,6 +356,7 @@ Chaque année, les saisons ramènent leurs propres célébrations. Wyraj y <m1>h
         <div class="ph-tete-txt"><span class="ph-kicker">Section IV</span><span class="ph-tete-titre">dolor</span></div>
       </div>
       <p class="ph-sens">Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur.</p>
+      <div class="ph-ornement"><span></span><i></i><span></span></div>
       <div class="ph-texte">
         <p>Temporibus autem quibusdam et aut officiis debitis aut rerum <strong>necessitatibus</strong> saepe eveniet ut et voluptates repudiandae sint et molestiae non recusandae.</p>
         <p>Itaque earum rerum hic tenetur a sapiente delectus, ut aut reiciendis voluptatibus maiores alias consequatur aut <em>perferendis doloribus</em> asperiores repellat.</p>
@@ -323,7 +389,7 @@ Chaque année, les saisons ramènent leurs propres célébrations. Wyraj y <m1>h
     function maj() {
       var y = zone.scrollTop + zone.clientHeight * SEUIL;
       var actif = 0;
-      sections.forEach(function (s, i) { if (top(s) <= y) actif = i; });
+      sections.forEach(function (s, i) { if (s && top(s) <= y) actif = i; });
       var fin = zone.scrollTop >= zone.scrollHeight - zone.clientHeight - 2;
       if (fin) actif = sections.length - 1;
       var s = sections[actif];
