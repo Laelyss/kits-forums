@@ -26,14 +26,20 @@ body { padding: 4px 8px 12px; }
 .tb input { display: none; }
 .tb p { margin: 0; color: var(--mute); font-family: var(--font), sans-serif; font-size: 12.5px; line-height: 1.75; text-align: justify; }
 .tb k { display: block; }
+.tb { --rose:#aa737b; --deep:#b4585f; --cream:#d8d1d3; --mute:#96908f; --dim:#6b6567; --cours:#b8926a; --fin:#6a6265; --papier:#262122; --trait:#3a3335; }
 .tb ticket {
   display: grid;
   grid-template-columns: 86px minmax(0, 1fr);
   background: var(--papier);
-  border: 1px solid var(--trait);
   min-width: 0;
-  color: #3a3436;
+  color: var(--cream);
   text-shadow: none;
+  -webkit-mask:
+    radial-gradient(circle 8px at 86px 0, #0000 7.5px, #000 8px) top / 100% 50.2% no-repeat,
+    radial-gradient(circle 8px at 86px 100%, #0000 7.5px, #000 8px) bottom / 100% 50.2% no-repeat;
+  mask:
+    radial-gradient(circle 8px at 86px 0, #0000 7.5px, #000 8px) top / 100% 50.2% no-repeat,
+    radial-gradient(circle 8px at 86px 100%, #0000 7.5px, #000 8px) bottom / 100% 50.2% no-repeat;
 }
 .tb talon {
   display: flex;
@@ -41,10 +47,10 @@ body { padding: 4px 8px 12px; }
   justify-content: center;
   align-items: center;
   gap: 12px;
-  padding: 14px 6px;
-  border-right: 1px dashed rgba(122, 62, 73, .45);
+  padding: 16px 6px;
+  border-right: 1px dashed #4a4043;
   text-align: center;
-  background: rgba(214, 196, 200, .38);
+  background: #231f20;
 }
 .tb niveau { display: flex; flex-direction: column; align-items: center; gap: 6px; }
 .tb etat { color: var(--deep); font-family: var(--font3), sans-serif; font-size: 6.5px; font-weight: 600; letter-spacing: .22em; text-transform: uppercase; }
@@ -63,11 +69,11 @@ body { padding: 4px 8px 12px; }
 .n1 etat { padding: 3px 6px; border: 1px solid currentColor; }
 .n1 objectif k { color: var(--rose); font-family: var(--font3), sans-serif; font-size: 7.5px; font-weight: 600; letter-spacing: .2em; text-transform: uppercase; }
 .n1 crans { display: flex; gap: 5px; padding: 2px 0; }
-.n1 crans i { display: inline-block; width: 6px; height: 6px; transform: rotate(45deg); border: 1px solid #8a4550; }
+.n1 crans i { display: inline-block; width: 6px; height: 6px; transform: rotate(45deg); border: 1px solid #5a5053; }
 .n1 .n3 crans i,
 .n1 .n2 crans i:nth-child(-n+2),
-.n1 .n1c crans i:first-child { background: var(--deep); border-color: var(--deep); }
-.n1 .nx crans i { background: transparent; border-style: dashed; border-color: #8a4550; }
+.n1 .n1c crans i:first-child { background: var(--deep); border-color: var(--deep); box-shadow: 0 0 6px rgba(180, 88, 95, .5); }
+.n1 .nx crans i { background: transparent; border-style: dashed; border-color: #5a5053; box-shadow: none; }
 .n1 intro { display: block; margin: 0 0 18px; }
 .n1 intro p { font-size: 12.5px; line-height: 1.75; text-align: justify; }
 .n1 legende { display: flex; flex-wrap: wrap; gap: 8px 18px; margin-top: 12px; }
