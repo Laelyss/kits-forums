@@ -718,6 +718,18 @@ html[data-color-scheme="light"] .wyraj {
 .wyraj .story::-webkit-scrollbar-thumb,
 .wyraj .infos::-webkit-scrollbar-thumb { background: rgba(99, 34, 40, .55); border-radius: 3px; }
 
+/* ---------- SECTION 7 Tableau de Chasse ---------- */
+
+.wyraj iframe.wv-missions-frame {
+  display: block;
+  width: 100%;
+  height: 720px;
+  margin: 0;
+  padding: 0;
+  border: 0;
+  background: transparent !important;
+}
+
 /* ==================================================
    Fiche assez large : le ruban passe à la verticale
 ================================================== */
