@@ -149,9 +149,33 @@
       .wv-single-stage { grid-template-columns: 112px minmax(0, 1fr); gap: 22px; }
       .wv-voice-tabs { flex-direction: column; gap: 6px; padding-top: 18px; }
     }
-    @media (prefers-color-scheme: light) {
-      body { color: #3a3436; }
-    }
+   @media (prefers-color-scheme: light) {
+  body,
+  p, .wv-lead,
+  .wv-voice-panel p,
+  .wv-simple-entry p { color: #3a3436; }
+  .wv-heading,
+  .wv-voice-name,
+  .wv-simple-name,
+  .wv-org label[for="wy-org-kolo"],
+  .wv-voices label[for="wy-voice-jarilo"] { color: #2a2426; }
+  .wv-kicker,
+  .wv-voice-season,
+  label.wv-main-tab::after { color: #8a4550; }
+  label.wv-main-tab::after { background: #8a4550; }
+  label.wv-voice-tab { color: #5c5658; }
+  label.wv-voice-tab:hover { color: #2a2426; }
+  .wv-voice-name,
+  .wv-heading { text-shadow: none; }
+  .wv-voice-name::before { color: rgba(42, 36, 38, .07); }
+  .wv-simple-list,
+  .wv-simple-entry { border-color: #ddd6d8; }
+  .wv-org:has(#wy-org-membres:checked) label[for="wy-org-membres"],
+  .wv-org:has(#wy-org-termes:checked) label[for="wy-org-termes"],
+  .wv-voices:has(#wy-voice-kupala:checked) label[for="wy-voice-kupala"],
+  .wv-voices:has(#wy-voice-mokosh:checked) label[for="wy-voice-mokosh"],
+  .wv-voices:has(#wy-voice-marzanna:checked) label[for="wy-voice-marzanna"] { color: #2a2426; }
+}
     
     .wv-voice-tabs {
       display: flex;
