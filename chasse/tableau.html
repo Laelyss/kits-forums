@@ -6,43 +6,76 @@
 <title>Wyraj — Tableau des missions</title>
 <link href="https://fonts.googleapis.com/css2?family=Open+Sans:wght@400;600&family=Roboto+Condensed:wght@600;700&family=Pirata+One&display=swap" rel="stylesheet">
 <style>
-:root { --font:"Open Sans"; --font3:"Roboto Condensed"; --font2:"Pirata One"; }
+/* ==================================================
+   WYRAJ — tableau des missions
+   Une mission = un <ticket> dans la <pile> de l'onglet.
+   Danger : n1c facile · n2 moyen · n3 élevé · nx inconnu
+   État : ouverte · class="cours" · class="fin" (+ class="fin" sur le ticket)
+================================================== */
+:root {
+  --font: "Open Sans", sans-serif;
+  --font2: "Pirata One", serif;
+  --font3: "Roboto Condensed", sans-serif;
+}
 * { box-sizing: border-box; }
+
+/* ---------- page (fond transparent, barre fine) ---------- */
 html, body {
-  background: transparent !important;
-  background-color: transparent !important;
-}
-body { padding: 4px 8px 12px; }
-.encre {
-  color: #f4eef0;
-  text-shadow:
-    1px 0 0 rgba(14, 10, 12, .85),
-    -1px 0 0 rgba(14, 10, 12, .85),
-    0 1px 0 rgba(14, 10, 12, .85),
-    0 -1px 0 rgba(14, 10, 12, .85);
-}
-  html {
+  margin: 0;
   background: transparent !important;
   background-color: transparent !important;
   color-scheme: normal;
+}
+html {
   scrollbar-width: thin;
   scrollbar-color: rgba(99, 34, 40, .55) transparent;
 }
 html::-webkit-scrollbar { width: 3px; }
 html::-webkit-scrollbar-track { background: transparent; }
 html::-webkit-scrollbar-thumb { background: rgba(99, 34, 40, .55); border-radius: 3px; }
-.tb { max-width: 640px; margin: 0 auto; --rose:#8a4550; --deep:#8a4550; --cream:#2a2426; --mute:#4a4446; --dim:#6a6264; --cours:#8a6230; --fin:#6a6265; --papier:rgba(236, 228, 229, .92); --trait:rgba(122, 62, 73, .22); }
+body { padding: 4px 8px 12px; }
+
+/* ---------- couleurs : un seul bloc, c'est celui qui s'affiche ---------- */
+.tb {
+  max-width: 640px;
+  margin: 0 auto;
+  --rose: #aa737b;
+  --deep: #b4585f;
+  --cream: #d8d1d3;
+  --mute: #96908f;
+  --dim: #6b6567;
+  --cours: #b8926a;
+  --fin: #6a6265;
+  --papier: #262122;
+  --trait: #3a3335;
+  --texte: #a1a1a1;   /* paragraphes dans la carte */
+  --obj: #917c7c;     /* texte Détails / Objectif */
+  --hors: #515151;    /* onglets et légende, hors carte */
+}
 .tb input { display: none; }
-.tb p { margin: 0; color: var(--mute); font-family: var(--font), sans-serif; font-size: 12.5px; line-height: 1.75; text-align: justify; }
+.tb p { margin: 0; font-family: var(--font); font-size: 12.5px; line-height: 1.75; text-align: justify; }
 .tb k { display: block; }
-.tb { --rose:#aa737b; --deep:#b4585f; --cream:#d8d1d3; --mute:#96908f; --dim:#6b6567; --cours:#b8926a; --fin:#6a6265; --papier:#262122; --trait:#3a3335; }
+
+/* ---------- intro + onglets (pas de fond) ---------- */
+.encre { color: var(--hors); }
+.tb .encre p { color: var(--mute); }
+.n1 intro { display: block; margin: 0 0 18px; }
+.n1 intro p { font-size: 12.5px; line-height: 1.75; text-align: justify; }
+.n1 legende { display: flex; flex-wrap: wrap; gap: 8px 18px; margin-top: 12px; }
+.n1 legende niveau { flex-direction: row; gap: 8px; }
+.n1 legende niveau span { font-family: var(--font3); font-size: 8px; font-weight: 600; letter-spacing: .18em; text-transform: uppercase; }
+.n1 onglets { display: flex; flex-wrap: wrap; gap: 4px 0; margin: 0 0 14px; border-bottom: 1px solid rgba(170, 115, 123, .45); }
+.n1 onglets label { display: flex; align-items: center; padding: 9px 12px; margin-bottom: -1px; border-bottom: 1px solid transparent; font-family: var(--font3); font-size: 8px; font-weight: 600; letter-spacing: .2em; text-transform: uppercase; cursor: pointer; }
+.n1 pile { display: none; flex-direction: column; gap: 12px; }
+.n1 .vide { margin: 4px 0 0; font-size: 12.5px; }
+
+/* ---------- la carte (seul bloc avec un fond) ---------- */
 .tb ticket {
   display: grid;
   grid-template-columns: 86px minmax(0, 1fr);
   background: var(--papier);
   min-width: 0;
   color: var(--cream);
-  text-shadow: none;
   -webkit-mask:
     radial-gradient(circle 8px at 86px 0, #0000 7.5px, #000 8px) top / 100% 50.2% no-repeat,
     radial-gradient(circle 8px at 86px 100%, #0000 7.5px, #000 8px) bottom / 100% 50.2% no-repeat;
@@ -50,6 +83,7 @@ html::-webkit-scrollbar-thumb { background: rgba(99, 34, 40, .55); border-radius
     radial-gradient(circle 8px at 86px 0, #0000 7.5px, #000 8px) top / 100% 50.2% no-repeat,
     radial-gradient(circle 8px at 86px 100%, #0000 7.5px, #000 8px) bottom / 100% 50.2% no-repeat;
 }
+.tb ticket.fin { opacity: .6; }
 .tb talon {
   display: flex;
   flex-direction: column;
@@ -62,34 +96,27 @@ html::-webkit-scrollbar-thumb { background: rgba(99, 34, 40, .55); border-radius
   background: #231f20;
 }
 .tb niveau { display: flex; flex-direction: column; align-items: center; gap: 6px; }
-.tb etat { color: var(--deep); font-family: var(--font3), sans-serif; font-size: 6.5px; font-weight: 600; letter-spacing: .22em; text-transform: uppercase; }
+.tb etat { padding: 3px 6px; border: 1px solid currentColor; color: var(--deep); font-family: var(--font3); font-size: 6.5px; font-weight: 600; letter-spacing: .22em; text-transform: uppercase; }
 .tb etat.cours { color: var(--cours); }
 .tb etat.fin { color: var(--fin); }
 .tb souche { display: flex; flex-direction: column; gap: 9px; padding: 14px 16px 12px; min-width: 0; }
-.tb lieu { display: block; color: var(--cream); font-family: var(--font2), serif; font-size: 22px; line-height: 1.15; text-transform: lowercase; text-shadow: none; }
-.tb objectif { display: grid; grid-template-columns: 68px minmax(0, 1fr); gap: 10px; align-items: baseline; padding-bottom: 8px; border-bottom: 1px solid var(--trait); color: #3a3436; }
+.tb souche > p { color: var(--texte); }
+.tb lieu { display: block; color: var(--cream); font-family: var(--font2); font-size: 22px; line-height: 1.15; text-transform: lowercase; }
+.tb objectif { display: grid; grid-template-columns: 68px minmax(0, 1fr); gap: 10px; align-items: baseline; padding-bottom: 8px; border-bottom: 1px solid var(--trait); color: var(--obj); font-family: var(--font); }
+.tb objectif k { color: var(--rose); font-family: var(--font3); font-size: 7.5px; font-weight: 600; letter-spacing: .2em; text-transform: uppercase; }
 .tb bas { display: flex; flex-wrap: wrap; gap: 6px 16px; margin-top: auto; padding-top: 8px; border-top: 1px solid var(--trait); }
-.tb bas span { color: var(--dim); font-family: var(--font3), sans-serif; font-size: 7.5px; font-weight: 600; letter-spacing: .16em; text-transform: uppercase; }
-.tb bas span b { color: var(--cream); font-weight: 600; letter-spacing: .04em; text-transform: none; font-family: var(--font), sans-serif; font-size: 12px; }
-.tb ticket.fin { opacity: .6; }
-.n1 onglets { display: flex; flex-wrap: wrap; gap: 4px 0; margin: 0 0 14px; border-bottom: 1px solid rgba(170, 115, 123, .45); }
-.n1 onglets label { display: flex; align-items: center; padding: 9px 12px; margin-bottom: -1px; border-bottom: 1px solid transparent; font-family: var(--font3), sans-serif; font-size: 8px; font-weight: 600; letter-spacing: .2em; text-transform: uppercase; cursor: pointer; }
-.n1 pile { display: none; flex-direction: column; gap: 12px; }
-.n1 etat { padding: 3px 6px; border: 1px solid currentColor; }
-.n1 objectif k { color: var(--rose); font-family: var(--font3), sans-serif; font-size: 7.5px; font-weight: 600; letter-spacing: .2em; text-transform: uppercase; }
+.tb bas span { color: var(--dim); font-family: var(--font3); font-size: 7.5px; font-weight: 600; letter-spacing: .16em; text-transform: uppercase; }
+.tb bas span b { color: var(--cream); font-weight: 600; letter-spacing: .04em; text-transform: none; font-family: var(--font); font-size: 12px; }
+
+/* ---------- losanges de danger ---------- */
 .n1 crans { display: flex; gap: 5px; padding: 2px 0; }
 .n1 crans i { display: inline-block; width: 6px; height: 6px; transform: rotate(45deg); border: 1px solid #5a5053; }
 .n1 .n3 crans i,
 .n1 .n2 crans i:nth-child(-n+2),
 .n1 .n1c crans i:first-child { background: var(--deep); border-color: var(--deep); box-shadow: 0 0 6px rgba(180, 88, 95, .5); }
 .n1 .nx crans i { background: transparent; border-style: dashed; border-color: #5a5053; box-shadow: none; }
-.n1 intro { display: block; margin: 0 0 18px; }
-.n1 intro p { font-size: 12.5px; line-height: 1.75; text-align: justify; }
-.n1 legende { display: flex; flex-wrap: wrap; gap: 8px 18px; margin-top: 12px; }
-.n1 legende niveau { flex-direction: row; gap: 8px; }
-.n1 legende niveau span { font-family: var(--font3), sans-serif; font-size: 8px; font-weight: 600; letter-spacing: .18em; text-transform: uppercase; }
-.n1 souche > p { font-size: 12.5px; color: #4a4446; }
-.n1 .vide { margin: 4px 0 0; font-size: 12.5px; }
+
+/* ---------- quel onglet est ouvert ---------- */
 .va:has(#ao1:checked) .g1,
 .va:has(#ao2:checked) .g2,
 .va:has(#ao3:checked) .g3,
@@ -106,72 +133,136 @@ html::-webkit-scrollbar-thumb { background: rgba(99, 34, 40, .55); border-radius
 </head>
 <body>
 <div class="tb n1 va">
-<intro class="encre"><p>Chaque entrée rassemble ce que le coven sait de l’objectif : le lieu, les éléments utiles et les dangers connus. Les renseignements peuvent être précis, maigres ou trompeurs ; une simple piste cache parfois une situation bien plus grave. Certaines chasses peuvent se mener seules, d’autres exigent au moins un partenaire.</p>
-<legende><niveau class="n1c"><crans><i></i><i></i><i></i></crans><span>facile</span></niveau><niveau class="n2"><crans><i></i><i></i><i></i></crans><span>moyen</span></niveau><niveau class="n3"><crans><i></i><i></i><i></i></crans><span>élevé</span></niveau><niveau class="nx"><crans><i></i><i></i><i></i></crans><span>inconnu</span></niveau></legende></intro>
-<input type="radio" name="ao" id="ao1" checked><input type="radio" name="ao" id="ao2"><input type="radio" name="ao" id="ao3"><input type="radio" name="ao" id="ao4"><input type="radio" name="ao" id="ao5"><input type="radio" name="ao" id="ao6">
-<onglets class="encre"><label class="g1" for="ao1">Traque</label><label class="g2" for="ao2">Chasse</label><label class="g3" for="ao3">Exorcisme</label><label class="g4" for="ao4">Recherche</label><label class="g5" for="ao5">Exploration</label><label class="g6" for="ao6">Prime</label></onglets>
+
+<intro class="encre">
+<p>Chaque entrée rassemble ce que le coven sait de l’objectif : le lieu, les éléments utiles et les dangers connus. Les renseignements peuvent être précis, maigres ou trompeurs ; une simple piste cache parfois une situation bien plus grave. Certaines chasses peuvent se mener seules, d’autres exigent au moins un partenaire.</p>
+<legende>
+<niveau class="n1c"><crans><i></i><i></i><i></i></crans><span>facile</span></niveau>
+<niveau class="n2"><crans><i></i><i></i><i></i></crans><span>moyen</span></niveau>
+<niveau class="n3"><crans><i></i><i></i><i></i></crans><span>élevé</span></niveau>
+<niveau class="nx"><crans><i></i><i></i><i></i></crans><span>inconnu</span></niveau>
+</legende>
+</intro>
+
+<input type="radio" name="ao" id="ao1" checked>
+<input type="radio" name="ao" id="ao2">
+<input type="radio" name="ao" id="ao3">
+<input type="radio" name="ao" id="ao4">
+<input type="radio" name="ao" id="ao5">
+<input type="radio" name="ao" id="ao6">
+<onglets class="encre">
+<label class="g1" for="ao1">Traque</label>
+<label class="g2" for="ao2">Chasse</label>
+<label class="g3" for="ao3">Exorcisme</label>
+<label class="g4" for="ao4">Recherche</label>
+<label class="g5" for="ao5">Exploration</label>
+<label class="g6" for="ao6">Prime</label>
+</onglets>
+
+<!-- Traque -->
 <pile class="p1">
-<ticket><talon><niveau class="nx"><crans><i></i><i></i><i></i></crans><span>inconnu</span></niveau><etat>ouverte</etat></talon>
-<souche><lieu>les statues du ravin</lieu>
+<ticket>
+<talon><niveau class="nx"><crans><i></i><i></i><i></i></crans><span>inconnu</span></niveau><etat>ouverte</etat></talon>
+<souche>
+<lieu>les statues du ravin</lieu>
 <p>Une ancienne carrière à la lisière du Wienerwald doit prochainement accueillir un chantier. Depuis plusieurs semaines, les ouvriers refusent pourtant d’y descendre seuls.</p>
 <p>Trois silhouettes de pierre ont été découvertes au fond d’une galerie condamnée. L’une ressemble assez à un promeneur porté disparu au printemps pour que la coïncidence devienne difficile à défendre.</p>
 <p>Personne n’a encore exploré les galeries les plus profondes.</p>
 <objectif><k>Détails</k>disparitions, pétrification, présence encore indéterminée</objectif>
 <objectif><k>Objectif</k>Descendre dans les galeries, établir ce qu’il est advenu des disparus et mettre fin à ce qui pétrifie. Le coven ne garantit pas qu’il y ait quelqu’un à ramener.</objectif>
-<bas><span>Lieu <b>Wienerwald, ancienne carrière</b></span><span>Effectif <b>duo conseillé</b></span><span>Récompense <b>700 €</b></span></bas></souche></ticket>
-<ticket><talon><niveau class="n3"><crans><i></i><i></i><i></i></crans><span>élevé</span></niveau><etat>ouverte</etat></talon>
-<souche><lieu>derrière les wagons</lieu>
+<bas><span>Lieu <b>Wienerwald, ancienne carrière</b></span><span>Effectif <b>duo conseillé</b></span><span>Récompense <b>700 €</b></span></bas>
+</souche>
+</ticket>
+<ticket>
+<talon><niveau class="n3"><crans><i></i><i></i><i></i></crans><span>élevé</span></niveau><etat>ouverte</etat></talon>
+<souche>
+<lieu>derrière les wagons</lieu>
 <p>Depuis plusieurs nuits, quelque chose suit les trains de marchandises sur les voies qui longent les zones industrielles au sud de Vienne. Les agents de maintenance parlent de chiens beaucoup trop grands pour être errants. Ils reculent devant les projecteurs de manœuvre puis reviennent aussitôt, toujours dans le dos.</p>
 <p>Un cheminot a été retrouvé vivant entre deux voies, couvert de morsures. Depuis son réveil, il jure entendre des grognements derrière chaque porte et refuse qu’on éteigne la lumière. Son état empire, les médecins lui donnent trois jours.</p>
 <p>Le Wallace a retrouvé plusieurs traces autour d’une ancienne voie de service condamnée.</p>
 <objectif><k>Détails</k>plusieurs créatures, morsures toxiques, comportement de chasse</objectif>
 <objectif><k>Objectif</k>Déterminer ce qui chasse le long des voies, y mettre fin, et traiter le cheminot avant qu’il n’y passe.</objectif>
-<bas><span>Lieu <b>Favoriten, voies ferroviaires</b></span><span>Effectif <b>un sorcier + un chasseur</b></span><span>Récompense <b>900 €</b></span></bas></souche></ticket>
-<ticket><talon><niveau class="n2"><crans><i></i><i></i><i></i></crans><span>moyen</span></niveau><etat>ouverte</etat></talon>
-<souche><lieu>trois nuits par mois</lieu>
+<bas><span>Lieu <b>Favoriten, voies ferroviaires</b></span><span>Effectif <b>un sorcier + un chasseur</b></span><span>Récompense <b>900 €</b></span></bas>
+</souche>
+</ticket>
+<ticket>
+<talon><niveau class="n2"><crans><i></i><i></i><i></i></crans><span>moyen</span></niveau><etat>ouverte</etat></talon>
+<souche>
+<lieu>trois nuits par mois</lieu>
 <p>Deux battues officielles, aucune carcasse retrouvée, et pourtant quelque chose éventre le gibier dans l’enclos du Lainzer Tiergarten. Toujours les mêmes trois nuits, tous les mois, à date prévisible. Un garde a tiré et jure avoir touché. On n’a retrouvé ni sang ni corps.</p>
 <objectif><k>Détails</k>cycle lunaire fixe, sujet vraisemblablement maudit, auteur inconnu</objectif>
 <objectif><k>Objectif</k>Identifier la personne, remonter à celui qui l’a faite. Ce qui sera fait de l’une comme de l’autre n’est pas fixé par le tableau.</objectif>
-<bas><span>Lieu <b>Lainzer Tiergarten</b></span><span>Effectif <b>duo minimum, aucun contact seul</b></span><span>Récompense <b>450 €</b></span></bas></souche></ticket>
+<bas><span>Lieu <b>Lainzer Tiergarten</b></span><span>Effectif <b>duo minimum, aucun contact seul</b></span><span>Récompense <b>450 €</b></span></bas>
+</souche>
+</ticket>
 </pile>
-<pile class="p2"><p class="vide encre">Aucune mission ouverte.</p></pile>
+
+<!-- Chasse -->
+<pile class="p2">
+<p class="vide encre">Aucune mission ouverte.</p>
+</pile>
+
+<!-- Exorcisme -->
 <pile class="p3">
-<ticket><talon><niveau class="n3"><crans><i></i><i></i><i></i></crans><span>élevé</span></niveau><etat>ouverte</etat></talon>
-<souche><lieu>le hangar à bateaux</lieu>
+<ticket>
+<talon><niveau class="n3"><crans><i></i><i></i><i></i></crans><span>élevé</span></niveau><etat>ouverte</etat></talon>
+<souche>
+<lieu>le hangar à bateaux</lieu>
 <p>Depuis plusieurs jours, un employé d’un club d’aviron de l’Alte Donau refuse de rentrer chez lui. Il dort dans le hangar à bateaux, ne s’éloigne presque plus de l’eau et repousse violemment quiconque tente de l’approcher.</p>
 <p>Son état physique s’est dégradé avec une rapidité inquiétante. Sa peau se couvre de plaques épaisses, ses traits se déforment et l’humidité semble être devenue une nécessité plutôt qu’un confort. Deux collègues ont voulu le ramener de force la veille. L’un est ressorti blessé. L’autre demeure introuvable.</p>
 <p>Une possession est fortement suspectée. Le plus problématique reste encore de savoir ce qui arrivera lorsque l’entité quittera son hôte.</p>
 <objectif><k>Détails</k>possession probable, altération physique rapide, attirance anormale pour l’eau</objectif>
 <objectif><k>Objectif</k>Retrouver le disparu, isoler l’hôte avant l’exorcisme et empêcher l’entité de prendre possession de quelqu’un d’autre lorsqu’elle en sera chassée.</objectif>
-<bas><span>Lieu <b>Alte Donau, club d’aviron</b></span><span>Effectif <b>duo conseillé</b></span><span>Récompense <b>600 €</b></span></bas></souche></ticket>
+<bas><span>Lieu <b>Alte Donau, club d’aviron</b></span><span>Effectif <b>duo conseillé</b></span><span>Récompense <b>600 €</b></span></bas>
+</souche>
+</ticket>
 </pile>
+
+<!-- Recherche -->
 <pile class="p4">
-<ticket><talon><niveau class="n1c"><crans><i></i><i></i><i></i></crans><span>facile</span></niveau><etat>ouverte</etat></talon>
-<souche><lieu>le lot 47</lieu>
+<ticket>
+<talon><niveau class="n1c"><crans><i></i><i></i><i></i></crans><span>facile</span></niveau><etat>ouverte</etat></talon>
+<souche>
+<lieu>le lot 47</lieu>
 <p>Une photographie tirée d’un ancien catalogue de succession a fait remonter un objet que l’on croyait perdu depuis plusieurs décennies : une petite boussole montée sur verre noir, cerclée de cuivre, dont l’aiguille ne désigne aucun nord. Depuis que la photographie a circulé, deux acheteurs se sont manifestés auprès du même commissaire-priseur. Ni l’un ni l’autre ne s’est présenté sous son nom.</p>
 <p>Une mention retrouvée dans de vieilles notes lui prête une fonction plus utile. L’objet aurait servi à repérer les endroits où le Voile s’amincit, son aiguille se déplaçant à mesure que l’éther devient plus instable.</p>
 <p>Le lot n’a jamais atteint la vente. Entre l’inventaire et la dispersion de la succession, sa trace disparaît.</p>
 <objectif><k>Détails</k>dernière apparition dans un inventaire privé</objectif>
 <objectif><k>Objectif</k>Retrouver l’Aiguille, vérifier qu’il s’agit bien de l’objet mentionné dans les archives et la ramener au coven.</objectif>
-<bas><span>Lieu <b>inconnu</b></span><span>Effectif <b>indéterminé</b></span><span>Récompense <b>400 €</b></span></bas></souche></ticket>
+<bas><span>Lieu <b>inconnu</b></span><span>Effectif <b>indéterminé</b></span><span>Récompense <b>400 €</b></span></bas>
+</souche>
+</ticket>
 </pile>
+
+<!-- Exploration -->
 <pile class="p5">
-<ticket><talon><niveau class="n1c"><crans><i></i><i></i><i></i></crans><span>facile</span></niveau><etat>ouverte</etat></talon>
-<souche><lieu>basses eaux</lieu>
+<ticket>
+<talon><niveau class="n1c"><crans><i></i><i></i><i></i></crans><span>facile</span></niveau><etat>ouverte</etat></talon>
+<souche>
+<lieu>basses eaux</lieu>
 <p>Le niveau d’un ancien bras du Danube a chuté assez bas pour dégager une bande de terre habituellement noyée dans la Lobau. Sous la vase apparaissent désormais des pierres disposées en cercle, plusieurs mètres de racines mises à nu et les restes d’un chemin qui s’enfonce plus loin dans une zone encore inaccessible à pied.</p>
 <p>Depuis, l’eau remonte par endroits contre le courant et de petites poches d’éther apparaissent le long des berges. Leur origine reste inconnue. La crue de printemps recouvrira la zone. On ignore si ce qui en est sorti y retournera.</p>
 <objectif><k>Détails</k>structure découverte sous l’eau, perturbations de l’éther, courant anormal</objectif>
 <objectif><k>Objectif</k>Parcourir la zone découverte, relever ce qui a émergé et déterminer jusqu’où s’étend le phénomène avant que l’eau ne recouvre les lieux.</objectif>
-<bas><span>Lieu <b>Lobau, ancien bras du Danube</b></span><span>Effectif <b>seul ou en duo</b></span><span>Récompense <b>250 €</b></span></bas></souche></ticket>
+<bas><span>Lieu <b>Lobau, ancien bras du Danube</b></span><span>Effectif <b>seul ou en duo</b></span><span>Récompense <b>250 €</b></span></bas>
+</souche>
+</ticket>
 </pile>
+
+<!-- Prime -->
 <pile class="p6">
-<ticket><talon><niveau class="n3"><crans><i></i><i></i><i></i></crans><span>élevé</span></niveau><etat>ouverte</etat></talon>
-<souche><lieu>donaukanal</lieu>
+<ticket>
+<talon><niveau class="n3"><crans><i></i><i></i><i></i></crans><span>élevé</span></niveau><etat>ouverte</etat></talon>
+<souche>
+<lieu>donaukanal</lieu>
 <p>Quatre corps en cinq semaines le long du Donaukanal, tous vidés, tous retrouvés loin de l’endroit où ils sont morts. Le cinquième n’était pas mort. Ce qu’on a sorti de l’eau mordait encore et n’avait plus rien d’humain dans le regard ; il a fallu trois hommes pour le tenir, et deux d’entre eux ne travaillent plus.</p>
 <objectif><k>Détails</k>transformations manquées, sujets multiples, un responsable supposé unique</objectif>
 <objectif><k>Objectif</k>Retrouver celui qui transforme. Ce qu’il reste de ses essais doit être traité. Ce qu’on fait de lui se décide avant d’y aller, pas après.</objectif>
-<bas><span>Lieu <b>Donaukanal, berges nord</b></span><span>Effectif <b>indéterminé</b></span><span>Récompense <b>800 €</b></span></bas></souche></ticket>
+<bas><span>Lieu <b>Donaukanal, berges nord</b></span><span>Effectif <b>indéterminé</b></span><span>Récompense <b>800 €</b></span></bas>
+</souche>
+</ticket>
 </pile>
+
 </div>
 </body>
 </html>
