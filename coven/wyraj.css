@@ -368,11 +368,17 @@ html[data-color-scheme="light"] .wyraj {
   text-transform: lowercase;
   text-shadow: var(--text-shadow2);
 }
+.wyraj .wyraj-information bloc {
+  margin: 0 0 16px;
+  padding: 18px 20px 20px;
+  border-radius: 8px;
+  background: linear-gradient(to right, rgba(99, 34, 40, .34), rgba(22, 18, 19, .12) 58%, transparent);
+}
 .wyraj .wyraj-information shop {
   margin: 0 0 30px;
   padding: 18px 20px 20px;
   border-radius: 8px;
-  background: linear-gradient(105deg, rgba(99, 34, 40, .2), rgba(22, 18, 19, .12) 52%, transparent);
+  background: linear-gradient(to left, rgba(99, 34, 40, .34), rgba(22, 18, 19, .12) 58%, transparent);
 }
 .wyraj .wyraj-information relation {
   display: grid;
