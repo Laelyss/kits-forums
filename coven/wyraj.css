@@ -620,7 +620,7 @@ html[data-color-scheme="light"] .wyraj {
 .wyraj .qui:has(> label > input:checked) > .carte {
   display: grid !important;
   grid-template-columns: minmax(168px, 220px) minmax(0, 1fr) !important;
-  gap: 22px 34px;
+  gap: 21px 4px;
   align-items: start;
   animation: wy-panel-in .35s ease;
 }
