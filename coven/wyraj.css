@@ -327,8 +327,6 @@ html[data-color-scheme="light"] .wyraj {
 .wyraj .carte > br,
 .wyraj .identite > br,
 .wyraj .texte > br,
-.wyraj .story > br,
-.wyraj .infos > br { display: none !important; }
 .wyraj .wyraj-information fait {
   color: inherit;
   font-size: 13px;
@@ -703,6 +701,7 @@ html[data-color-scheme="light"] .wyraj {
   overflow: auto;
   color: inherit;
   font-size: 13px;
+  white-space: pre-line;
   line-height: 1.75;
   text-align: justify;
   scrollbar-width: thin;
