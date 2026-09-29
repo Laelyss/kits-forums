@@ -54,7 +54,8 @@ html, body {
 .ph-lecture m0,
 .ph-lecture m1,
 .ph-lecture m2,
-.ph-lecture m3 {
+.ph-lecture m3,
+.ph-lecture m4 {
   display: inline;
   font-family: "Roboto Condensed", sans-serif;
   font-size: 11px;
@@ -66,7 +67,8 @@ html, body {
 .ph-lecture m0,
 .ph-lecture m2 { color: #c4a0a4; }
 .ph-lecture m1,
-.ph-lecture m3 { color: #aa737b; }
+.ph-lecture m3,
+.ph-lecture m4 { color: #aa737b; }
 .ph-lecture u1,
 .ph-lecture u2 {
   display: inline;
@@ -91,6 +93,22 @@ html, body {
   box-shadow: inset 0 -8px 0 rgba(170, 115, 123, .45);
 }
 .ph-texte .ph-vers { align-items: center; text-align: center; }
+.ph-fete { display: flex; flex-direction: column; gap: 14px; }
+.ph-fete > .ph-vers-pl { text-align: center; }
+.ph-fete .ph-sens {
+  color: #c4bcbe;
+  font-size: 12px;
+  font-style: italic;
+  line-height: 1.8;
+  text-align: justify;
+}
+.ph-note {
+  color: #aa737b;
+  font-size: 12px;
+  font-style: italic;
+  line-height: 1.7;
+}
+.ph-texte > .ph-ornement { width: 150px; margin: 8px auto; }
 .ph-separateur { height: 1px; margin: 48px 0 42px; background: #3a3134; }
 .ph-entree { position: relative; padding: 22px 0 8px; text-align: center; }
 .ph-entree-num {
@@ -252,6 +270,8 @@ html, body {
   .ph-kicker,
   .ph-lecture m1,
   .ph-lecture m3,
+  .ph-lecture m4,
+  .ph-note,
   .ph-menu a.is-actif .ph-menu-num { color: #8a4550; }
   .ph-lecture m0,
   .ph-lecture m2 { color: #6e3038; }
@@ -262,6 +282,7 @@ html, body {
   .ph-texte .ph-souligne { color: #4a4446; border-bottom-color: #b08990; }
   .ph-entree .ph-sens,
   .ph-section > .ph-sens,
+  .ph-fete .ph-sens,
   .ph-vers-fr,
   .ph-bloc-fin,
   .ph-menu-titre { color: #5c5658; }
@@ -365,10 +386,45 @@ html, body {
         <div class="ph-tete-num">V</div>
         <div class="ph-tete-txt"><span class="ph-tete-titre">Festivités</span></div>
       </div>
-      <p class="ph-sens">Wyraj suit la roue des saisons. À chaque solstice et chaque équinoxe, le coven salue la saison qui s'achève et honore la divinité de celle qui commence. Les célébrations se tiennent dans le ravin du Wienerwald, loin des regards. Seule Koliada délaisse le ravin pour la cour du Werkhaus. </p>
+      <p class="ph-sens">Wyraj suit la roue des saisons. À chaque solstice et chaque équinoxe, le coven salue la saison qui s’achève et honore la divinité de celle qui commence. Les célébrations se tiennent dans le ravin du Wienerwald, loin des regards. Seule Koliada délaisse le ravin pour la cour du Werkhaus.</p>
       <div class="ph-ornement"><span></span><i></i><span></span></div>
       <div class="ph-texte">
-        <p>bla bla bla </p>
+        <div class="ph-fete">
+          <div class="ph-vers-pl">Printemps — Jarilki</div>
+          <p class="ph-sens">Jarilki porte le nom de Jarilo. Dans les villages slaves, ces fêtes célébraient le retour du vivant : la terre réchauffée, les premières pousses, tout ce qui recommence à grandir. On se retrouvait dehors pour former des rondes, chanter et danser.</p>
+          <p>Jarilki porte le nom de Jarilo. Wyraj ouvre les Jarilki à l’équinoxe de printemps. Réuni, le coven prépare des <i1>pisanki</i1>, œufs décorés à la cire. Chacun confie au sien une intention — protéger, porter chance, rendre l’espoir — avant de l’offrir à son voisin.</p>
+          <p>Une fois les œufs passés de main en main, la ronde se forme. Les chants transmis par les <m1>anciens</m1> appellent le printemps tandis que la nourriture et les boissons circulent. La magie suit le même chemin, libre de courir parmi eux.</p>
+          <p>Vient alors le <i1>gaik</i1>. Une branche choisie pour l’occasion passe entre toutes les mains ; chacun la décore et y noue un ruban. Le lendemain, elle est accrochée au Werkhaus, où elle demeure pendant toute la saison.</p>
+          <p><m4>La passation de saison :</m4> Les Jarilki s’achèvent au solstice d’été par les funérailles de Jarilo. Le <u1>gaik</u1> est alors décroché du Werkhaus. Mêlé à la paille, il prend les traits du dieu avant d’être mis en terre près du ruisseau. Jarilo ne meurt que pour revenir au printemps suivant. Lorsque la terre se referme sur lui, la Nuit de Kupala peut commencer.</p>
+          <p class="ph-note">✵ Jarilo mène les Jarilki et met lui-même l’effigie en terre.</p>
+        </div>
+        <div class="ph-ornement"><span></span><i></i><span></span></div>
+        <div class="ph-fete">
+          <div class="ph-vers-pl">Été — Nuit de Kupala</div>
+          <p class="ph-sens">La Nuit de Kupala tombe au solstice d’été, lorsque l’obscurité se fait la plus brève. Elle appartient au feu qui purifie. Les brasiers se franchissent d’un saut pour appeler la chance, et un jeune arbre paré de rubans est disputé avant de rejoindre les flammes.</p>
+          <p>Kupala allume le grand feu. Un jeune <u2>bouleau</u2> paré de rubans rouges est dressé à proximité, puis le sort partage le coven en deux camps : l’un <m1>protège</m1> l’arbre, l’autre tente de s’en <m0>emparer</m0>. Tout est permis, magie comprise, à condition que nul n’en sorte blessé.</p>
+          <p>Le jeu terminé, chacun peut franchir le feu d’un <i1>saut</i1>, seul ou à deux. On raconte que ceux qui le traversent ensemble sans se lâcher resteront <u2>liés</u2>.</p>
+          <p>Les rondes et les chants se poursuivent autour des flammes. Peu avant l’aube, le camp resté maître du bouleau le livre au brasier.</p>
+          <p><m4>La passation de saison.</m4> Au matin, les cendres du feu et de l’arbre sont recueillies, puis conservées jusqu’à l’<i1>automne</i1>. À l’équinoxe, Kupala les répand sur la terre du ravin afin que le feu de l’été veille sur la récolte de l’année. Lorsque la dernière cendre est tombée, Dozhinki peut commencer.</p>
+          <p class="ph-note">✵ Kupala allume le grand feu et en répand elle-même les cendres.</p>
+        </div>
+        <div class="ph-ornement"><span></span><i></i><span></span></div>
+        <div class="ph-fete">
+          <div class="ph-vers-pl">Automne — Dozhinki</div>
+          <p class="ph-sens">Dozhinki clôt le temps des moissons à l’équinoxe d’automne, lorsque le jour et la nuit retrouvent la même durée. Les derniers épis sont tressés en couronne, parée de ce que l’année a donné, puis portée en procession et offerte.</p>
+          <p>Wyraj ne <u1>moissonne pas</u1>. Sa récolte, c’est ce que chacun a porté durant l’année. Une couronne de paille est <i1>tressée</i1>, puis chaque membre y attache ce qu’il souhaite à l’aide d’un fil : une fiole, un mot, une photographie, quelques herbes ou un talisman. Il peut expliquer son choix ou le garder pour lui.</p>
+          <p>Les anciens racontent ce que le coven a traversé. Lorsque tous ont terminé, Mokosh noue le dernier fil et ferme la couronne. Elle est ensuite accrochée au Werkhaus jusqu’à l’hiver.</p>
+          <p><m4>La passation de saison.</m4> Au solstice d’hiver, Mokosh tranche le fil qu’elle avait noué en dernier. La couronne rejoint alors celles des années précédentes, conservées par le coven ; les plus anciennes sont depuis longtemps retombées en poussière. Une fois le fil coupé, Koliada peut commencer.</p>
+          <p class="ph-note">✵ Mokosh ferme la couronne et en tranche elle-même le dernier fil.</p>
+        </div>
+        <div class="ph-ornement"><span></span><i></i><span></span></div>
+        <div class="ph-fete">
+          <div class="ph-vers-pl">Hiver — Koliada</div>
+          <p class="ph-sens">Koliada vient avec le solstice d’hiver et la nuit la plus longue de l’année. On charge la table pour la veillée, sans oublier le couvert laissé au voyageur égaré — ou aux morts que les croyances plus anciennes font revenir parmi les leurs.</p>
+          <p>Le soir du solstice, la grande porte se referme sur le coven réuni dans la cour pour un long repas. Avant que chacun prenne place, Marzanna nomme ceux qui <i1>manquent</i1> désormais aux leurs : les <u1>morts</u1> et ceux qui sont partis. Une chaise reste <m1>vide</m1>, mais son couvert est servi comme tous les autres et ne sera retiré qu’au matin. Il appartient aux absents autant qu’au voyageur perdu dehors. Les années sans mort ni départ, Marzanna garde le silence ; seul l’égaré est attendu.</p>
+          <p><m4>La passation de saison.</m4> À l’équinoxe de printemps, le coven retourne au ravin pour chasser l’hiver. Une effigie de paille et de chiffons est dressée à l’image de Marzanna, puis livrée aux flammes. Quand il n’en reste que des cendres, chacun s’éloigne du brasier, de crainte que le froid ne le suive. Les Jarilki peuvent alors commencer.</p>
+          <p class="ph-note">✵ Marzanna nomme ceux que l’année a emportés et brûle elle-même son effigie.</p>
+        </div>
       </div>
     </div>
   </div>
