@@ -728,8 +728,10 @@ html[data-color-scheme="light"] .wyraj {
   padding: 0;
   border: 0;
   background: transparent !important;
+  background-color: transparent !important;
+  color-scheme: normal;
+  overflow: hidden;
 }
-
 /* ==================================================
    Fiche assez large : le ruban passe à la verticale
 ================================================== */
