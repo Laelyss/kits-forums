@@ -138,15 +138,6 @@ html, body {
 }
 .ph-ornement span { flex: 1; height: 1px; background: #3a3134; }
 .ph-ornement i { flex: none; width: 5px; height: 5px; transform: rotate(45deg); background: #aa737b; }
-.ph-entree-fin {
-  margin: 28px auto 0 !important;
-  max-width: 300px;
-  color: #7f7779;
-  font-size: 11.5px;
-  font-style: italic;
-  line-height: 1.75;
-  text-align: center;
-}
 .ph-tete {
   display: grid;
   grid-template-columns: auto minmax(0, 1fr);
@@ -265,13 +256,12 @@ html, body {
   .ph-lecture m0,
   .ph-lecture m2 { color: #6e3038; }
   .ph-lecture i1 { background: linear-gradient(120deg, #8a4550, #6e3038); }
-  .ph-lecture u1 { background-image: linear-gradient(120deg, #8a4550, #6e3038); }
+  .ph-lecture u1,
   .ph-lecture u2 { background-image: linear-gradient(120deg, #8a4550, #6e3038); }
   .ph-lecture u3 { color: #2a2426; text-shadow: none; box-shadow: inset 0 -8px 0 rgba(138, 69, 80, .28); }
   .ph-texte .ph-souligne { color: #4a4446; border-bottom-color: #b08990; }
   .ph-entree .ph-sens,
   .ph-section > .ph-sens,
-  .ph-entree-fin,
   .ph-vers-fr,
   .ph-bloc-fin,
   .ph-menu-titre { color: #5c5658; }
@@ -308,7 +298,6 @@ html, body {
         <p>Quatre voix gouvernent Wyraj. Celle de <i1>Kupala</i1> se transmet dans la lignée de <m0>Zosia</m0>. Pour les trois autres, lorsque l’une vient à manquer, certains se présentent d’<i1>eux-mêmes</i1> ; d’autres voient les regards se tourner vers eux.</p>
         <p>Avant de confier la place, le coven veut voir le prétendant à l’œuvre. Le Prohod marque l’appartenance ; le <m0>Naznaczenie</m0> décide si le prétendant prendra place au Kolo. Il n’en connaîtra l’issue qu’au terme du rite.</p>
         <p>Certains liens finissent pourtant par se <m2>briser</m2>. Un serment trahi ou une faute qui expose les autres ; un membre peut être banni, la <u3>mort</u3> demeure la sentence la plus grave, réservée aux actes qui menacent la survie du coven.</p>
-        <p>Chaque année, les saisons ramènent leurs propres célébrations. Wyraj y <m1>honore</m1> les divinités qui veillent sur chacune d’elles ; tous ses membres y sont <i1>conviés</i1>.</p>
       </div>
     </div>
     <div class="ph-separateur"></div>
@@ -370,12 +359,25 @@ html, body {
         <p><b>Mise à mort.</b> Quatre fautes conduisent à cette sentence : préparer ou employer une <u1>arcane</u1>, notamment un rite de réanimation nourri de sang <u2>vampirique</u2> et destiné à arracher un mort à sa fin ; planifier ou commettre le <m1>meurtre</m1> d’un Swoi ; imposer à l’un des leurs un lien d’asservissement ; livrer à un ennemi les identités, les protections ou les accès de Wyraj, que l’on soit encore Swoi ou déjà banni. Comme le bannissement, elle se décide à l’unanimité ; <m0>Kupala</m0> exécute la sentence de sa propre main.</p>
       </div>
     </div>
+    <div class="ph-separateur"></div>
+    <div class="ph-section" id="ph-s5">
+      <div class="ph-tete">
+        <div class="ph-tete-num">V</div>
+        <div class="ph-tete-txt"><span class="ph-tete-titre">Festivités</span></div>
+      </div>
+      <p class="ph-sens">Wyraj suit la roue des saisons. À chaque solstice et chaque équinoxe, le coven salue la saison qui s'achève et honore la divinité de celle qui commence. Les célébrations se tiennent dans le ravin du Wienerwald, loin des regards. Seule Koliada délaisse le ravin pour la cour du Werkhaus. </p>
+      <div class="ph-ornement"><span></span><i></i><span></span></div>
+      <div class="ph-texte">
+        <p>bla bla bla </p>
+      </div>
+    </div>
   </div>
   <nav class="ph-menu">
     <a data-cible="ph-s1" class="is-actif"><span class="ph-menu-ligne"></span><span class="ph-menu-remplissage"></span><span class="ph-menu-point"></span><span class="ph-menu-num">I</span><span class="ph-menu-titre">explication</span></a>
     <a data-cible="ph-s2"><span class="ph-menu-ligne"></span><span class="ph-menu-remplissage"></span><span class="ph-menu-point"></span><span class="ph-menu-num">II</span><span class="ph-menu-titre">prohod</span></a>
     <a data-cible="ph-s3"><span class="ph-menu-ligne"></span><span class="ph-menu-remplissage"></span><span class="ph-menu-point"></span><span class="ph-menu-num">III</span><span class="ph-menu-titre">Naznaczenie</span></a>
     <a data-cible="ph-s4"><span class="ph-menu-ligne"></span><span class="ph-menu-remplissage"></span><span class="ph-menu-point"></span><span class="ph-menu-num">IV</span><span class="ph-menu-titre">Sanctions</span></a>
+    <a data-cible="ph-s5"><span class="ph-menu-ligne"></span><span class="ph-menu-remplissage"></span><span class="ph-menu-point"></span><span class="ph-menu-num">V</span><span class="ph-menu-titre">Festivités</span></a>
   </nav>
 </div>
 <script>
