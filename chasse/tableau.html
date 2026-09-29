@@ -9,7 +9,6 @@
 :root { --font:"Open Sans"; --font3:"Roboto Condensed"; --font2:"Pirata One"; }
 * { box-sizing: border-box; }
 html, body {
-  margin: 0;
   background: transparent !important;
   background-color: transparent !important;
 }
@@ -22,6 +21,16 @@ body { padding: 4px 8px 12px; }
     0 1px 0 rgba(14, 10, 12, .85),
     0 -1px 0 rgba(14, 10, 12, .85);
 }
+  html {
+  background: transparent !important;
+  background-color: transparent !important;
+  color-scheme: normal;
+  scrollbar-width: thin;
+  scrollbar-color: rgba(99, 34, 40, .55) transparent;
+}
+html::-webkit-scrollbar { width: 3px; }
+html::-webkit-scrollbar-track { background: transparent; }
+html::-webkit-scrollbar-thumb { background: rgba(99, 34, 40, .55); border-radius: 3px; }
 .tb { max-width: 640px; margin: 0 auto; --rose:#8a4550; --deep:#8a4550; --cream:#2a2426; --mute:#4a4446; --dim:#6a6264; --cours:#8a6230; --fin:#6a6265; --papier:rgba(236, 228, 229, .92); --trait:rgba(122, 62, 73, .22); }
 .tb input { display: none; }
 .tb p { margin: 0; color: var(--mute); font-family: var(--font), sans-serif; font-size: 12.5px; line-height: 1.75; text-align: justify; }
