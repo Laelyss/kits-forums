@@ -15,21 +15,19 @@
       --text-shadow2: 1px 1px #000;
     }
     * { box-sizing: border-box; }
-
     html, body {
-  color-scheme: light dark;
-  height: 100%;
-  margin: 0;
-  padding: 0;
-  overflow: hidden;
-  background: transparent !important;
-  background-color: transparent !important;
-  color: #565252;
-  font-family: var(--font);
-  font-size: 13px;
-  line-height: 1.7;
-}
-    
+      color-scheme: light dark;
+      height: 100%;
+      margin: 0;
+      padding: 0;
+      overflow: hidden;
+      background: transparent !important;
+      background-color: transparent !important;
+      color: #565252;
+      font-family: var(--font);
+      font-size: 13px;
+      line-height: 1.7;
+    }
     p, .wv-lead {
       font-family: var(--font);
       color: #958f90;
@@ -147,39 +145,10 @@
       align-items: start;
       gap: 16px 28px;
     }
-    
     @media (min-width: 430px) {
       .wv-single-stage { grid-template-columns: 112px minmax(0, 1fr); gap: 22px; }
       .wv-voice-tabs { flex-direction: column; gap: 6px; padding-top: 18px; }
     }
-   @media (prefers-color-scheme: light) {
-  body,
-  p, .wv-lead,
-  .wv-voice-panel p,
-  .wv-simple-entry p { color: #3a3436; }
-  .wv-heading,
-  .wv-voice-name,
-  .wv-simple-name,
-  .wv-org label[for="wy-org-kolo"],
-  .wv-voices label[for="wy-voice-jarilo"] { color: #2a2426; }
-  .wv-kicker,
-  .wv-voice-season,
-  label.wv-main-tab::after { color: #8a4550; }
-  label.wv-main-tab::after { background: #8a4550; }
-  label.wv-voice-tab { color: #5c5658; }
-  label.wv-voice-tab:hover { color: #2a2426; }
-  .wv-voice-name,
-  .wv-heading { text-shadow: none; }
-  .wv-voice-name::before { color: rgba(42, 36, 38, .07); }
-  .wv-simple-list,
-  .wv-simple-entry { border-color: #ddd6d8; }
-  .wv-org:has(#wy-org-membres:checked) label[for="wy-org-membres"],
-  .wv-org:has(#wy-org-termes:checked) label[for="wy-org-termes"],
-  .wv-voices:has(#wy-voice-kupala:checked) label[for="wy-voice-kupala"],
-  .wv-voices:has(#wy-voice-mokosh:checked) label[for="wy-voice-mokosh"],
-  .wv-voices:has(#wy-voice-marzanna:checked) label[for="wy-voice-marzanna"] { color: #2a2426; }
-}
-    
     .wv-voice-tabs {
       display: flex;
       flex-wrap: wrap;
@@ -280,6 +249,15 @@
       text-align: justify;
       color: #958f90;
     }
+    .wv-voice-panel p.wv-voix-note {
+      margin: 14px 0 0;
+      padding-top: 0;
+      color: #b08990;
+      font-size: 12px;
+      font-style: italic;
+      line-height: 1.65;
+      text-align: left;
+    }
     .wv-simple-list { border-top: 1px solid var(--wy-line); }
     .wv-simple-entry {
       padding: 12px 0;
@@ -302,6 +280,34 @@
       color: #958f90;
     }
     .wv-simple-entry p + p { margin-top: .5em; }
+    @media (prefers-color-scheme: light) {
+      body,
+      p, .wv-lead,
+      .wv-voice-panel p,
+      .wv-simple-entry p { color: #3a3436; }
+      .wv-voice-panel p.wv-voix-note { color: #7a4a52; }
+      .wv-heading,
+      .wv-voice-name,
+      .wv-simple-name,
+      .wv-org label[for="wy-org-kolo"],
+      .wv-voices label[for="wy-voice-jarilo"] { color: #2a2426; }
+      .wv-kicker,
+      .wv-voice-season,
+      label.wv-main-tab::after { color: #8a4550; }
+      label.wv-main-tab::after { background: #8a4550; }
+      label.wv-voice-tab { color: #5c5658; }
+      label.wv-voice-tab:hover { color: #2a2426; }
+      .wv-voice-name,
+      .wv-heading { text-shadow: none; }
+      .wv-voice-name::before { color: rgba(42, 36, 38, .07); }
+      .wv-simple-list,
+      .wv-simple-entry { border-color: #ddd6d8; }
+      .wv-org:has(#wy-org-membres:checked) label[for="wy-org-membres"],
+      .wv-org:has(#wy-org-termes:checked) label[for="wy-org-termes"],
+      .wv-voices:has(#wy-voice-kupala:checked) label[for="wy-voice-kupala"],
+      .wv-voices:has(#wy-voice-mokosh:checked) label[for="wy-voice-mokosh"],
+      .wv-voices:has(#wy-voice-marzanna:checked) label[for="wy-voice-marzanna"] { color: #2a2426; }
+    }
   </style>
 </head>
 <body>
@@ -318,7 +324,7 @@
       <div class="wv-main-panel panel-kolo">
         <div class="wv-kicker">Le conseil</div>
         <div class="wv-heading">Les quatre voix</div>
-        <p class="wv-lead">Les décisions qui engagent le coven sont discutées à quatre. Les membres peuvent porter une demande, une inquiétude ou une proposition devant le Kolo. Celui-ci reste libre d’en tenir compte dans ses décisions.</p>
+        <p class="wv-lead">Les décisions qui engagent le coven sont discutées à quatre. Les membres peuvent porter une demande, une inquiétude ou une proposition devant le Kolo. Celui-ci reste libre d’en tenir compte dans ses décisions. Un objet ramené d’une chasse n’appartient pas à celui qui l’a trouvé : le garder, le réparer ou le détruire, c’est au Kolo d’en décider.</p>
         <div class="wv-voices">
           <div class="wv-single-stage">
             <div class="wv-voice-tabs">
@@ -335,22 +341,26 @@
               <div class="wv-voice-panel panel-jarilo">
                 <div class="wv-voice-season">Printemps</div>
                 <div class="wv-voice-name">Jarilo</div>
-                <p>Il suffit de vouloir quelque chose du coven pour que son nom revienne. Nouveaux membres, alliances ou relations à nouer. On vient rarement négocier les mains vides. Une faveur, une information, un intérêt commun : autant de monnaies d’échange, soupesées avec ce sourire aux lèvres qui rendrait presque les négociations agréables.</p>
+                <p>Il suffit de vouloir quelque chose de Wyraj pour que le nom de Jarilo revienne. Une alliance à proposer, un accord à trouver, une relation à nouer : les premiers mots passent par lui. On se présente rarement les mains vides. Une faveur, une information, un intérêt commun : autant de monnaies d’échange soupesées avec un sourire qui rendrait presque la négociation agréable.</p>
+                <p class="wv-voix-note">✵ Ceux qui souhaitent rejoindre Wyraj passent eux aussi par Jarilo. Il les accompagne depuis leur première approche jusqu’au Prohod.</p>
               </div>
               <div class="wv-voice-panel panel-kupala">
                 <div class="wv-voice-season">Été</div>
                 <div class="wv-voice-name">Kupala</div>
-                <p>Veille à l’équilibre du conseil et porte les décisions prises ensemble, qu’elles aient été évidentes ou arrachées après des heures. Lorsque les voix restent divisées au point qu’aucun choix ne s’impose, le dernier mot lui revient. Une prérogative qu’on admire davantage lorsqu’on n’a jamais eu à l’exercer.</p>
+                <p>Veille à l’équilibre du conseil et porte les décisions prises ensemble, qu’elles se soient imposées d’elles-mêmes ou qu’il ait fallu les arracher après des heures. Lorsqu’aucune position ne l’emporte, le dernier mot lui revient. Une prérogative qu’on admire davantage lorsqu’on n’a jamais eu à l’exercer.</p>
+                <p class="wv-voix-note">✵ Le dernier mot ne résume pas sa charge. Kupala scelle les alliances conclues au nom de Wyraj et préside le Prohod durant lequel les nouveaux membres prêtent serment.</p>
               </div>
               <div class="wv-voice-panel panel-mokosh">
                 <div class="wv-voice-season">Automne</div>
                 <div class="wv-voice-name">Mokosh</div>
-                <p>Le coven a beau compter quelques siècles, il n’a toujours pas réponse à tout. Restent pourtant assez de notes, de témoignages et de recherches abandonnées pour ne pas tout recommencer. Mokosh file cette mémoire jusqu'au présent et cultive le savoir au point qu’on croirait presque consulter une encyclopédie.</p>
+                <p>Le coven a beau compter quelques siècles, il n’a toujours pas réponse à tout. Restent cependant assez de notes, de témoignages et de recherches abandonnées pour que chaque génération ne reparte pas de rien. Mokosh reprend le fil là où d’autres l’ont lâché et le conduit jusqu’au présent. Un lieu dont l’histoire s’est perdue, un artefact dont nul ne comprend l’usage : avant d’avancer à l’aveugle, tous se tournent vers elle pour retrouver ce qu’en avaient compris les générations précédentes.</p>
+                <p class="wv-voix-note">✵ Lorsqu’un objet doit être conservé, Mokosh l’identifie, le documente et veille aux conditions nécessaires à sa préservation.</p>
               </div>
               <div class="wv-voice-panel panel-marzanna">
                 <div class="wv-voice-season">Hiver</div>
                 <div class="wv-voice-name">Marzanna</div>
-                <p>Des rumeurs arrivent. Quelques-unes finissent accrochées : une créature hors de sa place, un artefact à trouver, un rite à défaire. Marzanna regarde au-delà du tableau avant de trancher : le coût, les vies mises en jeu, le vrai gain pour le cercle. « Croyez-moi, ça vaut de l’or » n’a jamais suffi.</p>
+                <p>Des rumeurs arrivent au Werkhaus, souvent accompagnées d’une promesse d’or pour tuer une créature ou défaire un mauvais sort. Marzanna n’en retient que quelques-unes. Leur place au tableau dépend du danger, des membres qu’il faudra exposer et de ce que le coven aurait à gagner – ou à perdre. « Une affaire pareille ne se refuse pas », dit-on souvent. Ça n’a jamais suffi.</p>
+                <p class="wv-voix-note">✵ La sélection des missions forme le versant extérieur de son rôle. Au sein de Wyraj, Marzanna conduit les rites funéraires et accompagne les départs, volontaires ou non, ainsi que les serments brisés.</p>
               </div>
             </div>
           </div>
@@ -371,7 +381,6 @@
             <div class="wv-simple-name">Swoi ✶</div>
             <p>Serment de fidélité juré à ceux qui ont offert un foyer à qui n’en avait plus, pour la puissance que donne l’union d’un cercle, pour la protection qui appelle la même en retour.</p>
             <p>Nul n’est tenu de mourir sur ordre ; trahir revient à briser le serment qui vous a fait l’un des leurs.</p>
-            <p>— Loreleï Bogdán</p>
           </div>
         </div>
       </div>
@@ -381,7 +390,7 @@
         <div class="wv-simple-list">
           <div class="wv-simple-entry">
             <div class="wv-simple-name">Gospodarz</div>
-            <p>Celui qui tient la maison, le maître des lieux — ici, le tenancier / gérant du Werkhaus.</p>
+            <p>Celui qui tient la maison, le maître des lieux - ici, le tenancier / gérant du Werkhaus.</p>
           </div>
           <div class="wv-simple-entry">
             <div class="wv-simple-name">Szeptun / szeptucha</div>
@@ -389,12 +398,7 @@
           </div>
           <div class="wv-simple-entry">
             <div class="wv-simple-name">Swoi</div>
-            <p>Pluriel, « les nôtres », « ceux qui sont à nous » — désigne les membres du coven.</p>
-          </div>
-          <div class="wv-simple-entry">
-            <div class="wv-simple-name">Kolo</div>
-            <p>« Cercle », « roue » en Polonais Le mot désigne la ronde qu’on danse aux fêtes autant que le tour que fait l’année avant de recommencer.</p>
-            <p>Le folklore slave place une figure à chaque saison (Jarilo, Kupala, Mokosh, Marzanna) : elles se succèdent sans jamais se remplacer, et l’année a besoin des quatre pour être complète. C’est ce cycle que le coven a repris pour se gouverner.</p>
+            <p>Pluriel, « les nôtres », « ceux qui sont à nous » - désigne les membres du coven.</p>
           </div>
         </div>
       </div>
