@@ -490,6 +490,7 @@ html[data-color-scheme="light"] .wyraj {
   border: 0;
   background: transparent !important;
   color-scheme: light dark;
+  background: transparent !important;
   overflow: hidden;
 }
 @keyframes wy-panel-in {
