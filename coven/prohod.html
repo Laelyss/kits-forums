@@ -39,10 +39,11 @@ html, body {
 .ph-lecture::-webkit-scrollbar { display: none; }
 .ph-lecture p { margin: 0; }
 .ph-texte { display: flex; flex-direction: column; gap: 14px; }
+.ph-texte b,
 .ph-texte strong { color: #e2dbdd; font-weight: 600; }
 .ph-texte em { color: #c98a93; }
 .ph-texte .ph-souligne { color: #c4bcbe; border-bottom: 1px solid #6e4a50; }
-.ph-texte i1 {
+.ph-lecture i1 {
   display: inline;
   font-style: italic;
   background: linear-gradient(120deg, #c98a93, #e2dbdd);
@@ -50,9 +51,10 @@ html, body {
   background-clip: text;
   -webkit-text-fill-color: transparent;
 }
-.ph-texte m0,
-.ph-texte m1,
-.ph-texte m2 {
+.ph-lecture m0,
+.ph-lecture m1,
+.ph-lecture m2,
+.ph-lecture m3 {
   display: inline;
   font-family: "Roboto Condensed", sans-serif;
   font-size: 11px;
@@ -61,19 +63,22 @@ html, body {
   letter-spacing: 1.5px;
   text-transform: uppercase;
 }
-.ph-texte m0,
-.ph-texte m2 { color: #c4a0a4; }
-.ph-texte m1 { color: #aa737b; }
-.ph-texte u1 {
+.ph-lecture m0,
+.ph-lecture m2 { color: #c4a0a4; }
+.ph-lecture m1,
+.ph-lecture m3 { color: #aa737b; }
+.ph-lecture u1,
+.ph-lecture u2 {
   display: inline;
   padding-bottom: 0.12em;
   text-decoration: none;
-  background-image: linear-gradient(120deg, #aa737b, #715454);
   background-repeat: no-repeat;
   background-size: 100% 1px;
   background-position: 0 95%;
 }
-.ph-texte u3 {
+.ph-lecture u1 { background-image: linear-gradient(120deg, #aa737b, #715454); }
+.ph-lecture u2 { background-image: linear-gradient(120deg, #c98a93, #e2dbdd); }
+.ph-lecture u3 {
   display: inline;
   padding-inline: 0.15em;
   color: #e2dbdd;
@@ -85,6 +90,7 @@ html, body {
   text-shadow: 1px 1px 0 #000;
   box-shadow: inset 0 -8px 0 rgba(170, 115, 123, .45);
 }
+.ph-texte .ph-vers { align-items: center; text-align: center; }
 .ph-separateur { height: 1px; margin: 48px 0 42px; background: #3a3134; }
 .ph-entree { position: relative; padding: 22px 0 8px; text-align: center; }
 .ph-entree-num {
@@ -163,7 +169,7 @@ html, body {
   text-transform: lowercase;
 }
 .ph-section > .ph-sens {
-  margin: 0 0 0;
+  margin: 0;
   padding: 0;
   border: 0;
   color: #c4bcbe;
@@ -245,6 +251,7 @@ html, body {
 .ph-menu a.is-actif .ph-menu-titre { color: #e2dbdd; }
 @media (prefers-color-scheme: light) {
   .ph-lecture { color: #3a3436; }
+  .ph-texte b,
   .ph-texte strong,
   .ph-entree-titre,
   .ph-tete-titre,
@@ -252,13 +259,15 @@ html, body {
   .ph-menu a.is-actif .ph-menu-titre { color: #2a2426; }
   .ph-texte em,
   .ph-kicker,
-  .ph-texte m1,
+  .ph-lecture m1,
+  .ph-lecture m3,
   .ph-menu a.is-actif .ph-menu-num { color: #8a4550; }
-  .ph-texte m0,
-  .ph-texte m2 { color: #6e3038; }
-  .ph-texte i1 { background: linear-gradient(120deg, #8a4550, #6e3038); }
-  .ph-texte u1 { background-image: linear-gradient(120deg, #8a4550, #6e3038); }
-  .ph-texte u3 { color: #2a2426; text-shadow: none; box-shadow: inset 0 -8px 0 rgba(138, 69, 80, .28); }
+  .ph-lecture m0,
+  .ph-lecture m2 { color: #6e3038; }
+  .ph-lecture i1 { background: linear-gradient(120deg, #8a4550, #6e3038); }
+  .ph-lecture u1 { background-image: linear-gradient(120deg, #8a4550, #6e3038); }
+  .ph-lecture u2 { background-image: linear-gradient(120deg, #8a4550, #6e3038); }
+  .ph-lecture u3 { color: #2a2426; text-shadow: none; box-shadow: inset 0 -8px 0 rgba(138, 69, 80, .28); }
   .ph-texte .ph-souligne { color: #4a4446; border-bottom-color: #b08990; }
   .ph-entree .ph-sens,
   .ph-section > .ph-sens,
@@ -296,8 +305,8 @@ html, body {
       <div class="ph-texte">
         <p>Certains Swoi <i1>naissent</i1> au sein du coven. À <m2>seize ans</m2>, ils passent le Prohod et reçoivent leur marque.</p>
         <p>Pour ceux qui approchent Wyraj sans y avoir grandi, l’attente peut durer longtemps, jusqu’à ce que leurs <u1>actes</u1> aient raison de la méfiance et qu’une place leur soit <u1>accordée</u1>. Ce n’est qu’alors qu’ils passent à leur tour le <m1>Prohod</m1>. La route diffère ; le rite et le signe demeurent les mêmes.</p>
-        <p>Quatre voix gouvernent Wyraj. Celle de <i1>Kupala</i1> se transmet dans la lignée de <m0>Zosia</m0>. Pour les trois autres, lorsque l'une vient à manquer, certains se présentent d’<i1>eux-mêmes</i1> ; d’autres voient les regards se tourner vers eux.</p>
-        <p>Avant de confier la place, le coven veut voir le prétendant à l'œuvre. Le Prohod marque l’appartenance ; le <m0>Naznaczenie</m0> décide si le prétendant prendra place au Kolo. Il n’en connaîtra l’issue qu’au terme du rite.</p>
+        <p>Quatre voix gouvernent Wyraj. Celle de <i1>Kupala</i1> se transmet dans la lignée de <m0>Zosia</m0>. Pour les trois autres, lorsque l’une vient à manquer, certains se présentent d’<i1>eux-mêmes</i1> ; d’autres voient les regards se tourner vers eux.</p>
+        <p>Avant de confier la place, le coven veut voir le prétendant à l’œuvre. Le Prohod marque l’appartenance ; le <m0>Naznaczenie</m0> décide si le prétendant prendra place au Kolo. Il n’en connaîtra l’issue qu’au terme du rite.</p>
         <p>Certains liens finissent pourtant par se <m2>briser</m2>. Un serment trahi ou une faute qui expose les autres ; un membre peut être banni, la <u3>mort</u3> demeure la sentence la plus grave, réservée aux actes qui menacent la survie du coven.</p>
         <p>Chaque année, les saisons ramènent leurs propres célébrations. Wyraj y <m1>honore</m1> les divinités qui veillent sur chacune d’elles ; tous ses membres y sont <i1>conviés</i1>.</p>
       </div>
@@ -306,7 +315,7 @@ html, body {
     <div class="ph-section" id="ph-s2">
       <div class="ph-tete">
         <div class="ph-tete-num">II</div>
-        <div class="ph-tete-txt"><span class="ph-kicker">Prohod</span><span class="ph-tete-titre">passage</span></div>
+        <div class="ph-tete-txt"><span class="ph-tete-titre">Prohod</span></div>
       </div>
       <p class="ph-sens">Son nom signifie « passage ». Le rituel scelle l’appartenance au coven. Tous se rassemblent, témoins de la cérémonie et du serment qui fait du nouveau membre l’un des leurs.</p>
       <div class="ph-ornement"><span></span><i></i><span></span></div>
@@ -331,51 +340,42 @@ html, body {
     <div class="ph-section" id="ph-s3">
       <div class="ph-tete">
         <div class="ph-tete-num">III</div>
-        <div class="ph-tete-txt"><span class="ph-kicker">Section III</span><span class="ph-tete-titre">ipsum</span></div>
+        <div class="ph-tete-txt"><span class="ph-tete-titre">Naznaczenie</span></div>
       </div>
-      <p class="ph-sens">Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat.</p>
+      <p class="ph-sens">Naznaczenie vient de naznaczyć : « <i1>marquer</i1> », mais aussi « <m0>désigner quelqu’un pour un rôle</m0> ». On dit encore naznaczony de celui que le destin a marqué.</p>
       <div class="ph-ornement"><span></span><i></i><span></span></div>
       <div class="ph-texte">
-        <p>Neque porro quisquam est, qui <strong>dolorem ipsum</strong> quia dolor sit amet, consectetur, adipisci velit, sed quia non numquam eius modi tempora incidunt ut labore et dolore magnam aliquam.</p>
-        <p>Ut enim ad minima veniam, quis nostrum exercitationem ullam corporis suscipit laboriosam, nisi ut <em>aliquid ex ea</em> commodi consequatur. Quis autem vel eum iure reprehenderit qui in ea voluptate velit esse.</p>
-        <p>At vero eos et accusamus et iusto odio dignissimos ducimus qui blanditiis praesentium voluptatum deleniti atque <span class="ph-souligne">corrupti quos dolores</span> et quas molestias excepturi.</p>
-      </div>
-      <div class="ph-bloc">
-        <div class="ph-bloc-titre"><span></span><b>Lorem ipsum</b><span></span></div>
-        <div class="ph-vers"><div class="ph-vers-pl">Lorem ipsum dolor sit amet.</div><div class="ph-vers-fr">Consectetur adipiscing elit, sed do eiusmod.</div></div>
-        <div class="ph-vers"><div class="ph-vers-pl">Ut enim ad minim veniam, quis nostrud exercitation.</div><div class="ph-vers-fr">Duis aute irure dolor in reprehenderit in voluptate.</div></div>
-        <div class="ph-vers"><div class="ph-vers-pl">Excepteur sint occaecat cupidatat non proident.</div><div class="ph-vers-fr">Sunt in culpa qui officia deserunt mollit anim.</div></div>
-        <div class="ph-losange"></div>
-        <p class="ph-bloc-fin">Nam libero tempore, cum soluta nobis est eligendi optio cumque nihil impedit.</p>
+        <p>Le prétendant veille sur la saison laissée vacante le temps qu’elle s’accomplisse. Il en conduit la fête et en assume les devoirs sous le regard du Kolo. Jusqu’à la dernière nuit, rien ne lui garantit que la place deviendra sienne.</p>
+        <p>La nuit où sa saison passe la main, les trois se présentent devant lui :</p>
+        <div class="ph-vers"><div class="ph-vers-pl">— Przyjmujemy cię do Koła.</div><div class="ph-vers-fr">Nous t’accueillons au Kolo.</div></div>
+        <p>Alors seulement, le prétendant fait perler son propre sang et trace sur leurs visages le signe de la saison qu’il s’apprête à porter. Chacun lui rend ensuite le sien, aux mêmes endroits que lors du Prohod.</p>
+        <p>Le dernier signe apposé, il prononce :</p>
+        <div class="ph-vers"><div class="ph-vers-pl">— Przyjmuję swój głos.</div><div class="ph-vers-fr">Je reçois ma voix.</div></div>
+        <p>Le Naznaczenie scelle alors sa place.</p>
+        <p>Si les trois ne se présentent pas devant lui, la place reste vacante jusqu’au prochain prétendant.</p>
       </div>
     </div>
     <div class="ph-separateur"></div>
     <div class="ph-section" id="ph-s4">
       <div class="ph-tete">
         <div class="ph-tete-num">IV</div>
-        <div class="ph-tete-txt"><span class="ph-kicker">Section IV</span><span class="ph-tete-titre">dolor</span></div>
+        <div class="ph-tete-txt"><span class="ph-tete-titre">Sanctions</span></div>
       </div>
-      <p class="ph-sens">Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur.</p>
+      <p class="ph-sens">Tout manquement n’appelle pas une sanction. Lorsqu’une faute n’a causé ni dommage grave ni trahison délibérée, le membre répond de son geste et répare ce qui peut l’être.</p>
       <div class="ph-ornement"><span></span><i></i><span></span></div>
       <div class="ph-texte">
-        <p>Temporibus autem quibusdam et aut officiis debitis aut rerum <strong>necessitatibus</strong> saepe eveniet ut et voluptates repudiandae sint et molestiae non recusandae.</p>
-        <p>Itaque earum rerum hic tenetur a sapiente delectus, ut aut reiciendis voluptatibus maiores alias consequatur aut <em>perferendis doloribus</em> asperiores repellat.</p>
-        <p>Nam libero tempore, cum soluta nobis est eligendi optio cumque nihil impedit quo minus id quod maxime placeat facere possimus, omnis voluptas assumenda est, omnis dolor <span class="ph-souligne">repellendus</span>.</p>
-      </div>
-      <div class="ph-bloc">
-        <div class="ph-bloc-titre"><span></span><b>Dolor sit</b><span></span></div>
-        <div class="ph-vers"><div class="ph-vers-pl">Temporibus autem quibusdam.</div><div class="ph-vers-fr">Et aut officiis debitis aut rerum necessitatibus.</div></div>
-        <div class="ph-vers"><div class="ph-vers-pl">Itaque earum rerum hic tenetur a sapiente delectus.</div><div class="ph-vers-fr">Ut aut reiciendis voluptatibus maiores alias.</div></div>
-        <div class="ph-losange"></div>
-        <p class="ph-bloc-fin">Similique sunt in culpa qui officia deserunt mollitia animi, id est laborum.</p>
+        <p>Les sanctions commencent lorsque la confiance est trop atteinte pour qu’un rappel suffise. Elles retirent alors l’une de ces trois choses : une place, l’appartenance au coven ou la vie.</p>
+        <p><b>Retrait.</b> Il répond à une faute grave dont les conséquences peuvent encore être contenues : avoir exposé l’un des leurs par <m1>imprudence</m1>, dissimulé une menace ou transmis un savoir protégé sans <m1>autorisation</m1>. Pour un temps fixé, le Swoi est tenu à l’écart des affaires du coven. Il demeure des leurs, mais devra <i1>regagner leur confiance</i1> avant d’y reprendre pleinement sa place. Pour un membre du Kolo, il coûte aussi sa voix : sa saison demeure vacante jusqu’au prochain <m0>Naznaczenie</m0>.</p>
+        <p><b>Bannissement.</b> Il répond à une trahison <u1>délibérée</u1> ou à un dommage irréparable : dérober ou détruire volontairement un objet placé sous la garde du coven ; abandonner sciemment un Swoi aux mains d’un adversaire. Ces actes ne laissent aucune confiance à regagner. Le <m3>bannissement</m3> se décide à l’<u3>unanimité</u3>. Sa marque demeure pourtant sur sa peau ; <i1>à quiconque sait la lire</i1>.</p>
+        <p><b>Mise à mort.</b> Quatre fautes conduisent à cette sentence : préparer ou employer une <u1>arcane</u1>, notamment un rite de réanimation nourri de sang <u2>vampirique</u2> et destiné à arracher un mort à sa fin ; planifier ou commettre le <m1>meurtre</m1> d’un Swoi ; imposer à l’un des leurs un lien d’asservissement ; livrer à un ennemi les identités, les protections ou les accès de Wyraj, que l’on soit encore Swoi ou déjà banni. Comme le bannissement, elle se décide à l’unanimité ; <m0>Kupala</m0> exécute la sentence de sa propre main.</p>
       </div>
     </div>
   </div>
   <nav class="ph-menu">
-    <a data-cible="ph-s1" class="is-actif"><span class="ph-menu-ligne"></span><span class="ph-menu-remplissage"></span><span class="ph-menu-point"></span><span class="ph-menu-num">I</span><span class="ph-menu-titre">seuil</span></a>
-    <a data-cible="ph-s2"><span class="ph-menu-ligne"></span><span class="ph-menu-remplissage"></span><span class="ph-menu-point"></span><span class="ph-menu-num">II</span><span class="ph-menu-titre">passage</span></a>
-    <a data-cible="ph-s3"><span class="ph-menu-ligne"></span><span class="ph-menu-remplissage"></span><span class="ph-menu-point"></span><span class="ph-menu-num">III</span><span class="ph-menu-titre">ipsum</span></a>
-    <a data-cible="ph-s4"><span class="ph-menu-ligne"></span><span class="ph-menu-remplissage"></span><span class="ph-menu-point"></span><span class="ph-menu-num">IV</span><span class="ph-menu-titre">dolor</span></a>
+    <a data-cible="ph-s1" class="is-actif"><span class="ph-menu-ligne"></span><span class="ph-menu-remplissage"></span><span class="ph-menu-point"></span><span class="ph-menu-num">I</span><span class="ph-menu-titre">explication</span></a>
+    <a data-cible="ph-s2"><span class="ph-menu-ligne"></span><span class="ph-menu-remplissage"></span><span class="ph-menu-point"></span><span class="ph-menu-num">II</span><span class="ph-menu-titre">prohod</span></a>
+    <a data-cible="ph-s3"><span class="ph-menu-ligne"></span><span class="ph-menu-remplissage"></span><span class="ph-menu-point"></span><span class="ph-menu-num">III</span><span class="ph-menu-titre">Naznaczenie</span></a>
+    <a data-cible="ph-s4"><span class="ph-menu-ligne"></span><span class="ph-menu-remplissage"></span><span class="ph-menu-point"></span><span class="ph-menu-num">IV</span><span class="ph-menu-titre">Sanctions</span></a>
   </nav>
 </div>
 <script>
