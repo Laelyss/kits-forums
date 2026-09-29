@@ -489,7 +489,7 @@ html[data-color-scheme="light"] .wyraj {
   padding: 0;
   border: 0;
   background: transparent !important;
-  color-scheme: normal;
+  color-scheme: light dark;
   overflow: hidden;
 }
 @keyframes wy-panel-in {
