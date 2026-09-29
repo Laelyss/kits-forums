@@ -326,7 +326,7 @@ html[data-color-scheme="light"] .wyraj {
 .wyraj .qui > br,
 .wyraj .carte > br,
 .wyraj .identite > br,
-.wyraj .texte > br,
+.wyraj .texte > br { display: none !important; }
 .wyraj .wyraj-information fait {
   color: inherit;
   font-size: 13px;
