@@ -5,7 +5,7 @@
 @import url("https://fonts.googleapis.com/css2?family=Open+Sans:ital,wght@0,400;0,600;1,400&family=Newsreader:opsz,wght@6..72,400&display=swap");
 
 
-/* ---------- 1. Couleurs (à modifier ici) ---------- */
+/* ---------- 1. Réglages (à modifier ici) ---------- */
 
 /* Permet à la couleur d'accent de changer en douceur */
 @property --accent {
@@ -16,11 +16,15 @@
 
 .ab {
   /* une couleur par onglet */
-  --eddy: #e6c86e;
-  --june: #d9a7a2;
-  --hrp:  #c8c2b2;
-  --pnj:  #a9c3a3;
-  --pnj2: #a9b9d4;
+  --tab-eddy: #e6c86e;
+  --tab-june: #d9a7a2;
+  --tab-hrp:  #c8c2b2;
+  --tab-pnj:  #a9c3a3;
+  --tab-pnj2: #a9b9d4;
+
+  /* texte des zones de narration / possibilités / hors RP */
+  --text-size: 1.2rem;
+  --text-height: 1.9;
 
   /* papier et texte */
   --paper: #f2efe6;
@@ -30,7 +34,6 @@
   --text:  #34322c;
   --dark:  #1f1e1a;
   --dim:   #8b8676;
-  --npc:   #5a5294;
 
   /* résultats des dés */
   --success: #6fa77c;
@@ -41,14 +44,26 @@
 }
 
 /* Couleur d'accent = celle de l'onglet coché */
-.ab:has(.ab-tab.eddy input:checked) { --accent: var(--eddy); }
-.ab:has(.ab-tab.june input:checked) { --accent: var(--june); }
-.ab:has(.ab-tab.hrp  input:checked) { --accent: var(--hrp); }
-.ab:has(.ab-tab.pnj  input:checked) { --accent: var(--pnj); }
-.ab:has(.ab-tab.pnj2 input:checked) { --accent: var(--pnj2); }
+.ab:has(.ab-tab.eddy input:checked) { --accent: var(--tab-eddy); }
+.ab:has(.ab-tab.june input:checked) { --accent: var(--tab-june); }
+.ab:has(.ab-tab.hrp  input:checked) { --accent: var(--tab-hrp); }
+.ab:has(.ab-tab.pnj  input:checked) { --accent: var(--tab-pnj); }
+.ab:has(.ab-tab.pnj2 input:checked) { --accent: var(--tab-pnj2); }
 
 
-/* ---------- 2. Structure générale ---------- */
+/* ---------- 2. Répliques des PNJ : <pnj1>texte</pnj1> ---------- */
+/* Pour renommer : remplacer pnj1 par le nom voulu (sans espace ni accent),
+   ici ET dans le message, ex. <halstead>…</halstead> */
+
+.ab pnj1 { color: #5a5294; }
+.ab pnj2 { color: #2f7a78; }
+.ab pnj3 { color: #a14a3b; }
+.ab pnj4 { color: #6b7a2e; }
+.ab pnj5 { color: #3b5f8f; }
+.ab pnj6 { color: #8a4a78; }
+
+
+/* ---------- 3. Structure générale ---------- */
 
 .ab {
   max-width: 680px;
@@ -62,11 +77,13 @@
 }
 .ab * { box-sizing: border-box; }
 
-/* <br> ajoutés par Forumactif entre les blocs (ceux dans le texte restent) */
+/* <br> ajoutés par Forumactif entre les blocs
+   (les retours à la ligne du texte, eux, restent) */
 .ab > br, .ab-sheet > br, .ab-content > br, .ab-head > br,
-.ab-sections > br, .ab-section > br, .ab-narration > br,
-.ab-possibilities > br, .ab-section ul > br,
-.ab-sidebar > br, .ab-tabs > br { display: none; }
+.ab-sections > br, .ab-section > br,
+.ab-sidebar > br, .ab-tabs > br,
+.ab .ab-dice + br, .ab .ab-note + br,
+.ab .ab-encart + br, .ab .ab-cut + br { display: none; }
 
 /* La feuille : texte à gauche, bande sombre à droite */
 .ab .ab-sheet {
@@ -84,7 +101,7 @@
 }
 
 
-/* ---------- 3. Bande latérale et onglets ---------- */
+/* ---------- 4. Bande latérale et onglets ---------- */
 
 .ab .ab-sidebar {
   padding: 24px 10px;
@@ -130,7 +147,7 @@
 }
 
 
-/* ---------- 4. En-tête ---------- */
+/* ---------- 5. En-tête ---------- */
 
 .ab .ab-head {
   margin-bottom: 26px;
@@ -158,7 +175,7 @@
 }
 
 
-/* ---------- 5. Volets (un par onglet) ---------- */
+/* ---------- 6. Volets (un par onglet) ---------- */
 
 .ab .ab-section { display: none; }
 
@@ -197,35 +214,32 @@
 }
 
 
-/* ---------- 6. Narration ---------- */
+/* ---------- 7. Zone de texte (narration, hors RP) ---------- */
 
-.ab .ab-narration p,
-.ab .ab-possibilities p {
-  margin: 0 0 14px;
+.ab .ab-text,
+.ab .ab-possibilities {
+  font-family: "Open Sans", system-ui, sans-serif;
+  font-size: var(--text-size);
+  line-height: var(--text-height);
   text-align: justify;
   hyphens: auto;
 }
-/* dernier élément sans marge (en ignorant les <br> de Forumactif) */
-.ab .ab-narration > :nth-last-child(1 of :not(br)),
-.ab .ab-possibilities > :nth-last-child(1 of :not(br)) { margin-bottom: 0; }
-
-/* Réplique de PNJ */
-.ab .ab-npc { color: var(--npc); }
 
 /* Encart léger (lieu, date…) : à placer n'importe où */
 .ab .ab-encart {
   display: block;
-  margin: 0 0 14px;
+  margin: 0 0 10px;
   font-size: 9.5px;
   line-height: 1.6;
   letter-spacing: .2em;
+  text-align: left;
   text-transform: uppercase;
   color: var(--dim);
 }
 
 /* Coupure de scène */
 .ab .ab-cut {
-  margin: 22px 0;
+  margin: 14px 0;
   text-align: center;
   line-height: 1;
   color: var(--dim);
@@ -239,12 +253,13 @@
   gap: 6px;
   width: fit-content;
   max-width: 100%;
-  margin: 0 0 14px;
+  margin: 8px 0;
   padding: 3px 10px 3px 4px;
   background: #2b2a26;
   border-radius: 20px;
   font-size: 10px;
   line-height: 1.5;
+  text-align: left;
   color: #d9d5ca;
 }
 .ab .ab-note::before {
@@ -262,7 +277,7 @@
 }
 
 
-/* ---------- 7. Dés ---------- */
+/* ---------- 8. Dés ---------- */
 
 .ab .ab-dice {
   --dot: var(--success);
@@ -271,13 +286,14 @@
   gap: 8px;
   width: max-content;
   max-width: 100%;
-  margin: 0 0 18px;
+  margin: 10px 0;
   padding: 4px 6px 4px 12px;
   background: color-mix(in srgb, var(--dot) 12%, var(--box));
   border: 1px solid color-mix(in srgb, var(--dot) 40%, var(--line2));
   border-radius: 20px;
   font-size: 10.5px;
   line-height: 1.5;
+  text-align: left;
 }
 .ab .ab-dice.partial { --dot: var(--partial); }
 .ab .ab-dice.fail    { --dot: var(--fail); }
@@ -305,7 +321,7 @@
 }
 
 
-/* ---------- 8. Vos possibilités ---------- */
+/* ---------- 9. Vos possibilités ---------- */
 
 .ab .ab-possibilities {
   margin-top: 30px;
@@ -313,44 +329,20 @@
   background: var(--box);
   border: 1px solid var(--line2);
   border-radius: 14px;
-  font-size: 12.5px;
-  line-height: 1.85;
 }
 .ab .ab-possibilities::before {
   content: "Vos possibilités";
-  display: flex;
-  align-items: center;
-  gap: 8px;
+  display: block;
   margin-bottom: 10px;
+  padding-left: 14px;
   font-size: 10.5px;
   font-weight: 600;
   line-height: 1.4;
+  text-align: left;
   color: var(--dark);
   /* le point coloré est dessiné en fond */
-  padding-left: 14px;
   background: radial-gradient(circle at 3px 50%, var(--accent) 3px, transparent 3.5px);
 }
-
-
-/* ---------- 9. Hors RP (liste) ---------- */
-
-.ab .ab-section ul {
-  display: flex;
-  flex-direction: column;
-  gap: 8px;
-  margin: 0;
-  padding: 0;
-  list-style: none;
-}
-.ab .ab-section li {
-  position: relative;
-  padding-left: 22px;
-  font-size: 12px;
-  line-height: 1.7;
-  text-align: justify;
-}
-.ab .ab-section li::before { content: "—"; position: absolute; left: 0; color: var(--dim); }
-.ab .ab-section li b { color: var(--dark); }
 
 
 /* ---------- 10. Animations ---------- */
