@@ -2,151 +2,379 @@
    AFTER THE BELL — MJ POST
    ============================================ */
 
-.post {
-  max-width: 680px !important;
-  margin: 0 auto !important;
-  font-family: "Open Sans", system-ui, sans-serif !important;
-  color: #34322c !important;
+@import url("https://fonts.googleapis.com/css2?family=Open+Sans:ital,wght@0,400;0,600;1,400&family=Newsreader:opsz,wght@6..72,400&display=swap");
+
+
+/* ---------- 1. Couleurs (à modifier ici) ---------- */
+
+/* Permet à la couleur d'accent de changer en douceur */
+@property --accent {
+  syntax: "<color>";
+  inherits: true;
+  initial-value: #e6c86e;
 }
 
-.post input[type="radio"] { display: none !important; }
+.ab {
+  /* une couleur par onglet */
+  --eddy: #e6c86e;
+  --june: #d9a7a2;
+  --hrp:  #c8c2b2;
+  --pnj:  #a9c3a3;
+  --pnj2: #a9b9d4;
 
-.post .feuille {
-  display: grid !important;
-  grid-template-columns: minmax(0, 1fr) 62px !important;
-  background: #f2efe6 url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='160' height='160'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='.85' numOctaves='3' stitchTiles='stitch'/%3E%3CfeColorMatrix values='0 0 0 0 0.22 0 0 0 0 0.22 0 0 0 0 0.22 0 0 0 .10 0'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23n)'/%3E%3C/svg%3E") !important;
-  background-size: 160px 160px !important;
-  border: 1px solid #6e6a5d !important;
-  border-radius: 12px !important;
-  overflow: visible !important;
-}
+  /* papier et texte */
+  --paper: #f2efe6;
+  --box:   #fbfaf6;
+  --line:  #6e6a5d;
+  --line2: #d6d1c2;
+  --text:  #34322c;
+  --dark:  #1f1e1a;
+  --dim:   #8b8676;
+  --npc:   #5a5294;
 
-.post .corps {
-  padding: 30px 34px 34px !important;
-  min-width: 0 !important;
-}
+  /* résultats des dés */
+  --success: #6fa77c;
+  --partial: #d1a647;
+  --fail:    #b5574d;
 
-.post .bande {
-  background: #2b2a26 !important;
-  border-radius: 0 11px 11px 0 !important;
-  padding: 24px 10px !important;
-}
-
-.post .onglets {
-  position: sticky !important;
-  top: 16px !important;
-  display: flex !important;
-  flex-direction: column !important;
-  gap: 2px !important;
-  padding: 3px !important;
-  background: #35332e !important;
-  border: 1px solid #46433c !important;
-  border-radius: 20px !important;
+  --grain: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='160' height='160'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='.85' numOctaves='3' stitchTiles='stitch'/%3E%3CfeColorMatrix values='0 0 0 0 0.22 0 0 0 0 0.22 0 0 0 0 0.22 0 0 0 .10 0'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23n)'/%3E%3C/svg%3E");
 }
 
-.post .onglets label {
-  display: flex !important;
-  align-items: center !important;
-  justify-content: center !important;
-  padding: 14px 0 !important;
-  writing-mode: vertical-rl !important;
-  transform: rotate(180deg) !important;
-  white-space: nowrap !important;
-  border-radius: 16px !important;
-  font-size: 11px !important;
-  color: #9a9584 !important;
-  cursor: pointer !important;
-  margin: 0 !important;
+/* Couleur d'accent = celle de l'onglet coché */
+.ab:has(.ab-tab.eddy input:checked) { --accent: var(--eddy); }
+.ab:has(.ab-tab.june input:checked) { --accent: var(--june); }
+.ab:has(.ab-tab.hrp  input:checked) { --accent: var(--hrp); }
+.ab:has(.ab-tab.pnj  input:checked) { --accent: var(--pnj); }
+.ab:has(.ab-tab.pnj2 input:checked) { --accent: var(--pnj2); }
+
+
+/* ---------- 2. Structure générale ---------- */
+
+.ab {
+  max-width: 680px;
+  margin: 0 auto;
+  color: var(--text);
+  font-family: "Open Sans", system-ui, sans-serif;
+  font-size: 13px;
+  line-height: 1.9;
+  text-align: left;
+  transition: --accent .4s;
+}
+.ab * { box-sizing: border-box; }
+
+/* <br> ajoutés par Forumactif entre les blocs (ceux dans le texte restent) */
+.ab > br, .ab-sheet > br, .ab-content > br, .ab-head > br,
+.ab-sections > br, .ab-section > br, .ab-narration > br,
+.ab-possibilities > br, .ab-section ul > br,
+.ab-sidebar > br, .ab-tabs > br { display: none; }
+
+/* La feuille : texte à gauche, bande sombre à droite */
+.ab .ab-sheet {
+  display: grid;
+  grid-template-columns: minmax(0, 1fr) 62px;
+  background-color: color-mix(in srgb, var(--accent) 9%, var(--paper));
+  background-image: var(--grain);
+  background-size: 160px 160px;
+  border: 1px solid var(--line);
+  border-radius: 12px;
+}
+.ab .ab-content {
+  min-width: 0;
+  padding: 30px 34px 34px;
 }
 
-.post:has(#tab-eddy:checked) .o-eddy,
-.post:has(#tab-june:checked) .o-june,
-.post:has(#tab-hrp:checked) .o-hrp {
-  background: #e6c86e !important;
-  color: #241d0b !important;
-  font-weight: 600 !important;
+
+/* ---------- 3. Bande latérale et onglets ---------- */
+
+.ab .ab-sidebar {
+  padding: 24px 10px;
+  background: #2b2a26 var(--grain);
+  background-size: 160px 160px;
+  border-radius: 0 11px 11px 0;
+}
+.ab .ab-tabs {
+  position: sticky;   /* suit le défilement */
+  top: 16px;
+  display: flex;
+  flex-direction: column;
+  gap: 2px;
+  padding: 3px;
+  background: #35332e;
+  border: 1px solid #46433c;
+  border-radius: 20px;
+}
+.ab .ab-tab {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  margin: 0;
+  padding: 14px 0;
+  writing-mode: vertical-rl;  /* texte vertical : un nom long allonge l'onglet */
+  transform: rotate(180deg);
+  white-space: nowrap;
+  border-radius: 16px;
+  font-size: 11px;
+  line-height: 1.4;
+  color: #9a9584;
+  cursor: pointer;
+  transition: background .25s, color .25s;
+}
+.ab .ab-tab:hover { color: var(--paper); }
+.ab .ab-tab input { display: none; }
+
+/* Onglet actif */
+.ab .ab-tab:has(input:checked) {
+  background: var(--accent);
+  color: var(--dark);
+  font-weight: 600;
 }
 
-.post .volet { display: none !important; }
-.post:has(#tab-eddy:checked) .v-eddy,
-.post:has(#tab-june:checked) .v-june,
-.post:has(#tab-hrp:checked) .v-hrp {
-  display: block !important;
+
+/* ---------- 4. En-tête ---------- */
+
+.ab .ab-head {
+  margin-bottom: 26px;
+  padding-bottom: 18px;
+  border-bottom: 1px solid var(--line2);
+}
+.ab .ab-kicker,
+.ab .ab-players {
+  display: block;
+  font-size: 10.5px;
+  line-height: 1.6;
+  color: var(--dim);
+}
+.ab .ab-title {
+  margin: 6px 0 10px;
+  font-family: "Newsreader", Georgia, serif;
+  font-size: 38px;
+  line-height: 1.05;
+  color: var(--dark);
+}
+.ab .ab-title span {
+  padding: 0 6px;
+  background: var(--accent);
+  transition: background .4s;
 }
 
-.post .titre {
-  font-family: "Newsreader", Georgia, serif !important;
-  font-size: 38px !important;
-  line-height: 1.05 !important;
-  color: #1f1e1a !important;
-  margin: 6px 0 10px !important;
-  display: block !important;
-}
-.post .titre .bell {
-  background: #e6c86e !important;
-  color: #241d0b !important;
-  padding: 0 6px !important;
+
+/* ---------- 5. Volets (un par onglet) ---------- */
+
+.ab .ab-section { display: none; }
+
+/* L'onglet n°X affiche le volet n°X (jusqu'à 8 onglets) */
+.ab:has(.ab-tab:nth-of-type(1) input:checked) .ab-section:nth-of-type(1),
+.ab:has(.ab-tab:nth-of-type(2) input:checked) .ab-section:nth-of-type(2),
+.ab:has(.ab-tab:nth-of-type(3) input:checked) .ab-section:nth-of-type(3),
+.ab:has(.ab-tab:nth-of-type(4) input:checked) .ab-section:nth-of-type(4),
+.ab:has(.ab-tab:nth-of-type(5) input:checked) .ab-section:nth-of-type(5),
+.ab:has(.ab-tab:nth-of-type(6) input:checked) .ab-section:nth-of-type(6),
+.ab:has(.ab-tab:nth-of-type(7) input:checked) .ab-section:nth-of-type(7),
+.ab:has(.ab-tab:nth-of-type(8) input:checked) .ab-section:nth-of-type(8),
+.ab:not(:has(.ab-tab input:checked)) .ab-section:nth-of-type(1) {
+  display: block;
+  animation: ab-in .35s both;
 }
 
-.post .kicker, .post .qui, .post .pour {
-  color: #8b8676 !important;
-  display: block !important;
+/* Nom du personnage en haut du volet */
+.ab .ab-player {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  margin-bottom: 18px;
+  font-size: 9.5px;
+  font-weight: 600;
+  line-height: 1.4;
+  letter-spacing: .26em;
+  text-transform: uppercase;
+  color: color-mix(in srgb, var(--accent) 45%, var(--dark));
 }
-.post .pour {
-  font-size: 9.5px !important;
-  letter-spacing: 0.26em !important;
-  text-transform: uppercase !important;
-  margin-bottom: 18px !important;
-}
-
-.post .recit p {
-  font-size: 13px !important;
-  line-height: 1.9 !important;
-  text-align: justify !important;
-  margin: 0 0 14px !important;
-}
-
-.post .de {
-  display: flex !important;
-  align-items: center !important;
-  gap: 8px !important;
-  width: max-content !important;
-  padding: 4px 6px 4px 12px !important;
-  background: #fbfaf6 !important;
-  border: 1px solid #d6d1c2 !important;
-  border-radius: 20px !important;
-  font-size: 10.5px !important;
-  margin: 0 0 18px !important;
-}
-.post .de s {
-  background: #1f1e1a !important;
-  color: #f2efe6 !important;
-  padding: 1px 8px !important;
-  border-radius: 20px !important;
-  font-weight: 600 !important;
+.ab .ab-player::before {
+  content: "";
+  width: 18px;
+  height: 2px;
+  background: var(--accent);
 }
 
-.post .choix {
-  margin-top: 30px !important;
-  padding: 18px 20px !important;
-  background: #fbfaf6 !important;
-  border: 1px solid #d6d1c2 !important;
-  border-radius: 14px !important;
+
+/* ---------- 6. Narration ---------- */
+
+.ab .ab-narration p,
+.ab .ab-possibilities p {
+  margin: 0 0 14px;
+  text-align: justify;
+  hyphens: auto;
+}
+/* dernier élément sans marge (en ignorant les <br> de Forumactif) */
+.ab .ab-narration > :nth-last-child(1 of :not(br)),
+.ab .ab-possibilities > :nth-last-child(1 of :not(br)) { margin-bottom: 0; }
+
+/* Réplique de PNJ */
+.ab .ab-npc { color: var(--npc); }
+
+/* Encart léger (lieu, date…) : à placer n'importe où */
+.ab .ab-encart {
+  display: block;
+  margin: 0 0 14px;
+  font-size: 9.5px;
+  line-height: 1.6;
+  letter-spacing: .2em;
+  text-transform: uppercase;
+  color: var(--dim);
 }
 
-.post .note {
-  display: inline-flex !important;
-  background: #1f1e1a !important;
-  color: #f2efe6 !important;
-  padding: 5px 12px !important;
-  border-radius: 20px !important;
-  font-size: 12px !important;
+/* Coupure de scène */
+.ab .ab-cut {
+  margin: 22px 0;
+  text-align: center;
+  line-height: 1;
+  color: var(--dim);
 }
-.post .note::before { content: "+ "; }
+.ab .ab-cut::before { content: "+"; }
+
+/* Petite note de précision : à placer n'importe où */
+.ab .ab-note {
+  display: flex;
+  align-items: center;
+  gap: 6px;
+  width: fit-content;
+  max-width: 100%;
+  margin: 0 0 14px;
+  padding: 3px 10px 3px 4px;
+  background: #2b2a26;
+  border-radius: 20px;
+  font-size: 10px;
+  line-height: 1.5;
+  color: #d9d5ca;
+}
+.ab .ab-note::before {
+  content: "+";
+  display: grid;
+  place-items: center;
+  flex: none;
+  width: 14px;
+  height: 14px;
+  border: 1px solid #6e6a5d;
+  border-radius: 50%;
+  font-size: 10px;
+  line-height: 1;
+  color: #9a9584;
+}
+
+
+/* ---------- 7. Dés ---------- */
+
+.ab .ab-dice {
+  --dot: var(--success);
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  width: max-content;
+  max-width: 100%;
+  margin: 0 0 18px;
+  padding: 4px 6px 4px 12px;
+  background: color-mix(in srgb, var(--dot) 12%, var(--box));
+  border: 1px solid color-mix(in srgb, var(--dot) 40%, var(--line2));
+  border-radius: 20px;
+  font-size: 10.5px;
+  line-height: 1.5;
+}
+.ab .ab-dice.partial { --dot: var(--partial); }
+.ab .ab-dice.fail    { --dot: var(--fail); }
+
+/* Voyant lumineux */
+.ab .ab-dice::before {
+  content: "";
+  flex: none;
+  width: 6px;
+  height: 6px;
+  border-radius: 50%;
+  background: var(--dot);
+  animation: ab-glow 2.4s ease-in-out infinite;
+}
+.ab .ab-dice b,
+.ab .ab-dice strong { font-weight: 600; color: var(--dark); }
+.ab .ab-dice span { color: var(--dim); }
+.ab .ab-dice span:last-child {   /* score */
+  padding: 1px 8px;
+  background: var(--dark);
+  border-radius: 20px;
+  font-size: 10px;
+  font-weight: 600;
+  color: var(--paper);
+}
+
+
+/* ---------- 8. Vos possibilités ---------- */
+
+.ab .ab-possibilities {
+  margin-top: 30px;
+  padding: 18px 20px 20px;
+  background: var(--box);
+  border: 1px solid var(--line2);
+  border-radius: 14px;
+  font-size: 12.5px;
+  line-height: 1.85;
+}
+.ab .ab-possibilities::before {
+  content: "Vos possibilités";
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  margin-bottom: 10px;
+  font-size: 10.5px;
+  font-weight: 600;
+  line-height: 1.4;
+  color: var(--dark);
+  /* le point coloré est dessiné en fond */
+  padding-left: 14px;
+  background: radial-gradient(circle at 3px 50%, var(--accent) 3px, transparent 3.5px);
+}
+
+
+/* ---------- 9. Hors RP (liste) ---------- */
+
+.ab .ab-section ul {
+  display: flex;
+  flex-direction: column;
+  gap: 8px;
+  margin: 0;
+  padding: 0;
+  list-style: none;
+}
+.ab .ab-section li {
+  position: relative;
+  padding-left: 22px;
+  font-size: 12px;
+  line-height: 1.7;
+  text-align: justify;
+}
+.ab .ab-section li::before { content: "—"; position: absolute; left: 0; color: var(--dim); }
+.ab .ab-section li b { color: var(--dark); }
+
+
+/* ---------- 10. Animations ---------- */
+
+@keyframes ab-in {
+  from { opacity: 0; transform: translateY(4px); }
+  to   { opacity: 1; transform: none; }
+}
+@keyframes ab-glow {
+  0%, 100% { box-shadow: 0 0 1px 0 var(--dot); }
+  50%      { box-shadow: 0 0 6px 2px var(--dot); }
+}
+@media (prefers-reduced-motion: reduce) {
+  .ab .ab-section, .ab .ab-dice::before { animation: none !important; }
+}
+
+
+/* ---------- 11. Mobile ---------- */
 
 @media (max-width: 580px) {
-  .post .feuille { grid-template-columns: 1fr !important; }
-  .post .bande { border-radius: 11px 11px 0 0 !important; }
-  .post .onglets { flex-direction: row !important; position: static !important; }
-  .post .onglets label { writing-mode: horizontal-tb !important; transform: none !important; flex: 1 !important; }
+  .ab .ab-sheet { grid-template-columns: minmax(0, 1fr); }
+  .ab .ab-sidebar { grid-row: 1; padding: 10px; border-radius: 11px 11px 0 0; }
+  .ab .ab-tabs { position: static; flex-direction: row; }
+  .ab .ab-tab { flex: 1; padding: 8px 4px; writing-mode: horizontal-tb; transform: none; }
+  .ab .ab-content { padding: 22px 18px; }
+  .ab .ab-title { font-size: 30px; }
 }
