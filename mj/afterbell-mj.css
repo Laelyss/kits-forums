@@ -57,16 +57,14 @@
 .ab:has(.ab-tab.pnj2 input:checked) { --accent: var(--tab-pnj2); }
 
 
-/* ---------- 2. Répliques des PNJ : <pnj1>texte</pnj1> ---------- */
-/* Pour renommer : remplacer pnj1 par le nom voulu (sans espace ni accent),
-   ici ET dans le message, ex. <halstead>…</halstead> */
+/* ---------- 2. Répliques des PNJ ---------- */
 
-.ab pnj1 { color: #5a5294; }
-.ab pnj2 { color: #2f7a78; }
-.ab pnj3 { color: #a14a3b; }
+.ab kow { color: #5d73e9; }
+.ab doy { color: #2f7a78; }
+.ab vic { color: #714e4e; }
 .ab pnj4 { color: #6b7a2e; }
 .ab pnj5 { color: #3b5f8f; }
-.ab pnj6 { color: #8a4a78; }
+.ab val { color: #8a4a78; }
 
 
 /* ---------- 3. Structure générale ---------- */
