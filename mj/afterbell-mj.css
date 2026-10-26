@@ -13,6 +13,12 @@
   inherits: true;
   initial-value: #e6c86e;
 }
+/* Halo du voyant des dés */
+@property --halo {
+  syntax: "<number>";
+  inherits: false;
+  initial-value: 0;
+}
 
 .ab {
   /* une couleur par onglet */
@@ -23,8 +29,8 @@
   --tab-pnj2: #a9b9d4;
 
   /* texte des zones de narration / possibilités / hors RP */
-  --text-size: 1.2rem;
-  --text-height: 1.9;
+  --text-size: 13px;
+  --text-height: 2em;
 
   /* papier et texte */
   --paper: #f2efe6;
@@ -82,8 +88,8 @@
 .ab > br, .ab-sheet > br, .ab-content > br, .ab-head > br,
 .ab-sections > br, .ab-section > br,
 .ab-sidebar > br, .ab-tabs > br,
-.ab .ab-dice + br, .ab .ab-note + br,
-.ab .ab-encart + br, .ab .ab-cut + br { display: none; }
+.ab reussite + br, .ab mitige + br, .ab echec + br,
+.ab .ab-note + br, .ab .ab-encart + br, .ab .ab-cut + br { display: none; }
 
 /* La feuille : texte à gauche, bande sombre à droite */
 .ab .ab-sheet {
@@ -219,8 +225,8 @@
 .ab .ab-text,
 .ab .ab-possibilities {
   font-family: "Open Sans", system-ui, sans-serif;
-  font-size: 13px;
-  line-height: 2em;
+  font-size: var(--text-size);
+  line-height: var(--text-height);
   text-align: justify;
   hyphens: auto;
 }
@@ -228,7 +234,7 @@
 /* Encart léger (lieu, date…) : à placer n'importe où */
 .ab .ab-encart {
   display: block;
-  margin: 0 0 10px;
+  margin: 0 0 6px;
   font-size: 9.5px;
   line-height: 1.6;
   letter-spacing: .2em;
@@ -239,7 +245,7 @@
 
 /* Coupure de scène */
 .ab .ab-cut {
-  margin: 14px 0;
+  margin: 3px 0;
   text-align: center;
   line-height: 1;
   color: var(--dim);
@@ -253,7 +259,7 @@
   gap: 6px;
   width: fit-content;
   max-width: 100%;
-  margin: 8px 0;
+  margin: 3px 0;
   padding: 3px 10px 3px 4px;
   background: #2b2a26;
   border-radius: 20px;
@@ -277,46 +283,54 @@
 }
 
 
-/* ---------- 8. Dés ---------- */
+/* ---------- 8. Dés : <reussite>Action<n>15</n></reussite> ---------- */
+/*  <reussite> = Réussite · <mitige> = Réussite partielle · <echec> = Échec  */
 
-.ab .ab-dice {
+.ab reussite, .ab mitige, .ab echec {
   --dot: var(--success);
   display: flex;
   align-items: center;
   gap: 8px;
   width: max-content;
   max-width: 100%;
-  margin: 10px 0;
-  padding: 4px 6px 4px 12px;
-  background: color-mix(in srgb, var(--dot) 12%, var(--box));
+  margin: 3px 0;
+  padding: 4px 6px 4px 22px;
   border: 1px solid color-mix(in srgb, var(--dot) 40%, var(--line2));
   border-radius: 20px;
   font-size: 10.5px;
+  font-weight: 600;
   line-height: 1.5;
   text-align: left;
-}
-.ab .ab-dice.partial { --dot: var(--partial); }
-.ab .ab-dice.fail    { --dot: var(--fail); }
-
-/* Voyant lumineux */
-.ab .ab-dice::before {
-  content: "";
-  flex: none;
-  width: 6px;
-  height: 6px;
-  border-radius: 50%;
-  background: var(--dot);
+  color: var(--dark);
+  /* voyant + halo dessinés en fond, puis la teinte légère du résultat */
+  background:
+    radial-gradient(circle at 12px 50%,
+      var(--dot) 0 3px,
+      color-mix(in srgb, var(--dot) calc(20% + var(--halo) * 45%), transparent) 3.5px,
+      transparent calc(4px + var(--halo) * 4px)),
+    color-mix(in srgb, var(--dot) 12%, var(--box));
   animation: ab-glow 2.4s ease-in-out infinite;
 }
-.ab .ab-dice b,
-.ab .ab-dice strong { font-weight: 600; color: var(--dark); }
-.ab .ab-dice span { color: var(--dim); }
-.ab .ab-dice span:last-child {   /* score */
+.ab mitige { --dot: var(--partial); }
+.ab echec  { --dot: var(--fail); }
+
+/* Texte du résultat, ajouté automatiquement après l'action */
+.ab reussite::before, .ab mitige::before, .ab echec::before {
+  order: 1;
+  font-weight: 400;
+  color: var(--dim);
+}
+.ab reussite::before { content: "Réussite"; }
+.ab mitige::before   { content: "Réussite partielle"; }
+.ab echec::before    { content: "Échec"; }
+
+/* Score */
+.ab reussite n, .ab mitige n, .ab echec n {
+  order: 2;
   padding: 1px 8px;
   background: var(--dark);
   border-radius: 20px;
   font-size: 10px;
-  font-weight: 600;
   color: var(--paper);
 }
 
@@ -352,11 +366,11 @@
   to   { opacity: 1; transform: none; }
 }
 @keyframes ab-glow {
-  0%, 100% { box-shadow: 0 0 1px 0 var(--dot); }
-  50%      { box-shadow: 0 0 6px 2px var(--dot); }
+  0%, 100% { --halo: 0; }
+  50%      { --halo: 1; }
 }
 @media (prefers-reduced-motion: reduce) {
-  .ab .ab-section, .ab .ab-dice::before { animation: none !important; }
+  .ab .ab-section, .ab reussite, .ab mitige, .ab echec { animation: none !important; }
 }
 
 
