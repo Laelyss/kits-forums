@@ -4,33 +4,8 @@
 
 @import url("https://fonts.googleapis.com/css2?family=Open+Sans:ital,wght@0,400;0,600;1,400&family=Newsreader:opsz,wght@6..72,400&display=swap");
 
-/* <br> injectés par Forumactif */
-.ab .ab-text br,
-.ab .ab-possibilities br {
-  display: block;
-  content: "";
-  margin: 0.4em 0;   /* espace contrôlé au lieu du saut plein */
-}
 
-/* Cache les <br> purement structurels entre blocs */
-.ab > br,
-.ab-sheet > br,
-.ab-content > br,
-.ab-head > br,
-.ab-sections > br,
-.ab-section > br,
-.ab-sidebar > br,
-.ab-tabs > br,
-.ab reussite + br,
-.ab mitige + br,
-.ab echec + br,
-.ab .ab-note + br,
-.ab .ab-encart + br,
-.ab .ab-cut + br {
-  display: none;
-}
-
-/* ---------- 1. Réglages ---------- */
+/* ---------- 1. Réglages (à modifier ici) ---------- */
 
 /* Permet à la couleur d'accent de changer en douceur */
 @property --accent {
@@ -110,9 +85,7 @@
    (les retours à la ligne du texte, eux, restent) */
 .ab > br, .ab-sheet > br, .ab-content > br, .ab-head > br,
 .ab-sections > br, .ab-section > br,
-.ab-sidebar > br, .ab-tabs > br,
-.ab reussite + br, .ab mitige + br, .ab echec + br,
-.ab .ab-note + br, .ab .ab-encart + br, .ab .ab-cut + br { display: none; }
+.ab-sidebar > br, .ab-tabs > br { display: none; }
 
 /* La feuille : texte à gauche, bande sombre à droite */
 .ab .ab-sheet {
@@ -256,8 +229,9 @@
 
 /* Encart léger (lieu, date…) : à placer n'importe où */
 .ab .ab-encart {
-  display: block;
-  margin: 0 0 6px;
+  display: inline-block;   /* se comporte comme une ligne de texte */
+  width: 100%;
+  margin: 0;
   font-size: 9.5px;
   line-height: 1.6;
   letter-spacing: .2em;
@@ -268,21 +242,22 @@
 
 /* Coupure de scène */
 .ab .ab-cut {
-  margin: 3px 0;
+  display: inline-block;   /* se comporte comme une ligne de texte */
+  width: 100%;
+  margin: 0;
   text-align: center;
-  line-height: 1;
   color: var(--dim);
 }
 .ab .ab-cut::before { content: "+"; }
 
 /* Petite note de précision : à placer n'importe où */
 .ab .ab-note {
-  display: flex;
+  display: inline-flex;    /* se comporte comme une ligne de texte */
   align-items: center;
   gap: 6px;
-  width: fit-content;
   max-width: 100%;
-  margin: 3px 0;
+  margin: 0;
+  vertical-align: middle;
   padding: 3px 10px 3px 4px;
   background: #2b2a26;
   border-radius: 20px;
@@ -311,12 +286,12 @@
 
 .ab reussite, .ab mitige, .ab echec {
   --dot: var(--success);
-  display: flex;
+  display: inline-flex;    /* se comporte comme une ligne de texte */
   align-items: center;
   gap: 8px;
-  width: max-content;
   max-width: 100%;
-  margin: 3px 0;
+  margin: 0;
+  vertical-align: middle;
   padding: 4px 6px 4px 22px;
   border: 1px solid color-mix(in srgb, var(--dot) 40%, var(--line2));
   border-radius: 20px;
