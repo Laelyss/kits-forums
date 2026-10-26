@@ -219,8 +219,8 @@
 .ab .ab-text,
 .ab .ab-possibilities {
   font-family: "Open Sans", system-ui, sans-serif;
-  font-size: var(--text-size);
-  line-height: var(--text-height);
+  font-size: 13px;
+  line-height: 2em;
   text-align: justify;
   hyphens: auto;
 }
