@@ -343,7 +343,7 @@
   border-radius: 14px;
 }
 .ab .ab-possibilities::before {
-  content: "Vos possibilités";
+  content: "Des pistes, allez vous les suivres... ?";
   display: block;
   margin-bottom: 10px;
   padding-left: 14px;
