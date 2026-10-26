@@ -28,6 +28,9 @@
   --tab-pnj:  #a9c3a3;
   --tab-pnj2: #a9b9d4;
 
+  /* hauteur de la barre fixe du forum : les onglets se collent juste en dessous */
+  --tabs-top: 50px;
+
   /* texte de la narration et du hors RP */
   --text-size: 13px;
   --text-height: 2em;
@@ -52,12 +55,12 @@
   --grain: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='160' height='160'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='.85' numOctaves='3' stitchTiles='stitch'/%3E%3CfeColorMatrix values='0 0 0 0 0.22 0 0 0 0 0.22 0 0 0 0 0.22 0 0 0 .10 0'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23n)'/%3E%3C/svg%3E");
 }
 
-/* Couleur d'accent = celle de l'onglet coché */
-.ab:has(.ab-tab.eddy input:checked) { --accent: var(--tab-eddy); }
-.ab:has(.ab-tab.june input:checked) { --accent: var(--tab-june); }
-.ab:has(.ab-tab.hrp  input:checked) { --accent: var(--tab-hrp); }
-.ab:has(.ab-tab.pnj  input:checked) { --accent: var(--tab-pnj); }
-.ab:has(.ab-tab.pnj2 input:checked) { --accent: var(--tab-pnj2); }
+/* Couleur d'accent = celle du bouton coché (classe sur l'<input>) */
+.ab:has(> input.eddy:checked) { --accent: var(--tab-eddy); }
+.ab:has(> input.june:checked) { --accent: var(--tab-june); }
+.ab:has(> input.hrp:checked)  { --accent: var(--tab-hrp); }
+.ab:has(> input.pnj:checked)  { --accent: var(--tab-pnj); }
+.ab:has(> input.pnj2:checked) { --accent: var(--tab-pnj2); }
 
 
 /* ---------- 2. Répliques des PNJ ---------- */
@@ -73,6 +76,7 @@
 /* ---------- 3. Structure générale ---------- */
 
 .ab {
+  position: relative;
   max-width: 680px;
   margin: 0 auto;
   color: var(--text);
@@ -108,6 +112,20 @@
 
 /* ---------- 4. Bande latérale et onglets ---------- */
 
+/* Boutons invisibles placés en haut du post :
+   cliquer un onglet ramène la page au début du post */
+.ab > input {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 1px;
+  height: min(100%, calc(100vh - var(--tabs-top)));
+  margin: 0;
+  opacity: 0;
+  pointer-events: none;
+  scroll-margin-top: var(--tabs-top);
+}
+
 .ab .ab-sidebar {
   padding: 24px 10px;
   background: #2b2a26 var(--grain);
@@ -116,7 +134,7 @@
 }
 .ab .ab-tabs {
   position: sticky;   /* suit le défilement */
-  top: 16px;
+  top: calc(var(--tabs-top) + 10px);
   display: flex;
   flex-direction: column;
   gap: 2px;
@@ -142,10 +160,16 @@
   transition: background .25s, color .25s;
 }
 .ab .ab-tab:hover { color: var(--paper); }
-.ab .ab-tab input { display: none; }
 
-/* Onglet actif */
-.ab .ab-tab:has(input:checked) {
+/* Onglet actif : le bouton n°X coché allume l'onglet n°X */
+.ab:has(> input:nth-of-type(1):checked) .ab-tab:nth-of-type(1),
+.ab:has(> input:nth-of-type(2):checked) .ab-tab:nth-of-type(2),
+.ab:has(> input:nth-of-type(3):checked) .ab-tab:nth-of-type(3),
+.ab:has(> input:nth-of-type(4):checked) .ab-tab:nth-of-type(4),
+.ab:has(> input:nth-of-type(5):checked) .ab-tab:nth-of-type(5),
+.ab:has(> input:nth-of-type(6):checked) .ab-tab:nth-of-type(6),
+.ab:has(> input:nth-of-type(7):checked) .ab-tab:nth-of-type(7),
+.ab:has(> input:nth-of-type(8):checked) .ab-tab:nth-of-type(8) {
   background: var(--accent);
   color: var(--dark);
   font-weight: 600;
@@ -184,16 +208,16 @@
 
 .ab .ab-section { display: none; }
 
-/* L'onglet n°X affiche le volet n°X (jusqu'à 8 onglets) */
-.ab:has(.ab-tab:nth-of-type(1) input:checked) .ab-section:nth-of-type(1),
-.ab:has(.ab-tab:nth-of-type(2) input:checked) .ab-section:nth-of-type(2),
-.ab:has(.ab-tab:nth-of-type(3) input:checked) .ab-section:nth-of-type(3),
-.ab:has(.ab-tab:nth-of-type(4) input:checked) .ab-section:nth-of-type(4),
-.ab:has(.ab-tab:nth-of-type(5) input:checked) .ab-section:nth-of-type(5),
-.ab:has(.ab-tab:nth-of-type(6) input:checked) .ab-section:nth-of-type(6),
-.ab:has(.ab-tab:nth-of-type(7) input:checked) .ab-section:nth-of-type(7),
-.ab:has(.ab-tab:nth-of-type(8) input:checked) .ab-section:nth-of-type(8),
-.ab:not(:has(.ab-tab input:checked)) .ab-section:nth-of-type(1) {
+/* Le bouton n°X coché affiche le volet n°X (jusqu'à 8 onglets) */
+.ab:has(> input:nth-of-type(1):checked) .ab-section:nth-of-type(1),
+.ab:has(> input:nth-of-type(2):checked) .ab-section:nth-of-type(2),
+.ab:has(> input:nth-of-type(3):checked) .ab-section:nth-of-type(3),
+.ab:has(> input:nth-of-type(4):checked) .ab-section:nth-of-type(4),
+.ab:has(> input:nth-of-type(5):checked) .ab-section:nth-of-type(5),
+.ab:has(> input:nth-of-type(6):checked) .ab-section:nth-of-type(6),
+.ab:has(> input:nth-of-type(7):checked) .ab-section:nth-of-type(7),
+.ab:has(> input:nth-of-type(8):checked) .ab-section:nth-of-type(8),
+.ab:not(:has(> input:checked)) .ab-section:nth-of-type(1) {
   display: block;
   animation: ab-in .35s both;
 }
@@ -408,8 +432,7 @@ color-mix(in srgb, #fdc895 90%, transparent), transparent), #e7e1d1;
   50%      { --halo: 1; }
 }
 @media (prefers-reduced-motion: reduce) {
-  .ab .ab-section, .ab reussite, .ab mitige, .ab echec,
-  .ab .ab-possibilities::before { animation: none !important; }
+  .ab .ab-section, .ab reussite, .ab mitige, .ab echec { animation: none !important; }
 }
 
 
@@ -422,6 +445,6 @@ color-mix(in srgb, #fdc895 90%, transparent), transparent), #e7e1d1;
   .ab .ab-tab { flex: 1; padding: 8px 4px; writing-mode: horizontal-tb; transform: none; }
   .ab .ab-content { padding: 22px 18px; }
   .ab .ab-title { font-size: 30px; }
-     .ab .ab-possibilities { padding: 26px; }
+  .ab .ab-possibilities { padding: 26px; }
   .ab .ab-possibilities::after { inset: 10px; }
 }
