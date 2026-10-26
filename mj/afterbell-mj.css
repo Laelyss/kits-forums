@@ -225,7 +225,7 @@
 .ab .ab-possibilities {
   font-family: "Open Sans", system-ui, sans-serif;
   font-size: 11px;
-  line-height: var(--text-height);
+  line-height: 1.7;
   text-align: justify;
   hyphens: auto;
 }
@@ -345,54 +345,65 @@
 .ab reussite n + n, .ab mitige n + n, .ab echec n + n { margin-left: -4px; }
 
 
-/* ---------- 9. Vos possibilités (carte en verre) ---------- */
+/* ---------- 9. Vos possibilités (vitrine en retrait, halo en haut à droite) ---------- */
 
+/* Le cadre en creux + le halo de couleur en haut à droite */
 .ab .ab-possibilities {
   position: relative;
-  margin: 38px 8px 8px;   /* laisse la place au cadre extérieur */
-  padding: 0 18px 16px;
-  border-radius: 14px;
+  isolation: isolate;
+  overflow: hidden;
+  margin-top: 34px;
+  padding: 32px 36px;
+  border: 0;
+  border-radius: 18px;
   font-size: var(--choice-size);
   line-height: var(--choice-height);
-  /* lueur de l'accent en haut à gauche + fond de la carte */
+  text-align: left;
+  hyphens: none;
+  text-wrap: pretty;
   background:
-    radial-gradient(ellipse 45% 70% at 12% 0%, color-mix(in srgb, var(--accent) 28%, transparent), transparent 70%),
-    linear-gradient(#fbf9f3, #f6f3eb);
+    radial-gradient(150px 100px at calc(100% - 110px) 50px,
+      color-mix(in srgb, var(--accent) 90%, transparent), transparent),
+    #e7e1d1;
   box-shadow:
-    inset 0 1px 0 rgba(255, 255, 255, .9),   /* reflet du haut */
-    0 0 0 1px rgba(0, 0, 0, .06),            /* bord de la carte */
-    0 0 0 8px rgba(255, 255, 255, .35),      /* cadre en verre */
-    0 0 0 9px rgba(0, 0, 0, .07),            /* bord du cadre */
-    0 8px 22px rgba(0, 0, 0, .08);           /* ombre portée */
+    inset 1px 1px 4px rgba(110, 106, 93, .2),
+    inset -1px -1px 3px rgba(255, 255, 255, .8);
 }
 
-/* Titre + voyant, avec la ligne de séparation */
+/* La vitre (verre flouté par-dessus le halo) */
+.ab .ab-possibilities::after {
+  content: "";
+  position: absolute;
+  z-index: -1;
+  inset: 14px;
+  border-radius: 13px;
+  background: rgba(255, 255, 255, .48);
+  border: 1px solid rgba(255, 255, 255, .85);
+  backdrop-filter: blur(16px) saturate(1.1);
+  -webkit-backdrop-filter: blur(16px) saturate(1.1);
+  box-shadow:
+    inset 0 1px 0 rgba(255, 255, 255, .95),
+    0 8px 18px -12px rgba(80, 70, 40, .45);
+}
+
+/* Titre */
 .ab .ab-possibilities::before {
   content: "Des pistes, allez-vous les suivre… ?";
+  position: relative;
   display: block;
-  margin: 0 -18px 12px;
-  padding: 11px 18px 10px 36px;
-  border-bottom: 1px solid rgba(0, 0, 0, .08);
-  font-size: 10.5px;
+  margin-bottom: 12px;
+  font-size: 14px;
   font-weight: 600;
   line-height: 1.4;
-  text-align: left;
+  letter-spacing: -.005em;
   color: var(--dark);
-  background: radial-gradient(circle at 22px 50%,
-    var(--accent) 0 3px,
-    color-mix(in srgb, var(--accent) calc(25% + var(--halo) * 45%), transparent) 3.5px,
-    transparent calc(4.5px + var(--halo) * 5px));
-  animation: ab-glow 2.4s ease-in-out infinite;
 }
 
 /* Phrase de fin : <fin>À vos risques et périls, officier.</fin> */
 .ab .ab-possibilities fin {
   display: block;
-  margin: 12px -18px 0;
-  padding: 12px 18px 0;
-  border-top: 1px dashed rgba(0, 0, 0, .14);
+  margin-top: 14px;
   font-weight: 600;
-  text-align: left;
   color: var(--dark);
 }
 
@@ -422,4 +433,6 @@
   .ab .ab-tab { flex: 1; padding: 8px 4px; writing-mode: horizontal-tb; transform: none; }
   .ab .ab-content { padding: 22px 18px; }
   .ab .ab-title { font-size: 30px; }
+     .ab .ab-possibilities { padding: 26px; }
+  .ab .ab-possibilities::after { inset: 10px; }
 }
