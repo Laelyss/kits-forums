@@ -4,8 +4,33 @@
 
 @import url("https://fonts.googleapis.com/css2?family=Open+Sans:ital,wght@0,400;0,600;1,400&family=Newsreader:opsz,wght@6..72,400&display=swap");
 
+/* <br> injectés par Forumactif */
+.ab .ab-text br,
+.ab .ab-possibilities br {
+  display: block;
+  content: "";
+  margin: 0.4em 0;   /* espace contrôlé au lieu du saut plein */
+}
 
-/* ---------- 1. Réglages (à modifier ici) ---------- */
+/* Cache les <br> purement structurels entre blocs */
+.ab > br,
+.ab-sheet > br,
+.ab-content > br,
+.ab-head > br,
+.ab-sections > br,
+.ab-section > br,
+.ab-sidebar > br,
+.ab-tabs > br,
+.ab reussite + br,
+.ab mitige + br,
+.ab echec + br,
+.ab .ab-note + br,
+.ab .ab-encart + br,
+.ab .ab-cut + br {
+  display: none;
+}
+
+/* ---------- 1. Réglages ---------- */
 
 /* Permet à la couleur d'accent de changer en douceur */
 @property --accent {
