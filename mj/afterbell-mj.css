@@ -2,43 +2,35 @@
    AFTER THE BELL — MJ POST
    ============================================ */
 
-/* ---------- Variables ---------- */
 :root {
   --font: "Open Sans", system-ui, sans-serif;
   --serif: "Newsreader", Georgia, serif;
+}
 
+.post {
   --paper: #f2efe6;
   --box: #fbfaf6;
   --line: #6e6a5d;
   --line2: #d6d1c2;
-  --text: #34322c;
+  --t: #34322c;
   --hi: #1f1e1a;
   --dim: #8b8676;
   --hl: #e6c86e;
   --onhl: #241d0b;
   --v: #5a5294;
-
-  --sidebar: #2b2a26;
-  --sidebar-text: #9a9584;
-}
-
-/* ---------- Conteneur ---------- */
-.post {
+  color: var(--t);
+  font-family: var(--font);
   max-width: 680px;
   margin: 0 auto;
-  color: var(--text);
-  font-family: var(--font);
-  position: relative;
 }
 
-.post input[type="radio"] {
-  display: none;
-}
+.post input { display: none; }
 
-/* ---------- Feuille (carte principale) ---------- */
-.feuille {
+/* ---------- Feuille ---------- */
+.post feuille {
   display: grid;
   grid-template-columns: minmax(0, 1fr) 62px;
+  min-width: 0;
   background-color: var(--paper);
   background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='160' height='160'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='.85' numOctaves='3' stitchTiles='stitch'/%3E%3CfeColorMatrix values='0 0 0 0 0.22 0 0 0 0 0.22 0 0 0 0 0.22 0 0 0 .10 0'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23n)'/%3E%3C/svg%3E");
   background-size: 160px 160px;
@@ -48,57 +40,45 @@
 }
 
 /* ---------- Corps ---------- */
-.corps {
+.post corps {
+  display: block;
   min-width: 0;
   padding: 30px 34px 34px;
 }
 
 /* ---------- En-tête ---------- */
-.entete {
+.post sur { display: block; color: var(--dim); font-size: 10.5px; }
+.post titre {
+  display: block;
+  margin: 6px 0 10px;
+  color: var(--hi);
+  font-family: var(--serif);
+  font-size: 38px;
+  line-height: 1.05;
+}
+.post titre mark {
+  padding: 0 6px;
+  background: var(--hl);
+  color: var(--onhl);
+}
+.post qui { display: block; color: var(--dim); font-size: 10.5px; }
+.post entete {
+  display: block;
   margin-bottom: 26px;
   padding-bottom: 18px;
   border-bottom: 1px solid var(--line2);
 }
 
-.kicker {
+/* ---------- Bande + onglets ---------- */
+.post bande {
   display: block;
-  color: var(--dim);
-  font-size: 10.5px;
-  letter-spacing: 0.04em;
-}
-
-.titre {
-  display: block;
-  margin: 6px 0 10px;
-  font-family: var(--serif);
-  font-size: 38px;
-  line-height: 1.05;
-  color: var(--hi);
-}
-
-.titre mark,
-.titre .bell {
-  padding: 0 6px;
-  background: var(--hl);
-  color: var(--onhl);
-  border-radius: 2px;
-}
-
-.qui {
-  display: block;
-  color: var(--dim);
-  font-size: 10.5px;
-}
-
-/* ---------- Bande latérale + onglets ---------- */
-.bande {
-  background: var(--sidebar);
+  padding: 24px 10px;
+  background: #2b2a26;
   background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='160' height='160'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='.85' numOctaves='3' stitchTiles='stitch'/%3E%3CfeColorMatrix values='0 0 0 0 0.22 0 0 0 0 0.22 0 0 0 0 0.22 0 0 0 .10 0'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23n)'/%3E%3C/svg%3E");
   border-radius: 0 11px 11px 0;
-  padding: 24px 10px;
 }
 
-.onglets {
+.post onglets {
   align-self: start;
   position: sticky;
   top: 16px;
@@ -111,7 +91,7 @@
   border-radius: 20px;
 }
 
-.onglets label {
+.post onglets label {
   display: flex;
   align-items: center;
   justify-content: center;
@@ -121,42 +101,36 @@
   white-space: nowrap;
   border-radius: 16px;
   font-size: 11px;
-  color: var(--sidebar-text);
+  color: #9a9584;
   cursor: pointer;
   transition: background 0.25s, color 0.25s;
 }
+.post onglets label:hover { color: #f2efe6; }
 
-.onglets label:hover {
-  color: #f2efe6;
-}
-
-/* Onglet actif */
-.post:has(#tab-eddy:checked) .o-eddy,
-.post:has(#tab-june:checked) .o-june,
-.post:has(#tab-hrp:checked) .o-hrp,
-.post:has(#tab-npc:checked) .o-npc {
+.post:has(input:nth-of-type(1):checked) .o1,
+.post:has(input:nth-of-type(2):checked) .o2,
+.post:has(input:nth-of-type(3):checked) .o3,
+.post:has(input:nth-of-type(4):checked) .o4 {
   background: var(--hl);
   color: var(--onhl);
   font-weight: 600;
 }
 
-/* ---------- Volets (contenu par onglet) ---------- */
-.volet { display: none; }
-
-.post:has(#tab-eddy:checked) .v-eddy,
-.post:has(#tab-june:checked) .v-june,
-.post:has(#tab-hrp:checked) .v-hrp,
-.post:has(#tab-npc:checked) .v-npc {
+/* ---------- Volets ---------- */
+.post volet { display: none; }
+.post:has(input:nth-of-type(1):checked) .v1,
+.post:has(input:nth-of-type(2):checked) .v2,
+.post:has(input:nth-of-type(3):checked) .v3,
+.post:has(input:nth-of-type(4):checked) .v4 {
   display: block;
-  animation: fadeIn 0.35s both;
+  animation: fIn 0.35s both;
 }
-
-@keyframes fadeIn {
+@keyframes fIn {
   from { opacity: 0; transform: translateY(4px); }
   to { opacity: 1; transform: none; }
 }
 
-.pour {
+.post pour {
   display: block;
   margin-bottom: 18px;
   color: var(--dim);
@@ -166,30 +140,23 @@
 }
 
 /* ---------- Narration ---------- */
-.recit p {
+.post recit p {
   margin: 0 0 14px;
   font-size: 13px;
   line-height: 1.9;
   text-align: justify;
-  hyphens: auto;
 }
+.post v { color: var(--v); }
 
-.recit v,
-.voix {
-  color: var(--v);
-}
-
-/* ---------- Encart date / lieu ---------- */
-.encart {
+/* ---------- Encart & note ---------- */
+.post encart {
   display: block;
   margin: 0 0 14px;
   color: var(--dim);
   font-size: 12.5px;
   font-style: italic;
 }
-
-/* ---------- Note de précision ---------- */
-.note {
+.post note {
   display: inline-flex;
   align-items: center;
   gap: 6px;
@@ -199,16 +166,11 @@
   padding: 5px 12px;
   border-radius: 20px;
   margin: 10px 0;
-  font-weight: 500;
 }
-
-.note::before {
-  content: "+";
-  opacity: 0.7;
-}
+.post note::before { content: "+"; opacity: 0.7; }
 
 /* ---------- Dés ---------- */
-.de {
+.post de {
   display: flex;
   align-items: center;
   gap: 8px;
@@ -221,21 +183,18 @@
   border-radius: 20px;
   font-size: 10.5px;
 }
-
-.de::before {
+.post de::before {
   content: "";
   width: 6px;
   height: 6px;
   border-radius: 50%;
   background: #6fa77c;
 }
-
-.de.part::before { background: #d1a647; }
-.de.ko::before { background: #b5574d; }
-
-.de b { font-weight: 600; color: var(--hi); }
-.de r { color: var(--dim); }
-.de s {
+.post de.part::before { background: #d1a647; }
+.post de.ko::before { background: #b5574d; }
+.post de b { font-weight: 600; color: var(--hi); }
+.post de r { color: var(--dim); }
+.post de s {
   text-decoration: none;
   padding: 1px 8px;
   border-radius: 20px;
@@ -244,35 +203,33 @@
   font-weight: 600;
   font-size: 10px;
 }
-
-/* Halo + fond selon résultat */
-.de.ok {
-  background: rgba(111, 167, 124, 0.1);
-  border-color: rgba(111, 167, 124, 0.4);
-  box-shadow: 0 0 0 3px rgba(111, 167, 124, 0.15), 0 0 12px rgba(111, 167, 124, 0.2);
+.post de.ok {
+  background: rgba(111,167,124,0.1);
+  border-color: rgba(111,167,124,0.4);
+  box-shadow: 0 0 0 3px rgba(111,167,124,0.15), 0 0 12px rgba(111,167,124,0.2);
 }
-.de.part {
-  background: rgba(209, 166, 71, 0.1);
-  border-color: rgba(209, 166, 71, 0.4);
-  box-shadow: 0 0 0 3px rgba(209, 166, 71, 0.15), 0 0 12px rgba(209, 166, 71, 0.2);
+.post de.part {
+  background: rgba(209,166,71,0.1);
+  border-color: rgba(209,166,71,0.4);
+  box-shadow: 0 0 0 3px rgba(209,166,71,0.15), 0 0 12px rgba(209,166,71,0.2);
 }
-.de.ko {
-  background: rgba(181, 87, 77, 0.1);
-  border-color: rgba(181, 87, 77, 0.4);
-  box-shadow: 0 0 0 3px rgba(181, 87, 77, 0.15), 0 0 12px rgba(181, 87, 77, 0.2);
+.post de.ko {
+  background: rgba(181,87,77,0.1);
+  border-color: rgba(181,87,77,0.4);
+  box-shadow: 0 0 0 3px rgba(181,87,77,0.15), 0 0 12px rgba(181,87,77,0.2);
 }
 
-/* ---------- Coupure de scène ---------- */
-.coupe {
+/* ---------- Coupure ---------- */
+.post coupe {
   display: block;
   margin: 22px 0;
   text-align: center;
   color: var(--dim);
 }
-.coupe::before { content: "+"; }
+.post coupe::before { content: "+"; }
 
 /* ---------- Possibilités ---------- */
-.choix {
+.post choix {
   display: block;
   margin-top: 30px;
   padding: 18px 20px 20px;
@@ -280,9 +237,7 @@
   border: 1px solid var(--line2);
   border-radius: 14px;
 }
-
-.choix k,
-.choix-titre {
+.post choix k {
   display: flex;
   align-items: center;
   gap: 8px;
@@ -291,18 +246,15 @@
   font-size: 10.5px;
   font-weight: 600;
 }
-
-.choix k::before,
-.choix-titre::before {
+.post choix k::before {
   content: "";
   width: 6px;
   height: 6px;
   border-radius: 50%;
   background: var(--hl);
-  box-shadow: 0 0 0 3px rgba(230, 200, 110, 0.3);
+  box-shadow: 0 0 0 3px rgba(230,200,110,0.3);
 }
-
-.choix p {
+.post choix p {
   margin: 0;
   font-size: 12.5px;
   line-height: 1.85;
@@ -310,7 +262,7 @@
 }
 
 /* ---------- HRP ---------- */
-.volet ul {
+.post volet ul {
   margin: 0;
   padding: 0;
   list-style: none;
@@ -318,38 +270,29 @@
   flex-direction: column;
   gap: 8px;
 }
-
-.volet li {
+.post volet li {
   display: flex;
   gap: 10px;
   font-size: 12px;
   line-height: 1.7;
 }
-
-.volet li::before {
-  content: "—";
-  color: var(--dim);
-}
+.post volet li::before { content: "—"; color: var(--dim); }
 
 /* ---------- Responsive ---------- */
 @media (max-width: 580px) {
-  .feuille {
-    grid-template-columns: minmax(0, 1fr);
-  }
-  .bande {
+  .post feuille { grid-template-columns: minmax(0, 1fr); }
+  .post bande {
     grid-row: 1;
     border-radius: 11px 11px 0 0;
     padding: 10px;
   }
-  .onglets {
-    flex-direction: row;
-    position: static;
-  }
-  .onglets label {
+  .post onglets { flex-direction: row; position: static; }
+  .post onglets label {
     flex: 1;
     writing-mode: horizontal-tb;
     transform: none;
     padding: 8px 0;
   }
-  .corps { padding: 22px 18px; }
-  .titre { font-size: 30px; }
+  .post corps { padding: 22px 18px; }
+  .post titre { font-size: 30px; }
+}
