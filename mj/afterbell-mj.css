@@ -251,7 +251,7 @@
   text-align: center;
   color: var(--dim);
 }
-.ab .ab-cut::before { content: "+"; }
+.ab .ab-cut::before { content: "✦"; }
 
 /* Petite note de précision : à placer n'importe où */
 .ab .ab-note {
