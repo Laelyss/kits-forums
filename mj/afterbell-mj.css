@@ -20,20 +20,28 @@
   --dice-success: #5a9a6e;
   --dice-partial: #c9a227;
   --dice-fail: #c47a6a;
-
-  --mj-valentina: #e8507a;
-  --mj-kowalski: #3a8080;
-  --mj-inspector: #5d73e9;
-  --mj-collegue: #714e4e;
 }
 
-/* ---------- Conteneur ---------- */
+/* ---------- Reset forum (léger) ---------- */
+.post,
+.post * {
+  box-sizing: border-box;
+}
+.post label {
+  display: block;
+  margin: 0;
+  padding: 0;
+  font-weight: inherit;
+  cursor: pointer;
+}
+.post input[type="radio"] {
+  appearance: none;
+  -webkit-appearance: none;
+}
 .post {
   width: 580px;
   max-width: 100%;
-  margin: 20px auto;
-  display: grid;
-  grid-template-columns: 1fr auto;
+  margin: 16px auto;
   background: var(--paper);
   color: var(--text);
   font-family: system-ui, -apple-system, BlinkMacSystemFont, "Segoe UI", sans-serif;
@@ -43,6 +51,7 @@
   overflow: hidden;
   position: relative;
   box-shadow: 0 6px 28px rgba(0,0,0,0.08);
+  display: block; /* reset forum */
 }
 
 /* Grain léger */
@@ -59,40 +68,51 @@
 
 .post > * { position: relative; z-index: 1; }
 
-/* ---------- Sidebar ---------- */
+/* ---------- Sidebar (positionnée à droite) ---------- */
 .sidebar {
+  position: absolute;
+  top: 0;
+  right: 0;
+  bottom: 0;
+  width: 52px;
   background: var(--sidebar-bg);
   display: flex;
   flex-direction: column;
-  padding: 14px 0;
-  gap: 4px;
+  align-items: stretch;
+  padding: 16px 0;
+  gap: 6px;
+  z-index: 2;
 }
 
 .sidebar input {
   position: absolute;
+  left: -9999px;
   opacity: 0;
-  pointer-events: none;
 }
 
 .tab {
+  display: block;
   writing-mode: vertical-rl;
   text-orientation: mixed;
   transform: rotate(180deg);
-  padding: 16px 10px;
+  padding: 18px 0;
+  margin: 0 6px;
   font-size: 12px;
   font-weight: 500;
-  letter-spacing: 0.4px;
+  letter-spacing: 0.5px;
   color: var(--sidebar-text);
+  text-align: center;
   cursor: pointer;
-  border-radius: 8px 0 0 8px;
-  margin-left: 4px;
-  transition: all 0.15s ease;
+  border-radius: 8px;
+  background: transparent;
+  transition: background 0.15s, color 0.15s;
   user-select: none;
+  line-height: 1;
 }
 
 .tab:hover { color: #fff; }
 
-/* Onglet actif via :has */
+/* Onglet actif */
 .post:has(#tab-eddy:checked) label[for="tab-eddy"],
 .post:has(#tab-june:checked) label[for="tab-june"],
 .post:has(#tab-hrp:checked) label[for="tab-hrp"],
@@ -100,7 +120,6 @@
   background: var(--paper);
   color: var(--text);
   font-weight: 600;
-  margin-left: 0;
 }
 
 .post:has(#tab-eddy:checked) label[for="tab-eddy"] { color: var(--eddy); }
@@ -108,14 +127,10 @@
 .post:has(#tab-hrp:checked) label[for="tab-hrp"] { color: var(--hrp); }
 .post:has(#tab-npc:checked) label[for="tab-npc"] { color: var(--npc); }
 
-/* Couleur du Bell */
-.post:has(#tab-june:checked) h1 .bell { background: var(--june); color: #fff; }
-.post:has(#tab-hrp:checked) h1 .bell { background: var(--hrp); color: #fff; }
-.post:has(#tab-npc:checked) h1 .bell { background: var(--npc); color: #fff; }
-
-/* ---------- Contenu ---------- */
+/* ---------- Contenu (avec marge pour la sidebar) ---------- */
 .content {
-  padding: 30px 34px 26px;
+  padding: 28px 70px 24px 32px; /* 70px = espace pour la sidebar */
+  min-height: 280px;
 }
 
 .kicker {
@@ -303,12 +318,15 @@ h1 .bell {
 
 /* ---------- Responsive ---------- */
 @media (max-width: 640px) {
-  .post { grid-template-columns: 1fr; }
   .sidebar {
+    position: relative;
+    width: auto;
     flex-direction: row;
     flex-wrap: wrap;
     padding: 10px;
-    order: -1;
+    top: auto;
+    right: auto;
+    bottom: auto;
   }
   .tab {
     writing-mode: horizontal-tb;
@@ -317,5 +335,7 @@ h1 .bell {
     margin: 0;
     padding: 8px 14px;
   }
-  .content { padding: 24px 22px; }
+  .content {
+    padding: 24px 22px;
+  }
 }
